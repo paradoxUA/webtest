@@ -1,0 +1,406 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="textBox8.Text" xml:space="preserve">
+    <value>delete from cassa;
+delete from jurnal;
+delete from certificate;
+delete from fuel;
+delete from logins;
+delete from messages;
+delete from noracekart;
+delete from race_data;
+delete from race_times;
+delete from race_type;
+delete from races;
+delete from user_cash;</value>
+  </data>
+  <data name="textBox7.Text" xml:space="preserve">
+    <value>drop database if exists `crazykart`;
+create database crazykart;
+use crazykart;DROP TABLE IF EXISTS `cassa`;
+CREATE TABLE `cassa` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `doc_id` int(8) NOT NULL,
+  `sum` double DEFAULT '0',
+  `sign` int(1) NOT NULL DEFAULT '0',
+  `date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idoc` (`doc_id`),
+  KEY `idate` (`date`)
+) ENGINE=MyISAM AUTO_INCREMENT=668 DEFAULT CHARSET=cp1251;
+DROP TABLE IF EXISTS `certificate`;
+CREATE TABLE `certificate` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `c_id` int(8) DEFAULT NULL,
+  `bar_number` varchar(15) NOT NULL,
+  `user_id` int(8) DEFAULT NULL,
+  `count` int(3) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `date_end` datetime DEFAULT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `ibar` (`bar_number`),
+  KEY `ic` (`c_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=cp1251;
+DROP TABLE IF EXISTS `certificate_type`;
+CREATE TABLE `certificate_type` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `nominal` varchar(10) DEFAULT NULL,
+  `cost` varchar(10) DEFAULT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `c_type` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=cp1251;
+DROP TABLE IF EXISTS `fuel`;
+CREATE TABLE `fuel` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `car_id` int(8) DEFAULT NULL,
+  `fuel` varchar(10) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `sign` int(1) NOT NULL DEFAULT '0',
+  `comment` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `icar` (`car_id`,`created`)
+) ENGINE=MyISAM AUTO_INCREMENT=228 DEFAULT CHARSET=cp1251;
+DROP TABLE IF EXISTS `groups`;
+CREATE TABLE `groups` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `sale` varchar(3) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=cp1251;
+DROP TABLE IF EXISTS `jurnal`;
+CREATE TABLE `jurnal` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `tp` int(2) NOT NULL,
+  `comment` varchar(200) DEFAULT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `race_id` int(8) NOT NULL,
+  `user_id` int(8) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `irace` (`race_id`),
+  KEY `iuser` (`user_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1140 DEFAULT CHARSET=cp1251;
+DROP TABLE IF EXISTS `karts`;
+CREATE TABLE `karts` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `number` varchar(20) DEFAULT NULL,
+  `transponder` varchar(50) NOT NULL,
+  `color` varchar(20) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `repair` tinyint(1) NOT NULL DEFAULT '0',
+  `message_id` int(8) DEFAULT NULL,
+  `wait` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `itransponder` (`transponder`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+
+LOCK TABLES `karts` WRITE;
+INSERT INTO `karts` VALUES (1,'Коля','1','1','','2011-02-16 13:03:30','2011-02-16 13:03:30',0,70,0),(2,'Петя','2','2','','2011-02-16 13:10:59','2011-02-16 13:10:59',0,80,0),(3,'Вася','3','3','','2011-02-16 18:19:43','2011-02-16 18:19:43',0,33,0),(4,NULL,'4','4','','2011-02-18 22:25:11','2011-02-18 22:25:11',0,79,0),(13,'5','5','5',NULL,'2011-03-10 11:01:38',NULL,0,51,0),(6,NULL,'6','6','','2011-02-18 22:25:23','2011-02-18 22:25:23',0,56,0),(7,NULL,'7','7','','2011-02-18 22:25:26','2011-02-18 22:25:26',0,100,0),(8,NULL,'8','8','','2011-02-18 22:25:29','2011-02-18 22:25:29',0,27,0),(9,NULL,'9','9','','2011-02-18 22:25:32','2011-02-18 22:25:32',0,97,0),(12,'10','10','10',NULL,'2011-03-10 10:57:28',NULL,0,NULL,0);
+UNLOCK TABLES;
+DROP TABLE IF EXISTS `logins`;
+CREATE TABLE `logins` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `user_id` int(8) DEFAULT NULL,
+  `stat` int(1) DEFAULT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `iuser` (`user_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=753 DEFAULT CHARSET=cp1251;
+DROP TABLE IF EXISTS `messages`;
+CREATE TABLE `messages` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `o_id` int(8) NOT NULL,
+  `o_type` int(3) NOT NULL,
+  `m_type` int(3) NOT NULL DEFAULT '0',
+  `message` text,
+  `created` datetime DEFAULT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `date` datetime DEFAULT NULL,
+  `subject` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `iobject` (`o_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=102 DEFAULT CHARSET=cp1251;
+DROP TABLE IF EXISTS `noracekart`;
+CREATE TABLE `noracekart` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `transponder` varchar(100) DEFAULT NULL,
+  `race_id` int(8) DEFAULT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `itransponder` (`transponder`)
+) ENGINE=MyISAM AUTO_INCREMENT=559 DEFAULT CHARSET=cp1251;
+DROP TABLE IF EXISTS `prices`;
+CREATE TABLE `prices` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `week` int(2) NOT NULL,
+  `d1` text,
+  `d2` text,
+  `d3` text,
+  `d4` text,
+  `d5` text,
+  `d6` text,
+  `d7` text,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=cp1251;
+DROP TABLE IF EXISTS `program_users`;
+CREATE TABLE `program_users` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `login` varchar(50) DEFAULT NULL,
+  `password` varchar(100) NOT NULL,
+  `stat` int(1) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `deleted` int(1) NOT NULL DEFAULT '0',
+  `name` varchar(60) DEFAULT NULL,
+  `surname` varchar(60) DEFAULT NULL,
+  `barcode` varchar(15) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `icode` (`barcode`),
+  KEY `ilogin` (`login`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=cp1251;
+LOCK TABLES `program_users` WRITE;
+INSERT INTO `program_users` VALUES (1,'admin','EZVf1en9AAw=',2,'2011-03-16 10:58:34','2011-04-20 07:54:18',0,'','','1111111111');
+UNLOCK TABLES;
+DROP TABLE IF EXISTS `race_data`;
+CREATE TABLE `race_data` (
+  `id` int(12) NOT NULL AUTO_INCREMENT,
+  `race_id` int(8) DEFAULT NULL,
+  `pilot_id` int(8) DEFAULT NULL,
+  `car_id` int(8) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `reserv` tinyint(1) DEFAULT '0',
+  `monthrace` tinyint(1) DEFAULT '0',
+  `race_month_date` datetime DEFAULT NULL,
+  `light_mode` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `irace` (`race_id`),
+  KEY `ipilot` (`pilot_id`),
+  KEY `icar` (`car_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=910 DEFAULT CHARSET=cp1251;
+DROP TABLE IF EXISTS `race_times`;
+CREATE TABLE `race_times` (
+  `id` int(14) NOT NULL AUTO_INCREMENT,
+  `member_id` int(8) DEFAULT NULL,
+  `lap` int(3) DEFAULT NULL,
+  `seconds` varchar(50) DEFAULT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `imember` (`member_id`,`seconds`)
+) ENGINE=MyISAM AUTO_INCREMENT=5396 DEFAULT CHARSET=cp1251;
+DROP TABLE IF EXISTS `race_type`;
+CREATE TABLE `race_type` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `race_type` int(2) DEFAULT NULL,
+  `race_end` int(2) DEFAULT NULL,
+  `race_time` int(4) DEFAULT NULL,
+  `race_laps` int(3) DEFAULT NULL,
+  `pilot_min` int(2) DEFAULT NULL,
+  `pilot_max` int(2) DEFAULT NULL,
+  `warm_laps` int(2) DEFAULT NULL,
+  `gender` int(2) DEFAULT '0',
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `age_limit` int(2) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `races`;
+CREATE TABLE `races` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `racedate` datetime DEFAULT NULL,
+  `raceid` varchar(6) NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `stat` int(3) DEFAULT '0',
+  `track_id` int(8) NOT NULL,
+  `light_mode` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `races` (`raceid`,`racedate`),
+  KEY `idate` (`created`)
+) ENGINE=MyISAM AUTO_INCREMENT=484 DEFAULT CHARSET=cp1251;
+DROP TABLE IF EXISTS `settings`;
+CREATE TABLE `settings` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `val` varchar(100) NOT NULL,
+  `description` varchar(254) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1551 DEFAULT CHARSET=cp1251;
+LOCK TABLES `settings` WRITE;
+INSERT INTO `settings` VALUES (1529,'race_time','5',NULL),(1530,'stop_on_pause','True',NULL),(1531,'decoder','AMB20',NULL),(1532,'time_start','10',NULL),(1533,'print_check','False',NULL),(1534,'enter_password','False',NULL),(1535,'rs232_port','COM4',NULL),(1536,'show_zero_lap','True',NULL),(1537,'print_result','True',NULL),(1538,'track_length','1000',NULL),(1539,'show_events','True',NULL),(1540,'time_end','23',NULL),(1541,'card_user','False',NULL),(1542,'default_track','17',NULL),(1543,'start_after_detection','False',NULL),(1544,'printer_check','HP Deskjet D4200 series',NULL),(1545,'sertificat_day','30',NULL),(1546,'wrap_pos','1',NULL),(1547,'printer_result','HP Deskjet D4200 series',NULL),(1548,'fuel_on_lap','0,33',NULL),(1549,'noise_time','20',NULL),(1550,'time_wrap','True',NULL);
+UNLOCK TABLES;
+DROP TABLE IF EXISTS `tracks`;
+CREATE TABLE `tracks` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `length` double DEFAULT NULL,
+  `file` text,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=cp1251;
+LOCK TABLES `tracks` WRITE;
+INSERT INTO `tracks` VALUES (18,'Короткая',1000,'C:\\Documents and Settings\\All Users\\Документы\\Мои рисунки\\Образцы рисунков\\Водяные лилии.jpg','2011-03-14 08:08:19'),(17,'Длинная',1000,'C:\\Documents and Settings\\All Users\\Документы\\Мои рисунки\\Образцы рисунков\\Закат.jpg','2011-03-14 12:23:22');
+UNLOCK TABLES;
+DROP TABLE IF EXISTS `user_cash`;
+CREATE TABLE `user_cash` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `doc_id` int(8) NOT NULL,
+  `user_id` int(8) DEFAULT NULL,
+  `sum` double DEFAULT '0',
+  `sign` int(1) NOT NULL DEFAULT '0',
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `iuser` (`user_id`),
+  KEY `idoc` (`doc_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=cp1251;
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `name` varchar(40) DEFAULT NULL,
+  `surname` varchar(40) DEFAULT NULL,
+  `gender` tinyint(1) DEFAULT '1',
+  `birthday` datetime DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `nickname` varchar(40) DEFAULT NULL,
+  `banned` tinyint(1) DEFAULT '0',
+  `date_banned` datetime DEFAULT NULL,
+  `email` varchar(100) NOT NULL,
+  `tel` varchar(50) NOT NULL,
+  `gr` int(3) DEFAULT NULL,
+  `message_id` int(8) DEFAULT NULL,
+  `barcode` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `icode` (`barcode`)
+) ENGINE=MyISAM AUTO_INCREMENT=20041 DEFAULT CHARSET=utf8;</value>
+  </data>
+</root>

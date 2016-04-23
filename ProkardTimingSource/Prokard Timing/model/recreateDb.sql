@@ -1,0 +1,5 @@
+﻿DROP DATABASE crazykart
+GO
+
+CREATE DATABASE crazykart
+GO

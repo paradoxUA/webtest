@@ -1,0 +1,2023 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="crazykart.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="crazykartStoreContainer">
+    <EntitySet Name="cassa" EntityType="crazykart.Store.cassa" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="certificates" EntityType="crazykart.Store.certificates" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="users" EntityType="crazykart.Store.users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="certificate_type" EntityType="crazykart.Store.certificate_type" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="fuel" EntityType="crazykart.Store.fuel" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="karts" EntityType="crazykart.Store.karts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="groups" EntityType="crazykart.Store.groups" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="jurnal" EntityType="crazykart.Store.jurnal" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="races" EntityType="crazykart.Store.races" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tracks" EntityType="crazykart.Store.tracks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="logins" EntityType="crazykart.Store.logins" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="messages" EntityType="crazykart.Store.messages" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="noracekart" EntityType="crazykart.Store.noracekart" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="prices" EntityType="crazykart.Store.prices" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="race_modes" EntityType="crazykart.Store.race_modes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="program_users" EntityType="crazykart.Store.program_users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="race_data" EntityType="crazykart.Store.race_data" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="race_times" EntityType="crazykart.Store.race_times" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="settings" EntityType="crazykart.Store.settings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="user_cash" EntityType="crazykart.Store.user_cash" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DiscountCards" EntityType="crazykart.Store.DiscountCards" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DiscountCardGroups" EntityType="crazykart.Store.DiscountCardGroups" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Petroleums" EntityType="crazykart.Store.Petroleums" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="certificateusers" Association="crazykart.Store.certificateusers">
+      <End Role="certificate" EntitySet="certificates" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="fuelkarts" Association="crazykart.Store.fuelkarts">
+      <End Role="fuel" EntitySet="fuel" />
+      <End Role="karts" EntitySet="karts" />
+    </AssociationSet>
+    <AssociationSet Name="usersgroups" Association="crazykart.Store.usersgroups">
+      <End Role="users" EntitySet="users" />
+      <End Role="groups" EntitySet="groups" />
+    </AssociationSet>
+    <AssociationSet Name="racestracks" Association="crazykart.Store.racestracks">
+      <End Role="races" EntitySet="races" />
+      <End Role="tracks" EntitySet="tracks" />
+    </AssociationSet>
+    <AssociationSet Name="jurnalraces" Association="crazykart.Store.jurnalraces">
+      <End Role="jurnal" EntitySet="jurnal" />
+      <End Role="races" EntitySet="races" />
+    </AssociationSet>
+    <AssociationSet Name="jurnalusers" Association="crazykart.Store.jurnalusers">
+      <End Role="jurnal" EntitySet="jurnal" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="noracekartraces" Association="crazykart.Store.noracekartraces">
+      <End Role="noracekart" EntitySet="noracekart" />
+      <End Role="races" EntitySet="races" />
+    </AssociationSet>
+    <AssociationSet Name="pricesrace_modes" Association="crazykart.Store.pricesrace_modes">
+      <End Role="prices" EntitySet="prices" />
+      <End Role="race_modes" EntitySet="race_modes" />
+    </AssociationSet>
+    <AssociationSet Name="race_dataraces" Association="crazykart.Store.race_dataraces">
+      <End Role="race_data" EntitySet="race_data" />
+      <End Role="races" EntitySet="races" />
+    </AssociationSet>
+    <AssociationSet Name="race_datausers" Association="crazykart.Store.race_datausers">
+      <End Role="race_data" EntitySet="race_data" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="race_datakarts" Association="crazykart.Store.race_datakarts">
+      <End Role="race_data" EntitySet="race_data" />
+      <End Role="karts" EntitySet="karts" />
+    </AssociationSet>
+    <AssociationSet Name="user_cashusers" Association="crazykart.Store.user_cashusers">
+      <End Role="user_cash" EntitySet="user_cash" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="loginsprogram_users" Association="crazykart.Store.loginsprogram_users">
+      <End Role="logins" EntitySet="logins" />
+      <End Role="program_users" EntitySet="program_users" />
+    </AssociationSet>
+    <AssociationSet Name="user_cashjurnal" Association="crazykart.Store.user_cashjurnal">
+      <End Role="user_cash" EntitySet="user_cash" />
+      <End Role="jurnal" EntitySet="jurnal" />
+    </AssociationSet>
+    <AssociationSet Name="certificatecertificate_type" Association="crazykart.Store.certificatecertificate_type">
+      <End Role="certificate" EntitySet="certificates" />
+      <End Role="certificate_type" EntitySet="certificate_type" />
+    </AssociationSet>
+    <AssociationSet Name="cassajurnal" Association="crazykart.Store.cassajurnal">
+      <End Role="cassa" EntitySet="cassa" />
+      <End Role="jurnal" EntitySet="jurnal" />
+    </AssociationSet>
+    <AssociationSet Name="race_timesrace_data" Association="crazykart.Store.race_timesrace_data">
+      <End Role="race_times" EntitySet="race_times" />
+      <End Role="race_data" EntitySet="race_data" />
+    </AssociationSet>
+    <AssociationSet Name="messagesusers" Association="crazykart.Store.messagesusers">
+      <End Role="messages" EntitySet="messages" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="messageskarts" Association="crazykart.Store.messageskarts">
+      <End Role="messages" EntitySet="messages" />
+      <End Role="karts" EntitySet="karts" />
+    </AssociationSet>
+    <AssociationSet Name="messagesprogram_users" Association="crazykart.Store.messagesprogram_users">
+      <End Role="messages" EntitySet="messages" />
+      <End Role="program_users" EntitySet="program_users" />
+    </AssociationSet>
+    <AssociationSet Name="DiscountCardusers" Association="crazykart.Store.DiscountCardusers">
+      <End Role="DiscountCard" EntitySet="DiscountCards" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="DiscountCardprogram_users" Association="crazykart.Store.DiscountCardprogram_users">
+      <End Role="DiscountCard" EntitySet="DiscountCards" />
+      <End Role="program_users" EntitySet="program_users" />
+    </AssociationSet>
+    <AssociationSet Name="DiscountCardDiscountCardGroup" Association="crazykart.Store.DiscountCardDiscountCardGroup">
+      <End Role="DiscountCard" EntitySet="DiscountCards" />
+      <End Role="DiscountCardGroup" EntitySet="DiscountCardGroups" />
+    </AssociationSet>
+    <AssociationSet Name="race_dataDiscountCard" Association="crazykart.Store.race_dataDiscountCard">
+      <End Role="race_data" EntitySet="race_data" />
+      <End Role="DiscountCard" EntitySet="DiscountCards" />
+    </AssociationSet>
+    <AssociationSet Name="Petrolprogram_users" Association="crazykart.Store.Petrolprogram_users">
+      <End Role="Petrol" EntitySet="Petroleums" />
+      <End Role="program_users" EntitySet="program_users" />
+    </AssociationSet>
+    <AssociationSet Name="race_datarace_modes" Association="crazykart.Store.race_datarace_modes">
+      <End Role="race_data" EntitySet="race_data" />
+      <End Role="race_modes" EntitySet="race_modes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="cassa">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sum" Type="float" Nullable="true" />
+    <Property Name="sign" Type="int" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="true" />
+    <Property Name="doc_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="certificates">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="bar_number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="true" />
+    <Property Name="count" Type="int" Nullable="true" />
+    <Property Name="created" Type="datetime" Nullable="true" />
+    <Property Name="modified" Type="datetime" Nullable="false" />
+    <Property Name="date_end" Type="datetime" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="c_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="surname" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="gender" Type="bit" Nullable="false" />
+    <Property Name="birthday" Type="datetime" Nullable="false" />
+    <Property Name="created" Type="datetime" Nullable="true" />
+    <Property Name="modified" Type="datetime" Nullable="true" />
+    <Property Name="nickname" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="banned" Type="bit" Nullable="false" />
+    <Property Name="date_banned" Type="datetime" Nullable="true" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="tel" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="message_id" Type="int" Nullable="true" />
+    <Property Name="barcode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="gr" Type="int" Nullable="true" />
+    <Property Name="deleted" Type="bit" Nullable="false" />
+    <Property Name="date_deleted" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="certificate_type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="nominal" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="cost" Type="float" Nullable="false" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="deleted" Type="bit" Nullable="false" />
+    <Property Name="c_type" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fuel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="car_id" Type="int" Nullable="true" />
+    <Property Name="fuel_value" Type="float" Nullable="false" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="sign" Type="int" Nullable="false" />
+    <Property Name="comment" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="karts">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="number" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="transponder" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="color" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="modified" Type="datetime" Nullable="true" />
+    <Property Name="repair" Type="bit" Nullable="false" />
+    <Property Name="message_id" Type="int" Nullable="true" />
+    <Property Name="wait" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="groups">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="sale" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="created" Type="datetime" Nullable="true" />
+    <Property Name="modified" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="jurnal">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tp" Type="int" Nullable="false" />
+    <Property Name="comment" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="race_id" Type="int" Nullable="true" />
+    <Property Name="user_id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="races">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="racedate" Type="datetime" Nullable="true" />
+    <Property Name="raceid" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="modified" Type="datetime" Nullable="false" />
+    <Property Name="stat" Type="int" Nullable="true" />
+    <Property Name="track_id" Type="int" Nullable="false" />
+    <Property Name="light_mode" Type="bit" Nullable="false" />
+    <Property Name="is_race" Type="bit" Nullable="true" />
+  </EntityType>
+  <EntityType Name="tracks">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="length" Type="float" Nullable="true" />
+    <Property Name="file" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="is_deleted" Type="bit" Nullable="false" DefaultValue="false" />
+  </EntityType>
+  <EntityType Name="logins">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="stat" Type="int" Nullable="true" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="messages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="m_type" Type="int" Nullable="false" />
+    <Property Name="message" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="modified" Type="datetime" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="true" />
+    <Property Name="subject" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="id_pilot" Type="int" Nullable="true" />
+    <Property Name="id_kart" Type="int" Nullable="true" />
+    <Property Name="id_program_user" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="noracekart">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="transponder" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="race_id" Type="int" Nullable="true" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="prices">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="week" Type="int" Nullable="false" />
+    <Property Name="d1" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="d2" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="d3" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="d4" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="d5" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="d6" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="d7" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="idRaceMode" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="race_modes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="length" Type="int" Nullable="false" />
+    <Property Name="is_deleted" Type="bit" Nullable="false" DefaultValue="false" />
+  </EntityType>
+  <EntityType Name="program_users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="stat" Type="int" Nullable="true" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="modified" Type="datetime" Nullable="false" />
+    <Property Name="deleted" Type="bit" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="surname" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="barcode" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="race_data">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="race_id" Type="int" Nullable="true" />
+    <Property Name="pilot_id" Type="int" Nullable="true" />
+    <Property Name="car_id" Type="int" Nullable="true" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="modified" Type="datetime" Nullable="false" />
+    <Property Name="reserv" Type="bit" Nullable="true" />
+    <Property Name="monthrace" Type="bit" Nullable="true" />
+    <Property Name="race_month_date" Type="datetime" Nullable="true" />
+    <Property Name="light_mode" Type="bit" Nullable="false" />
+    <Property Name="paid_amount" Type="float" Nullable="true" />
+    <Property Name="id_discount_card" Type="int" Nullable="true" />
+    <Property Name="id_race_mode" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="race_times">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="lap" Type="int" Nullable="true" />
+    <Property Name="seconds" Type="decimal" Nullable="false" Precision="18" Scale="7" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="member_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="settings">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="val" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="user_cash">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="true" />
+    <Property Name="sum" Type="float" Nullable="true" />
+    <Property Name="sign" Type="bit" Nullable="false" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="doc_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DiscountCards">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idOwner" Type="int" Nullable="true" />
+    <Property Name="idSeller" Type="int" Nullable="true" />
+    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="ValidUntil" Type="datetime" Nullable="false" />
+    <Property Name="SalePlace" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IdDiscountCardGroup" Type="int" Nullable="false" />
+    <Property Name="IsBlocked" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DiscountCardGroups">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PercentOfDiscount" Type="smallint" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Petroleums">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="litres" Type="float" Nullable="false" />
+    <Property Name="program_users_id" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="true" />
+  </EntityType>
+  <Association Name="certificateusers">
+    <End Role="certificate" Type="crazykart.Store.certificates" Multiplicity="*" />
+    <End Role="users" Type="crazykart.Store.users" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="certificate">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fuelkarts">
+    <End Role="fuel" Type="crazykart.Store.fuel" Multiplicity="*" />
+    <End Role="karts" Type="crazykart.Store.karts" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="karts">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="fuel">
+        <PropertyRef Name="car_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usersgroups">
+    <End Role="users" Type="crazykart.Store.users" Multiplicity="*" />
+    <End Role="groups" Type="crazykart.Store.groups" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="groups">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="gr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="racestracks">
+    <End Role="races" Type="crazykart.Store.races" Multiplicity="*" />
+    <End Role="tracks" Type="crazykart.Store.tracks" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="tracks">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="races">
+        <PropertyRef Name="track_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="jurnalraces">
+    <End Role="jurnal" Type="crazykart.Store.jurnal" Multiplicity="*" />
+    <End Role="races" Type="crazykart.Store.races" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="races">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="jurnal">
+        <PropertyRef Name="race_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="jurnalusers">
+    <End Role="jurnal" Type="crazykart.Store.jurnal" Multiplicity="*" />
+    <End Role="users" Type="crazykart.Store.users" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="jurnal">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="noracekartraces">
+    <End Role="noracekart" Type="crazykart.Store.noracekart" Multiplicity="*" />
+    <End Role="races" Type="crazykart.Store.races" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="races">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="noracekart">
+        <PropertyRef Name="race_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pricesrace_modes">
+    <End Role="prices" Type="crazykart.Store.prices" Multiplicity="*" />
+    <End Role="race_modes" Type="crazykart.Store.race_modes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="race_modes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="prices">
+        <PropertyRef Name="idRaceMode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="race_dataraces">
+    <End Role="race_data" Type="crazykart.Store.race_data" Multiplicity="*" />
+    <End Role="races" Type="crazykart.Store.races" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="races">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="race_data">
+        <PropertyRef Name="race_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="race_datausers">
+    <End Role="race_data" Type="crazykart.Store.race_data" Multiplicity="*" />
+    <End Role="users" Type="crazykart.Store.users" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="race_data">
+        <PropertyRef Name="pilot_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="race_datakarts">
+    <End Role="race_data" Type="crazykart.Store.race_data" Multiplicity="*" />
+    <End Role="karts" Type="crazykart.Store.karts" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="karts">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="race_data">
+        <PropertyRef Name="car_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="user_cashusers">
+    <End Role="user_cash" Type="crazykart.Store.user_cash" Multiplicity="*" />
+    <End Role="users" Type="crazykart.Store.users" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_cash">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="loginsprogram_users">
+    <End Role="logins" Type="crazykart.Store.logins" Multiplicity="*" />
+    <End Role="program_users" Type="crazykart.Store.program_users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="program_users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="logins">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="user_cashjurnal">
+    <End Role="user_cash" Type="crazykart.Store.user_cash" Multiplicity="*" />
+    <End Role="jurnal" Type="crazykart.Store.jurnal" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="jurnal">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_cash">
+        <PropertyRef Name="doc_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="certificatecertificate_type">
+    <End Role="certificate" Type="crazykart.Store.certificates" Multiplicity="*" />
+    <End Role="certificate_type" Type="crazykart.Store.certificate_type" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="certificate_type">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="certificate">
+        <PropertyRef Name="c_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="cassajurnal">
+    <End Role="cassa" Type="crazykart.Store.cassa" Multiplicity="*" />
+    <End Role="jurnal" Type="crazykart.Store.jurnal" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="jurnal">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cassa">
+        <PropertyRef Name="doc_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="race_timesrace_data">
+    <End Role="race_times" Type="crazykart.Store.race_times" Multiplicity="*" />
+    <End Role="race_data" Type="crazykart.Store.race_data" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="race_data">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="race_times">
+        <PropertyRef Name="member_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="messagesusers">
+    <End Role="messages" Type="crazykart.Store.messages" Multiplicity="*" />
+    <End Role="users" Type="crazykart.Store.users" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="messages">
+        <PropertyRef Name="id_pilot" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="messageskarts">
+    <End Role="messages" Type="crazykart.Store.messages" Multiplicity="*" />
+    <End Role="karts" Type="crazykart.Store.karts" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="karts">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="messages">
+        <PropertyRef Name="id_kart" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="messagesprogram_users">
+    <End Role="messages" Type="crazykart.Store.messages" Multiplicity="*" />
+    <End Role="program_users" Type="crazykart.Store.program_users" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="program_users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="messages">
+        <PropertyRef Name="id_program_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DiscountCardusers">
+    <End Role="DiscountCard" Type="crazykart.Store.DiscountCards" Multiplicity="*" />
+    <End Role="users" Type="crazykart.Store.users" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DiscountCard">
+        <PropertyRef Name="idOwner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DiscountCardprogram_users">
+    <End Role="DiscountCard" Type="crazykart.Store.DiscountCards" Multiplicity="*" />
+    <End Role="program_users" Type="crazykart.Store.program_users" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="program_users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DiscountCard">
+        <PropertyRef Name="idSeller" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DiscountCardDiscountCardGroup">
+    <End Role="DiscountCard" Type="crazykart.Store.DiscountCards" Multiplicity="*" />
+    <End Role="DiscountCardGroup" Type="crazykart.Store.DiscountCardGroups" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="DiscountCardGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DiscountCard">
+        <PropertyRef Name="IdDiscountCardGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="race_dataDiscountCard">
+    <End Role="race_data" Type="crazykart.Store.race_data" Multiplicity="*" />
+    <End Role="DiscountCard" Type="crazykart.Store.DiscountCards" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DiscountCard">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="race_data">
+        <PropertyRef Name="id_discount_card" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Petrolprogram_users">
+    <End Role="Petrol" Type="crazykart.Store.Petroleums" Multiplicity="*" />
+    <End Role="program_users" Type="crazykart.Store.program_users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="program_users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Petrol">
+        <PropertyRef Name="program_users_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="race_datarace_modes">
+    <End Role="race_data" Type="crazykart.Store.race_data" Multiplicity="*" />
+    <End Role="race_modes" Type="crazykart.Store.race_modes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="race_modes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="race_data">
+        <PropertyRef Name="id_race_mode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="crazykart" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="crazykartContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cassa" EntityType="crazykart.cassa" />
+          <EntitySet Name="certificates" EntityType="crazykart.certificate" />
+          <EntitySet Name="users" EntityType="crazykart.users" />
+          <AssociationSet Name="certificateusers" Association="crazykart.certificateusers">
+            <End Role="certificate" EntitySet="certificates" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <EntitySet Name="certificate_type" EntityType="crazykart.certificate_type" />
+          <EntitySet Name="fuel" EntityType="crazykart.fuel" />
+          <EntitySet Name="karts" EntityType="crazykart.karts" />
+          <AssociationSet Name="fuelkarts" Association="crazykart.fuelkarts">
+            <End Role="fuel" EntitySet="fuel" />
+            <End Role="karts" EntitySet="karts" />
+          </AssociationSet>
+          <EntitySet Name="groups" EntityType="crazykart.groups" />
+          <AssociationSet Name="usersgroups" Association="crazykart.usersgroups">
+            <End Role="users" EntitySet="users" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <EntitySet Name="jurnal" EntityType="crazykart.jurnal" />
+          <EntitySet Name="races" EntityType="crazykart.races" />
+          <EntitySet Name="tracks" EntityType="crazykart.tracks" />
+          <AssociationSet Name="racestracks" Association="crazykart.racestracks">
+            <End Role="races" EntitySet="races" />
+            <End Role="tracks" EntitySet="tracks" />
+          </AssociationSet>
+          <AssociationSet Name="jurnalraces" Association="crazykart.jurnalraces">
+            <End Role="jurnal" EntitySet="jurnal" />
+            <End Role="races" EntitySet="races" />
+          </AssociationSet>
+          <AssociationSet Name="jurnalusers" Association="crazykart.jurnalusers">
+            <End Role="jurnal" EntitySet="jurnal" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <EntitySet Name="logins" EntityType="crazykart.logins" />
+          <EntitySet Name="messages" EntityType="crazykart.messages" />
+          <EntitySet Name="noracekart" EntityType="crazykart.noracekart" />
+          <AssociationSet Name="noracekartraces" Association="crazykart.noracekartraces">
+            <End Role="noracekart" EntitySet="noracekart" />
+            <End Role="races" EntitySet="races" />
+          </AssociationSet>
+          <EntitySet Name="prices" EntityType="crazykart.prices" />
+          <EntitySet Name="race_modes" EntityType="crazykart.race_modes" />
+          <AssociationSet Name="pricesrace_modes" Association="crazykart.pricesrace_modes">
+            <End Role="prices" EntitySet="prices" />
+            <End Role="race_modes" EntitySet="race_modes" />
+          </AssociationSet>
+          <EntitySet Name="program_users" EntityType="crazykart.program_users" />
+          <EntitySet Name="race_data" EntityType="crazykart.race_data" />
+          <AssociationSet Name="race_dataraces" Association="crazykart.race_dataraces">
+            <End Role="race_data" EntitySet="race_data" />
+            <End Role="races" EntitySet="races" />
+          </AssociationSet>
+          <AssociationSet Name="race_datausers" Association="crazykart.race_datausers">
+            <End Role="race_data" EntitySet="race_data" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="race_datakarts" Association="crazykart.race_datakarts">
+            <End Role="race_data" EntitySet="race_data" />
+            <End Role="karts" EntitySet="karts" />
+          </AssociationSet>
+          <EntitySet Name="race_times" EntityType="crazykart.race_times" />
+          <EntitySet Name="settings" EntityType="crazykart.settings" />
+          <EntitySet Name="user_cash" EntityType="crazykart.user_cash" />
+          <AssociationSet Name="user_cashusers" Association="crazykart.user_cashusers">
+            <End Role="user_cash" EntitySet="user_cash" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="loginsprogram_users" Association="crazykart.loginsprogram_users">
+            <End Role="logins" EntitySet="logins" />
+            <End Role="program_users" EntitySet="program_users" />
+          </AssociationSet>
+          <AssociationSet Name="user_cashjurnal" Association="crazykart.user_cashjurnal">
+            <End Role="user_cash" EntitySet="user_cash" />
+            <End Role="jurnal" EntitySet="jurnal" />
+          </AssociationSet>
+          <AssociationSet Name="certificatecertificate_type" Association="crazykart.certificatecertificate_type">
+            <End Role="certificate" EntitySet="certificates" />
+            <End Role="certificate_type" EntitySet="certificate_type" />
+          </AssociationSet>
+          <AssociationSet Name="cassajurnal" Association="crazykart.cassajurnal">
+            <End Role="cassa" EntitySet="cassa" />
+            <End Role="jurnal" EntitySet="jurnal" />
+          </AssociationSet>
+          <AssociationSet Name="race_timesrace_data" Association="crazykart.race_timesrace_data">
+            <End Role="race_times" EntitySet="race_times" />
+            <End Role="race_data" EntitySet="race_data" />
+          </AssociationSet>
+          <AssociationSet Name="messagesusers" Association="crazykart.messagesusers">
+            <End Role="messages" EntitySet="messages" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="messageskarts" Association="crazykart.messageskarts">
+            <End Role="messages" EntitySet="messages" />
+            <End Role="karts" EntitySet="karts" />
+          </AssociationSet>
+          <AssociationSet Name="messagesprogram_users" Association="crazykart.messagesprogram_users">
+            <End Role="messages" EntitySet="messages" />
+            <End Role="program_users" EntitySet="program_users" />
+          </AssociationSet>
+          <EntitySet Name="DiscountCards" EntityType="crazykart.DiscountCard" />
+          <AssociationSet Name="DiscountCardusers" Association="crazykart.DiscountCardusers">
+            <End Role="DiscountCard" EntitySet="DiscountCards" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="DiscountCardprogram_users" Association="crazykart.DiscountCardprogram_users">
+            <End Role="DiscountCard" EntitySet="DiscountCards" />
+            <End Role="program_users" EntitySet="program_users" />
+          </AssociationSet>
+          <EntitySet Name="DiscountCardGroups" EntityType="crazykart.DiscountCardGroup" />
+          <AssociationSet Name="DiscountCardDiscountCardGroup" Association="crazykart.DiscountCardDiscountCardGroup">
+            <End Role="DiscountCard" EntitySet="DiscountCards" />
+            <End Role="DiscountCardGroup" EntitySet="DiscountCardGroups" />
+          </AssociationSet>
+          <AssociationSet Name="race_dataDiscountCard" Association="crazykart.race_dataDiscountCard">
+            <End Role="race_data" EntitySet="race_data" />
+            <End Role="DiscountCard" EntitySet="DiscountCards" />
+          </AssociationSet>
+          <EntitySet Name="Petroleums" EntityType="crazykart.Petroleum" />
+          <AssociationSet Name="Petrolprogram_users" Association="crazykart.Petrolprogram_users">
+            <End Role="Petrol" EntitySet="Petroleums" />
+            <End Role="program_users" EntitySet="program_users" />
+          </AssociationSet>
+          <AssociationSet Name="race_datarace_modes" Association="crazykart.race_datarace_modes">
+            <End Role="race_data" EntitySet="race_data" />
+            <End Role="race_modes" EntitySet="race_modes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="cassa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Double" Name="sum" Nullable="true" />
+          <Property Type="Int32" Name="sign" Nullable="false" />
+          <Property Type="DateTime" Name="date" Nullable="true" />
+          <NavigationProperty Name="jurnal" Relationship="crazykart.cassajurnal" FromRole="cassa" ToRole="jurnal" />
+          <Property Type="Int32" Name="doc_id" Nullable="false" />
+        </EntityType>
+        <EntityType Name="certificate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="bar_number" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="crazykart.certificateusers" FromRole="certificate" ToRole="users" />
+          <Property Type="Int32" Name="user_id" Nullable="true" />
+          <Property Type="Int32" Name="count" Nullable="true" />
+          <Property Type="DateTime" Name="created" Nullable="true" />
+          <Property Type="DateTime" Name="modified" Nullable="false" />
+          <Property Type="DateTime" Name="date_end" Nullable="false" />
+          <Property Type="Boolean" Name="active" Nullable="false" />
+          <NavigationProperty Name="certificate_type" Relationship="crazykart.certificatecertificate_type" FromRole="certificate" ToRole="certificate_type" />
+          <Property Type="Int32" Name="c_id" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" Nullable="true" />
+          <Property Type="String" Name="surname" Nullable="true" />
+          <Property Type="Boolean" Name="gender" Nullable="false" />
+          <Property Type="DateTime" Name="birthday" Nullable="false" />
+          <Property Type="DateTime" Name="created" Nullable="true" />
+          <Property Type="DateTime" Name="modified" Nullable="true" />
+          <Property Type="String" Name="nickname" Nullable="true" />
+          <Property Type="Boolean" Name="banned" Nullable="false" />
+          <Property Type="DateTime" Name="date_banned" Nullable="true" />
+          <Property Type="String" Name="email" Nullable="false" />
+          <Property Type="String" Name="tel" Nullable="false" />
+          <Property Type="Int32" Name="message_id" Nullable="true" />
+          <Property Type="String" Name="barcode" Nullable="false" />
+          <NavigationProperty Name="certificates" Relationship="crazykart.certificateusers" FromRole="users" ToRole="certificate" />
+          <NavigationProperty Name="group" Relationship="crazykart.usersgroups" FromRole="users" ToRole="groups" />
+          <Property Type="Int32" Name="gr" Nullable="true" />
+          <NavigationProperty Name="jurnals" Relationship="crazykart.jurnalusers" FromRole="users" ToRole="jurnal" />
+          <NavigationProperty Name="race_data" Relationship="crazykart.race_datausers" FromRole="users" ToRole="race_data" />
+          <NavigationProperty Name="user_cash" Relationship="crazykart.user_cashusers" FromRole="users" ToRole="user_cash" />
+          <NavigationProperty Name="messages" Relationship="crazykart.messagesusers" FromRole="users" ToRole="messages" />
+          <NavigationProperty Name="DiscountCards" Relationship="crazykart.DiscountCardusers" FromRole="users" ToRole="DiscountCard" />
+          <Property Type="Boolean" Name="deleted" Nullable="false" >
+            <Documentation>
+              <LongDescription>казываться в списке пилотов и в таблицах лучших результатов
+</LongDescription>
+            </Documentation>
+          </Property>
+          <Property Type="DateTime" Name="date_deleted" Nullable="true" />
+        </EntityType>
+        <Association Name="certificateusers">
+          <End Type="crazykart.certificate" Role="certificate" Multiplicity="*" />
+          <End Type="crazykart.users" Role="users" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="certificate">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="certificate_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" Nullable="false" />
+          <Property Type="String" Name="nominal" Nullable="true" />
+          <Property Type="Double" Name="cost" Nullable="false" />
+          <Property Type="DateTime" Name="created" Nullable="false" />
+          <Property Type="Boolean" Name="deleted" Nullable="false" />
+          <Property Type="Boolean" Name="c_type" Nullable="false" />
+          <NavigationProperty Name="certificates" Relationship="crazykart.certificatecertificate_type" FromRole="certificate_type" ToRole="certificate" />
+        </EntityType>
+        <EntityType Name="fuel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="kart" Relationship="crazykart.fuelkarts" FromRole="fuel" ToRole="karts" />
+          <Property Type="Int32" Name="car_id" Nullable="true" />
+          <Property Type="Double" Name="fuel_value" Nullable="false" />
+          <Property Type="DateTime" Name="created" Nullable="false" />
+          <Property Type="Int32" Name="sign" Nullable="false" />
+          <Property Type="String" Name="comment" Nullable="true" />
+        </EntityType>
+        <EntityType Name="karts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" Nullable="true" />
+          <Property Type="String" Name="number" Nullable="true" />
+          <Property Type="String" Name="transponder" Nullable="false" />
+          <Property Type="String" Name="color" Nullable="true" />
+          <Property Type="DateTime" Name="created" Nullable="false" />
+          <Property Type="DateTime" Name="modified" Nullable="true" />
+          <Property Type="Boolean" Name="repair" Nullable="false" />
+          <Property Type="Int32" Name="message_id" Nullable="true" />
+          <Property Type="Boolean" Name="wait" Nullable="false" />
+          <NavigationProperty Name="fuels" Relationship="crazykart.fuelkarts" FromRole="karts" ToRole="fuel" />
+          <NavigationProperty Name="race_data" Relationship="crazykart.race_datakarts" FromRole="karts" ToRole="race_data" />
+          <NavigationProperty Name="messages" Relationship="crazykart.messageskarts" FromRole="karts" ToRole="messages" />
+        </EntityType>
+        <Association Name="fuelkarts">
+          <End Type="crazykart.fuel" Role="fuel" Multiplicity="*" />
+          <End Type="crazykart.karts" Role="karts" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="karts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="fuel">
+              <PropertyRef Name="car_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="groups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" Nullable="false" />
+          <Property Type="String" Name="sale" Nullable="true" />
+          <Property Type="DateTime" Name="created" Nullable="true" />
+          <Property Type="DateTime" Name="modified" Nullable="false" />
+          <NavigationProperty Name="users" Relationship="crazykart.usersgroups" FromRole="groups" ToRole="users" />
+        </EntityType>
+        <Association Name="usersgroups">
+          <End Type="crazykart.users" Role="users" Multiplicity="*" />
+          <End Type="crazykart.groups" Role="groups" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="gr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="jurnal">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="tp" Nullable="false" />
+          <Property Type="String" Name="comment" Nullable="true" />
+          <Property Type="DateTime" Name="created" Nullable="false" />
+          <NavigationProperty Name="race" Relationship="crazykart.jurnalraces" FromRole="jurnal" ToRole="races" />
+          <Property Type="Int32" Name="race_id" Nullable="true" />
+          <NavigationProperty Name="user" Relationship="crazykart.jurnalusers" FromRole="jurnal" ToRole="users" />
+          <Property Type="Int32" Name="user_id" Nullable="true" />
+          <NavigationProperty Name="user_cash" Relationship="crazykart.user_cashjurnal" FromRole="jurnal" ToRole="user_cash" />
+          <NavigationProperty Name="cassas" Relationship="crazykart.cassajurnal" FromRole="jurnal" ToRole="cassa" />
+        </EntityType>
+        <EntityType Name="races">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="racedate" Nullable="true" />
+          <Property Type="String" Name="raceid" Nullable="false" />
+          <Property Type="DateTime" Name="created" Nullable="false" />
+          <Property Type="DateTime" Name="modified" Nullable="false" />
+          <Property Type="Int32" Name="stat" Nullable="true" />
+          <NavigationProperty Name="track" Relationship="crazykart.racestracks" FromRole="races" ToRole="tracks" />
+          <Property Type="Int32" Name="track_id" Nullable="false" />
+          <Property Type="Boolean" Name="light_mode" Nullable="false" />
+          <NavigationProperty Name="jurnals" Relationship="crazykart.jurnalraces" FromRole="races" ToRole="jurnal" />
+          <NavigationProperty Name="noracekarts" Relationship="crazykart.noracekartraces" FromRole="races" ToRole="noracekart" />
+          <NavigationProperty Name="race_data" Relationship="crazykart.race_dataraces" FromRole="races" ToRole="race_data" />
+          <Property Type="Boolean" Name="is_race" Nullable="true" >
+            <Documentation>
+              <LongDescription>режим Спорт, при котором не должны учитываться деньги, заезды могут начинаться и заканчиваться по нажатию Старт/Стоп, нет привязки к 15-минутной сетке</LongDescription>
+            </Documentation>
+          </Property>
+        </EntityType>
+        <EntityType Name="tracks">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" Nullable="true" />
+          <Property Type="Double" Name="length" Nullable="true" />
+          <Property Type="String" Name="file" Nullable="true" />
+          <Property Type="DateTime" Name="created" Nullable="false" />
+          <NavigationProperty Name="races" Relationship="crazykart.racestracks" FromRole="tracks" ToRole="races" />
+          <Property Type="Boolean" Name="is_deleted" Nullable="false" DefaultValue="False" />
+        </EntityType>
+        <Association Name="racestracks">
+          <End Type="crazykart.races" Role="races" Multiplicity="*" />
+          <End Type="crazykart.tracks" Role="tracks" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="tracks">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="races">
+              <PropertyRef Name="track_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="jurnalraces">
+          <End Type="crazykart.jurnal" Role="jurnal" Multiplicity="*" />
+          <End Type="crazykart.races" Role="races" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="races">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="jurnal">
+              <PropertyRef Name="race_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="jurnalusers">
+          <End Type="crazykart.jurnal" Role="jurnal" Multiplicity="*" />
+          <End Type="crazykart.users" Role="users" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="jurnal">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="logins">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="stat" Nullable="true" />
+          <Property Type="DateTime" Name="created" Nullable="false" />
+          <NavigationProperty Name="program_users" Relationship="crazykart.loginsprogram_users" FromRole="logins" ToRole="program_users" />
+          <Property Type="Int32" Name="user_id" Nullable="false" />
+        </EntityType>
+        <EntityType Name="messages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="m_type" Nullable="false" />
+          <Property Type="String" Name="message" Nullable="true" />
+          <Property Type="DateTime" Name="created" Nullable="false" />
+          <Property Type="DateTime" Name="modified" Nullable="false" />
+          <Property Type="DateTime" Name="date" Nullable="true" />
+          <Property Type="String" Name="subject" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="crazykart.messagesusers" FromRole="messages" ToRole="users" />
+          <Property Type="Int32" Name="id_pilot" Nullable="true" />
+          <NavigationProperty Name="kart" Relationship="crazykart.messageskarts" FromRole="messages" ToRole="karts" />
+          <Property Type="Int32" Name="id_kart" Nullable="true" />
+          <NavigationProperty Name="program_users" Relationship="crazykart.messagesprogram_users" FromRole="messages" ToRole="program_users" />
+          <Property Type="Int32" Name="id_program_user" Nullable="true" />
+        </EntityType>
+        <EntityType Name="noracekart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="transponder" Nullable="true" />
+          <NavigationProperty Name="race" Relationship="crazykart.noracekartraces" FromRole="noracekart" ToRole="races" />
+          <Property Type="Int32" Name="race_id" Nullable="true" />
+          <Property Type="DateTime" Name="created" Nullable="false" />
+        </EntityType>
+        <Association Name="noracekartraces">
+          <End Type="crazykart.noracekart" Role="noracekart" Multiplicity="*" />
+          <End Type="crazykart.races" Role="races" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="races">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="noracekart">
+              <PropertyRef Name="race_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="prices">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="week" Nullable="false" />
+          <Property Type="String" Name="d1" Nullable="true" />
+          <Property Type="String" Name="d2" Nullable="true" />
+          <Property Type="String" Name="d3" Nullable="true" />
+          <Property Type="String" Name="d4" Nullable="true" />
+          <Property Type="String" Name="d5" Nullable="true" />
+          <Property Type="String" Name="d6" Nullable="true" />
+          <Property Type="String" Name="d7" Nullable="true" />
+          <NavigationProperty Name="race_modes" Relationship="crazykart.pricesrace_modes" FromRole="prices" ToRole="race_modes" />
+          <Property Type="Int32" Name="idRaceMode" Nullable="false" />
+        </EntityType>
+        <EntityType Name="race_modes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" Nullable="false" />
+          <Property Type="Int32" Name="length" Nullable="false" />
+          <NavigationProperty Name="prices" Relationship="crazykart.pricesrace_modes" FromRole="race_modes" ToRole="prices" />
+          <Property Type="Boolean" Name="is_deleted" Nullable="false" DefaultValue="false" />
+          <NavigationProperty Name="race_data" Relationship="crazykart.race_datarace_modes" FromRole="race_modes" ToRole="race_data" />
+        </EntityType>
+        <Association Name="pricesrace_modes">
+          <End Type="crazykart.prices" Role="prices" Multiplicity="*" />
+          <End Type="crazykart.race_modes" Role="race_modes" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="race_modes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="prices">
+              <PropertyRef Name="idRaceMode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="program_users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="login" Nullable="false" />
+          <Property Type="String" Name="password" Nullable="false" />
+          <Property Type="Int32" Name="stat" Nullable="true" />
+          <Property Type="DateTime" Name="created" Nullable="false" />
+          <Property Type="DateTime" Name="modified" Nullable="false" />
+          <Property Type="Boolean" Name="deleted" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" />
+          <Property Type="String" Name="surname" Nullable="true" />
+          <Property Type="String" Name="barcode" Nullable="false" />
+          <NavigationProperty Name="logins" Relationship="crazykart.loginsprogram_users" FromRole="program_users" ToRole="logins" />
+          <NavigationProperty Name="messages" Relationship="crazykart.messagesprogram_users" FromRole="program_users" ToRole="messages" />
+          <NavigationProperty Name="DiscountCards" Relationship="crazykart.DiscountCardprogram_users" FromRole="program_users" ToRole="DiscountCard" />
+          <NavigationProperty Name="Petrols" Relationship="crazykart.Petrolprogram_users" FromRole="program_users" ToRole="Petrol" />
+        </EntityType>
+        <EntityType Name="race_data">
+          <Documentation>
+            <LongDescription>заезды</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="race" Relationship="crazykart.race_dataraces" FromRole="race_data" ToRole="races" />
+          <Property Type="Int32" Name="race_id" Nullable="true" />
+          <NavigationProperty Name="user" Relationship="crazykart.race_datausers" FromRole="race_data" ToRole="users" />
+          <Property Type="Int32" Name="pilot_id" Nullable="true" />
+          <NavigationProperty Name="kart" Relationship="crazykart.race_datakarts" FromRole="race_data" ToRole="karts" />
+          <Property Type="Int32" Name="car_id" Nullable="true" />
+          <Property Type="DateTime" Name="created" Nullable="false" />
+          <Property Type="DateTime" Name="modified" Nullable="false" />
+          <Property Type="Boolean" Name="reserv" Nullable="true" />
+          <Property Type="Boolean" Name="monthrace" Nullable="true" />
+          <Property Type="DateTime" Name="race_month_date" Nullable="true" />
+          <Property Type="Boolean" Name="light_mode" Nullable="false" />
+          <NavigationProperty Name="race_times" Relationship="crazykart.race_timesrace_data" FromRole="race_data" ToRole="race_times" />
+          <Property Type="Double" Name="paid_amount" Nullable="true" >
+            <Documentation>
+              <LongDescription>запомним, сколько пилот заплатил, и если он откажется от участия, вернём эту сумму</LongDescription>
+            </Documentation>
+          </Property>
+          <NavigationProperty Name="DiscountCard" Relationship="crazykart.race_dataDiscountCard" FromRole="race_data" ToRole="DiscountCard" />
+          <Property Type="Int32" Name="id_discount_card" Nullable="true" />
+          <NavigationProperty Name="race_modes" Relationship="crazykart.race_datarace_modes" FromRole="race_data" ToRole="race_modes" />
+          <Property Type="Int32" Name="id_race_mode" Nullable="false" />
+        </EntityType>
+        <Association Name="race_dataraces">
+          <End Type="crazykart.race_data" Role="race_data" Multiplicity="*" />
+          <End Type="crazykart.races" Role="races" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="races">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="race_data">
+              <PropertyRef Name="race_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="race_datausers">
+          <End Type="crazykart.race_data" Role="race_data" Multiplicity="*" />
+          <End Type="crazykart.users" Role="users" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="race_data">
+              <PropertyRef Name="pilot_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="race_datakarts">
+          <End Type="crazykart.race_data" Role="race_data" Multiplicity="*" />
+          <End Type="crazykart.karts" Role="karts" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="karts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="race_data">
+              <PropertyRef Name="car_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="race_times">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="lap" Nullable="true" />
+          <Property Type="Decimal" Name="seconds" Nullable="false" Precision="18" Scale="7" />
+          <Property Type="DateTime" Name="created" Nullable="false" />
+          <NavigationProperty Name="race_data" Relationship="crazykart.race_timesrace_data" FromRole="race_times" ToRole="race_data" />
+          <Property Type="Int32" Name="member_id" Nullable="false" />
+        </EntityType>
+        <EntityType Name="settings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" Nullable="false" />
+          <Property Type="String" Name="val" Nullable="false" />
+          <Property Type="String" Name="description" Nullable="true" />
+        </EntityType>
+        <EntityType Name="user_cash">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="user" Relationship="crazykart.user_cashusers" FromRole="user_cash" ToRole="users" />
+          <Property Type="Int32" Name="user_id" Nullable="true" />
+          <Property Type="Double" Name="sum" Nullable="true" />
+          <Property Type="Boolean" Name="sign" Nullable="false" />
+          <Property Type="DateTime" Name="created" Nullable="false" />
+          <NavigationProperty Name="jurnal" Relationship="crazykart.user_cashjurnal" FromRole="user_cash" ToRole="jurnal" />
+          <Property Type="Int32" Name="doc_id" Nullable="false" />
+        </EntityType>
+        <Association Name="user_cashusers">
+          <End Type="crazykart.user_cash" Role="user_cash" Multiplicity="*" />
+          <End Type="crazykart.users" Role="users" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_cash">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="loginsprogram_users">
+          <End Type="crazykart.logins" Role="logins" Multiplicity="*" />
+          <End Type="crazykart.program_users" Role="program_users" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="program_users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="logins">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_cashjurnal">
+          <End Type="crazykart.user_cash" Role="user_cash" Multiplicity="*" />
+          <End Type="crazykart.jurnal" Role="jurnal" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="jurnal">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_cash">
+              <PropertyRef Name="doc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="certificatecertificate_type">
+          <End Type="crazykart.certificate" Role="certificate" Multiplicity="*" />
+          <End Type="crazykart.certificate_type" Role="certificate_type" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="certificate_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="certificate">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cassajurnal">
+          <End Type="crazykart.cassa" Role="cassa" Multiplicity="*" />
+          <End Type="crazykart.jurnal" Role="jurnal" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="jurnal">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cassa">
+              <PropertyRef Name="doc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="race_timesrace_data">
+          <End Type="crazykart.race_times" Role="race_times" Multiplicity="*" />
+          <End Type="crazykart.race_data" Role="race_data" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="race_data">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="race_times">
+              <PropertyRef Name="member_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="messagesusers">
+          <End Type="crazykart.messages" Role="messages" Multiplicity="*" />
+          <End Type="crazykart.users" Role="users" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="id_pilot" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="messageskarts">
+          <End Type="crazykart.messages" Role="messages" Multiplicity="*" />
+          <End Type="crazykart.karts" Role="karts" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="karts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="id_kart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="messagesprogram_users">
+          <End Type="crazykart.messages" Role="messages" Multiplicity="*" />
+          <End Type="crazykart.program_users" Role="program_users" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="program_users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="id_program_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DiscountCard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="owner" Relationship="crazykart.DiscountCardusers" FromRole="DiscountCard" ToRole="users" />
+          <Property Type="Int32" Name="idOwner" Nullable="true" />
+          <NavigationProperty Name="seller" Relationship="crazykart.DiscountCardprogram_users" FromRole="DiscountCard" ToRole="program_users" />
+          <Property Name="idSeller" Nullable="true" Type="Int32" />
+          <Property Type="String" Name="Number" Nullable="false" />
+          <Property Type="DateTime" Name="Created" Nullable="false" />
+          <Property Type="DateTime" Name="ValidUntil" Nullable="false" />
+          <Property Type="String" Name="SalePlace" Nullable="true" />
+          <NavigationProperty Name="DiscountCardGroup" Relationship="crazykart.DiscountCardDiscountCardGroup" FromRole="DiscountCard" ToRole="DiscountCardGroup" />
+          <Property Type="Int32" Name="IdDiscountCardGroup" Nullable="false" />
+          <Property Type="Boolean" Name="IsBlocked" Nullable="false" />
+          <NavigationProperty Name="race_data" Relationship="crazykart.race_dataDiscountCard" FromRole="DiscountCard" ToRole="race_data" />
+        </EntityType>
+        <Association Name="DiscountCardusers">
+          <End Type="crazykart.DiscountCard" Role="DiscountCard" Multiplicity="*" />
+          <End Type="crazykart.users" Role="users" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DiscountCard">
+              <PropertyRef Name="idOwner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DiscountCardprogram_users">
+          <End Type="crazykart.DiscountCard" Role="DiscountCard" Multiplicity="*" />
+          <End Type="crazykart.program_users" Role="program_users" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="program_users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DiscountCard">
+              <PropertyRef Name="idSeller" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DiscountCardGroup">
+          <Documentation>
+            <LongDescription>справочник процентов для дисконтных карт</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int16" Name="PercentOfDiscount" Nullable="false" />
+          <NavigationProperty Name="DiscountCards" Relationship="crazykart.DiscountCardDiscountCardGroup" FromRole="DiscountCardGroup" ToRole="DiscountCard" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+        </EntityType>
+        <Association Name="DiscountCardDiscountCardGroup">
+          <End Type="crazykart.DiscountCard" Role="DiscountCard" Multiplicity="*" />
+          <End Type="crazykart.DiscountCardGroup" Role="DiscountCardGroup" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="DiscountCardGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DiscountCard">
+              <PropertyRef Name="IdDiscountCardGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="race_dataDiscountCard">
+          <End Type="crazykart.race_data" Role="race_data" Multiplicity="*" />
+          <End Type="crazykart.DiscountCard" Role="DiscountCard" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="DiscountCard">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="race_data">
+              <PropertyRef Name="id_discount_card" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Petroleum">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Double" Name="litres" Nullable="false" />
+          <NavigationProperty Name="program_users" Relationship="crazykart.Petrolprogram_users" FromRole="Petrol" ToRole="program_users" />
+          <Property Type="Int32" Name="program_users_id" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Double" Name="Price" Nullable="true" />
+        </EntityType>
+        <Association Name="Petrolprogram_users">
+          <End Type="crazykart.Petroleum" Role="Petrol" Multiplicity="*" />
+          <End Type="crazykart.program_users" Role="program_users" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="program_users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Petrol">
+              <PropertyRef Name="program_users_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="race_datarace_modes">
+          <End Type="crazykart.race_data" Role="race_data" Multiplicity="*" />
+          <End Type="crazykart.race_modes" Role="race_modes" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="race_modes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="race_data">
+              <PropertyRef Name="id_race_mode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="crazykartStoreContainer" CdmEntityContainer="crazykartContainer">
+    <EntitySetMapping Name="cassa">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.cassa)">
+        <MappingFragment StoreEntitySet="cassa">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="sum" ColumnName="sum" />
+          <ScalarProperty Name="sign" ColumnName="sign" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="doc_id" ColumnName="doc_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="certificates">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.certificate)">
+        <MappingFragment StoreEntitySet="certificates">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="bar_number" ColumnName="bar_number" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="date_end" ColumnName="date_end" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="c_id" ColumnName="c_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.users)">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="nickname" ColumnName="nickname" />
+          <ScalarProperty Name="banned" ColumnName="banned" />
+          <ScalarProperty Name="date_banned" ColumnName="date_banned" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="message_id" ColumnName="message_id" />
+          <ScalarProperty Name="barcode" ColumnName="barcode" />
+          <ScalarProperty Name="gr" ColumnName="gr" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+          <ScalarProperty Name="date_deleted" ColumnName="date_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="certificate_type">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.certificate_type)">
+        <MappingFragment StoreEntitySet="certificate_type">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nominal" ColumnName="nominal" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+          <ScalarProperty Name="c_type" ColumnName="c_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="fuel">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.fuel)">
+        <MappingFragment StoreEntitySet="fuel">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="car_id" ColumnName="car_id" />
+          <ScalarProperty Name="fuel_value" ColumnName="fuel_value" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="sign" ColumnName="sign" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="karts">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.karts)">
+        <MappingFragment StoreEntitySet="karts">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="transponder" ColumnName="transponder" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="repair" ColumnName="repair" />
+          <ScalarProperty Name="message_id" ColumnName="message_id" />
+          <ScalarProperty Name="wait" ColumnName="wait" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="groups">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.groups)">
+        <MappingFragment StoreEntitySet="groups">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="sale" ColumnName="sale" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="jurnal">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.jurnal)">
+        <MappingFragment StoreEntitySet="jurnal">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tp" ColumnName="tp" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="race_id" ColumnName="race_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="races">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.races)">
+        <MappingFragment StoreEntitySet="races">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="racedate" ColumnName="racedate" />
+          <ScalarProperty Name="raceid" ColumnName="raceid" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="stat" ColumnName="stat" />
+          <ScalarProperty Name="track_id" ColumnName="track_id" />
+          <ScalarProperty Name="light_mode" ColumnName="light_mode" />
+          <ScalarProperty Name="is_race" ColumnName="is_race" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tracks">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.tracks)">
+        <MappingFragment StoreEntitySet="tracks">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="length" ColumnName="length" />
+          <ScalarProperty Name="file" ColumnName="file" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="logins">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.logins)">
+        <MappingFragment StoreEntitySet="logins">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="stat" ColumnName="stat" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="messages">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.messages)">
+        <MappingFragment StoreEntitySet="messages">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="m_type" ColumnName="m_type" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="id_pilot" ColumnName="id_pilot" />
+          <ScalarProperty Name="id_kart" ColumnName="id_kart" />
+          <ScalarProperty Name="id_program_user" ColumnName="id_program_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="noracekart">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.noracekart)">
+        <MappingFragment StoreEntitySet="noracekart">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="transponder" ColumnName="transponder" />
+          <ScalarProperty Name="race_id" ColumnName="race_id" />
+          <ScalarProperty Name="created" ColumnName="created" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="prices">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.prices)">
+        <MappingFragment StoreEntitySet="prices">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="week" ColumnName="week" />
+          <ScalarProperty Name="d1" ColumnName="d1" />
+          <ScalarProperty Name="d2" ColumnName="d2" />
+          <ScalarProperty Name="d3" ColumnName="d3" />
+          <ScalarProperty Name="d4" ColumnName="d4" />
+          <ScalarProperty Name="d5" ColumnName="d5" />
+          <ScalarProperty Name="d6" ColumnName="d6" />
+          <ScalarProperty Name="d7" ColumnName="d7" />
+          <ScalarProperty Name="idRaceMode" ColumnName="idRaceMode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="race_modes">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.race_modes)">
+        <MappingFragment StoreEntitySet="race_modes">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="length" ColumnName="length" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="program_users">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.program_users)">
+        <MappingFragment StoreEntitySet="program_users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="stat" ColumnName="stat" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="barcode" ColumnName="barcode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="race_data">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.race_data)">
+        <MappingFragment StoreEntitySet="race_data">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="race_id" ColumnName="race_id" />
+          <ScalarProperty Name="pilot_id" ColumnName="pilot_id" />
+          <ScalarProperty Name="car_id" ColumnName="car_id" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="reserv" ColumnName="reserv" />
+          <ScalarProperty Name="monthrace" ColumnName="monthrace" />
+          <ScalarProperty Name="race_month_date" ColumnName="race_month_date" />
+          <ScalarProperty Name="light_mode" ColumnName="light_mode" />
+          <ScalarProperty Name="paid_amount" ColumnName="paid_amount" />
+          <ScalarProperty Name="id_discount_card" ColumnName="id_discount_card" />
+          <ScalarProperty Name="id_race_mode" ColumnName="id_race_mode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="race_times">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.race_times)">
+        <MappingFragment StoreEntitySet="race_times">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="lap" ColumnName="lap" />
+          <ScalarProperty Name="seconds" ColumnName="seconds" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="member_id" ColumnName="member_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="settings">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.settings)">
+        <MappingFragment StoreEntitySet="settings">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="val" ColumnName="val" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_cash">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.user_cash)">
+        <MappingFragment StoreEntitySet="user_cash">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="sum" ColumnName="sum" />
+          <ScalarProperty Name="sign" ColumnName="sign" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="doc_id" ColumnName="doc_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DiscountCards">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.DiscountCard)">
+        <MappingFragment StoreEntitySet="DiscountCards">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="idOwner" ColumnName="idOwner" />
+          <ScalarProperty Name="idSeller" ColumnName="idSeller" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="ValidUntil" ColumnName="ValidUntil" />
+          <ScalarProperty Name="SalePlace" ColumnName="SalePlace" />
+          <ScalarProperty Name="IdDiscountCardGroup" ColumnName="IdDiscountCardGroup" />
+          <ScalarProperty Name="IsBlocked" ColumnName="IsBlocked" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DiscountCardGroups">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.DiscountCardGroup)">
+        <MappingFragment StoreEntitySet="DiscountCardGroups">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PercentOfDiscount" ColumnName="PercentOfDiscount" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Petroleums">
+      <EntityTypeMapping TypeName="IsTypeOf(crazykart.Petroleum)">
+        <MappingFragment StoreEntitySet="Petroleums">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="litres" ColumnName="litres" />
+          <ScalarProperty Name="program_users_id" ColumnName="program_users_id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="crazykart" DisplayType="true" ZoomLevel="100" >
+        <EntityTypeShape EntityType="crazykart.cassa" Width="1.5" PointX="22.375" PointY="10.25" Height="1.9210009765625031" />
+        <EntityTypeShape EntityType="crazykart.certificate" Width="2.25" PointX="19.75" PointY="5.125" Height="2.7427376302083335" />
+        <EntityTypeShape EntityType="crazykart.users" Width="2.5" PointX="4.875" PointY="8" Height="5.0436002604166656" />
+        <AssociationConnector Association="crazykart.certificateusers">
+          <ConnectorPoint PointX="19.75" PointY="7.3748989792664839" />
+          <ConnectorPoint PointX="6.5555430371093752" PointY="7.3748989792664839" />
+          <ConnectorPoint PointX="6.5555430371093752" PointY="8" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="crazykart.certificate_type" Width="2.625" PointX="24" PointY="5" Height="2.2496956380208335" />
+        <EntityTypeShape EntityType="crazykart.fuel" Width="2.375" PointX="29.5" PointY="22.875" Height="2.085348307291667" />
+        <EntityTypeShape EntityType="crazykart.karts" Width="2" PointX="29.375" PointY="17.5" Height="3.0714322916666674" />
+        <AssociationConnector Association="crazykart.fuelkarts">
+          <ConnectorPoint PointX="30.4375" PointY="22.875" />
+          <ConnectorPoint PointX="30.4375" PointY="20.571432291666667" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="crazykart.groups" Width="2.375" PointX="7.875" PointY="2.875" Height="1.9295611125230785" />
+        <AssociationConnector Association="crazykart.usersgroups">
+          <ConnectorPoint PointX="5.6943342968750006" PointY="8" />
+          <ConnectorPoint PointX="5.6943342968750006" PointY="3.83550048828125" />
+          <ConnectorPoint PointX="7.875" PointY="3.83550048828125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="crazykart.jurnal" Width="3.125" PointX="18.875" PointY="11.125" Height="2.5783902994791656" />
+        <EntityTypeShape EntityType="crazykart.races" Width="2.5" PointX="11.125" PointY="14.25" Height="2.966695963541671" />
+        <EntityTypeShape EntityType="crazykart.tracks" Width="2.375" PointX="15.125" PointY="14.25" Height="2.0198881022135424" />
+        <AssociationConnector Association="crazykart.racestracks">
+          <ConnectorPoint PointX="13.625" PointY="15.259944051106771" />
+          <ConnectorPoint PointX="15.125" PointY="15.259944051106771" />
+        </AssociationConnector>
+        <AssociationConnector Association="crazykart.jurnalraces">
+          <ConnectorPoint PointX="20.4375" PointY="13.618292032877603" />
+          <ConnectorPoint PointX="20.4375" PointY="16.774542032877605" />
+          <ConnectorPoint PointX="17.970053958333335" PointY="16.774542032877605" />
+          <ConnectorPoint PointX="17.80338729166667" PointY="16.774542032877605" />
+          <ConnectorPoint PointX="17.794269583333332" PointY="16.774542032877605" />
+          <ConnectorPoint PointX="17.627602916666667" PointY="16.774542032877605" />
+          <ConnectorPoint PointX="13.625" PointY="16.774542032877605" />
+        </AssociationConnector>
+        <AssociationConnector Association="crazykart.jurnalusers">
+          <ConnectorPoint PointX="18.875" PointY="12.53384989420573" />
+          <ConnectorPoint PointX="17.864583333333332" PointY="12.53384989420573" />
+          <ConnectorPoint PointX="17.697916666666668" PointY="12.53384989420573" />
+          <ConnectorPoint PointX="7.375" PointY="12.53384989420573" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="crazykart.logins" Width="2.125" PointX="27.875" PointY="13" Height="1.7566536458333317" />
+        <EntityTypeShape EntityType="crazykart.messages" Width="2.75" PointX="34.375" PointY="10.75" Height="3.0714322916666674" />
+        <EntityTypeShape EntityType="crazykart.noracekart" Width="2.375" PointX="5.875" PointY="14.375" Height="1.7566536458333353" />
+        <AssociationConnector Association="crazykart.noracekartraces">
+          <ConnectorPoint PointX="8.25" PointY="15.227142740885416" />
+          <ConnectorPoint PointX="11.125" PointY="15.227142740885416" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="crazykart.prices" Width="2.125" PointX="22.25" PointY="22.5" Height="2.6236782463391641" />
+        <EntityTypeShape EntityType="crazykart.race_modes" Width="2.875" PointX="25.5" PointY="23.25" Height="1.6886197121938089" />
+        <AssociationConnector Association="crazykart.pricesrace_modes">
+          <ConnectorPoint PointX="24.375" PointY="24.094309856096906" />
+          <ConnectorPoint PointX="25.5" PointY="24.094309856096906" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="crazykart.program_users" Width="2.5" PointX="24.25" PointY="11.875" Height="2.9070849609374996" />
+        <EntityTypeShape EntityType="crazykart.race_data" Width="2.5" PointX="0.75" PointY="14.875" Height="3.2470506024360688" />
+        <AssociationConnector Association="crazykart.race_dataraces">
+          <ConnectorPoint PointX="3.25" PointY="16.679240722656253" />
+          <ConnectorPoint PointX="11.125" PointY="16.679240722656253" />
+        </AssociationConnector>
+        <AssociationConnector Association="crazykart.race_datausers">
+          <ConnectorPoint PointX="2" PointY="14.875" />
+          <ConnectorPoint PointX="2" PointY="10.324819201827051" />
+          <ConnectorPoint PointX="4.875" PointY="10.324819201827051" />
+        </AssociationConnector>
+        <AssociationConnector Association="crazykart.race_datakarts">
+          <ConnectorPoint PointX="3.25" PointY="18.39947532187109" />
+          <ConnectorPoint PointX="17.627602916666667" PointY="18.39947532187109" />
+          <ConnectorPoint PointX="17.794269583333332" PointY="18.39947532187109" />
+          <ConnectorPoint PointX="17.80338729166667" PointY="18.39947532187109" />
+          <ConnectorPoint PointX="17.970053958333335" PointY="18.39947532187109" />
+          <ConnectorPoint PointX="27.510416666666668" PointY="18.39947532187109" />
+          <ConnectorPoint PointX="27.677083333333332" PointY="18.39947532187109" />
+          <ConnectorPoint PointX="29.375" PointY="18.39947532187109" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="crazykart.race_times" Width="2.5" PointX="1" PointY="21.75" Height="2.0853483072916674" />
+        <EntityTypeShape EntityType="crazykart.settings" Width="2.625" PointX="7.625" PointY="22" Height="1.5989641986290621" />
+        <EntityTypeShape EntityType="crazykart.user_cash" Width="1.5" PointX="9.625" PointY="10.125" Height="2.2496956380208326" />
+        <AssociationConnector Association="crazykart.user_cashusers">
+          <ConnectorPoint PointX="9.625" PointY="11.249847819010416" />
+          <ConnectorPoint PointX="7.375" PointY="11.249847819010416" />
+        </AssociationConnector>
+        <AssociationConnector Association="crazykart.loginsprogram_users">
+          <ConnectorPoint PointX="27.875" PointY="13.878326822916666" />
+          <ConnectorPoint PointX="26.75" PointY="13.878326822916666" />
+        </AssociationConnector>
+        <AssociationConnector Association="crazykart.user_cashjurnal">
+          <ConnectorPoint PointX="11.125" PointY="11.713844706217447" />
+          <ConnectorPoint PointX="17.697916666666668" PointY="11.713844706217447" />
+          <ConnectorPoint PointX="17.864583333333332" PointY="11.713844706217447" />
+          <ConnectorPoint PointX="18.875" PointY="11.713844706217447" />
+        </AssociationConnector>
+        <AssociationConnector Association="crazykart.certificatecertificate_type">
+          <ConnectorPoint PointX="22" PointY="6.1873478190104167" />
+          <ConnectorPoint PointX="24" PointY="6.1873478190104167" />
+        </AssociationConnector>
+        <AssociationConnector Association="crazykart.cassajurnal">
+          <ConnectorPoint PointX="22.375" PointY="11.648000488281252" />
+          <ConnectorPoint PointX="22" PointY="11.648000488281252" />
+        </AssociationConnector>
+        <AssociationConnector Association="crazykart.race_timesrace_data">
+          <ConnectorPoint PointX="2.125" PointY="21.75" />
+          <ConnectorPoint PointX="2.125" PointY="18.122050602436069" />
+        </AssociationConnector>
+        <AssociationConnector Association="crazykart.messagesusers">
+          <ConnectorPoint PointX="35.75" PointY="10.75" />
+          <ConnectorPoint PointX="35.75" PointY="8.7133805468750012" />
+          <ConnectorPoint PointX="26.802083333333332" PointY="8.7133805468750012" />
+          <ConnectorPoint PointX="26.635416666666668" PointY="8.7133805468750012" />
+          <ConnectorPoint PointX="7.375" PointY="8.7133805468750012" />
+        </AssociationConnector>
+        <AssociationConnector Association="crazykart.messageskarts">
+          <ConnectorPoint PointX="35.75" PointY="13.821432291666667" />
+          <ConnectorPoint PointX="35.75" PointY="19.035716145833334" />
+          <ConnectorPoint PointX="31.375" PointY="19.035716145833334" />
+        </AssociationConnector>
+        <AssociationConnector Association="crazykart.messagesprogram_users">
+          <ConnectorPoint PointX="34.375" PointY="12.40625" />
+          <ConnectorPoint PointX="26.75" PointY="12.40625" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="crazykart.DiscountCard" Width="2.625" PointX="15.375" PointY="21.875" Height="2.9353644243876182" />
+        <AssociationConnector Association="crazykart.DiscountCardusers">
+          <ConnectorPoint PointX="17.71093625" PointY="21.875" />
+          <ConnectorPoint PointX="17.71093625" PointY="9.4168276733398457" />
+          <ConnectorPoint PointX="7.375" PointY="9.4168276733398457" />
+        </AssociationConnector>
+        <AssociationConnector Association="crazykart.DiscountCardprogram_users">
+          <ConnectorPoint PointX="17.886720625000002" PointY="21.875" />
+          <ConnectorPoint PointX="17.886720625000002" PointY="13.934146016438803" />
+          <ConnectorPoint PointX="20.354166666666668" PointY="13.934146016438803" />
+          <ConnectorPoint PointX="20.520833333333332" PointY="13.934146016438803" />
+          <ConnectorPoint PointX="24.25" PointY="13.934146016438803" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="crazykart.DiscountCardGroup" Width="3.25" PointX="15.25" PointY="26.75" Height="1.5327766231695854" />
+        <AssociationConnector Association="crazykart.DiscountCardDiscountCardGroup">
+          <ConnectorPoint PointX="16.6875" PointY="24.810364424387618" />
+          <ConnectorPoint PointX="16.6875" PointY="26.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="crazykart.race_dataDiscountCard">
+          <ConnectorPoint PointX="0.84375" PointY="18.433736780484519" />
+          <ConnectorPoint PointX="0.84375" PointY="24.233663612802825" />
+          <ConnectorPoint PointX="15.375" PointY="24.233663612802825" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="crazykart.Petroleum" Width="2.375" PointX="11.125" PointY="4.625" Height="1.8444628012180324" />
+        <AssociationConnector Association="crazykart.Petrolprogram_users">
+          <ConnectorPoint PointX="13.5" PointY="4.78125" />
+          <ConnectorPoint PointX="26.71875" PointY="4.78125" />
+          <ConnectorPoint PointX="26.71875" PointY="11.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="crazykart.race_datarace_modes">
+          <ConnectorPoint PointX="3.25" PointY="17.808083142706387" />
+          <ConnectorPoint PointX="17.627602916666667" PointY="17.808083142706387" />
+          <ConnectorPoint PointX="17.794269583333332" PointY="17.808083142706387" />
+          <ConnectorPoint PointX="17.80338729166667" PointY="17.808083142706387" />
+          <ConnectorPoint PointX="17.970053958333335" PointY="17.808083142706387" />
+          <ConnectorPoint PointX="27.59375" PointY="17.808083142706387" />
+          <ConnectorPoint PointX="27.59375" PointY="23.25" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

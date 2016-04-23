@@ -1,0 +1,87 @@
+c:\Documents and Settings\max\Мои документы\Visual Studio 2010\Projects\Копия (2) Prokard Timing\CrazyKartActivation\bin\Debug\CrazyKartActivation.exe
+c:\Documents and Settings\max\Мои документы\Visual Studio 2010\Projects\Копия (2) Prokard Timing\CrazyKartActivation\bin\Debug\CrazyKartActivation.pdb
+c:\Documents and Settings\max\Мои документы\Visual Studio 2010\Projects\Копия (2) Prokard Timing\CrazyKartActivation\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\Documents and Settings\max\Мои документы\Visual Studio 2010\Projects\Копия (2) Prokard Timing\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Form1.resources
+c:\Documents and Settings\max\Мои документы\Visual Studio 2010\Projects\Копия (2) Prokard Timing\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Properties.Resources.resources
+c:\Documents and Settings\max\Мои документы\Visual Studio 2010\Projects\Копия (2) Prokard Timing\CrazyKartActivation\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\Documents and Settings\max\Мои документы\Visual Studio 2010\Projects\Копия (2) Prokard Timing\CrazyKartActivation\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\Documents and Settings\max\Мои документы\Visual Studio 2010\Projects\Копия (2) Prokard Timing\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.exe
+c:\Documents and Settings\max\Мои документы\Visual Studio 2010\Projects\Копия (2) Prokard Timing\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.pdb
+C:\doc\projects\prokart\Копия (2) Prokard Timing\CrazyKartActivation\bin\Debug\CrazyKartActivation.exe
+C:\doc\projects\prokart\Копия (2) Prokard Timing\CrazyKartActivation\bin\Debug\CrazyKartActivation.pdb
+C:\doc\projects\prokart\Копия (2) Prokard Timing\CrazyKartActivation\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\doc\projects\prokart\Копия (2) Prokard Timing\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Form1.resources
+C:\doc\projects\prokart\Копия (2) Prokard Timing\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Properties.Resources.resources
+C:\doc\projects\prokart\Копия (2) Prokard Timing\CrazyKartActivation\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\doc\projects\prokart\Копия (2) Prokard Timing\CrazyKartActivation\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\doc\projects\prokart\Копия (2) Prokard Timing\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.exe
+C:\doc\projects\prokart\Копия (2) Prokard Timing\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.pdb
+C:\doc\projects\prokart\ProkardTimingSource\CrazyKartActivation\bin\Debug\CrazyKartActivation.exe
+C:\doc\projects\prokart\ProkardTimingSource\CrazyKartActivation\bin\Debug\CrazyKartActivation.pdb
+C:\doc\projects\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\doc\projects\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Form1.resources
+C:\doc\projects\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Properties.Resources.resources
+C:\doc\projects\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\doc\projects\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\doc\projects\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.exe
+C:\doc\projects\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.pdb
+C:\prokart\ProkardTimingSource\CrazyKartActivation\bin\Debug\CrazyKartActivation.exe
+C:\prokart\ProkardTimingSource\CrazyKartActivation\bin\Debug\CrazyKartActivation.pdb
+C:\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Form1.resources
+C:\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Properties.Resources.resources
+C:\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.exe
+C:\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.pdb
+E:\doc\projects\prokart\ProkardTimingSource\CrazyKartActivation\bin\Debug\CrazyKartActivation.exe
+E:\doc\projects\prokart\ProkardTimingSource\CrazyKartActivation\bin\Debug\CrazyKartActivation.pdb
+E:\doc\projects\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\doc\projects\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Form1.resources
+E:\doc\projects\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Properties.Resources.resources
+E:\doc\projects\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\doc\projects\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\doc\projects\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.exe
+E:\doc\projects\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.pdb
+C:\inetpub\prokart\ProkardTimingSource\CrazyKartActivation\bin\Debug\CrazyKartActivation.exe
+C:\inetpub\prokart\ProkardTimingSource\CrazyKartActivation\bin\Debug\CrazyKartActivation.pdb
+C:\inetpub\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\inetpub\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Form1.resources
+C:\inetpub\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Properties.Resources.resources
+C:\inetpub\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\inetpub\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\inetpub\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.exe
+C:\inetpub\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.pdb
+C:\doc\projects\prokartFromSGC\ProkardTimingSource\CrazyKartActivation\bin\Debug\CrazyKartActivation.exe
+C:\doc\projects\prokartFromSGC\ProkardTimingSource\CrazyKartActivation\bin\Debug\CrazyKartActivation.pdb
+C:\doc\projects\prokartFromSGC\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\doc\projects\prokartFromSGC\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Form1.resources
+C:\doc\projects\prokartFromSGC\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Properties.Resources.resources
+C:\doc\projects\prokartFromSGC\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\doc\projects\prokartFromSGC\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\doc\projects\prokartFromSGC\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.exe
+C:\doc\projects\prokartFromSGC\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.pdb
+E:\inetpub\wwwroot\finished\crazyCart\crazykartNew\crazykartNew\prokart\prokart\ProkardTimingSource\CrazyKartActivation\bin\Debug\CrazyKartActivation.exe
+E:\inetpub\wwwroot\finished\crazyCart\crazykartNew\crazykartNew\prokart\prokart\ProkardTimingSource\CrazyKartActivation\bin\Debug\CrazyKartActivation.pdb
+E:\inetpub\wwwroot\finished\crazyCart\crazykartNew\crazykartNew\prokart\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.csprojResolveAssemblyReference.cache
+E:\inetpub\wwwroot\finished\crazyCart\crazykartNew\crazykartNew\prokart\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Form1.resources
+E:\inetpub\wwwroot\finished\crazyCart\crazykartNew\crazykartNew\prokart\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Properties.Resources.resources
+E:\inetpub\wwwroot\finished\crazyCart\crazykartNew\crazykartNew\prokart\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.csproj.GenerateResource.Cache
+E:\inetpub\wwwroot\finished\crazyCart\crazykartNew\crazykartNew\prokart\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.exe
+E:\inetpub\wwwroot\finished\crazyCart\crazykartNew\crazykartNew\prokart\prokart\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.pdb
+E:\inetpub\wwwroot\finished\crazyCart\source\ProkardTimingSource\CrazyKartActivation\bin\Debug\CrazyKartActivation.exe
+E:\inetpub\wwwroot\finished\crazyCart\source\ProkardTimingSource\CrazyKartActivation\bin\Debug\CrazyKartActivation.pdb
+E:\inetpub\wwwroot\finished\crazyCart\source\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.csprojResolveAssemblyReference.cache
+E:\inetpub\wwwroot\finished\crazyCart\source\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Form1.resources
+E:\inetpub\wwwroot\finished\crazyCart\source\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Properties.Resources.resources
+E:\inetpub\wwwroot\finished\crazyCart\source\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.csproj.GenerateResource.Cache
+E:\inetpub\wwwroot\finished\crazyCart\source\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.exe
+E:\inetpub\wwwroot\finished\crazyCart\source\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.pdb
+E:\inetpub\wwwroot\finished\crazyCart\sourceWithLogger\ProkardTimingSource\CrazyKartActivation\bin\Debug\CrazyKartActivation.exe
+E:\inetpub\wwwroot\finished\crazyCart\sourceWithLogger\ProkardTimingSource\CrazyKartActivation\bin\Debug\CrazyKartActivation.pdb
+E:\inetpub\wwwroot\finished\crazyCart\sourceWithLogger\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.csprojResolveAssemblyReference.cache
+E:\inetpub\wwwroot\finished\crazyCart\sourceWithLogger\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Form1.resources
+E:\inetpub\wwwroot\finished\crazyCart\sourceWithLogger\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Properties.Resources.resources
+E:\inetpub\wwwroot\finished\crazyCart\sourceWithLogger\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.csproj.GenerateResource.Cache
+E:\inetpub\wwwroot\finished\crazyCart\sourceWithLogger\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.exe
+E:\inetpub\wwwroot\finished\crazyCart\sourceWithLogger\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.pdb
