@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.IO.Ports;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text;
 
@@ -221,6 +222,7 @@ namespace Prokard_Timing
             if (Status == 1 || Status == 2)
             {
                 //      StackReceive.Enqueue(RS232.ReadLine());
+               // Task.Factory.StartNew(startParser);
                 AMB20_SaveData(RS232.ReadLine().ToString());
             }
         }

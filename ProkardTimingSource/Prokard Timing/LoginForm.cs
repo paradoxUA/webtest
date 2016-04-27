@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 
@@ -112,10 +106,10 @@ namespace Prokard_Timing
                 --rep;
                 if (rep > 0)
 
-                    MessageBox.Show("Неверный логин или пароль.\n\rПопыток: " + rep.ToString() + " из 5");
+                    MessageBox.Show(@"Неверный логин или пароль.\n\rПопыток: " + rep.ToString() + @" из 5");
                 else
                 {
-                    MessageBox.Show("Программа закрывается");
+                    MessageBox.Show(@"Программа закрывается");
                     OnClose = false;
                     Application.Exit();
                     this.Close();

@@ -25,7 +25,7 @@ namespace Prokard_Timing
                 ret += (mgtObject["manufacturer"].ToString() + Environment.NewLine);
             }
 
-            ret += System.Environment.GetEnvironmentVariable("PROCESSOR_IDENTIFIER");
+            ret += Environment.GetEnvironmentVariable("PROCESSOR_IDENTIFIER");
             return Encrypt(ret);
         }
 
@@ -87,8 +87,8 @@ namespace Prokard_Timing
             byte[] keyArray;
             byte[] toEncryptArray = UTF8Encoding.UTF8.GetBytes(toEncrypt);
 
-            System.Configuration.AppSettingsReader settingsReader =
-                                                new AppSettingsReader();
+            //System.Configuration.AppSettingsReader settingsReader =
+                                                //new AppSettingsReader();
             // Get the key from config file
 
             string key = "yt83MJls993s1mldds1KKGWknLjhsGGCC";

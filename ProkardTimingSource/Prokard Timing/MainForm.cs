@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Reflection;
+using System.Windows;
 using System.Windows.Forms;
 using DateTimeExtensions;
 using System.Collections;
@@ -10,10 +12,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Prokard_Timing.model;
-
-
-
-
+using FontStyle = System.Drawing.FontStyle;
+using MessageBox = System.Windows.Forms.MessageBox;
+using Point = System.Drawing.Point;
 
 
 namespace Prokard_Timing
@@ -28,6 +29,87 @@ namespace Prokard_Timing
         int NextRaceI = 0, NextRaceJ = 0;
         crazykartContainer db = new crazykartContainer();
 
+        public MainForm()
+        {
+           // MessageBox.Show("MainForm"); 
+            log("checkDb");
+           // return;
+            log("MainForm");
+
+            InitializeComponent();
+
+            log("after components init");
+
+          //  MessageBox.Show("after init"); 
+
+            //Устанавливаем БолдерДатес
+            monthCalendar1.BoldedDates = null;
+
+
+            //Создаем строку для датагрида
+          //  dataGridView1.DoubleBuffered(false);
+          //  dataGridView2.DoubleBuffered(true);
+          //  dataGridView3.DoubleBuffered(true);
+
+         //   MessageBox.Show("b"); 
+            // Создаем класс обработчик
+
+         //   log("before admin init");
+            admin = new AdminControl(monthCalendar1.TodayDate.Year, monthCalendar1.TodayDate.Month, monthCalendar1.TodayDate.Day);
+
+         //   log("after admin init");
+
+         //   MessageBox.Show("c"); 
+            if (Convert.ToBoolean(admin.Settings["enter_password"]))
+            {
+                войтиВРежимToolStripMenuItem.PerformClick();
+            }
+            else
+            {
+                admin.IS_ADMIN = admin.IS_SUPER_ADMIN = false;
+                admin.IS_USER = true;
+                admin.USER_ID = 0;
+            }
+          //  DataTable admins = localSetts.GetAdmins();
+
+            List<Hashtable> pu = admin.model.GetAllPgrogramUsers(0);//localSetts.GetAdmins();
+
+
+            if (pu.Count == 0)
+            {
+                string password = admin.Encrypt("1111");
+               // localSetts.addSysUser("test", password, "2", "test", "test", "");
+                admin.model.AddProgramUser("test", password, "2", "test", "test", "");
+            }
+
+            ShowGridTable();
+            ShowEvents();
+
+      //      MessageBox.Show("d"); 
+            toolStripLabel1.Text = monthCalendar1.SelectionStart.Date.ToString("dd MMMM");
+
+            ShowError();
+
+            string YesterdaySumm = admin.model.GetCashFromCassa(DateTime.Now.AddDays(-1),true,false,false);
+            double YSumm = -1;
+            if (YesterdaySumm.Length > 0)
+                YSumm = Double.Parse(YesterdaySumm);
+
+        //  MessageBox.Show(YesterdaySumm);
+
+            if (YSumm > 0) {
+
+
+               // MessageBox.Show(YesterdaySumm);
+                admin.model.Jurnal_Cassa("7", -1, -1, YesterdaySumm, "0", "Добавление кассового остатка за прошлые дни");
+                admin.model.Jurnal_Cassa("7", -1, -1, YesterdaySumm, "1", "Перенос кассы на следующий день", true);
+            }
+
+
+        //    MessageBox.Show("MainForm inited");
+
+           
+        }
         private void ShowSportModeGridTable()
         {
             
@@ -206,83 +288,6 @@ namespace Prokard_Timing
 
 
 
-        public MainForm()
-        {
-           // MessageBox.Show("MainForm"); 
-
-            log("MainForm");
-
-            InitializeComponent();
-
-            log("after components init");
-
-          //  MessageBox.Show("after init"); 
-
-            //Устанавливаем БолдерДатес
-            monthCalendar1.BoldedDates = null;
-
-
-            //Создаем строку для датагрида
-          //  dataGridView1.DoubleBuffered(false);
-          //  dataGridView2.DoubleBuffered(true);
-          //  dataGridView3.DoubleBuffered(true);
-
-         //   MessageBox.Show("b"); 
-            // Создаем класс обработчик
-
-         //   log("before admin init");
-            admin = new AdminControl(monthCalendar1.TodayDate.Year, monthCalendar1.TodayDate.Month, monthCalendar1.TodayDate.Day);
-
-         //   log("after admin init");
-
-         //   MessageBox.Show("c"); 
-            if (Convert.ToBoolean(admin.Settings["enter_password"]))
-            {
-                войтиВРежимToolStripMenuItem.PerformClick();
-            }
-            else
-            {
-                admin.IS_ADMIN = admin.IS_SUPER_ADMIN = false;
-                admin.IS_USER = true;
-                admin.USER_ID = 0;
-            }
-            
-            List<Hashtable> pu = admin.model.GetAllPgrogramUsers(0);
-           
-            if (pu.Count == 0)
-            {
-                string password = admin.Encrypt("1111");
-                admin.model.AddProgramUser("test", password, "2", "test", "test", "");
-            }
-
-            ShowGridTable();
-            ShowEvents();
-
-      //      MessageBox.Show("d"); 
-            toolStripLabel1.Text = monthCalendar1.SelectionStart.Date.ToString("dd MMMM");
-
-            ShowError();
-
-            string YesterdaySumm = admin.model.GetCashFromCassa(DateTime.Now.AddDays(-1),true,false,false);
-            double YSumm = -1;
-            if (YesterdaySumm.Length > 0)
-                YSumm = Double.Parse(YesterdaySumm);
-
-        //  MessageBox.Show(YesterdaySumm);
-
-            if (YSumm > 0) {
-
-
-               // MessageBox.Show(YesterdaySumm);
-                admin.model.Jurnal_Cassa("7", -1, -1, YesterdaySumm, "0", "Добавление кассового остатка за прошлые дни");
-                admin.model.Jurnal_Cassa("7", -1, -1, YesterdaySumm, "1", "Перенос кассы на следующий день", true);
-            }
-
-
-        //    MessageBox.Show("MainForm inited");
-
-           
-        }
 
         private void ShowError()
         {

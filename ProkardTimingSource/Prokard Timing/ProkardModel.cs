@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using System.Xml;
 using DateTimeExtensions;
 //using MySql.Data.MySqlClient;
 using System.Configuration;
@@ -12,6 +13,7 @@ using System.Windows.Forms;
 using System.Linq;
 using System.Data.EntityClient;
 using System.Data.Entity;
+using Finisar.SQLite;
 using Prokard_Timing.model;
 using System.IO;
 
@@ -20,23 +22,20 @@ namespace Prokard_Timing
     public class ProkardModel
     {
         private crazykartContainer edb;
-
-        public static string connectionString = "Data Source=.\\sql2008;Initial Catalog=crazykart;Integrated Security=True"; // ConfigurationManager.ConnectionStrings["crazykartConnectionString"].ConnectionString; // "Data Source=.\\sql2008r2;Initial Catalog=crazykart;Integrated Security=True";
-
+        public static string connectionString = "";
 
         public ProkardModel()
         {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            connectionString = config.AppSettings.Settings["crazykartConnectionString"].Value;
             try
             {
-              //  MainForm.log("before db init");
-                edb = new model.crazykartContainer();
-              //  MainForm.log("after db init");
+                edb = new crazykartContainer();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
 
@@ -59,10 +58,10 @@ namespace Prokard_Timing
         private SqlConnection db, db2, db3;
 
 
-        private bool connected;
+        public static bool connected;
         public string LastError;
 
-        private string getDate(bool pastdate = false)
+        internal static string getDate(bool pastdate = false)
         {
             if (pastdate == false)
             {
@@ -95,7 +94,7 @@ namespace Prokard_Timing
             {
                 LastError = e.Message;
                 ret = false;
-                System.Windows.Forms.MessageBox.Show(e.Message);
+                MessageBox.Show(e.Message);
             }
             connected = ret;
 
@@ -188,41 +187,114 @@ namespace Prokard_Timing
         {
             DateTime startTime = DateTime.Now;
 
-            List<race_times> result = new List<model.race_times>();
+            List<race_times> result = new List<race_times>();
             TimeSpan executionTime;
 
+
+
+
+
+
             if (onlyUnique)
-            { // .Where(m => m.race_data.Where(n => n.race.track_id == idTrack).Count() > 0)
-                IEnumerable<users> pilots = edb.users.Include(m => m.race_data).Where(m =>
-                   m.deleted != true).OrderBy(m =>
-                       m.race_data.Min(p =>
-                           p.race_times.Min(w =>
-                               w.seconds))).Where(m =>
-                    m.race_data.Where(l => l.race.track_id ==
-                        idTrack).Count() > 0).Where(m =>
-                    m.race_data.Where(l =>
-                        l.race_times.Where(n =>
-                            n.created >= startDate).Where(n
-                                => n.created <=
-                                endDate).Count() > 0).Count() > 0).Take(amountOfRecords);
+            { 
+                SqlConnection conn = new SqlConnection(connectionString);
+                SqlDataAdapter da = new SqlDataAdapter();
+                SqlCommand SqlCommand = conn.CreateCommand();
 
-                executionTime = DateTime.Now - startTime;
-                Logger.AddRecord("getTop40LapsTimes (onlyUnique)", Logger.LogType.info, executionTime);
-                             
-                // нам приходит список пилотов отсортированный по лучшему времени круга
-                foreach (users item in pilots)
+                SqlCommand.CommandText = "" +
+                            " select race_data.*, users.id as user_id, users.name as username " +
+                            " from race_data " +
+                            " join races on races.id = race_data.race_id " +
+                            " join users on race_data.pilot_id = users.id " +
+                            " where races.track_id = @TRACK_ID ";
+                SqlCommand.Parameters.AddWithValue("@TRACK_ID", idTrack);
+                da.SelectCommand = SqlCommand;
+                DataSet ds = new DataSet();
+
+                conn.Open();
+                da.Fill(ds);
+                conn.Close();
+
+
+                List<int> listUsersInts = new List<int>();
+
+                foreach (DataRow row in ds.Tables[0].Rows)
                 {
-                    // выберем лучшее время по каждому пилоту
-                    race_times bestPilotRaceTime =
-                        (from rt in edb.race_times
-                         where (rt.race_data.pilot_id == item.id)
-                         select rt).OrderBy(m => m.seconds).Take(1).SingleOrDefault();
 
-                    if (bestPilotRaceTime != null)
+                    
+                    race_data rdData = new race_data();
+                    rdData.user = new users();
+                    rdData.race = new races();
+                    rdData.race.track = new tracks();
+
+                    rdData.user.id = Convert.ToInt32(row[2]);
+                    rdData.pilot_id = Convert.ToInt32(row[2]);
+                    rdData.id = Convert.ToInt32(row[0]);
+                    rdData.race_id = Convert.ToInt32(row[1]);
+                    rdData.created = Convert.ToDateTime(row[4]);
+
+                    using (SqlCommand newmCommand
+                        = new SqlCommand(
+                            "select race_times.*, " +
+                            "race_data.race_id as raceid, " +
+                            "users.name , " +
+                            "users.surname, " +
+                            "users.nickname, " +
+                            "users.tel, " +
+                            "users.email, " +
+                            "races.racedate, " +
+                            "tracks.name as track_name " +
+                            "from race_times  " +
+                            "join race_data on race_times.member_id = race_data.id  " +
+                            "left join users on users.id = race_data.pilot_id " +
+                            "left join races on races.id = race_data.race_id " +
+                            "left join tracks on tracks.id = races.track_id " +
+                            "where race_times.seconds in(  " +
+                            "select min(race_times.seconds)  " +
+                            "from race_times  join race_data on race_times.member_id = race_data.id  " +
+                            "where race_data.pilot_id = @USER_ID)  " +
+                            "and race_data.pilot_id = @USER_ID ", db))
                     {
-                        result.Add(bestPilotRaceTime);                       
+                        newmCommand.Parameters.AddWithValue("@USER_ID", row[2]);
+                        if (listUsersInts.Contains(Convert.ToInt32(row[2])))
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            listUsersInts.Add(Convert.ToInt32(row[2]));
+                        }
+
+                        Console.WriteLine(@"@USER_ID===" + row[2]);
+                        using (SqlDataReader res1 = newmCommand.ExecuteReader())
+                        {
+                            while (res1.Read())
+                            {
+
+                                race_times rsTimes = new race_times();
+                                rdData.user.name = res1[6].ToString();
+                                rdData.user.surname = res1[7].ToString();
+                                rdData.user.nickname = res1[8].ToString();
+                                rdData.user.tel = res1[9].ToString();
+                                rdData.user.email = res1[10].ToString();
+
+                                rdData.race.racedate = Convert.ToDateTime(res1[11].ToString());
+                                rdData.race.track.name = res1[12].ToString();
+                                rdData.race.track_id = idTrack;
+                                rdData.race.raceid = res1[5].ToString();
+
+                                rsTimes.id = Convert.ToInt32(res1[0]);
+                                rsTimes.lap = Convert.ToInt32(res1[1]);
+                                rsTimes.seconds = Convert.ToDecimal(res1[2]);
+                                rsTimes.created = Convert.ToDateTime(res1[3]);
+                                rsTimes.race_data = (race_data)(rdData);
+                                result.Add(rsTimes);
+                            }
+                        }
                     }
+
                 }
+
             }
             else
             {
@@ -1455,7 +1527,7 @@ namespace Prokard_Timing
         }
 
         // Преобразовывает результат в ассоциативный массив
-        private Hashtable ConvertResult(SqlDataReader row)
+        public Hashtable ConvertResult(SqlDataReader row)
         {
             Hashtable res = new Hashtable();
             for (int i = 0; i < row.FieldCount; i++)
@@ -2199,7 +2271,7 @@ namespace Prokard_Timing
             Hashtable ret = new Hashtable();
             if (connected)
             {
-                //  MessageBox.Show("load Settings");
+                 // MessageBox.Show("load Settings");
 
                 using (SqlCommand cmd = new SqlCommand("select name,val from settings", db2))
                 {
@@ -2970,7 +3042,7 @@ namespace Prokard_Timing
                     race_times someRaceTime = raceTimes.ElementAt(i);
 
                     Hashtable row = new Hashtable();
-                    //row["track_name"] = someRaceTime.race_data.race.track.name;
+                    row["track_name"] = someRaceTime.race_data.race.track.name;
                     row["name"] = someRaceTime.race_data.user.name;
                     row["nickname"] = someRaceTime.race_data.user.nickname;
                     row["created"] = someRaceTime.race_data.created;
@@ -2979,10 +3051,10 @@ namespace Prokard_Timing
                     row["seconds"] = someRaceTime.seconds;
                     row["email"] = someRaceTime.race_data.user.email;
                     row["pilot_id"] = someRaceTime.race_data.pilot_id;
-                   // row["racedate"] = someRaceTime.race_data.race.racedate;
+                    row["racedate"] = someRaceTime.race_data.race.racedate;
                     row["id"] = someRaceTime.id;
-                    //row["track_id"] = someRaceTime.race_data.race.track_id;
-                    //row["race_id"] = someRaceTime.race_data.race.raceid;
+                    row["track_id"] = someRaceTime.race_data.race.track_id;
+                    row["race_id"] = someRaceTime.race_data.race.raceid;
 
                     ret.Add(row);
                 }
@@ -4395,8 +4467,8 @@ namespace Prokard_Timing
         // Проверка входа пользователя или получение пользователя
         public Hashtable GetProgramUserBarCode(string BarCode)
         {
-
             Hashtable ret = new Hashtable();
+         //   Hashtable ret = localSetts.GetProgramUserBarCode(BarCode);
 
             if (connected)
             {
@@ -4407,11 +4479,16 @@ namespace Prokard_Timing
                 using (SqlCommand cmd = new SqlCommand(query, db2))
                 using (SqlDataReader res = cmd.ExecuteReader())
                     if (res.Read())
-                        ret = ConvertResult(res);
+                        if (res != null)
+                        {
+                            ret = ConvertResult(res);
+                        }
+
             }
 
             return ret;
         }
+
         //Получает имя пользователя
         public string GetProgramUserName(string ID)
         {
@@ -5028,6 +5105,7 @@ namespace Prokard_Timing
         }
 
         #endregion
+
 
 
 

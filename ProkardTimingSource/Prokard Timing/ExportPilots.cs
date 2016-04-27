@@ -145,7 +145,7 @@ namespace Prokard_Timing
             progressBar1.Minimum = 0;
             progressBar1.Maximum = pilots.Count;
 
-            string templateLocation = Program.programFolder + "\\ExportPilotsTemplate\\pilotsTemplate.xlst";
+            string templateLocation = Program.ProgramFolder + "\\ExportPilotsTemplate\\pilotsTemplate.xlst";
 
             if (File.Exists(templateLocation) == false)
             {

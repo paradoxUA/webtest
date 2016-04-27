@@ -1011,7 +1011,6 @@
             this.connectionString_textBox9.Location = new System.Drawing.Point(7, 20);
             this.connectionString_textBox9.Multiline = true;
             this.connectionString_textBox9.Name = "connectionString_textBox9";
-            this.connectionString_textBox9.ReadOnly = true;
             this.connectionString_textBox9.Size = new System.Drawing.Size(332, 168);
             this.connectionString_textBox9.TabIndex = 0;
             // 

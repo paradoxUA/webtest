@@ -1063,11 +1063,9 @@ namespace Prokard_Timing
             dv.Rows.Clear();
 
             List<Hashtable> res = model.GetAllPgrogramUsers(0);
-
             for (int i = 0; i < res.Count; i++)
             {
                 dv.Rows.Add();
-
                 dv.Rows[i].Cells[0].Value = res[i]["id"];
                 dv.Rows[i].Cells[1].Value = res[i]["login"];
                 dv.Rows[i].Cells[2].Value = GetProgramUsersStat(Convert.ToInt32(res[i]["stat"]));

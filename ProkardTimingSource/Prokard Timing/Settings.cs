@@ -130,8 +130,8 @@ namespace Prokard_Timing
             numericUpDown8.Value = Convert.ToInt32(sett["warm_time"]??0);
 
             // connection string
-            connectionString_textBox9.Text = ProkardModel.connectionString;
-
+            Configuration config = System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Configuration.ConfigurationUserLevel.None);
+            connectionString_textBox9.Text = config.AppSettings.Settings["crazykartConnectionString"].Value;
 
             //Закладка временных скидок
             isTimeDiscountsAvailable_checkBox13.Checked = Convert.ToBoolean(sett["racesale"] ?? false);
@@ -249,8 +249,27 @@ namespace Prokard_Timing
 
 
             // connection string
-           // ConfigurationManager.ConnectionStrings["crazykartConnectionString"].ConnectionString = connectionString_textBox9.Text;
+           // ConfigurationManager.AppSettings.Add("crazykartConnectionString", connectionString_textBox9.Text);//.ConnectionStrings["crazykartConnectionString"].ConnectionString = connectionString_textBox9.Text;
+           // Configuration config =
+           //     ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal);
+          //  config.AppSettings.Settings.Remove("crazykartConnectionString");
+           // config.AppSettings.Settings.Add("crazykartConnectionString", connectionString_textBox9.Text);
+          //  ConfigurationManager.ConnectionStrings.Clear();
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+           // Properties.Settings.crazykartConnectionString = connectionString_textBox9.Text;
+            config.AppSettings.Settings.Remove("crazykartConnectionString");
+            config.AppSettings.Settings.Add("crazykartConnectionString", connectionString_textBox9.Text);
+            //Save the configuration file.
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings"); 
 
+            
+            // Save the configuration file.
+          //  config.Save(ConfigurationSaveMode.Modified, true);
+            // Force a reload of a changed section.
+            ConfigurationManager.RefreshSection("appSettings");
+            // Settings.Default.crazykartConnectionString = MyNewValue;
+          //  Settings.Default.Save();
 
             //Закладка временных скидок
             sett["racesale"] = isTimeDiscountsAvailable_checkBox13.Checked;

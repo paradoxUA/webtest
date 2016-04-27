@@ -81,13 +81,16 @@
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\source\ProkardTimingSource\dlls\Microsoft.TeamFoundation.Client.dll</HintPath>
+      <HintPath>..\dlls\Microsoft.TeamFoundation.Client.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore">
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationFramework">
       <Private>True</Private>
+    </Reference>
+    <Reference Include="SQLite.NET">
+      <HintPath>..\dlls\SQLite.NET.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>True</Private>
@@ -270,6 +273,7 @@
     <Compile Include="ChangeRace.Designer.cs">
       <DependentUpon>ChangeRace.cs</DependentUpon>
     </Compile>
+    <Compile Include="checkDb.cs" />
     <Compile Include="CheckSensors.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -286,6 +290,12 @@
     </Compile>
     <Compile Include="CorrectBallance.Designer.cs">
       <DependentUpon>CorrectBallance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DbSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DbSettings.Designer.cs">
+      <DependentUpon>DbSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="ExportPilots.cs">
       <SubType>Form</SubType>
@@ -305,6 +315,7 @@
     <Compile Include="Forms\Petroleum\PetroleumSpend.Designer.cs">
       <DependentUpon>PetroleumSpend.cs</DependentUpon>
     </Compile>
+    <Compile Include="localSettsDb.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="model\cassa.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -552,6 +563,7 @@
     <Compile Include="ShowEventMessage.Designer.cs">
       <DependentUpon>ShowEventMessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="testClass1.cs" />
     <Compile Include="TestDataFiller.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -633,6 +645,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DayStatistic.resx">
       <DependentUpon>DayStatistic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DbSettings.resx">
+      <DependentUpon>DbSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportPilots.resx">
       <DependentUpon>ExportPilots.cs</DependentUpon>
@@ -999,17 +1014,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\layout.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="VBIDE">
-      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
-      <VersionMajor>5</VersionMajor>
-      <VersionMinor>3</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

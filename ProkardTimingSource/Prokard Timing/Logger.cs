@@ -37,7 +37,7 @@ namespace Prokard_Timing
 
             record += "\r\n";
 
-            File.AppendAllText(Program.programFolder + "//" + fileName + fileSuffix + ".txt", record);
+            File.AppendAllText(Program.ProgramFolder + "//" + fileName + fileSuffix + ".txt", record);
         }
 
 

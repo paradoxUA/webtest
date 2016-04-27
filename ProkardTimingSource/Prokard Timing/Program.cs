@@ -8,7 +8,7 @@ namespace Prokard_Timing
 {
     static class Program
     {
-        public static string programFolder;
+        public static string ProgramFolder;
 
         /// <summary>
         /// Главная точка входа для приложения.
@@ -16,13 +16,16 @@ namespace Prokard_Timing
         [STAThread]
         static void Main(string [] args)
         {
-            programFolder = Directory.GetCurrentDirectory();
+            ProgramFolder = Directory.GetCurrentDirectory();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-                      
 
-            ProgramActivation pa = new ProgramActivation();
+
+         //   var test = new testClass1();
+          //  test.testClass();
+
+            var pa = new ProgramActivation();
             
             if (args.Length > 0)
             {
@@ -33,29 +36,39 @@ namespace Prokard_Timing
             }
              
            // pa.SaveKey();
-            int activate =pa.KeyIsActive();
+            var activate = pa.KeyIsActive();
 
             switch (activate)
             {
-                case 0: MessageBox.Show("Файл с ключом не найден!","Активация",MessageBoxButtons.OK,MessageBoxIcon.Error); Application.Exit(); break;
+                case 0: MessageBox.Show(@"Файл с ключом не найден!", @"Активация", MessageBoxButtons.OK, MessageBoxIcon.Error); Application.Exit(); break;
                 case 1:
+                {
+
+                    Thread.CurrentThread.Priority = ThreadPriority.Highest;
+                    Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.High;
+                    if (!checkDb.ConnectGood())
                     {
-                        
-                        Thread.CurrentThread.Priority = ThreadPriority.Highest;
-                        Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.High;
-
+                        if (
+                            MessageBox.Show(@"Ошибка доступа к БД! Желаете настроить доступы?", @"Ошибка БД",
+                                MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            Application.Run(new DbSettings());
+                        }
+                        else
+                        {
+                            Application.Run(new MainForm());
+                        }
+                    }
+                    else
+                    {
                         Application.Run(new MainForm());
+                    }
 
-                    } break;
-                case 2: MessageBox.Show("Неверный ключ программы","Активация",MessageBoxButtons.OK,MessageBoxIcon.Error); Application.Exit(); break;
+                }
+                    break;
+                case 2: MessageBox.Show(@"Неверный ключ программы", @"Активация", MessageBoxButtons.OK, MessageBoxIcon.Error); Application.Exit(); break;
                 default: Application.Exit(); break;
             }
-
-
-
-
-
-
         }
     }
 }
