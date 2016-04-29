@@ -25,7 +25,7 @@ namespace Prokard_Timing
                 GroupID = GrID;
 
                 textBox1.Text = Name;
-                textBox2.Text = Sale.Replace(',', '.');
+                textBox2.Text = Sale;
             }
 
 
@@ -50,7 +50,7 @@ namespace Prokard_Timing
             else
             {
                 int numVal;
-                Int32.TryParse(textBox2.Text.Replace(',', '.').Split('.')[0], out numVal);
+                Int32.TryParse(textBox2.Text.Split(',')[0], out numVal);
                 if (numVal > 100)
                 {
                     MessageBox.Show(@"Ошибка! Скидка не может быть более 100%!");
