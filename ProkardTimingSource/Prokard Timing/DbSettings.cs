@@ -16,7 +16,15 @@ namespace Prokard_Timing
         {
             InitializeComponent();
             Configuration config = System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Configuration.ConfigurationUserLevel.None);
-            richTextBox1.Text = config.AppSettings.Settings["crazykartConnectionString"].Value;
+            try
+            {
+                richTextBox1.Text = config.AppSettings.Settings["crazykartConnectionString"].Value;
+            }
+            catch (Exception exception)
+            {
+                config.AppSettings.Settings.Add("crazykartConnectionString", "");
+            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

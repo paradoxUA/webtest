@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Windows;
 
 namespace Prokard_Timing
 {
@@ -16,18 +17,27 @@ namespace Prokard_Timing
 
         public static bool ConnectGood()
         {
-            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            connectionString = config.AppSettings.Settings["crazykartConnectionString"].Value;
-
             var connectGood = false;
-            var db = new SqlConnection(connectionString);
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             try
             {
-                db.Open();
-                connectGood = true;
+                connectionString = config.AppSettings.Settings["crazykartConnectionString"].Value;
+
+                connectGood = false;
+                var db = new SqlConnection(connectionString);
+                try
+                {
+                    db.Open();
+                    connectGood = true;
+                }
+                catch (Exception e)
+                {
+                }
+                return connectGood;
             }
             catch (Exception e)
             {
+                connectGood = false;
             }
             return connectGood;
         }

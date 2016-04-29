@@ -4,8 +4,11 @@ using System.Configuration;
 using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using Prokard_Timing.model;
 
@@ -16,8 +19,52 @@ namespace Prokard_Timing
                     private crazykartContainer edb;
         public static string connectionString = "";
         private SqlConnection db, db1, conn;
+        private SerialPort RS232;
+        private void RS232_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            if (RS232.IsOpen)
+            {
+
+                string code = RS232.ReadExisting();
+                Task.Factory.StartNew(new Action(startParser));
+                Console.WriteLine(code);
+            }
+        }
+
+        private void startParser()
+        {
+            
+        }
+
+        public void testClass11()
+        {
+            RS232 = new SerialPort(Convert.ToString("COM1"), 9600, Parity.None, 8, StopBits.One);
+            RS232.ReadBufferSize = 32;
+            RS232.RtsEnable = true;
+            RS232.DataReceived += new SerialDataReceivedEventHandler(RS232_DataReceived);
+            RS232.Open();
+
+        }
+
+        public void startQueue(string param)
+        {
+
+            Thread.CurrentThread.Suspend();
+
+        }
+
         public void testClass()
         {
+
+
+           // Thread thread = new Thread();
+
+
+
+
+
+
+
             int idTrack = 9;
             int amountOfRecords = 20;
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
@@ -187,5 +234,6 @@ namespace Prokard_Timing
 
 
         }
+
     }
 }
