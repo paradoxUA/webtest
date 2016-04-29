@@ -1,0 +1,10 @@
+*.exe
+ProkardTimingSource/CrazyKartActivation/bin/Debug/CrazyKartActivation.pdb
+*.Cache
+ProkardTimingSource/CrazyKartActivation/obj/x86/Debug/CrazyKartActivation.exe
+*.pdb
+*.exe
+ProkardTimingSource/Prokard Timing/bin/Debug/Prokard_Timing.pdb
+ProkardTimingSource/CrazyKartActivation/bin/Debug/CrazyKartActivation.exe
+*.exe
+ProkardTimingSource/CrazyKartActivation/bin/Debug/CrazyKartActivation.exe
