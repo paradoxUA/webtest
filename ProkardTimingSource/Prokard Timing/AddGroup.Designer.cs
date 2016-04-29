@@ -32,13 +32,12 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.labelSmooth2 = new Prokard_Timing.LabelSmooth();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.labelSmooth1 = new Prokard_Timing.LabelSmooth();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.borderPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // borderPanel1
@@ -47,9 +46,9 @@
             this.borderPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel1.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel1.BorderPadding = new System.Windows.Forms.Padding(0);
-            this.borderPanel1.BorderSides = ((Microsoft.TeamFoundation.Client.BorderPanel.Sides)((((Microsoft.TeamFoundation.Client.BorderPanel.Sides.Top | Microsoft.TeamFoundation.Client.BorderPanel.Sides.Bottom)
-                        | Microsoft.TeamFoundation.Client.BorderPanel.Sides.Left)
-                        | Microsoft.TeamFoundation.Client.BorderPanel.Sides.Right)));
+            this.borderPanel1.BorderSides = ((Microsoft.TeamFoundation.Client.BorderPanel.Sides)((((Microsoft.TeamFoundation.Client.BorderPanel.Sides.Top | Microsoft.TeamFoundation.Client.BorderPanel.Sides.Bottom) 
+            | Microsoft.TeamFoundation.Client.BorderPanel.Sides.Left) 
+            | Microsoft.TeamFoundation.Client.BorderPanel.Sides.Right)));
             this.borderPanel1.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
             this.borderPanel1.Controls.Add(this.button2);
             this.borderPanel1.Controls.Add(this.button1);
@@ -88,7 +87,7 @@
             // 
             this.panel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.numericUpDown1);
+            this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.labelSmooth2);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.labelSmooth1);
@@ -97,13 +96,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(324, 85);
             this.panel1.TabIndex = 2;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(83, 46);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 3;
             // 
             // labelSmooth2
             // 
@@ -136,6 +128,13 @@
             this.labelSmooth1.Text = "Название";
             this.labelSmooth1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(83, 45);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(219, 20);
+            this.textBox2.TabIndex = 4;
+            // 
             // AddGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,7 +155,6 @@
             this.borderPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -169,9 +167,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private LabelSmooth labelSmooth2;
         private System.Windows.Forms.TextBox textBox1;
         private LabelSmooth labelSmooth1;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

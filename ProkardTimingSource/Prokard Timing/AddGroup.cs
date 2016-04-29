@@ -25,7 +25,7 @@ namespace Prokard_Timing
                 GroupID = GrID;
 
                 textBox1.Text = Name;
-                numericUpDown1.Value = Convert.ToInt32(Sale);
+                textBox2.Text = Sale.Replace(',', '.');
             }
 
 
@@ -43,15 +43,28 @@ namespace Prokard_Timing
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length == 0) MessageBox.Show("Ошибка! Название не может быть пустым"); else
+            if (textBox1.Text.Length == 0)
             {
-                if (sUpdate)
-                    admin.model.ChangeGroup(textBox1.Text, numericUpDown1.Value.ToString(), GroupID);
+                MessageBox.Show(@"Ошибка! Название не может быть пустым");
+            }
+            else
+            {
+                int numVal;
+                Int32.TryParse(textBox2.Text.Replace(',', '.').Split('.')[0], out numVal);
+                if (numVal > 100)
+                {
+                    MessageBox.Show(@"Ошибка! Скидка не может быть более 100%!");
+                }
                 else
-                    admin.model.AddGroup(textBox1.Text, numericUpDown1.Value.ToString());
+                {
+                    if (sUpdate)
+                        admin.model.ChangeGroup(textBox1.Text, textBox2.Text, GroupID);
+                    else
+                        admin.model.AddGroup(textBox1.Text, textBox2.Text);
 
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                this.Close();
+                    this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                    this.Close();
+                }
             }
         }
     }
