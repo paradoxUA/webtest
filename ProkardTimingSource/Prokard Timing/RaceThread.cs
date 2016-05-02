@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Threading;
 using System.IO.Ports;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text;
+using Prokard_Timing.model;
+using Timer = System.Threading.Timer;
 
 namespace Prokard_Timing
 {
@@ -63,6 +68,7 @@ namespace Prokard_Timing
                 }
             }
         }
+
         public RaceThread(AdminControl admin)
         {
             this.admin = admin;
@@ -224,6 +230,7 @@ namespace Prokard_Timing
                 //      StackReceive.Enqueue(RS232.ReadLine());
                // Task.Factory.StartNew(startParser);
                 AMB20_SaveData(RS232.ReadLine().ToString());
+
             }
         }
 
@@ -263,6 +270,7 @@ namespace Prokard_Timing
             {
                 return;
             }  
+
             //if (Res.Transponder.Length > 0 && Res.Transponder != "00")
                 if (Res.Transponder.Length > 0)
             {
@@ -508,7 +516,8 @@ namespace Prokard_Timing
                 {
                     Console.WriteLine("String can not be parsed." + ex.Message);
                 }
-
+                string xz = String.Concat(decBits[18 - 1], decBits[19 - 1], decBits[20 - 1], decBits[21 - 1]);
+                
                 Ret.Transponder = String.Concat(decBits[14 - 1], decBits[15 - 1], decBits[16 - 1], decBits[17 - 1]);
                 Ret.Hour = Convert.ToInt16(decBits[7 - 1]);
                 Ret.Minutes = Convert.ToInt16(decBits[8 - 1]);
@@ -531,6 +540,170 @@ namespace Prokard_Timing
             return Ret;
 
         }
+
+
+
+        public static string connectionString = "";
+        private static SqlConnection db, db1, conn;
+
+
+        private static int flagComRead = 0;
+        private static Timer Timer1;
+        public static Dictionary<long,string> dic = new Dictionary<long, string>(); 
+
+
+        public void RS232_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            
+          //  Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+          //  connectionString = config.AppSettings.Settings["crazykartConnectionString"].Value;
+
+          //  db = new SqlConnection(connectionString);
+          //  db.Open();
+
+            if (RS232.IsOpen)
+            {
+                flagComRead = 1;
+                if (Timer1 == null)
+                {
+                    startReadComDataFormDb();
+                }
+                else
+                {
+                    Timer1.Change(1000, 1000);
+                }
+                string s = RS232.ReadLine();
+               // s = convertAsciiTextToHex(s);
+                dic.Add(DateTime.Now.Ticks, s);
+                //testClass1.WriteLog(" RS232_DataReceived ", "поток=" + Thread.CurrentThread.ManagedThreadId + " s =" + s);
+
+               // if (s.Length >= 31 * 2 + 30)
+               // {
+               //     var res = AMB20_Decode(s);
+               //     Console.WriteLine(res.receivedString);
+               //     using (SqlCommand cmd = new SqlCommand("insert into comlogs (comdata, created) values ('" + res.receivedString + "',GETDATE())", db))
+               //     {
+                //        cmd.ExecuteNonQuery();
+                //        testClass1.WriteLog(" RS232_DataReceived ", "поток=" + Thread.CurrentThread.ManagedThreadId + " cmd =" + cmd.CommandText);
+                //    }
+
+                    //    writetext.WriteLine(res.receivedString);
+               // }
+                //string code = RS232.ReadExisting();
+                //Task.Factory.StartNew(new Action(startParser));
+               // db.Close();
+                //  Console.WriteLine(code);
+            }
+        }
+
+        internal void startReadComDataFormDb()
+        {
+            int num = 1;
+            TimerCallback tm = new TimerCallback(ReadComDataFormDb);
+            Timer1 = new Timer(tm, num, 0, 2000);
+            //testClass1.WriteLog(" startReadComDataFormDb ", "поток=" + Thread.CurrentThread.ManagedThreadId + " START ");
+        }
+
+        private void ReadComDataFormDb(object sender)
+        {
+            //testClass1.WriteLog(" readComDataFormDb ", "поток=" + Thread.CurrentThread.ManagedThreadId + " flagComRead = " + flagComRead);
+
+            foreach (var obj in dic)
+            {
+                AMB20_SaveData(obj.Value);
+                Thread.Sleep(500);
+                dic.Remove(obj.Key);
+            }
+
+            //if (flagComRead == 1)
+            //{
+            //   string StringNotOperated = getStringNotOperatedFromDb();
+
+            //    conn = new SqlConnection(connectionString);
+            //    conn.Open();
+            //    try
+            //    {
+            //        using (SqlCommand cmd = new SqlCommand("select top 1 * from comlogs where operated = 0", db1))
+            //        {
+            //            testClass1.WriteLog(" readComDataFormDb ",
+            //                "поток=" + Thread.CurrentThread.ManagedThreadId + " cmd = " + cmd.CommandText);
+            //            lock (cmd)
+            //            {
+            //                var res = cmd.ExecuteScalar();
+            //                if (res == null)
+            //                {
+            //                    flagComRead = 0;
+            //                }
+
+            //                SqlDataReader reader = cmd.ExecuteReader();
+
+            //                while (reader.Read())
+            //                {
+            //                    testClass1.WriteLog(" readComDataFormDb ",
+            //                        "поток=" + Thread.CurrentThread.ManagedThreadId + " line = " + reader[1].ToString());
+
+            //                    AMB20_SaveData(reader[2].ToString());
+            //                    if (conn.State == ConnectionState.Open)
+            //                    {
+            //                        lock (conn)
+            //                        {
+
+            //                            using (
+            //                                SqlCommand cmd1 =
+            //                                    new SqlCommand(
+            //                                        "update comlogs set operated = 1 where id = " + reader[0].ToString(),
+            //                                        conn))
+            //                            {
+            //                                testClass1.WriteLog(" readComDataFormDb ",
+            //                                    "поток=" + Thread.CurrentThread.ManagedThreadId + " cmd = " +
+            //                                    cmd.CommandText);
+
+            //                                cmd1.ExecuteNonQuery();
+
+            //                                testClass1.WriteLog(" readComDataFormDb ",
+            //                                    "поток=" + Thread.CurrentThread.ManagedThreadId + " cmd =" +
+            //                                    cmd1.CommandText);
+            //                            }
+            //                        }
+            //                    }
+            //                }
+            //                reader.Close();
+
+            //            }
+            //        }
+            //        conn.Close();
+            //        db1.Close();
+            //    }
+            //    catch (Exception es)
+            //    {
+            //        Console.WriteLine(es.Message);
+            //    }
+            //}
+            //else
+            //{
+            //    Timer1.Change(60 * 1000, 60 * 1000 * 5);
+            //}
+        }
+
+        private string getStringNotOperatedFromDb()
+        {
+            string res = "";
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            connectionString = config.AppSettings.Settings["crazykartConnectionString"].Value;
+
+            db1 = new SqlConnection(connectionString);
+            db1.Open();
+            if (db1.State == ConnectionState.Open)
+            {
+                
+            }
+            return res;
+        }
+
+
+
+
+
     }
 
     public class Emulator

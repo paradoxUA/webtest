@@ -486,7 +486,9 @@ namespace Prokard_Timing
 
                 string selectedTimeString = RaceMode_comboBox.SelectedItem.ToString(); // 10 минут 
                 selectedTimeString = selectedTimeString.Substring(0, selectedTimeString.IndexOf(" "));
-            
+                DbSettings dbsettings = new DbSettings();
+                dbsettings.Show();
+
                 //TODO вынести в глобальный метод
                 parent.admin.RaceTH.ThreadStart(Convert.ToInt16(selectedTimeString));
 

@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
@@ -16,31 +17,235 @@ namespace Prokard_Timing
 {
     class testClass1
     {
-                    private crazykartContainer edb;
+        private static crazykartContainer edb;
         public static string connectionString = "";
-        private SqlConnection db, db1, conn;
-        private SerialPort RS232;
-        private void RS232_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private static SqlConnection db, db1, conn;
+        private static SerialPort RS232;
+
+        private static Dictionary<int, string> dict = new Dictionary<int, string>();
+
+        private static int flagComRead = 0;
+        private static Timer Timer1;
+
+
+
+        public void RS232_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            connectionString = config.AppSettings.Settings["crazykartConnectionString"].Value;
+
+            db = new SqlConnection(connectionString);
+            db.Open();
+
             if (RS232.IsOpen)
             {
+                flagComRead = 1;
+                if (Timer1 == null)
+                {
+                    startReadComDataFormDb();
+                }
+                else
+                {
+                    Timer1.Change(1000, 1000);
+                }
+                
+                //{
+                //    Task.Factory.StartNew(startReadComDataFormDb);
+                //}
+                
+              //  StreamWriter writetext = new StreamWriter("write.txt");
+            string s = RS232.ReadLine();
+            testClass1.WriteLog(" RS232_DataReceived ", "поток=" + Thread.CurrentThread.ManagedThreadId + " s =" + s);
+           // s = convertAsciiTextToHex(s); //вызов функция конвертации
 
-                string code = RS232.ReadExisting();
-                Task.Factory.StartNew(new Action(startParser));
-                Console.WriteLine(code);
+            if (s.Length >= 31 * 2 + 30)
+            {
+                var res = AMB20_Decode(s);
+                Console.WriteLine(res.receivedString);
+                using (SqlCommand cmd = new SqlCommand("insert into comlogs (comdata, created) values ('" + res.receivedString + "',GETDATE())", db))
+                {
+                    cmd.ExecuteNonQuery();
+                    testClass1.WriteLog(" RS232_DataReceived ", "поток=" + Thread.CurrentThread.ManagedThreadId + " cmd =" + cmd.CommandText);
+                }
+
+                //    writetext.WriteLine(res.receivedString);
+            }
+                //string code = RS232.ReadExisting();
+                //Task.Factory.StartNew(new Action(startParser));
+                db.Close();
+              //  Console.WriteLine(code);
             }
         }
 
+        internal static void startReadComDataFormDb()
+        {
+            int num = 1;
+            TimerCallback tm = new TimerCallback(readComDataFormDb);
+            Timer1 = new Timer(tm, num, 0, 2000);
+            testClass1.WriteLog(" startReadComDataFormDb ", "поток=" + Thread.CurrentThread.ManagedThreadId + " START ");
+        }
+
+        private static void readComDataFormDb(object sender)
+        {
+            testClass1.WriteLog(" readComDataFormDb ", "поток=" + Thread.CurrentThread.ManagedThreadId + " flagComRead = " + flagComRead);
+
+            if (flagComRead == 1)
+            {
+                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                connectionString = config.AppSettings.Settings["crazykartConnectionString"].Value;
+
+                db1 = new SqlConnection(connectionString);
+                db1.Open();
+
+                conn = new SqlConnection(connectionString);
+                conn.Open();
+
+                using (SqlCommand cmd = new SqlCommand("select * from comlogs where operated = 0", db1))
+                {
+                    testClass1.WriteLog(" readComDataFormDb ",
+                        "поток=" + Thread.CurrentThread.ManagedThreadId + " cmd = " + cmd.CommandText);
+                    //cmd.ExecuteScalar();
+                    var res = cmd.ExecuteScalar();
+                    if(res==null) { flagComRead = 0; }
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+
+                    while (reader.Read())
+                    {
+                        testClass1.WriteLog(" readComDataFormDb ",
+                            "поток=" + Thread.CurrentThread.ManagedThreadId + " line = " + reader[1].ToString());
+                        //RaceThread raceThread = new RaceThread(new AdminControl(2016, 3, 1));
+                        //raceThread.AMB20_SaveData(reader[2].ToString());
+                        using (
+                            SqlCommand cmd1 =
+                                new SqlCommand("update comlogs set operated = 1 where id = " + reader[0].ToString(),
+                                    conn))
+                        {
+                            testClass1.WriteLog(" readComDataFormDb ",
+                                "поток=" + Thread.CurrentThread.ManagedThreadId + " cmd = " + cmd.CommandText);
+
+                            cmd1.ExecuteNonQuery();
+
+                            testClass1.WriteLog(" readComDataFormDb ",
+                                "поток=" + Thread.CurrentThread.ManagedThreadId + " cmd =" + cmd1.CommandText);
+                        }
+
+                    }
+                    reader.Close();
+                }
+
+
+            }
+            else
+            {
+                Timer1.Change(60*1000, 60*1000*5);
+            }
+        }
+
+        private static object sync = new object();
+        public static void WriteLog(string method, string text)
+        {
+            try
+            {
+                // Путь .\\Log
+                string pathToLog = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Log");
+                if (!Directory.Exists(pathToLog))
+                    Directory.CreateDirectory(pathToLog); // Создаем директорию, если нужно
+                string filename = Path.Combine(pathToLog, string.Format("{0}_{1:dd.MM.yyy}.log",
+                AppDomain.CurrentDomain.FriendlyName, DateTime.Now));
+                string fullText = string.Format("[{0:dd.MM.yyy HH:mm:ss.fff}] [{1}] {2}\r\n",
+                DateTime.Now, method, text);
+                lock (sync)
+                {
+                    File.AppendAllText(filename, fullText, Encoding.GetEncoding("Windows-1251"));
+                }
+            }
+            catch
+            {
+                // Перехватываем все и ничего не делаем
+            }
+        }
+        private String convertAsciiTextToHex(String i_asciiText)
+        {
+            StringBuilder sBuffer = new StringBuilder();
+            for (int i = 0; i < i_asciiText.Length; i++)
+            {
+                sBuffer.Append(Convert.ToInt32(i_asciiText[i]).ToString("x2") + " ");
+            }
+            return sBuffer.ToString().ToUpper();
+        }
+        public AMB20RX AMB20_Decode(string s)
+        {
+            AMB20RX Ret;
+            //if (s[0] == '@')
+            if (s.Length >= 31 * 2 + 30)
+            {
+                //s = s.Replace("\r\n", " ").Trim();
+                //Ret.Transponder = String.Concat(s[1], s[2]);
+                //Ret.Hour = Convert.ToInt16(String.Concat(s[3],s[4]));
+                //Ret.Minutes = Convert.ToInt16(String.Concat(s[5],s[6]));
+                //Ret.Seconds = Convert.ToInt16(String.Concat(s[7],s[8]));
+                //if (s.Length > 9)
+                //{
+                //    Ret.Millisecond = Convert.ToInt16(String.Concat(s[9],s[10]));
+                //    Ret.Millisecond = Ret.Millisecond * 10; // потому, что прибор присылает не 3 разряда, а только 2. а должно быть три
+                //    Ret.Hit = Convert.ToInt16(String.Concat(s[11],s[12]));
+                //}
+                //else
+                //{
+                //    Ret.Hit = Ret.Millisecond = 0;
+                //}
+                //Ret.receivedString = s;
+                s = s.Replace("\r\n", " ").Trim();
+                string[] hexBits = s.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] decBits = new string[hexBits.Length];
+                try
+                {
+                    for (int i = 0; i < hexBits.Length; i++)
+                    {
+                        decBits[i] = int.Parse(hexBits[i], System.Globalization.NumberStyles.HexNumber).ToString();
+                        //Console.WriteLine(i + ". " + hexBits[i] + " = " + decBits[i]);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("String can not be parsed." + ex.Message);
+                }
+
+                Ret.Transponder = String.Concat(decBits[14 - 1], decBits[15 - 1], decBits[16 - 1], decBits[17 - 1]);
+                Ret.Hour = Convert.ToInt16(decBits[7 - 1]);
+                Ret.Minutes = Convert.ToInt16(decBits[8 - 1]);
+                Ret.Seconds = Convert.ToInt16(decBits[9 - 1]);
+                Ret.Millisecond = Convert.ToInt16(String.Concat(decBits[18 - 1], decBits[19 - 1], decBits[20 - 1], decBits[21 - 1]));
+
+                Ret.Hit = Convert.ToInt16(String.Concat(decBits[22 - 1], decBits[23 - 1]));
+                Ret.receivedString = s;
+            }
+            else
+            {
+                Ret.Transponder = String.Empty;
+                Ret.Hit = 0;
+                Ret.Hour = 0;
+                Ret.Minutes = 0;
+                Ret.Seconds = 0;
+                Ret.Millisecond = 0;
+                Ret.receivedString = String.Empty;
+            }
+            return Ret;
+
+        }
+ 
         private void startParser()
         {
-            
+
         }
 
         public void testClass11()
         {
             RS232 = new SerialPort(Convert.ToString("COM1"), 9600, Parity.None, 8, StopBits.One);
-            RS232.ReadBufferSize = 32;
-            RS232.RtsEnable = true;
+           // RS232.ReadBufferSize = 32;
+          //  RS232.RtsEnable = true;
             RS232.DataReceived += new SerialDataReceivedEventHandler(RS232_DataReceived);
             RS232.Open();
 
@@ -234,6 +439,7 @@ namespace Prokard_Timing
 
 
         }
+
 
     }
 }
