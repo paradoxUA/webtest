@@ -429,5 +429,15 @@ namespace Prokard_Timing
                 sponsorsImagesFolder_textBox9.Text = fd.SelectedPath;
             }
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            createDbBackup();
+        }
+
+        private void createDbBackup()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
