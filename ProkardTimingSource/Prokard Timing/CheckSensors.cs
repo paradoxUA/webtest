@@ -40,13 +40,13 @@ namespace Prokard_Timing
         }
 
 
-        private void processLineFromComPort(string someLine, byte[] bytesToRec = null)
+        private void processLineFromComPort(string someLine)
         {
             string stringForLog = "";
 
               //string someAmbString = "@" + transponderNumber_textBox2.Text + DateTime.Now.ToString("HHmmssff") + rnd.Next(50).ToString("00");
             RaceThread rt = new RaceThread(admin);
-             AMB20RX Res =  rt.AMB20_Decode(someLine, bytesToRec);
+             AMB20RX Res =  rt.AMB20_Decode(someLine);
 
              if (Res.Transponder.Length > 0 && Res.Transponder != "00")
              {
@@ -87,40 +87,30 @@ namespace Prokard_Timing
             }
             return sBuffer.ToString().ToUpper();
         }
+        public string ASCIITOHex(string ascii)
+        {
 
+            StringBuilder sb = new StringBuilder();
+
+            byte[] inputBytes = Encoding.UTF8.GetBytes(ascii);
+
+            foreach (byte b in inputBytes)
+            {
+
+                sb.Append(string.Format("{0:x2}", b + " "));
+
+            }
+
+            return sb.ToString().ToUpper();
+
+        }
         private void RS232_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            SerialPort spL = (SerialPort)sender;
-
-            int techinfo = 27;
-            int fullinfo = 32;
-            byte[] bytesToRec = new byte[fullinfo];
-            spL.Read(bytesToRec, 0, techinfo);
-            string hexstringFromCom = BitConverter.ToString(bytesToRec);
-            string[] hexValuesSplit = hexstringFromCom.Split('-');
-            if (hexValuesSplit[techinfo - 1] != "0A")
+            string s = RS232.ReadLine();
+            s = ASCIITOHex(s); //вызов функция конвертации
+            if (s.Length >= 31 * 2 + 30 )
             {
-                spL.Read(bytesToRec, (techinfo-1), (fullinfo+1) - techinfo);
-            }
-            else
-            {
-                bytesToRec = new byte[fullinfo];
-                //spL.Read(bytesToRec, techinfo, fullinfo);
-                return;
-            }
-
-            if (bytesToRec.Length < 32)
-            {
-                string s = RS232.ReadLine();
-                s = convertAsciiTextToHex(s); //вызов функция конвертации
-                if (s.Length >= 31*2 + 30 || bytesToRec.Length > 31)
-                {
-                    processLineFromComPort(s, bytesToRec);
-                }
-            }
-            else
-            {
-                processLineFromComPort("", bytesToRec);
+                processLineFromComPort(s);
             }
         }
 

@@ -228,39 +228,7 @@ namespace Prokard_Timing
 
             if (Status == 1 || Status == 2)
             {
-                SerialPort spL = (SerialPort)sender;
-
-                // техническая информация
-                int techinfo = 27; 
-                // нормальный буфер данных
-                int fullinfo = 32;
-                // создаем массив байт под полный стек
-                byte[] bytesToRec = new byte[fullinfo];
-                // читаем в него данные до уровня буфера технической информации
-                spL.Read(bytesToRec, 0, techinfo);
-                // декодируем строку
-                string hexstringFromCom = BitConverter.ToString(bytesToRec);
-                string[] hexValuesSplit = hexstringFromCom.Split('-');
-                // если это техническая инфа - строка имеет длину 27 байт и заканчивается на 0A,
-                if (hexValuesSplit[techinfo - 1] != "0A")
-                {
-                    // если нет - читаем еще в буфер из порта начиная от 26 байта и заканчивая 31, чтобы объять все данные строки
-                    spL.Read(bytesToRec, (techinfo - 1), (fullinfo + 1) - techinfo);
-                }
-                else
-                {
-                    return;
-                }
-
-                if (bytesToRec.Length < 32)
-                {
-                    AMB20_SaveData(RS232.ReadLine(), bytesToRec);
-                }
-                else
-                {
-                    AMB20_SaveData("", bytesToRec);
-                }
-
+                    AMB20_SaveData(RS232.ReadLine());
 
             }
         }
@@ -277,7 +245,7 @@ namespace Prokard_Timing
         }
 
         // Сохраняет декодированные данные // TODO public for tests
-        public void AMB20_SaveData(string s, byte[] bytesToRec = null)
+        public void AMB20_SaveData(string s)
         {
             // получаем порцию данных от прибора. 
             // Это может быть пустая порция @00000036
@@ -292,12 +260,12 @@ namespace Prokard_Timing
                 return;
             }
 
-            if (bytesToRec != null)
-            {
-                AMB20RX Res = AMB20_Decode(s, bytesToRec);
-            }
-            else
-            {
+            //if (bytesToRec != null)
+            //{
+            //    AMB20RX Res = AMB20_Decode(s);
+            //}
+            //else
+            //{
                 AMB20RX Res = AMB20_Decode(s);
                 s = convertAsciiTextToHex(s); //вызов функция конвертации
                 // parses the string
@@ -449,7 +417,7 @@ namespace Prokard_Timing
                     #endregion
                 }
 
-            }
+            //}
         }
 
         // Добавляет случайному пилоту случаный карт при LightMode
@@ -522,34 +490,34 @@ namespace Prokard_Timing
   
         /// <returns></returns>
         
-        public AMB20RX AMB20_Decode(string s, byte[] bytesToRec = null)
+        public AMB20RX AMB20_Decode(string s)
           
         {
             AMB20RX Ret = new AMB20RX();
 
-            if (bytesToRec != null && bytesToRec.Length == 32)
-            {
-                string hexstringFromCom = BitConverter.ToString(bytesToRec);
-                string[] hexValuesSplit = hexstringFromCom.Split('-');
+            //if (bytesToRec != null && bytesToRec.Length == 32)
+            //{
+            //    string hexstringFromCom = BitConverter.ToString(bytesToRec);
+            //    string[] hexValuesSplit = hexstringFromCom.Split('-');
 
-                string trans = String.Concat(hexValuesSplit[13], hexValuesSplit[14], hexValuesSplit[15],
-                    hexValuesSplit[16]);
-                string hour = hexValuesSplit[6];
-                string min = hexValuesSplit[7];
-                string sec = hexValuesSplit[8];
-                string msec = String.Concat(hexValuesSplit[17], hexValuesSplit[18], hexValuesSplit[19],
-                    hexValuesSplit[20]);
-                string hit = String.Concat(hexValuesSplit[21], hexValuesSplit[22]);
+            //    string trans = String.Concat(hexValuesSplit[13], hexValuesSplit[14], hexValuesSplit[15],
+            //        hexValuesSplit[16]);
+            //    string hour = hexValuesSplit[6];
+            //    string min = hexValuesSplit[7];
+            //    string sec = hexValuesSplit[8];
+            //    string msec = String.Concat(hexValuesSplit[17], hexValuesSplit[18], hexValuesSplit[19],
+            //        hexValuesSplit[20]);
+            //    string hit = String.Concat(hexValuesSplit[21], hexValuesSplit[22]);
 
-                Ret.Transponder = Convert.ToInt16(trans, 16).ToString();
-                Ret.Hour = Convert.ToInt16(hour, 16);
-                Ret.Minutes = Convert.ToInt16(min, 16);
-                Ret.Seconds = Convert.ToInt16(sec, 16);
-                Ret.Millisecond = Convert.ToInt16(msec, 16);
-                Ret.Hit = Convert.ToInt16(hit, 16);
-            }
-            else
-            {
+            //    Ret.Transponder = Convert.ToInt16(trans, 16).ToString();
+            //    Ret.Hour = Convert.ToInt16(hour, 16);
+            //    Ret.Minutes = Convert.ToInt16(min, 16);
+            //    Ret.Seconds = Convert.ToInt16(sec, 16);
+            //    Ret.Millisecond = Convert.ToInt16(msec, 16);
+            //    Ret.Hit = Convert.ToInt16(hit, 16);
+            //}
+            //else
+            //{
 
                 //if (s[0] == '@')
                 if (s.Length >= 31*2 + 30)
@@ -572,12 +540,12 @@ namespace Prokard_Timing
                     //Ret.receivedString = s;
                     s = s.Replace("\r\n", " ").Trim();
                     string[] hexBits = s.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
-                    string[] decBits = new string[hexBits.Length];
+                    string[] hexValuesSplit = new string[hexBits.Length];
                     try
                     {
                         for (int i = 0; i < hexBits.Length; i++)
                         {
-                            decBits[i] = int.Parse(hexBits[i], System.Globalization.NumberStyles.HexNumber).ToString();
+                            hexValuesSplit[i] = int.Parse(hexBits[i], System.Globalization.NumberStyles.HexNumber).ToString();
                             //Console.WriteLine(i + ". " + hexBits[i] + " = " + decBits[i]);
                         }
                     }
@@ -585,17 +553,34 @@ namespace Prokard_Timing
                     {
                         Console.WriteLine("String can not be parsed." + ex.Message);
                     }
-                    string xz = String.Concat(decBits[18 - 1], decBits[19 - 1], decBits[20 - 1], decBits[21 - 1]);
 
-                    Ret.Transponder = String.Concat(decBits[14 - 1], decBits[15 - 1], decBits[16 - 1], decBits[17 - 1]);
-                    Ret.Hour = Convert.ToInt16(decBits[7 - 1]);
-                    Ret.Minutes = Convert.ToInt16(decBits[8 - 1]);
-                    Ret.Seconds = Convert.ToInt16(decBits[9 - 1]);
-                    Ret.Millisecond =
-                        Convert.ToInt16(String.Concat(decBits[18 - 1], decBits[19 - 1], decBits[20 - 1], decBits[21 - 1]));
+                   // string[] hexValuesSplit = s.Split(' ');
 
-                    Ret.Hit = Convert.ToInt16(String.Concat(decBits[22 - 1], decBits[23 - 1]));
-                    Ret.receivedString = s;
+                    string trans = String.Concat(hexValuesSplit[13], hexValuesSplit[14], hexValuesSplit[15],
+                        hexValuesSplit[16]);
+                    string hour = hexValuesSplit[6];
+                    string min = hexValuesSplit[7];
+                    string sec = hexValuesSplit[8];
+                    string msec = String.Concat(hexValuesSplit[17], hexValuesSplit[18], hexValuesSplit[19],
+                        hexValuesSplit[20]);
+                    string hit = String.Concat(hexValuesSplit[21], hexValuesSplit[22]);
+
+                    Ret.Transponder = Convert.ToInt16(trans, 16).ToString();
+                    Ret.Hour = Convert.ToInt16(hour, 16);
+                    Ret.Minutes = Convert.ToInt16(min, 16);
+                    Ret.Seconds = Convert.ToInt16(sec, 16);
+                    Ret.Millisecond = Convert.ToInt16(msec, 16);
+                    Ret.Hit = Convert.ToInt16(hit, 16);
+
+                    //Ret.Transponder = String.Concat(decBits[14 - 1], decBits[15 - 1], decBits[16 - 1], decBits[17 - 1]);
+                    //Ret.Hour = Convert.ToInt16(decBits[7 - 1]);
+                    //Ret.Minutes = Convert.ToInt16(decBits[8 - 1]);
+                    //Ret.Seconds = Convert.ToInt16(decBits[9 - 1]);
+                    //Ret.Millisecond =
+                    //    Convert.ToInt16(String.Concat(decBits[18 - 1], decBits[19 - 1], decBits[20 - 1], decBits[21 - 1]));
+
+                    //Ret.Hit = Convert.ToInt16(String.Concat(decBits[22 - 1], decBits[23 - 1]));
+                    //Ret.receivedString = s;
                 }
                 else
                 {
@@ -607,7 +592,7 @@ namespace Prokard_Timing
                     Ret.Millisecond = 0;
                     Ret.receivedString = String.Empty;
                 }
-            }
+            //}
                 return Ret;
         }
 
