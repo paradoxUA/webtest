@@ -31,21 +31,22 @@ namespace Prokard_Timing
                 return;
             }
 
-            RS232 = new SerialPort(Convert.ToString(admin.Settings["rs232_port"]), 115200, Parity.None, 8, StopBits.One);
-            RS232.RtsEnable = true;
+            RS232 = new SerialPort(Convert.ToString(admin.Settings["rs232_port"]), 9600, Parity.None, 8, StopBits.One);
+            //RS232.RtsEnable = true;
+           // RS232.ReadTimeout = 100;
             RS232.DataReceived += new SerialDataReceivedEventHandler(RS232_DataReceived);
             RS232.Open();
             this.ShowDialog();
         }
 
 
-        private void processLineFromComPort(string someLine)
+        private void processLineFromComPort(string someLine, byte[] bytesToRec = null)
         {
             string stringForLog = "";
 
               //string someAmbString = "@" + transponderNumber_textBox2.Text + DateTime.Now.ToString("HHmmssff") + rnd.Next(50).ToString("00");
             RaceThread rt = new RaceThread(admin);
-             AMB20RX Res =  rt.AMB20_Decode(someLine);
+             AMB20RX Res =  rt.AMB20_Decode(someLine, bytesToRec);
 
              if (Res.Transponder.Length > 0 && Res.Transponder != "00")
              {
@@ -89,13 +90,38 @@ namespace Prokard_Timing
 
         private void RS232_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            string s = RS232.ReadLine();
-            s = convertAsciiTextToHex(s); //вызов функция конвертации
+            SerialPort spL = (SerialPort)sender;
 
-            if (s.Length >= 31 * 2 + 30)
+            int techinfo = 27;
+            int fullinfo = 32;
+            byte[] bytesToRec = new byte[fullinfo];
+            spL.Read(bytesToRec, 0, techinfo);
+            string hexstringFromCom = BitConverter.ToString(bytesToRec);
+            string[] hexValuesSplit = hexstringFromCom.Split('-');
+            if (hexValuesSplit[techinfo - 1] != "0A")
             {
-                processLineFromComPort(s);  
-            }             
+                spL.Read(bytesToRec, (techinfo-1), (fullinfo+1) - techinfo);
+            }
+            else
+            {
+                bytesToRec = new byte[fullinfo];
+                //spL.Read(bytesToRec, techinfo, fullinfo);
+                return;
+            }
+
+            if (bytesToRec.Length < 32)
+            {
+                string s = RS232.ReadLine();
+                s = convertAsciiTextToHex(s); //вызов функция конвертации
+                if (s.Length >= 31*2 + 30 || bytesToRec.Length > 31)
+                {
+                    processLineFromComPort(s, bytesToRec);
+                }
+            }
+            else
+            {
+                processLineFromComPort("", bytesToRec);
+            }
         }
 
         private void CheckSensors_FormClosing(object sender, FormClosingEventArgs e)

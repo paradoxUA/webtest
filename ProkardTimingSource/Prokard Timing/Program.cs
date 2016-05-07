@@ -22,10 +22,10 @@ namespace Prokard_Timing
             Application.SetCompatibleTextRenderingDefault(false);
 
 
-          //  var test = new testClass1();
-           // test.testClass11();
+            //var test = new testClass1();
+            //test.testClass11();
 
-           // Application.Run(new DbSettings()); 
+            //Application.Run(new DbSettings()); 
             var pa = new ProgramActivation();
 
             if (args.Length > 0)

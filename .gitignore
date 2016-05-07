@@ -8,3 +8,6 @@ ProkardTimingSource/Prokard Timing/bin/Debug/Prokard_Timing.pdb
 ProkardTimingSource/CrazyKartActivation/bin/Debug/CrazyKartActivation.exe
 *.exe
 ProkardTimingSource/CrazyKartActivation/bin/Debug/CrazyKartActivation.exe
+*.pdb
+ProkardTimingSource/Prokard Timing/obj/x86/Debug/Prokard_Timing.exe
+*.Cache

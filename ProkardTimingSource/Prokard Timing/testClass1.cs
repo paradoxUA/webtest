@@ -40,41 +40,115 @@ namespace Prokard_Timing
 
             if (RS232.IsOpen)
             {
-                flagComRead = 1;
-                if (Timer1 == null)
+
+                SerialPort spL = (SerialPort)sender;
+
+                //spL.ReadChar();
+
+
+
+                int techinfo = 27;
+                int fullinfo = 32;
+                byte[] bytesToRec = new byte[fullinfo];
+                spL.Read(bytesToRec, 0, techinfo);
+                string hexstringFromCom = BitConverter.ToString(bytesToRec);
+                string[] hexValuesSplit = hexstringFromCom.Split('-');
+                if (hexValuesSplit[techinfo-1] != "0A")
                 {
-                    startReadComDataFormDb();
+                    spL.Read(bytesToRec, techinfo, fullinfo - techinfo);
                 }
                 else
                 {
-                    Timer1.Change(1000, 1000);
+                    bytesToRec = new byte[fullinfo];
+                    //spL.Read(bytesToRec, techinfo, fullinfo);
+                    return;
                 }
-                
-                //{
-                //    Task.Factory.StartNew(startReadComDataFormDb);
-                //}
-                
-              //  StreamWriter writetext = new StreamWriter("write.txt");
-            string s = RS232.ReadLine();
-            testClass1.WriteLog(" RS232_DataReceived ", "поток=" + Thread.CurrentThread.ManagedThreadId + " s =" + s);
-           // s = convertAsciiTextToHex(s); //вызов функция конвертации
-
-            if (s.Length >= 31 * 2 + 30)
-            {
-                var res = AMB20_Decode(s);
-                Console.WriteLine(res.receivedString);
-                using (SqlCommand cmd = new SqlCommand("insert into comlogs (comdata, created) values ('" + res.receivedString + "',GETDATE())", db))
+                hexstringFromCom = BitConverter.ToString(bytesToRec);
+                hexValuesSplit = hexstringFromCom.Split('-');
+                foreach (String hex in hexValuesSplit)
                 {
-                    cmd.ExecuteNonQuery();
-                    testClass1.WriteLog(" RS232_DataReceived ", "поток=" + Thread.CurrentThread.ManagedThreadId + " cmd =" + cmd.CommandText);
+                    // Convert the number expressed in base-16 to an integer.
+                    int value = Convert.ToInt16(hex, 16);
+                    // Get the character corresponding to the integral value.
+                    string stringValue = Char.ConvertFromUtf32(value);
+                    char charValue = (char)value;
+                    Console.WriteLine("hexadecimal value = {0}, int value = {1}, char value = {2} or {3}",
+                                        hex, value, stringValue, charValue);
                 }
+                string trans = String.Concat(hexValuesSplit[13],hexValuesSplit[14],hexValuesSplit[15],hexValuesSplit[16]);
+                string hour = hexValuesSplit[6];
+                string min = hexValuesSplit[7];
+                string sec = hexValuesSplit[8];
+                string msec = String.Concat(hexValuesSplit[17],hexValuesSplit[18],hexValuesSplit[19],hexValuesSplit[20]);
+                string hit = String.Concat(hexValuesSplit[21],hexValuesSplit[22]);
 
-                //    writetext.WriteLine(res.receivedString);
-            }
-                //string code = RS232.ReadExisting();
-                //Task.Factory.StartNew(new Action(startParser));
-                db.Close();
-              //  Console.WriteLine(code);
+                var Transponder = Convert.ToInt16(trans, 16);
+                var Hour = Convert.ToInt16(hour, 16);
+                var Minutes = Convert.ToInt16(min, 16);
+                var Seconds = Convert.ToInt16(sec, 16);
+                var Millisecond = Convert.ToInt16(msec, 16);
+
+                var Hit = Convert.ToInt16(hit, 16);
+               // var receivedString = s;
+                 
+
+
+
+                Console.WriteLine(bytesToRec.ToString());
+
+                //var hexchars = "";
+                //var i = 0;
+                //while (i != bytesToRec.Length)
+                //{
+                //    hexchars += (bytesToRec[i]).ToString("X") + " ";
+                //    i++;
+                //}
+                //var existing = spL.ReadExisting();
+
+                //existing = convertAsciiTextToHex(existing);
+                //RS232.DiscardInBuffer();
+                //RS232.DiscardOutBuffer();
+                //string filepath = @"KMTU_" + DateTime.Now.ToString("MMM-d-yyyy") + ".hex";
+                //FileStream LogFile = new FileStream(filepath, FileMode.Create);
+
+                //LogFile.Write(bytesToRec, 0, bytesToRec.Length);
+                //LogFile.Close();
+
+           //     flagComRead = 1;
+           //     if (Timer1 == null)
+           //     {
+           //         startReadComDataFormDb();
+           //     }
+           //     else
+           //     {
+           //         Timer1.Change(1000, 1000);
+           //     }
+                
+           //     //{
+           //     //    Task.Factory.StartNew(startReadComDataFormDb);
+           //     //}
+                
+           //   //  StreamWriter writetext = new StreamWriter("write.txt");
+           // string s = RS232.ReadLine();
+           // testClass1.WriteLog(" RS232_DataReceived ", "поток=" + Thread.CurrentThread.ManagedThreadId + " s =" + s);
+           //// s = convertAsciiTextToHex(s); //вызов функция конвертации
+
+           // if (s.Length >= 31 * 2 + 30)
+           // {
+           //     var res = AMB20_Decode(s);
+           //     Console.WriteLine(res.receivedString);
+           //     using (SqlCommand cmd = new SqlCommand("insert into comlogs (comdata, created) values ('" + res.receivedString + "',GETDATE())", db))
+           //     {
+           //         cmd.ExecuteNonQuery();
+           //         testClass1.WriteLog(" RS232_DataReceived ", "поток=" + Thread.CurrentThread.ManagedThreadId + " cmd =" + cmd.CommandText);
+           //     }
+
+           //     //    writetext.WriteLine(res.receivedString);
+           // }
+           //     //string code = RS232.ReadExisting();
+           //     //Task.Factory.StartNew(new Action(startParser));
+           //     db.Close();
+           //   //  Console.WriteLine(code);
             }
         }
 
