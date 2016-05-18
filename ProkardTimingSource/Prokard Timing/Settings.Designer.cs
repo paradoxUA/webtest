@@ -38,6 +38,7 @@
             this.checkBox10 = new System.Windows.Forms.CheckBox();
             this.checkBox11 = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.labelSmooth12 = new Prokard_Timing.LabelSmooth();
             this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBox9 = new System.Windows.Forms.CheckBox();
@@ -45,42 +46,63 @@
             this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new Prokard_Timing.LabelSmooth();
+            this.label3 = new Prokard_Timing.LabelSmooth();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label2 = new Prokard_Timing.LabelSmooth();
+            this.label1 = new Prokard_Timing.LabelSmooth();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.labelSmooth2 = new Prokard_Timing.LabelSmooth();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.labelSmooth3 = new Prokard_Timing.LabelSmooth();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.labelSmooth1 = new Prokard_Timing.LabelSmooth();
             this.panel1 = new System.Windows.Forms.Panel();
             this.sensorsLog_richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label12 = new Prokard_Timing.LabelSmooth();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label13 = new Prokard_Timing.LabelSmooth();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label10 = new Prokard_Timing.LabelSmooth();
+            this.label11 = new Prokard_Timing.LabelSmooth();
+            this.label8 = new Prokard_Timing.LabelSmooth();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.label9 = new Prokard_Timing.LabelSmooth();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.defaultRaceMode_comboBox6 = new System.Windows.Forms.ComboBox();
+            this.labelSmooth19 = new Prokard_Timing.LabelSmooth();
             this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
+            this.labelSmooth20 = new Prokard_Timing.LabelSmooth();
             this.checkBox14 = new System.Windows.Forms.CheckBox();
+            this.labelSmooth5 = new Prokard_Timing.LabelSmooth();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.label7 = new Prokard_Timing.LabelSmooth();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.minimumLapTime_numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new Prokard_Timing.LabelSmooth();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.connectionString_textBox9 = new System.Windows.Forms.TextBox();
+            this.button7 = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
+            this.labelSmooth14 = new Prokard_Timing.LabelSmooth();
             this.textBox7 = new System.Windows.Forms.TextBox();
+            this.labelSmooth13 = new Prokard_Timing.LabelSmooth();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -88,13 +110,23 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.labelSmooth10 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth9 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth8 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth7 = new Prokard_Timing.LabelSmooth();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.labelSmooth6 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth11 = new Prokard_Timing.LabelSmooth();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.label14 = new System.Windows.Forms.Label();
             this.isHalfModesEnabled_checkBox = new System.Windows.Forms.CheckBox();
             this.isTimeDiscountsAvailable_checkBox13 = new System.Windows.Forms.CheckBox();
             this.numericUpDown10 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
+            this.labelSmooth15 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth18 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth17 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth16 = new Prokard_Timing.LabelSmooth();
             this.anonser_tabPage = new System.Windows.Forms.TabPage();
             this.setSponsorsImagesFolder_button = new System.Windows.Forms.Button();
             this.label26 = new System.Windows.Forms.Label();
@@ -121,45 +153,29 @@
             this.button6 = new System.Windows.Forms.Button();
             this.anonserImagesFolder_textBox9 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button8 = new System.Windows.Forms.Button();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
             this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-            this.labelSmooth12 = new Prokard_Timing.LabelSmooth();
-            this.label4 = new Prokard_Timing.LabelSmooth();
-            this.label3 = new Prokard_Timing.LabelSmooth();
-            this.label2 = new Prokard_Timing.LabelSmooth();
-            this.label1 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth2 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth3 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth1 = new Prokard_Timing.LabelSmooth();
-            this.label12 = new Prokard_Timing.LabelSmooth();
-            this.label13 = new Prokard_Timing.LabelSmooth();
-            this.label10 = new Prokard_Timing.LabelSmooth();
-            this.label11 = new Prokard_Timing.LabelSmooth();
-            this.label8 = new Prokard_Timing.LabelSmooth();
-            this.label9 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth19 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth20 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth5 = new Prokard_Timing.LabelSmooth();
-            this.label7 = new Prokard_Timing.LabelSmooth();
-            this.label6 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth14 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth13 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth10 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth9 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth8 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth7 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth6 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth11 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth15 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth18 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth17 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth16 = new Prokard_Timing.LabelSmooth();
             this.labelSmooth4 = new Prokard_Timing.LabelSmooth();
-            this.button7 = new System.Windows.Forms.Button();
+            this.protocol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bytes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.minutes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.seconds = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transponder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.msec = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.portspeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bits = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stopbit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.borderPanel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -196,6 +212,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.raceLoadTimer_numericUpDown12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bestResultTimer_numericUpDown13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.anonserImageRotator_numericUpDown2)).BeginInit();
+            this.tabPage7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.borderPanel1.SuspendLayout();
             this.tabControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
@@ -215,7 +233,7 @@
             this.borderPanel2.Location = new System.Drawing.Point(0, 0);
             this.borderPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.borderPanel2.Name = "borderPanel2";
-            this.borderPanel2.Size = new System.Drawing.Size(757, 259);
+            this.borderPanel2.Size = new System.Drawing.Size(859, 278);
             this.borderPanel2.TabIndex = 1;
             this.borderPanel2.UseInnerColor = false;
             // 
@@ -227,12 +245,13 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.anonser_tabPage);
+            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ItemSize = new System.Drawing.Size(120, 18);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(757, 259);
+            this.tabControl1.Size = new System.Drawing.Size(859, 278);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 0;
             // 
@@ -247,7 +266,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(749, 233);
+            this.tabPage1.Size = new System.Drawing.Size(910, 252);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Общие настройки";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -318,6 +337,16 @@
             this.groupBox7.TabIndex = 1;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Сертификаты";
+            // 
+            // labelSmooth12
+            // 
+            this.labelSmooth12.AutoSize = true;
+            this.labelSmooth12.Location = new System.Drawing.Point(6, 27);
+            this.labelSmooth12.Name = "labelSmooth12";
+            this.labelSmooth12.Size = new System.Drawing.Size(112, 13);
+            this.labelSmooth12.TabIndex = 10;
+            this.labelSmooth12.Text = "Срок действия, дней";
+            this.labelSmooth12.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             // 
             // numericUpDown7
             // 
@@ -429,6 +458,26 @@
             0,
             0});
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(200, 85);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(106, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "последние позиции";
+            this.label4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(60, 85);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(88, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Не сворачивать";
+            this.label3.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
             // numericUpDown1
             // 
             this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -455,6 +504,26 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(165, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Время окончания";
+            this.label2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(24, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(78, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Время начала";
+            this.label1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
             // tabPage3
             // 
             this.tabPage3.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
@@ -464,7 +533,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(749, 233);
+            this.tabPage3.Size = new System.Drawing.Size(910, 252);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Оборудование";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -505,6 +574,16 @@
             this.comboBox4.Size = new System.Drawing.Size(173, 21);
             this.comboBox4.TabIndex = 6;
             // 
+            // labelSmooth2
+            // 
+            this.labelSmooth2.AutoSize = true;
+            this.labelSmooth2.Location = new System.Drawing.Point(8, 99);
+            this.labelSmooth2.Name = "labelSmooth2";
+            this.labelSmooth2.Size = new System.Drawing.Size(109, 13);
+            this.labelSmooth2.TabIndex = 5;
+            this.labelSmooth2.Text = "Печать результатов";
+            this.labelSmooth2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
             // comboBox5
             // 
             this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -513,6 +592,16 @@
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(173, 21);
             this.comboBox5.TabIndex = 2;
+            // 
+            // labelSmooth3
+            // 
+            this.labelSmooth3.AutoSize = true;
+            this.labelSmooth3.Location = new System.Drawing.Point(8, 16);
+            this.labelSmooth3.Name = "labelSmooth3";
+            this.labelSmooth3.Size = new System.Drawing.Size(75, 13);
+            this.labelSmooth3.TabIndex = 1;
+            this.labelSmooth3.Text = "Печать чеков";
+            this.labelSmooth3.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             // 
             // groupBox4
             // 
@@ -539,6 +628,16 @@
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 21);
             this.comboBox3.TabIndex = 6;
+            // 
+            // labelSmooth1
+            // 
+            this.labelSmooth1.AutoSize = true;
+            this.labelSmooth1.Location = new System.Drawing.Point(8, 73);
+            this.labelSmooth1.Name = "labelSmooth1";
+            this.labelSmooth1.Size = new System.Drawing.Size(100, 13);
+            this.labelSmooth1.TabIndex = 5;
+            this.labelSmooth1.Text = "Тип оборудования";
+            this.labelSmooth1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             // 
             // panel1
             // 
@@ -605,6 +704,16 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 2;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(17, 30);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(91, 13);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Порт приемника";
+            this.label12.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
             // tabPage4
             // 
             this.tabPage4.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
@@ -614,7 +723,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(749, 233);
+            this.tabPage4.Size = new System.Drawing.Size(910, 252);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Гонка";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -648,6 +757,16 @@
             this.comboBox2.Size = new System.Drawing.Size(155, 21);
             this.comboBox2.TabIndex = 11;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 92);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(106, 13);
+            this.label13.TabIndex = 10;
+            this.label13.Text = "Трек по умолчанию";
+            this.label13.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(181, 52);
@@ -655,6 +774,36 @@
             this.textBox1.Size = new System.Drawing.Size(52, 20);
             this.textBox1.TabIndex = 9;
             this.textBox1.Text = "2";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(239, 55);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(42, 13);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "литров";
+            this.label10.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 55);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(169, 13);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "Расход топлива на 1000 метров";
+            this.label11.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(239, 23);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(44, 13);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "метров";
+            this.label8.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             // 
             // numericUpDown3
             // 
@@ -684,6 +833,16 @@
             this.checkBox7.Text = "Отображение нулевого круга";
             this.checkBox7.UseVisualStyleBackColor = true;
             this.checkBox7.Visible = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 23);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(146, 13);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "Длина трека по умолчанию";
+            this.label9.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             // 
             // checkBox5
             // 
@@ -728,6 +887,16 @@
             this.defaultRaceMode_comboBox6.Size = new System.Drawing.Size(145, 21);
             this.defaultRaceMode_comboBox6.TabIndex = 15;
             // 
+            // labelSmooth19
+            // 
+            this.labelSmooth19.AutoSize = true;
+            this.labelSmooth19.Location = new System.Drawing.Point(209, 86);
+            this.labelSmooth19.Name = "labelSmooth19";
+            this.labelSmooth19.Size = new System.Drawing.Size(42, 13);
+            this.labelSmooth19.TabIndex = 14;
+            this.labelSmooth19.Text = "секунд";
+            this.labelSmooth19.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
             // numericUpDown8
             // 
             this.numericUpDown8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -741,6 +910,16 @@
             0,
             0});
             // 
+            // labelSmooth20
+            // 
+            this.labelSmooth20.AutoSize = true;
+            this.labelSmooth20.Location = new System.Drawing.Point(6, 86);
+            this.labelSmooth20.Name = "labelSmooth20";
+            this.labelSmooth20.Size = new System.Drawing.Size(149, 13);
+            this.labelSmooth20.TabIndex = 12;
+            this.labelSmooth20.Text = "Время прогревочного круга";
+            this.labelSmooth20.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
             // checkBox14
             // 
             this.checkBox14.AutoSize = true;
@@ -753,6 +932,16 @@
             this.checkBox14.Text = "Вычитать время прогревочного круга";
             this.checkBox14.UseVisualStyleBackColor = true;
             // 
+            // labelSmooth5
+            // 
+            this.labelSmooth5.AutoSize = true;
+            this.labelSmooth5.Location = new System.Drawing.Point(6, 191);
+            this.labelSmooth5.Name = "labelSmooth5";
+            this.labelSmooth5.Size = new System.Drawing.Size(155, 13);
+            this.labelSmooth5.TabIndex = 8;
+            this.labelSmooth5.Text = "Режим заезда по умолчанию";
+            this.labelSmooth5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
@@ -764,6 +953,16 @@
             this.checkBox3.TabIndex = 0;
             this.checkBox3.Text = "Останавливать время гонки во время паузы";
             this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(209, 161);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 13);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "секунд";
+            this.label7.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             // 
             // checkBox4
             // 
@@ -790,6 +989,16 @@
             0,
             0});
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 161);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(144, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Минимальное время круга";
+            this.label6.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
             // tabPage2
             // 
             this.tabPage2.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
@@ -802,7 +1011,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(749, 233);
+            this.tabPage2.Size = new System.Drawing.Size(851, 252);
             this.tabPage2.TabIndex = 4;
             this.tabPage2.Text = "База данных";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -826,6 +1035,17 @@
             this.connectionString_textBox9.Name = "connectionString_textBox9";
             this.connectionString_textBox9.Size = new System.Drawing.Size(332, 168);
             this.connectionString_textBox9.TabIndex = 0;
+            // 
+            // button7
+            // 
+            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button7.Location = new System.Drawing.Point(374, 21);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(150, 30);
+            this.button7.TabIndex = 1;
+            this.button7.Text = "Сделать бекап базы";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // groupBox8
             // 
@@ -869,6 +1089,17 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // labelSmooth14
+            // 
+            this.labelSmooth14.Location = new System.Drawing.Point(6, 82);
+            this.labelSmooth14.Name = "labelSmooth14";
+            this.labelSmooth14.Size = new System.Drawing.Size(353, 31);
+            this.labelSmooth14.TabIndex = 23;
+            this.labelSmooth14.Text = "Очистить только данные кассы, журнала и прочее. Остаются только пользователи трас" +
+    "сы,цены, карты";
+            this.labelSmooth14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelSmooth14.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
             // textBox7
             // 
             this.textBox7.BackColor = System.Drawing.Color.White;
@@ -881,6 +1112,16 @@
             this.textBox7.Size = new System.Drawing.Size(350, 17);
             this.textBox7.TabIndex = 22;
             this.textBox7.Text = resources.GetString("textBox7.Text");
+            // 
+            // labelSmooth13
+            // 
+            this.labelSmooth13.Location = new System.Drawing.Point(6, 13);
+            this.labelSmooth13.Name = "labelSmooth13";
+            this.labelSmooth13.Size = new System.Drawing.Size(353, 31);
+            this.labelSmooth13.TabIndex = 21;
+            this.labelSmooth13.Text = "Осторожно! Данная функция очищает содержимое базы данных.";
+            this.labelSmooth13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelSmooth13.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             // 
             // button4
             // 
@@ -957,12 +1198,73 @@
             this.textBox3.Size = new System.Drawing.Size(159, 20);
             this.textBox3.TabIndex = 16;
             // 
+            // labelSmooth10
+            // 
+            this.labelSmooth10.AutoSize = true;
+            this.labelSmooth10.Location = new System.Drawing.Point(38, 127);
+            this.labelSmooth10.Name = "labelSmooth10";
+            this.labelSmooth10.Size = new System.Drawing.Size(45, 13);
+            this.labelSmooth10.TabIndex = 15;
+            this.labelSmooth10.Text = "Пароль";
+            this.labelSmooth10.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
+            // labelSmooth9
+            // 
+            this.labelSmooth9.AutoSize = true;
+            this.labelSmooth9.Location = new System.Drawing.Point(3, 101);
+            this.labelSmooth9.Name = "labelSmooth9";
+            this.labelSmooth9.Size = new System.Drawing.Size(80, 13);
+            this.labelSmooth9.TabIndex = 14;
+            this.labelSmooth9.Text = "Пользователь";
+            this.labelSmooth9.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
+            // labelSmooth8
+            // 
+            this.labelSmooth8.AutoSize = true;
+            this.labelSmooth8.Location = new System.Drawing.Point(51, 75);
+            this.labelSmooth8.Name = "labelSmooth8";
+            this.labelSmooth8.Size = new System.Drawing.Size(32, 13);
+            this.labelSmooth8.TabIndex = 13;
+            this.labelSmooth8.Text = "База";
+            this.labelSmooth8.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
+            // labelSmooth7
+            // 
+            this.labelSmooth7.AutoSize = true;
+            this.labelSmooth7.Location = new System.Drawing.Point(51, 49);
+            this.labelSmooth7.Name = "labelSmooth7";
+            this.labelSmooth7.Size = new System.Drawing.Size(32, 13);
+            this.labelSmooth7.TabIndex = 12;
+            this.labelSmooth7.Text = "Порт";
+            this.labelSmooth7.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(89, 19);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(159, 20);
             this.textBox2.TabIndex = 11;
+            // 
+            // labelSmooth6
+            // 
+            this.labelSmooth6.AutoSize = true;
+            this.labelSmooth6.Location = new System.Drawing.Point(45, 22);
+            this.labelSmooth6.Name = "labelSmooth6";
+            this.labelSmooth6.Size = new System.Drawing.Size(38, 13);
+            this.labelSmooth6.TabIndex = 10;
+            this.labelSmooth6.Text = "Адрес";
+            this.labelSmooth6.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
+            // labelSmooth11
+            // 
+            this.labelSmooth11.AutoSize = true;
+            this.labelSmooth11.BackColor = System.Drawing.Color.Transparent;
+            this.labelSmooth11.Location = new System.Drawing.Point(7, 209);
+            this.labelSmooth11.Name = "labelSmooth11";
+            this.labelSmooth11.Size = new System.Drawing.Size(317, 13);
+            this.labelSmooth11.TabIndex = 21;
+            this.labelSmooth11.Text = "Для принятия изменений следует перезапустить программу";
+            this.labelSmooth11.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             // 
             // tabPage5
             // 
@@ -979,7 +1281,7 @@
             this.tabPage5.Controls.Add(this.labelSmooth16);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(749, 233);
+            this.tabPage5.Size = new System.Drawing.Size(910, 252);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "Временные скидки";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1057,6 +1359,50 @@
             0,
             0});
             // 
+            // labelSmooth15
+            // 
+            this.labelSmooth15.AutoSize = true;
+            this.labelSmooth15.BackColor = System.Drawing.Color.Transparent;
+            this.labelSmooth15.Location = new System.Drawing.Point(122, 50);
+            this.labelSmooth15.Name = "labelSmooth15";
+            this.labelSmooth15.Size = new System.Drawing.Size(128, 13);
+            this.labelSmooth15.TabIndex = 18;
+            this.labelSmooth15.Text = "%, от полной стоимости";
+            this.labelSmooth15.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
+            // labelSmooth18
+            // 
+            this.labelSmooth18.AutoSize = true;
+            this.labelSmooth18.BackColor = System.Drawing.Color.Transparent;
+            this.labelSmooth18.Location = new System.Drawing.Point(122, 82);
+            this.labelSmooth18.Name = "labelSmooth18";
+            this.labelSmooth18.Size = new System.Drawing.Size(128, 13);
+            this.labelSmooth18.TabIndex = 17;
+            this.labelSmooth18.Text = "%, от полной стоимости";
+            this.labelSmooth18.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
+            // labelSmooth17
+            // 
+            this.labelSmooth17.AutoSize = true;
+            this.labelSmooth17.BackColor = System.Drawing.Color.Transparent;
+            this.labelSmooth17.Location = new System.Drawing.Point(1, 82);
+            this.labelSmooth17.Name = "labelSmooth17";
+            this.labelSmooth17.Size = new System.Drawing.Size(56, 13);
+            this.labelSmooth17.TabIndex = 13;
+            this.labelSmooth17.Text = "10 кругов";
+            this.labelSmooth17.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
+            // labelSmooth16
+            // 
+            this.labelSmooth16.AutoSize = true;
+            this.labelSmooth16.BackColor = System.Drawing.Color.Transparent;
+            this.labelSmooth16.Location = new System.Drawing.Point(16, 50);
+            this.labelSmooth16.Name = "labelSmooth16";
+            this.labelSmooth16.Size = new System.Drawing.Size(38, 13);
+            this.labelSmooth16.TabIndex = 9;
+            this.labelSmooth16.Text = "1 круг";
+            this.labelSmooth16.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
             // anonser_tabPage
             // 
             this.anonser_tabPage.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
@@ -1076,7 +1422,7 @@
             this.anonser_tabPage.Controls.Add(this.label15);
             this.anonser_tabPage.Location = new System.Drawing.Point(4, 22);
             this.anonser_tabPage.Name = "anonser_tabPage";
-            this.anonser_tabPage.Size = new System.Drawing.Size(749, 233);
+            this.anonser_tabPage.Size = new System.Drawing.Size(910, 252);
             this.anonser_tabPage.TabIndex = 6;
             this.anonser_tabPage.Text = "Анонсер";
             this.anonser_tabPage.UseVisualStyleBackColor = true;
@@ -1351,6 +1697,73 @@
             this.label15.TabIndex = 0;
             this.label15.Text = "Каталог с картинками (будут показываться во время между заездами)";
             // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.dataGridView1);
+            this.tabPage7.Controls.Add(this.button8);
+            this.tabPage7.Controls.Add(this.label29);
+            this.tabPage7.Controls.Add(this.label38);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(851, 252);
+            this.tabPage7.TabIndex = 7;
+            this.tabPage7.Text = "Протоколы";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.protocol,
+            this.bytes,
+            this.hours,
+            this.minutes,
+            this.seconds,
+            this.transponder,
+            this.msec,
+            this.hit,
+            this.portspeed,
+            this.bits,
+            this.stopbit});
+            this.dataGridView1.Location = new System.Drawing.Point(3, 19);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(843, 166);
+            this.dataGridView1.TabIndex = 4;
+            // 
+            // button8
+            // 
+            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button8.Location = new System.Drawing.Point(243, 204);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(230, 30);
+            this.button8.TabIndex = 1;
+            this.button8.Text = "Сохранить протоколы";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.ForeColor = System.Drawing.Color.Red;
+            this.label29.Location = new System.Drawing.Point(564, 213);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(64, 13);
+            this.label29.TabIndex = 3;
+            this.label29.Text = "Сохранено!";
+            this.label29.Visible = false;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.ForeColor = System.Drawing.Color.Red;
+            this.label38.Location = new System.Drawing.Point(194, 3);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(455, 13);
+            this.label38.TabIndex = 3;
+            this.label38.Text = "Укажите байты, которые необходимо обрабатывать, через запятую, начиная отсчет с 1" +
+    "";
+            // 
             // borderPanel1
             // 
             this.borderPanel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
@@ -1366,10 +1779,10 @@
             this.borderPanel1.Controls.Add(this.labelSmooth4);
             this.borderPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.borderPanel1.InnerColor = System.Drawing.SystemColors.Control;
-            this.borderPanel1.Location = new System.Drawing.Point(0, 259);
+            this.borderPanel1.Location = new System.Drawing.Point(0, 278);
             this.borderPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.borderPanel1.Name = "borderPanel1";
-            this.borderPanel1.Size = new System.Drawing.Size(757, 40);
+            this.borderPanel1.Size = new System.Drawing.Size(859, 40);
             this.borderPanel1.TabIndex = 0;
             this.borderPanel1.UseInnerColor = false;
             // 
@@ -1396,7 +1809,7 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(447, 5);
+            this.button2.Location = new System.Drawing.Point(549, 5);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(150, 30);
             this.button2.TabIndex = 1;
@@ -1407,7 +1820,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(603, 5);
+            this.button1.Location = new System.Drawing.Point(705, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 30);
             this.button1.TabIndex = 0;
@@ -1429,322 +1842,6 @@
             0});
             this.numericUpDown6.Visible = false;
             // 
-            // labelSmooth12
-            // 
-            this.labelSmooth12.AutoSize = true;
-            this.labelSmooth12.Location = new System.Drawing.Point(6, 27);
-            this.labelSmooth12.Name = "labelSmooth12";
-            this.labelSmooth12.Size = new System.Drawing.Size(112, 13);
-            this.labelSmooth12.TabIndex = 10;
-            this.labelSmooth12.Text = "Срок действия, дней";
-            this.labelSmooth12.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(200, 85);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "последние позиции";
-            this.label4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(60, 85);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Не сворачивать";
-            this.label3.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(165, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Время окончания";
-            this.label2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Время начала";
-            this.label1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // labelSmooth2
-            // 
-            this.labelSmooth2.AutoSize = true;
-            this.labelSmooth2.Location = new System.Drawing.Point(8, 99);
-            this.labelSmooth2.Name = "labelSmooth2";
-            this.labelSmooth2.Size = new System.Drawing.Size(109, 13);
-            this.labelSmooth2.TabIndex = 5;
-            this.labelSmooth2.Text = "Печать результатов";
-            this.labelSmooth2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // labelSmooth3
-            // 
-            this.labelSmooth3.AutoSize = true;
-            this.labelSmooth3.Location = new System.Drawing.Point(8, 16);
-            this.labelSmooth3.Name = "labelSmooth3";
-            this.labelSmooth3.Size = new System.Drawing.Size(75, 13);
-            this.labelSmooth3.TabIndex = 1;
-            this.labelSmooth3.Text = "Печать чеков";
-            this.labelSmooth3.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // labelSmooth1
-            // 
-            this.labelSmooth1.AutoSize = true;
-            this.labelSmooth1.Location = new System.Drawing.Point(8, 73);
-            this.labelSmooth1.Name = "labelSmooth1";
-            this.labelSmooth1.Size = new System.Drawing.Size(100, 13);
-            this.labelSmooth1.TabIndex = 5;
-            this.labelSmooth1.Text = "Тип оборудования";
-            this.labelSmooth1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(17, 30);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(91, 13);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Порт приемника";
-            this.label12.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 92);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(106, 13);
-            this.label13.TabIndex = 10;
-            this.label13.Text = "Трек по умолчанию";
-            this.label13.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(239, 55);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(42, 13);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "литров";
-            this.label10.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 55);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(169, 13);
-            this.label11.TabIndex = 6;
-            this.label11.Text = "Расход топлива на 1000 метров";
-            this.label11.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(239, 23);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 13);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "метров";
-            this.label8.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 23);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(146, 13);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "Длина трека по умолчанию";
-            this.label9.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // labelSmooth19
-            // 
-            this.labelSmooth19.AutoSize = true;
-            this.labelSmooth19.Location = new System.Drawing.Point(209, 86);
-            this.labelSmooth19.Name = "labelSmooth19";
-            this.labelSmooth19.Size = new System.Drawing.Size(42, 13);
-            this.labelSmooth19.TabIndex = 14;
-            this.labelSmooth19.Text = "секунд";
-            this.labelSmooth19.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // labelSmooth20
-            // 
-            this.labelSmooth20.AutoSize = true;
-            this.labelSmooth20.Location = new System.Drawing.Point(6, 86);
-            this.labelSmooth20.Name = "labelSmooth20";
-            this.labelSmooth20.Size = new System.Drawing.Size(149, 13);
-            this.labelSmooth20.TabIndex = 12;
-            this.labelSmooth20.Text = "Время прогревочного круга";
-            this.labelSmooth20.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // labelSmooth5
-            // 
-            this.labelSmooth5.AutoSize = true;
-            this.labelSmooth5.Location = new System.Drawing.Point(6, 191);
-            this.labelSmooth5.Name = "labelSmooth5";
-            this.labelSmooth5.Size = new System.Drawing.Size(155, 13);
-            this.labelSmooth5.TabIndex = 8;
-            this.labelSmooth5.Text = "Режим заезда по умолчанию";
-            this.labelSmooth5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(209, 161);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 13);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "секунд";
-            this.label7.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 161);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(144, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Минимальное время круга";
-            this.label6.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // labelSmooth14
-            // 
-            this.labelSmooth14.Location = new System.Drawing.Point(6, 82);
-            this.labelSmooth14.Name = "labelSmooth14";
-            this.labelSmooth14.Size = new System.Drawing.Size(353, 31);
-            this.labelSmooth14.TabIndex = 23;
-            this.labelSmooth14.Text = "Очистить только данные кассы, журнала и прочее. Остаются только пользователи трас" +
-    "сы,цены, карты";
-            this.labelSmooth14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labelSmooth14.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // labelSmooth13
-            // 
-            this.labelSmooth13.Location = new System.Drawing.Point(6, 13);
-            this.labelSmooth13.Name = "labelSmooth13";
-            this.labelSmooth13.Size = new System.Drawing.Size(353, 31);
-            this.labelSmooth13.TabIndex = 21;
-            this.labelSmooth13.Text = "Осторожно! Данная функция очищает содержимое базы данных.";
-            this.labelSmooth13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labelSmooth13.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // labelSmooth10
-            // 
-            this.labelSmooth10.AutoSize = true;
-            this.labelSmooth10.Location = new System.Drawing.Point(38, 127);
-            this.labelSmooth10.Name = "labelSmooth10";
-            this.labelSmooth10.Size = new System.Drawing.Size(45, 13);
-            this.labelSmooth10.TabIndex = 15;
-            this.labelSmooth10.Text = "Пароль";
-            this.labelSmooth10.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // labelSmooth9
-            // 
-            this.labelSmooth9.AutoSize = true;
-            this.labelSmooth9.Location = new System.Drawing.Point(3, 101);
-            this.labelSmooth9.Name = "labelSmooth9";
-            this.labelSmooth9.Size = new System.Drawing.Size(80, 13);
-            this.labelSmooth9.TabIndex = 14;
-            this.labelSmooth9.Text = "Пользователь";
-            this.labelSmooth9.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // labelSmooth8
-            // 
-            this.labelSmooth8.AutoSize = true;
-            this.labelSmooth8.Location = new System.Drawing.Point(51, 75);
-            this.labelSmooth8.Name = "labelSmooth8";
-            this.labelSmooth8.Size = new System.Drawing.Size(32, 13);
-            this.labelSmooth8.TabIndex = 13;
-            this.labelSmooth8.Text = "База";
-            this.labelSmooth8.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // labelSmooth7
-            // 
-            this.labelSmooth7.AutoSize = true;
-            this.labelSmooth7.Location = new System.Drawing.Point(51, 49);
-            this.labelSmooth7.Name = "labelSmooth7";
-            this.labelSmooth7.Size = new System.Drawing.Size(32, 13);
-            this.labelSmooth7.TabIndex = 12;
-            this.labelSmooth7.Text = "Порт";
-            this.labelSmooth7.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // labelSmooth6
-            // 
-            this.labelSmooth6.AutoSize = true;
-            this.labelSmooth6.Location = new System.Drawing.Point(45, 22);
-            this.labelSmooth6.Name = "labelSmooth6";
-            this.labelSmooth6.Size = new System.Drawing.Size(38, 13);
-            this.labelSmooth6.TabIndex = 10;
-            this.labelSmooth6.Text = "Адрес";
-            this.labelSmooth6.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // labelSmooth11
-            // 
-            this.labelSmooth11.AutoSize = true;
-            this.labelSmooth11.BackColor = System.Drawing.Color.Transparent;
-            this.labelSmooth11.Location = new System.Drawing.Point(7, 209);
-            this.labelSmooth11.Name = "labelSmooth11";
-            this.labelSmooth11.Size = new System.Drawing.Size(317, 13);
-            this.labelSmooth11.TabIndex = 21;
-            this.labelSmooth11.Text = "Для принятия изменений следует перезапустить программу";
-            this.labelSmooth11.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // labelSmooth15
-            // 
-            this.labelSmooth15.AutoSize = true;
-            this.labelSmooth15.BackColor = System.Drawing.Color.Transparent;
-            this.labelSmooth15.Location = new System.Drawing.Point(122, 50);
-            this.labelSmooth15.Name = "labelSmooth15";
-            this.labelSmooth15.Size = new System.Drawing.Size(128, 13);
-            this.labelSmooth15.TabIndex = 18;
-            this.labelSmooth15.Text = "%, от полной стоимости";
-            this.labelSmooth15.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // labelSmooth18
-            // 
-            this.labelSmooth18.AutoSize = true;
-            this.labelSmooth18.BackColor = System.Drawing.Color.Transparent;
-            this.labelSmooth18.Location = new System.Drawing.Point(122, 82);
-            this.labelSmooth18.Name = "labelSmooth18";
-            this.labelSmooth18.Size = new System.Drawing.Size(128, 13);
-            this.labelSmooth18.TabIndex = 17;
-            this.labelSmooth18.Text = "%, от полной стоимости";
-            this.labelSmooth18.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // labelSmooth17
-            // 
-            this.labelSmooth17.AutoSize = true;
-            this.labelSmooth17.BackColor = System.Drawing.Color.Transparent;
-            this.labelSmooth17.Location = new System.Drawing.Point(1, 82);
-            this.labelSmooth17.Name = "labelSmooth17";
-            this.labelSmooth17.Size = new System.Drawing.Size(56, 13);
-            this.labelSmooth17.TabIndex = 13;
-            this.labelSmooth17.Text = "10 кругов";
-            this.labelSmooth17.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
-            // labelSmooth16
-            // 
-            this.labelSmooth16.AutoSize = true;
-            this.labelSmooth16.BackColor = System.Drawing.Color.Transparent;
-            this.labelSmooth16.Location = new System.Drawing.Point(16, 50);
-            this.labelSmooth16.Name = "labelSmooth16";
-            this.labelSmooth16.Size = new System.Drawing.Size(38, 13);
-            this.labelSmooth16.TabIndex = 9;
-            this.labelSmooth16.Text = "1 круг";
-            this.labelSmooth16.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            // 
             // labelSmooth4
             // 
             this.labelSmooth4.AutoSize = true;
@@ -1756,22 +1853,72 @@
             this.labelSmooth4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             this.labelSmooth4.Visible = false;
             // 
-            // button7
+            // protocol
             // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.Location = new System.Drawing.Point(379, 21);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(150, 30);
-            this.button7.TabIndex = 1;
-            this.button7.Text = "Сделать бекап базы";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.protocol.HeaderText = "Название протокола";
+            this.protocol.Name = "protocol";
+            // 
+            // bytes
+            // 
+            this.bytes.HeaderText = "Количество байт";
+            this.bytes.Name = "bytes";
+            this.bytes.Width = 50;
+            // 
+            // hours
+            // 
+            this.hours.HeaderText = "Часы";
+            this.hours.Name = "hours";
+            this.hours.Width = 50;
+            // 
+            // minutes
+            // 
+            this.minutes.HeaderText = "Минуты";
+            this.minutes.Name = "minutes";
+            this.minutes.Width = 50;
+            // 
+            // seconds
+            // 
+            this.seconds.HeaderText = "Секунды ";
+            this.seconds.Name = "seconds";
+            // 
+            // transponder
+            // 
+            this.transponder.HeaderText = "Транспондер";
+            this.transponder.Name = "transponder";
+            // 
+            // msec
+            // 
+            this.msec.HeaderText = "Миллисекунды";
+            this.msec.Name = "msec";
+            // 
+            // hit
+            // 
+            this.hit.HeaderText = "Хит";
+            this.hit.Name = "hit";
+            this.hit.Width = 50;
+            // 
+            // portspeed
+            // 
+            this.portspeed.HeaderText = "Скорость порта (9600)";
+            this.portspeed.Name = "portspeed";
+            // 
+            // bits
+            // 
+            this.bits.HeaderText = "Биты данных (8)";
+            this.bits.Name = "bits";
+            this.bits.Width = 50;
+            // 
+            // stopbit
+            // 
+            this.stopbit.HeaderText = "Стоп-бит (1)";
+            this.stopbit.Name = "stopbit";
+            this.stopbit.Width = 50;
             // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(757, 299);
+            this.ClientSize = new System.Drawing.Size(859, 318);
             this.Controls.Add(this.borderPanel2);
             this.Controls.Add(this.borderPanel1);
             this.DoubleBuffered = true;
@@ -1838,6 +1985,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.raceLoadTimer_numericUpDown12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bestResultTimer_numericUpDown13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.anonserImageRotator_numericUpDown2)).EndInit();
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.borderPanel1.ResumeLayout(false);
             this.borderPanel1.PerformLayout();
             this.tabControl2.ResumeLayout(false);
@@ -1979,5 +2129,21 @@
         private System.Windows.Forms.TextBox sponsorsImagesFolder_textBox9;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn protocol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bytes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hours;
+        private System.Windows.Forms.DataGridViewTextBoxColumn minutes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn seconds;
+        private System.Windows.Forms.DataGridViewTextBoxColumn transponder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn msec;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn portspeed;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bits;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stopbit;
     }
 }

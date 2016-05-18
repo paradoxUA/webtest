@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using System.IO.Ports;
 using System.Collections;
@@ -63,6 +66,24 @@ namespace Prokard_Timing
         {
             fillRaceModes();
 
+            // настройки транспондеров
+            string path = "transetts.xml";
+            if (File.Exists(path))
+            {
+                DataSet ds = new DataSet();
+
+                ds.ReadXml(path);
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    dataGridView1.Rows.Add(row.ItemArray);
+                    if (row.ItemArray[0].ToString().Trim().Length > 0)
+                    {
+                        comboBox3.Items.Add(row.ItemArray[0]);
+                    }
+                }
+
+            }
+
             Hashtable sett = parent.admin.model.LoadSettings();
 
             // Закладка Общие настройки
@@ -86,6 +107,7 @@ namespace Prokard_Timing
             comboBox4.SelectedIndex = comboBox4.Items.IndexOf(sett["printer_result"]);
             comboBox5.SelectedIndex = comboBox5.Items.IndexOf(sett["printer_check"]);
             checkBox2.Checked = Convert.ToBoolean(sett["print_check"]);
+
             // Закладка Гонка
             checkBox3.Checked = Convert.ToBoolean(sett["stop_on_pause"]);
             checkBox4.Checked = Convert.ToBoolean(sett["start_after_detection"]);
@@ -186,6 +208,7 @@ namespace Prokard_Timing
                 textBox5.Text = MySQLData[3];
                 textBox6.Text = MySQLData[4];
             }
+            
         }
 
       
@@ -437,7 +460,77 @@ namespace Prokard_Timing
 
         private void createDbBackup()
         {
-            throw new NotImplementedException();
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = @"Бэкап базы данных (*.bak)|*.bak|Все файлы (*.*)|*.*";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                string connStr = config.AppSettings.Settings["crazykartConnectionString"].Value;
+                SqlConnection myConnection = new SqlConnection(connStr);
+                try
+                {
+                    myConnection.Open();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+                }
+                string dbname = myConnection.Database;
+                saveFileDialog.FileName = DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() +
+                                          DateTime.Now.Day.ToString() + "_" + dbname + ".bak";
+                SqlCommand com =
+                    new SqlCommand(
+                        String.Format(
+                            @"BACKUP DATABASE {0} TO DISK = '{1}' WITH INIT , NOUNLOAD ,  NOSKIP , STATS = 10, NOFORMAT",
+                            dbname, saveFileDialog.FileName), myConnection);
+
+                SqlDataReader myreader = com.ExecuteReader();
+                Thread.Sleep(2000);
+                MessageBox.Show(@"Резервная копия базы успешно сохранена!");
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            // сохранение настроек транспондеров в файл xml
+            string path = "transetts.xml";
+
+            DataSet ds = new DataSet();
+
+            DataTable dt = new DataTable();
+
+            //Adding columns to datatable
+
+            foreach (DataGridViewColumn col in dataGridView1.Columns)
+            {
+
+                dt.Columns.Add(col.Name);
+
+            }
+
+            //adding new rows
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+
+                DataRow row1 = dt.NewRow();
+
+                for (int i = 0; i < dataGridView1.ColumnCount; i++)
+
+
+                    row1[i] = (row.Cells[i].Value ?? DBNull.Value);
+
+                dt.Rows.Add(row1);
+
+            }
+
+            ds.Tables.Add(dt);
+
+            ds.WriteXml(path);
+
+            label29.Visible = true;
+            Thread.Sleep(2000);
+            label29.Visible = false;
         }
     }
 }

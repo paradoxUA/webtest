@@ -58,7 +58,7 @@ namespace Prokard_Timing
         // 
         private void startSendToCom()
         {
-            SerialPort RS232 = new SerialPort(Convert.ToString("COM2"), 9600, Parity.None, 8, StopBits.One);
+            SerialPort RS232 = new SerialPort(Convert.ToString("COM5"), 9600, Parity.None, 8, StopBits.One);
            // RS232.ReadBufferSize = 32;
           //  RS232.RtsEnable = true;
            // RS232.DataReceived += new SerialDataReceivedEventHandler(RS232_DataReceived);

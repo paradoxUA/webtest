@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -27,9 +28,10 @@ namespace Prokard_Timing
         private static int flagComRead = 0;
         private static Timer Timer1;
 
+        private static object[] decoderSetts = null;
 
 
-        public void RS232_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        public  void RS232_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
 
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
@@ -44,43 +46,59 @@ namespace Prokard_Timing
                 SerialPort spL = (SerialPort)sender;
 
                 //spL.ReadChar();
-
-
-
-                int techinfo = 27;
-                int fullinfo = 32;
-                byte[] bytesToRec = new byte[fullinfo];
-                spL.Read(bytesToRec, 0, techinfo);
-                string hexstringFromCom = BitConverter.ToString(bytesToRec);
-                string[] hexValuesSplit = hexstringFromCom.Split('-');
-                if (hexValuesSplit[techinfo-1] != "0A")
+                string s = spL.ReadLine();
+                s = s.Replace("\r\n", " ").Trim();
+                s = convertAsciiTextToHex(s);
+                string[] hexBits = s.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] hexValuesSplit = new string[hexBits.Length];
+                try
                 {
-                    spL.Read(bytesToRec, techinfo, fullinfo - techinfo);
+                    for (int i = 0; i < hexBits.Length; i++)
+                    {
+                        hexValuesSplit[i] = int.Parse(hexBits[i], System.Globalization.NumberStyles.HexNumber).ToString();
+                        //Console.WriteLine(i + ". " + hexBits[i] + " = " + decBits[i]);
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    bytesToRec = new byte[fullinfo];
-                    //spL.Read(bytesToRec, techinfo, fullinfo);
-                    return;
+                    Console.WriteLine(@"String can not be parsed." + ex.Message);
                 }
-                hexstringFromCom = BitConverter.ToString(bytesToRec);
-                hexValuesSplit = hexstringFromCom.Split('-');
-                foreach (String hex in hexValuesSplit)
+                // 2 - hours 1
+            // 3 - minutes 1
+            // 4 - seconds 1
+            // 5 - transponder
+            // 6 - mseconds
+            // 7 - hits
+                int hourByte = Convert.ToInt32(decoderSetts[2].ToString().Trim());
+                int minuteByte = Convert.ToInt32(decoderSetts[3].ToString().Trim());
+                int secondByte = Convert.ToInt32(decoderSetts[4].ToString().Trim());
+
+                //int[] transBytes = new int[decoderSetts[5].ToString().Trim().Split(',').Length];
+
+                int index=0;
+                string trans = "";
+                foreach (string transByte in decoderSetts[5].ToString().Trim().Split(','))
                 {
-                    // Convert the number expressed in base-16 to an integer.
-                    int value = Convert.ToInt16(hex, 16);
-                    // Get the character corresponding to the integral value.
-                    string stringValue = Char.ConvertFromUtf32(value);
-                    char charValue = (char)value;
-                    Console.WriteLine("hexadecimal value = {0}, int value = {1}, char value = {2} or {3}",
-                                        hex, value, stringValue, charValue);
+                   trans += hexValuesSplit[Convert.ToInt32(transByte)];
                 }
-                string trans = String.Concat(hexValuesSplit[13],hexValuesSplit[14],hexValuesSplit[15],hexValuesSplit[16]);
-                string hour = hexValuesSplit[6];
-                string min = hexValuesSplit[7];
-                string sec = hexValuesSplit[8];
-                string msec = String.Concat(hexValuesSplit[17],hexValuesSplit[18],hexValuesSplit[19],hexValuesSplit[20]);
-                string hit = String.Concat(hexValuesSplit[21],hexValuesSplit[22]);
+                string msec = "";
+                foreach (string transByte in decoderSetts[6].ToString().Trim().Split(','))
+                {
+                   msec += hexValuesSplit[Convert.ToInt32(transByte)];
+                }
+                string hit = "";
+                foreach (string transByte in decoderSetts[7].ToString().Trim().Split(','))
+                {
+                   hit += hexValuesSplit[Convert.ToInt32(transByte)];
+                }
+                
+
+              //  String.Concat(hexValuesSplit[13],hexValuesSplit[14],hexValuesSplit[15],hexValuesSplit[16]);
+                string hour = hexValuesSplit[hourByte];
+                string min = hexValuesSplit[minuteByte];
+                string sec = hexValuesSplit[secondByte];
+                //string msec = String.Concat(hexValuesSplit[17],hexValuesSplit[18],hexValuesSplit[19],hexValuesSplit[20]);
+                //string hit = String.Concat(hexValuesSplit[21],hexValuesSplit[22]);
 
                 var Transponder = Convert.ToInt16(trans, 16);
                 var Hour = Convert.ToInt16(hour, 16);
@@ -90,11 +108,16 @@ namespace Prokard_Timing
 
                 var Hit = Convert.ToInt16(hit, 16);
                // var receivedString = s;
-                 
 
 
 
-                Console.WriteLine(bytesToRec.ToString());
+
+                Console.WriteLine(Transponder.ToString());
+                Console.WriteLine(Hour.ToString());
+                Console.WriteLine(Minutes.ToString());
+                Console.WriteLine(Seconds.ToString());
+                Console.WriteLine(Millisecond.ToString());
+                Console.WriteLine(Hit.ToString());
 
                 //var hexchars = "";
                 //var i = 0;
@@ -317,7 +340,47 @@ namespace Prokard_Timing
 
         public void testClass11()
         {
-            RS232 = new SerialPort(Convert.ToString("COM1"), 9600, Parity.None, 8, StopBits.One);
+            ProkardModel form = new ProkardModel();
+
+            Hashtable sett = form.LoadSettings();
+            //Console.WriteLine(sett["decoder"]);
+            // настройки транспондеров
+            string path = "transetts.xml";
+            if (File.Exists(path))
+            {
+                DataSet ds = new DataSet();
+
+                ds.ReadXml(path);
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    if (row.ItemArray[0].ToString().Trim() == sett["decoder"].ToString().Trim())
+                    {
+                        decoderSetts = row.ItemArray;
+                    }
+                }
+
+            }
+            // 0 - name protokol
+            // 1 - bytes (32)
+            // 2 - hours 1
+            // 3 - minutes 1
+            // 4 - seconds 1
+            // 5 - transponder
+            // 6 - mseconds
+            // 7 - hits
+            // 8 - port speed
+            // 9 - bits
+            // 10 - StopBits
+            int portSpeed = Convert.ToInt32(decoderSetts[8]);
+            int bits = Convert.ToInt32(decoderSetts[9]);
+           // var stopBits = null;
+            //if (Convert.ToInt32(decoderSetts[9]) == 1)
+           // {
+            //    stopBits = StopBits.One;
+          //  }
+          //  string stopBits = decoderSetts[10].ToString();
+
+            RS232 = new SerialPort(Convert.ToString("COM4"), portSpeed, Parity.None, bits, StopBits.One);
            // RS232.ReadBufferSize = 32;
           //  RS232.RtsEnable = true;
             RS232.DataReceived += new SerialDataReceivedEventHandler(RS232_DataReceived);

@@ -57,6 +57,7 @@ namespace Prokard_Timing
         public string stringForLogWindow = "";
 
        public Emulator em = new Emulator();
+       public object[] decoderSetts = null;
 
         public void Nextval()
         {
@@ -83,6 +84,23 @@ namespace Prokard_Timing
              */
             IsWarmSubtracted = false;
             model.Connect(); // Создаем дополнительное подключение с базой
+            Settings = model.LoadSettings();
+            // настройки транспондеров
+            string path = "transetts.xml";
+            if (File.Exists(path))
+            {
+                DataSet ds = new DataSet();
+
+                ds.ReadXml(path);
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    if (row.ItemArray[0].ToString().Trim() == Settings["decoder"].ToString().Trim())
+                    {
+                        decoderSetts = row.ItemArray;
+                    }
+                }
+
+            }
 
         }
 
@@ -161,10 +179,12 @@ namespace Prokard_Timing
 
             if (Settings["rs232_port"].ToString().Length > 2)
             {
+                int portSpeed = Convert.ToInt32(decoderSetts[8]);
+                int bits = Convert.ToInt32(decoderSetts[9]);
                 // Открываем порт для чтения
                 try
                 {
-                    RS232 = new SerialPort(Settings["rs232_port"].ToString(), 115200, Parity.None, 8, StopBits.One);
+                    RS232 = new SerialPort(Settings["rs232_port"].ToString(), portSpeed, Parity.None, bits, StopBits.One);
                     RS232.WriteBufferSize = 1024 * 1024;
                     RS232.ReadBufferSize = 1024 * 1024 * 2;
                     RS232.DataReceived += new SerialDataReceivedEventHandler(RS232_Receive);
@@ -551,19 +571,61 @@ namespace Prokard_Timing
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("String can not be parsed." + ex.Message);
+                        Console.WriteLine(@"String can not be parsed." + ex.Message);
                     }
 
-                   // string[] hexValuesSplit = s.Split(' ');
+                    ProkardModel form = new ProkardModel();
+                    Hashtable sett = form.LoadSettings();
+                    //Console.WriteLine(sett["decoder"]);
+                    // 0 - name protokol
+                    // 1 - bytes (32)
+                    // 2 - hours 1
+                    // 3 - minutes 1
+                    // 4 - seconds 1
+                    // 5 - transponder
+                    // 6 - mseconds
+                    // 7 - hits
+                    // 8 - port speed
+                    // 9 - bits
+                    // 10 - StopBits
+                    int hourByte = Convert.ToInt32(decoderSetts[2].ToString().Trim());
+                    int minuteByte = Convert.ToInt32(decoderSetts[3].ToString().Trim());
+                    int secondByte = Convert.ToInt32(decoderSetts[4].ToString().Trim());
 
-                    string trans = String.Concat(hexValuesSplit[13], hexValuesSplit[14], hexValuesSplit[15],
-                        hexValuesSplit[16]);
-                    string hour = hexValuesSplit[6];
-                    string min = hexValuesSplit[7];
-                    string sec = hexValuesSplit[8];
-                    string msec = String.Concat(hexValuesSplit[17], hexValuesSplit[18], hexValuesSplit[19],
-                        hexValuesSplit[20]);
-                    string hit = String.Concat(hexValuesSplit[21], hexValuesSplit[22]);
+                    //int[] transBytes = new int[decoderSetts[5].ToString().Trim().Split(',').Length];
+
+                    int index = 0;
+                    string trans = "";
+                    foreach (string transByte in decoderSetts[5].ToString().Trim().Split(','))
+                    {
+                        trans += hexValuesSplit[Convert.ToInt32(transByte)];
+                    }
+                    string msec = "";
+                    foreach (string transByte in decoderSetts[6].ToString().Trim().Split(','))
+                    {
+                        msec += hexValuesSplit[Convert.ToInt32(transByte)];
+                    }
+                    string hit = "";
+                    foreach (string transByte in decoderSetts[7].ToString().Trim().Split(','))
+                    {
+                        hit += hexValuesSplit[Convert.ToInt32(transByte)];
+                    }
+
+
+                    //  String.Concat(hexValuesSplit[13],hexValuesSplit[14],hexValuesSplit[15],hexValuesSplit[16]);
+                    string hour = hexValuesSplit[hourByte];
+                    string min = hexValuesSplit[minuteByte];
+                    string sec = hexValuesSplit[secondByte];
+                    // string[] hexValuesSplit = s.Split(' ');
+
+                    //string trans = String.Concat(hexValuesSplit[13], hexValuesSplit[14], hexValuesSplit[15],
+                    //    hexValuesSplit[16]);
+                    //string hour = hexValuesSplit[6];
+                    //string min = hexValuesSplit[7];
+                    //string sec = hexValuesSplit[8];
+                    //string msec = String.Concat(hexValuesSplit[17], hexValuesSplit[18], hexValuesSplit[19],
+                    //    hexValuesSplit[20]);
+                    //string hit = String.Concat(hexValuesSplit[21], hexValuesSplit[22]);
 
                     Ret.Transponder = Convert.ToInt16(trans, 16).ToString();
                     Ret.Hour = Convert.ToInt16(hour, 16);

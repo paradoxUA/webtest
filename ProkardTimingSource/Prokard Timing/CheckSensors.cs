@@ -87,27 +87,11 @@ namespace Prokard_Timing
             }
             return sBuffer.ToString().ToUpper();
         }
-        public string ASCIITOHex(string ascii)
-        {
 
-            StringBuilder sb = new StringBuilder();
-
-            byte[] inputBytes = Encoding.UTF8.GetBytes(ascii);
-
-            foreach (byte b in inputBytes)
-            {
-
-                sb.Append(string.Format("{0:x2}", b + " "));
-
-            }
-
-            return sb.ToString().ToUpper();
-
-        }
         private void RS232_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string s = RS232.ReadLine();
-            s = ASCIITOHex(s); //вызов функция конвертации
+            s = convertAsciiTextToHex(s); //вызов функция конвертации
             if (s.Length >= 31 * 2 + 30 )
             {
                 processLineFromComPort(s);

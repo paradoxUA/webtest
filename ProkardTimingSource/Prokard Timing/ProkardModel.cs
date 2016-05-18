@@ -13,7 +13,6 @@ using System.Windows.Forms;
 using System.Linq;
 using System.Data.EntityClient;
 using System.Data.Entity;
-using Finisar.SQLite;
 using Prokard_Timing.model;
 using System.IO;
 
