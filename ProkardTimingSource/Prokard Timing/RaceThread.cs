@@ -286,10 +286,12 @@ namespace Prokard_Timing
             //}
             //else
             //{
+           // if (s.Length > 30) { 
                 AMB20RX Res = AMB20_Decode(s);
+           // }
 
                 //if (Res.Transponder.Length > 0 && Res.Transponder != "00")
-                if (Res.Transponder.Length > 0)
+                if (Res.Transponder != null && Res.Transponder.Length > 0)
                 {
                     // we have got signal from transponder
 
@@ -477,7 +479,7 @@ namespace Prokard_Timing
             
             for (int i = 0; i < Members.Count; i++)
             {
-                if (Members[i].CarTransponder == (Convert.ToInt16(transponder)).ToString("000000"))
+                if (Members[i].CarTransponder == (Convert.ToInt32(transponder)).ToString("000000"))
                 {
                     index = i;
                     break;
@@ -533,16 +535,19 @@ namespace Prokard_Timing
             //{
             if (Settings["decoder"].ToString().Trim() == "AMBrc")
             {
-                // @\t40\t551\t313930\t5001.962\t12\t119\t02\txA03E\r
-                s = s.Replace("\r", " ").Replace('@', ' ').Trim();
-                string[] elemStrings = s.Split(new[] { '\t' }, StringSplitOptions.RemoveEmptyEntries);
-                TimeSpan time = TimeSpan.FromMilliseconds(Convert.ToDouble(elemStrings[3])); 
-                Ret.Transponder = elemStrings[2];
-                Ret.Hour = time.Hours;
-                Ret.Minutes = time.Minutes;
-                Ret.Seconds = time.Seconds;
-                Ret.Millisecond = time.Milliseconds;
-                Ret.Hit = Convert.ToInt16(elemStrings[4], 16);
+                if (s.Length > 40)
+                {
+                    // @\t40\t551\t313930\t5001.962\t12\t119\t02\txA03E\r
+                    s = s.Replace("\r", " ").Replace('@', ' ').Trim();
+                    string[] elemStrings = s.Split(new[] { '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                    TimeSpan time = TimeSpan.FromSeconds(Double.Parse(elemStrings[4].Split('.')[0].ToString()));
+                    Ret.Transponder = elemStrings[3];
+                    Ret.Hour = time.Hours;
+                    Ret.Minutes = time.Minutes;
+                    Ret.Seconds = time.Seconds;
+                    Ret.Millisecond = Convert.ToInt16(elemStrings[4].Split('.')[1]);
+                    Ret.Hit = Convert.ToInt16(elemStrings[5], 16);
+                }
             }
             else
             {

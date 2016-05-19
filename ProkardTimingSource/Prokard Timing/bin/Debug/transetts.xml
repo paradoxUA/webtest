@@ -23,6 +23,13 @@
     <msec>5</msec>
     <hit>5</hit>
   </Table1>
+  <Table1>
+    <protocol>AMBrc</protocol>
+    <bytes>42</bytes>
+    <portspeed>38400</portspeed>
+    <bits>8</bits>
+    <stopbit>1</stopbit>
+  </Table1>
   <Table1 />
   <Table1 />
   <Table1 />
