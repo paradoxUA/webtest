@@ -32,10 +32,12 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.labelSmooth2 = new Prokard_Timing.LabelSmooth();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.labelSmooth1 = new Prokard_Timing.LabelSmooth();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.labelSmooth3 = new Prokard_Timing.LabelSmooth();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.borderPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -54,7 +56,7 @@
             this.borderPanel1.Controls.Add(this.button1);
             this.borderPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.borderPanel1.InnerColor = System.Drawing.SystemColors.Control;
-            this.borderPanel1.Location = new System.Drawing.Point(0, 85);
+            this.borderPanel1.Location = new System.Drawing.Point(0, 111);
             this.borderPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.borderPanel1.Name = "borderPanel1";
             this.borderPanel1.Size = new System.Drawing.Size(324, 40);
@@ -87,6 +89,8 @@
             // 
             this.panel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.labelSmooth3);
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.labelSmooth2);
             this.panel1.Controls.Add(this.textBox1);
@@ -94,8 +98,15 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(324, 85);
+            this.panel1.Size = new System.Drawing.Size(324, 111);
             this.panel1.TabIndex = 2;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(83, 45);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(219, 20);
+            this.textBox2.TabIndex = 4;
             // 
             // labelSmooth2
             // 
@@ -128,18 +139,30 @@
             this.labelSmooth1.Text = "Название";
             this.labelSmooth1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             // 
-            // textBox2
+            // labelSmooth3
             // 
-            this.textBox2.Location = new System.Drawing.Point(83, 45);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(219, 20);
-            this.textBox2.TabIndex = 4;
+            this.labelSmooth3.AutoSize = true;
+            this.labelSmooth3.BackColor = System.Drawing.Color.Transparent;
+            this.labelSmooth3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelSmooth3.Location = new System.Drawing.Point(7, 73);
+            this.labelSmooth3.Name = "labelSmooth3";
+            this.labelSmooth3.Size = new System.Drawing.Size(74, 14);
+            this.labelSmooth3.TabIndex = 2;
+            this.labelSmooth3.Text = "Цена фикс";
+            this.labelSmooth3.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(83, 71);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(219, 20);
+            this.textBox3.TabIndex = 4;
             // 
             // AddGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(324, 125);
+            this.ClientSize = new System.Drawing.Size(324, 151);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.borderPanel1);
             this.DoubleBuffered = true;
@@ -171,5 +194,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private LabelSmooth labelSmooth1;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private LabelSmooth labelSmooth3;
     }
 }

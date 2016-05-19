@@ -1667,11 +1667,11 @@ namespace Prokard_Timing
         }
 
         // Обновляет Группу
-        public void ChangeGroup(string Name, string Sale, string GroupID)
+        public void ChangeGroup(string Name, string Sale, string Price, string GroupID)
         {
             if (connected)
             {
-                using (SqlCommand cmd = new SqlCommand("update groups set name='" + Name + "', sale = '" + Sale + "' where id='" + GroupID + "'", db))
+                using (SqlCommand cmd = new SqlCommand("update groups set name='" + Name + "', sale = '" + Sale + "', price = '" + Price + "' where id='" + GroupID + "'", db))
                     cmd.ExecuteNonQuery();
 
             }
@@ -3924,12 +3924,11 @@ namespace Prokard_Timing
         }
 
         // Добавляет группу
-        public void AddGroup(string Name, string Sale)
+        public void AddGroup(string Name, string Sale, string Price)
         {
-
             if (connected)
             {
-                using (SqlCommand cmd = new SqlCommand("insert into groups (name,sale,created, modified) values ('" + Name + "','" + Sale + "','" + getDate() + "', GETDATE())", db))
+                using (SqlCommand cmd = new SqlCommand("insert into groups (name, sale, price, created, modified) values ('" + Name + "','" + Sale + "','" + Price + "','" + getDate() + "', GETDATE())", db))
                 {
                     cmd.ExecuteNonQuery();
                 }

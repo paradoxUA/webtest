@@ -13,6 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using Prokard_Timing.model;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace Prokard_Timing
 {
@@ -342,6 +343,42 @@ namespace Prokard_Timing
 
         public void testClass11()
         {
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            string connStr = config.AppSettings.Settings["crazykartConnectionString"].Value;
+            string[] connstStrings = connStr.Trim().Split(';');
+            string connNew = "";
+            if (connstStrings.Length == 4)
+            {
+                connNew = String.Format("{0};{1};", connstStrings[0], connstStrings[2]);
+            }
+            SqlConnection myConnection = new SqlConnection(connNew);
+            string dbname = myConnection.Database;
+            try
+            {
+                myConnection.Open();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+
+            var dblist = myConnection.GetSchema("Databases");
+            string[] sysdbs = new[] {"master", "model", "msdb", "tempdb"};
+            foreach (DataRow database in dblist.Rows)
+            {
+                String databaseName = database.Field<String>("database_name");
+                if (!sysdbs.Contains(databaseName))
+                {
+                    //comboBox6.
+                }
+                short dbID = database.Field<short>("dbid");
+                DateTime creationDate = database.Field<DateTime>("create_date");
+            }
+
+
+
+
             ProkardModel form = new ProkardModel();
 
             Hashtable sett = form.LoadSettings();

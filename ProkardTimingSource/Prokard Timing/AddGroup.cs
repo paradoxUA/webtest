@@ -58,9 +58,9 @@ namespace Prokard_Timing
                 else
                 {
                     if (sUpdate)
-                        admin.model.ChangeGroup(textBox1.Text, textBox2.Text, GroupID);
+                        admin.model.ChangeGroup(textBox1.Text, textBox2.Text, textBox3.Text, GroupID);
                     else
-                        admin.model.AddGroup(textBox1.Text, textBox2.Text);
+                        admin.model.AddGroup(textBox1.Text, textBox2.Text, textBox3.Text);
 
                     this.DialogResult = System.Windows.Forms.DialogResult.OK;
                     this.Close();

@@ -29,11 +29,7 @@ namespace Prokard_Timing
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
@@ -42,6 +38,11 @@ namespace Prokard_Timing
             this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.borderPanel1.SuspendLayout();
@@ -61,6 +62,7 @@ namespace Prokard_Timing
             this.Column1,
             this.Column2,
             this.Column3,
+            this.price,
             this.Column4});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 25);
@@ -70,27 +72,6 @@ namespace Prokard_Timing
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(459, 322);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "ID";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 50;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Название";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Скидка";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Участников";
-            this.Column4.Name = "Column4";
             // 
             // toolStrip1
             // 
@@ -153,9 +134,9 @@ namespace Prokard_Timing
             this.borderPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel1.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel1.BorderPadding = new System.Windows.Forms.Padding(0);
-            this.borderPanel1.BorderSides = ((Microsoft.TeamFoundation.Client.BorderPanel.Sides)((((Microsoft.TeamFoundation.Client.BorderPanel.Sides.Top | Microsoft.TeamFoundation.Client.BorderPanel.Sides.Bottom)
-                        | Microsoft.TeamFoundation.Client.BorderPanel.Sides.Left)
-                        | Microsoft.TeamFoundation.Client.BorderPanel.Sides.Right)));
+            this.borderPanel1.BorderSides = ((Microsoft.TeamFoundation.Client.BorderPanel.Sides)((((Microsoft.TeamFoundation.Client.BorderPanel.Sides.Top | Microsoft.TeamFoundation.Client.BorderPanel.Sides.Bottom) 
+            | Microsoft.TeamFoundation.Client.BorderPanel.Sides.Left) 
+            | Microsoft.TeamFoundation.Client.BorderPanel.Sides.Right)));
             this.borderPanel1.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
             this.borderPanel1.Controls.Add(this.button2);
             this.borderPanel1.Controls.Add(this.button1);
@@ -189,6 +170,32 @@ namespace Prokard_Timing
             this.button1.Text = "Закрыть";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ID";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 50;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Название";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Скидка";
+            this.Column3.Name = "Column3";
+            // 
+            // price
+            // 
+            this.price.HeaderText = "Цена фикс";
+            this.price.Name = "price";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Участников";
+            this.Column4.Name = "Column4";
             // 
             // GroupControl
             // 
@@ -227,10 +234,11 @@ namespace Prokard_Timing
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Button button2;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn price;
+        private DataGridViewTextBoxColumn Column4;
     }
 }

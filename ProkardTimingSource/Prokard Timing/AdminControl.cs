@@ -1233,7 +1233,8 @@ namespace Prokard_Timing
                 dv[0, i].Value = Groups[i]["id"];
                 dv[1, i].Value = Groups[i]["name"];
                 dv[2, i].Value = Groups[i]["sale"];
-                dv[3, i].Value = model.GetCountPilotsOfGroup(Groups[i]["id"].ToString());
+                dv[3, i].Value = Groups[i]["price"];
+                dv[4, i].Value = model.GetCountPilotsOfGroup(Groups[i]["id"].ToString());
             }
 
         }

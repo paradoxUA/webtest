@@ -84,6 +84,8 @@ namespace Prokard_Timing
 
             }
 
+            loadDbList();
+
             Hashtable sett = parent.admin.model.LoadSettings();
 
             // Закладка Общие настройки
@@ -210,7 +212,6 @@ namespace Prokard_Timing
             }
             
         }
-
       
        
         
@@ -491,6 +492,42 @@ namespace Prokard_Timing
             }
         }
 
+        private void loadDbList()
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            string connStr = config.AppSettings.Settings["crazykartConnectionString"].Value;
+            string[] connstStrings = connStr.Trim().Split(';');
+            string connNew = "";
+            if (connstStrings.Length == 4)
+            {
+                connNew = String.Format("{0};{1};", connstStrings[0], connstStrings[2]);
+            }
+            SqlConnection myConnection = new SqlConnection(connNew);
+            string dbname = myConnection.Database;
+            try
+            {
+                myConnection.Open();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+
+            var dblist = myConnection.GetSchema("Databases");
+            string[] sysdbs = new[] {"master", "model", "msdb", "tempdb"};
+            foreach (DataRow database in dblist.Rows)
+            {
+                String databaseName = database.Field<String>("database_name");
+                if (!sysdbs.Contains(databaseName))
+                {
+                    comboBox6.Items.Add(databaseName);
+                    comboBox7.Items.Add(databaseName);
+                }
+            }
+
+        }
+
+
         private void button8_Click(object sender, EventArgs e)
         {
             // сохранение настроек транспондеров в файл xml
@@ -532,6 +569,137 @@ namespace Prokard_Timing
             label29.Visible = true;
             Thread.Sleep(2000);
             label29.Visible = false;
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            restoreDb();
+        }
+
+        public string restoreDbName = "";
+        public string restoreDbFile = "";
+        private void restoreDb()
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            string connStr = config.AppSettings.Settings["crazykartConnectionString"].Value;
+            SqlConnection myConnection = new SqlConnection(connStr);
+            if (myConnection.State != ConnectionState.Open)
+            {
+                myConnection.Open();
+            }
+            try
+            {
+                string sqlStmt2 = string.Format("ALTER DATABASE [" + restoreDbName + "] SET SINGLE_USER WITH ROLLBACK IMMEDIATE");
+                SqlCommand bu2 = new SqlCommand(sqlStmt2, myConnection);
+                bu2.ExecuteNonQuery();
+
+                string sqlStmt3 = "USE MASTER; RESTORE DATABASE [" + restoreDbName + "] FROM DISK='" + restoreDbFile + "'WITH REPLACE;";
+                SqlCommand bu3 = new SqlCommand(sqlStmt3, myConnection);
+                bu3.ExecuteNonQuery();
+
+                string sqlStmt4 = string.Format("ALTER DATABASE [" + restoreDbName + "] SET MULTI_USER");
+                SqlCommand bu4 = new SqlCommand(sqlStmt4, myConnection);
+                bu4.ExecuteNonQuery();
+
+                MessageBox.Show(@"Восстановление прошло успешно!");
+                myConnection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void button9_Click_1(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "SQL SERVER database backup files|*.bak";
+            dlg.Title = "Database restore";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                restoreDbFile = dlg.FileName;
+                restoreButton.Enabled = true;
+            }
+        }
+
+        private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox box = (ComboBox) sender;
+            restoreDbName = box.SelectedItem.ToString();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            DateTime DtFrom = dateTimePicker1.Value;
+            DateTime DtTo = dateTimePicker2.Value;
+            startClearDb(DtFrom, DtTo);
+        }
+
+        private void startClearDb(DateTime DtFrom, DateTime DtTo)
+        {
+
+           this.Cursor = Cursors.WaitCursor;
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            string connStr = config.AppSettings.Settings["crazykartConnectionString"].Value;
+            SqlConnection myConnection = new SqlConnection(connStr);
+            SqlConnection delConnection = new SqlConnection(connStr);
+            Console.WriteLine(DtFrom.ToString());
+            if (myConnection.State != ConnectionState.Open)
+            {
+                myConnection.Open();
+            }
+            try
+            {
+                string sqlStmt2 =
+                    string.Format(
+                        "SELECT id FROM races WHERE convert(date,created) >= '{0}' and convert(date,created) <= '{1}'",
+                        DtFrom.ToString(), DtTo.ToString());
+                SqlCommand bu2 = new SqlCommand(sqlStmt2, myConnection);
+                SqlDataReader readerselect = bu2.ExecuteReader();
+                while (readerselect.Read())
+                {
+                    var id_race = readerselect.GetValue(0);
+                    delConnection.Open();
+                    string cassaDelString = string.Format("delete from cassa where doc_id in(select id from jurnal where race_id = {0})", id_race);
+                    SqlCommand cassaCommand = new SqlCommand(cassaDelString, delConnection);
+                    cassaCommand.ExecuteNonQuery();
+
+                    string user_cashDelString = string.Format("delete from user_cash where doc_id in(select id from jurnal where race_id = {0})", id_race);
+                    SqlCommand user_cashCommand = new SqlCommand(user_cashDelString, delConnection);
+                    user_cashCommand.ExecuteNonQuery();
+
+                    string jurnalDelString = string.Format("delete from jurnal where race_id = {0}", id_race);
+                    SqlCommand jurnalCommand = new SqlCommand(jurnalDelString, delConnection);
+                    jurnalCommand.ExecuteNonQuery();
+
+                    string race_timesDelString = string.Format("delete from race_times where member_id in (select id from race_data where race_id = {0})", id_race);
+                    SqlCommand race_timesCommand = new SqlCommand(race_timesDelString, delConnection);
+                    race_timesCommand.ExecuteNonQuery();
+
+                    string race_dataDelString = string.Format("delete from race_data where race_id = {0}", id_race);
+                    SqlCommand race_dataCommand = new SqlCommand(race_dataDelString, delConnection);
+                    race_dataCommand.ExecuteNonQuery();
+
+                    string noracekartDelString = string.Format("delete from noracekart where race_id = {0}", id_race);
+                    SqlCommand noracekartCommand = new SqlCommand(noracekartDelString, delConnection);
+                    noracekartCommand.ExecuteNonQuery();
+
+                    string raceDelString = string.Format("delete from races where id = {0}", id_race);
+                    SqlCommand raceCommand = new SqlCommand(raceDelString, delConnection);
+                    raceCommand.ExecuteNonQuery();
+                    delConnection.Close();
+                }
+                this.Cursor = Cursors.Default;
+                MessageBox.Show(@"Очистка прошла успешно!");
+                myConnection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
     }
 }

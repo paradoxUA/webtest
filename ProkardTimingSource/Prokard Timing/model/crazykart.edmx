@@ -1074,7 +1074,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="jurnalraces">
-          <End Type="crazykart.jurnal" Role="jurnal" Multiplicity="*" />
+          <End Type="crazykart.jurnal" Role="jurnal" Multiplicity="*" ></End>
           <End Type="crazykart.races" Role="races" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="races">
@@ -1237,7 +1237,7 @@
           <Property Type="Int32" Name="id_race_mode" Nullable="false" />
         </EntityType>
         <Association Name="race_dataraces">
-          <End Type="crazykart.race_data" Role="race_data" Multiplicity="*" />
+          <End Type="crazykart.race_data" Role="race_data" Multiplicity="*" ></End>
           <End Type="crazykart.races" Role="races" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="races">
@@ -1354,7 +1354,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="cassajurnal">
-          <End Type="crazykart.cassa" Role="cassa" Multiplicity="*" />
+          <End Type="crazykart.cassa" Role="cassa" Multiplicity="*" ></End>
           <End Type="crazykart.jurnal" Role="jurnal" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="jurnal">
@@ -1366,7 +1366,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="race_timesrace_data">
-          <End Type="crazykart.race_times" Role="race_times" Multiplicity="*" />
+          <End Type="crazykart.race_times" Role="race_times" Multiplicity="*" ></End>
           <End Type="crazykart.race_data" Role="race_data" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="race_data">
@@ -1945,11 +1945,9 @@
           <ConnectorPoint PointX="27.875" PointY="13.878326822916666" />
           <ConnectorPoint PointX="26.75" PointY="13.878326822916666" />
         </AssociationConnector>
-        <AssociationConnector Association="crazykart.user_cashjurnal">
-          <ConnectorPoint PointX="11.125" PointY="11.713844706217447" />
-          <ConnectorPoint PointX="17.697916666666668" PointY="11.713844706217447" />
-          <ConnectorPoint PointX="17.864583333333332" PointY="11.713844706217447" />
-          <ConnectorPoint PointX="18.875" PointY="11.713844706217447" />
+        <AssociationConnector Association="crazykart.user_cashjurnal" ManuallyRouted="true">
+          <ConnectorPoint PointX="11" PointY="11.658396809895834" />
+          <ConnectorPoint PointX="13.5" PointY="11.658396809895834" />
         </AssociationConnector>
         <AssociationConnector Association="crazykart.certificatecertificate_type">
           <ConnectorPoint PointX="22" PointY="6.1873478190104167" />
