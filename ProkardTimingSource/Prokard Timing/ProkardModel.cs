@@ -4090,7 +4090,14 @@ namespace Prokard_Timing
                     using (SqlDataReader res = cmd.ExecuteReader())
                     {
                         if (res.Read())
-                            ret = Double.Parse(res["sale"].ToString());
+                            if (res["sale"].ToString().Trim().Length > 0)
+                            {
+                                ret = Double.Parse(res["sale"].ToString());
+                            }
+                            else
+                            {
+                                ret = Double.Parse("0");
+                            }
                     }
                 }
             }

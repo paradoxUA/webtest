@@ -654,7 +654,7 @@ namespace Prokard_Timing
                 string sqlStmt2 =
                     string.Format(
                         "SELECT id FROM races WHERE convert(date,created) >= '{0}' and convert(date,created) <= '{1}'",
-                        DtFrom.ToString(), DtTo.ToString());
+                       DtFrom.Year + "." + DtFrom.Month + "." + DtFrom.Day + " " + DtFrom.TimeOfDay, DtTo.Year + "." + DtTo.Month + "." + DtTo.Day + " " + DtTo.TimeOfDay);
                 SqlCommand bu2 = new SqlCommand(sqlStmt2, myConnection);
                 SqlDataReader readerselect = bu2.ExecuteReader();
                 while (readerselect.Read())
