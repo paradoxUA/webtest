@@ -287,13 +287,6 @@ namespace Prokard_Timing
             //else
             //{
                 AMB20RX Res = AMB20_Decode(s);
-                s = convertAsciiTextToHex(s); //вызов функция конвертации
-                // parses the string
-
-                if (s.Length < 31*2 + 30)
-                {
-                    return;
-                }
 
                 //if (Res.Transponder.Length > 0 && Res.Transponder != "00")
                 if (Res.Transponder.Length > 0)
@@ -507,11 +500,11 @@ namespace Prokard_Timing
         /// распарсить строку в структуру данных
         /// </summary>
         /// <param name="s"></param>
-  
+
         /// <returns></returns>
-        
+
         public AMB20RX AMB20_Decode(string s)
-          
+
         {
             AMB20RX Ret = new AMB20RX();
 
@@ -538,26 +531,26 @@ namespace Prokard_Timing
             //}
             //else
             //{
+            if (Settings["decoder"].ToString().Trim() == "AMBrc")
+            {
+                // @\t40\t551\t313930\t5001.962\t12\t119\t02\txA03E\r
+                s = s.Replace("\r", " ").Replace('@', ' ').Trim();
+                string[] elemStrings = s.Split(new[] { '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                TimeSpan time = TimeSpan.FromMilliseconds(Convert.ToDouble(elemStrings[3])); 
+                Ret.Transponder = elemStrings[2];
+                Ret.Hour = time.Hours;
+                Ret.Minutes = time.Minutes;
+                Ret.Seconds = time.Seconds;
+                Ret.Millisecond = time.Milliseconds;
+                Ret.Hit = Convert.ToInt16(elemStrings[4], 16);
+            }
+            else
+            {
+                s = convertAsciiTextToHex(s); //вызов функция конвертации
+                // parses the string
 
-                //if (s[0] == '@')
                 if (s.Length >= 31*2 + 30)
                 {
-                    //s = s.Replace("\r\n", " ").Trim();
-                    //Ret.Transponder = String.Concat(s[1], s[2]);
-                    //Ret.Hour = Convert.ToInt16(String.Concat(s[3],s[4]));
-                    //Ret.Minutes = Convert.ToInt16(String.Concat(s[5],s[6]));
-                    //Ret.Seconds = Convert.ToInt16(String.Concat(s[7],s[8]));
-                    //if (s.Length > 9)
-                    //{
-                    //    Ret.Millisecond = Convert.ToInt16(String.Concat(s[9],s[10]));
-                    //    Ret.Millisecond = Ret.Millisecond * 10; // потому, что прибор присылает не 3 разряда, а только 2. а должно быть три
-                    //    Ret.Hit = Convert.ToInt16(String.Concat(s[11],s[12]));
-                    //}
-                    //else
-                    //{
-                    //    Ret.Hit = Ret.Millisecond = 0;
-                    //}
-                    //Ret.receivedString = s;
                     s = s.Replace("\r\n", " ").Trim();
                     string[] hexBits = s.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
                     string[] hexValuesSplit = new string[hexBits.Length];
@@ -565,7 +558,8 @@ namespace Prokard_Timing
                     {
                         for (int i = 0; i < hexBits.Length; i++)
                         {
-                            hexValuesSplit[i] = int.Parse(hexBits[i], System.Globalization.NumberStyles.HexNumber).ToString();
+                            hexValuesSplit[i] =
+                                int.Parse(hexBits[i], System.Globalization.NumberStyles.HexNumber).ToString();
                             //Console.WriteLine(i + ". " + hexBits[i] + " = " + decBits[i]);
                         }
                     }
@@ -574,8 +568,6 @@ namespace Prokard_Timing
                         Console.WriteLine(@"String can not be parsed." + ex.Message);
                     }
 
-                    ProkardModel form = new ProkardModel();
-                    Hashtable sett = form.LoadSettings();
                     //Console.WriteLine(sett["decoder"]);
                     // 0 - name protokol
                     // 1 - bytes (32)
@@ -654,8 +646,9 @@ namespace Prokard_Timing
                     Ret.Millisecond = 0;
                     Ret.receivedString = String.Empty;
                 }
-            //}
-                return Ret;
+
+            }
+            return Ret;
         }
 
 

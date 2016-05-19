@@ -67,38 +67,38 @@ namespace Prokard_Timing
             for (int i = 1; i < 10; i++)
             {
                // string.Concat("0800".Select(c => ((int)c).ToString("x2")))
-                string str1 = "00 15 01 08 01 01 01 1D 02 00 00 00 3A 00 00 00 00 8F 00 14 00 00 00 01 1D 0D 0A";
+                string str1 = "01 40 09 34 30 09 35 35 31 09 33 31 33 39 33 30 09 35 30 30 31 2E 39 36 32 09 31 32 09 31 31 39 09 30 32 09 78 41 30 33 45 0D 0A";
                RS232.Write(StrToByteArr(str1), 0, str1.Split(' ').Length);
                RS232.Write(StrToByteArr(systring), 0, systring.Split(' ').Length);
-               string str2 = "00 14 01 08 01 01 01 1C 27 00 00 00 31 00 00 3B A4 00 00 02 3F 00 67 00 00 00 00 00 02 19 0D 0A";
+               string str2 = "01 40 09 34 30 09 35 35 31 09 33 31 33 39 33 30 09 35 30 30 31 2E 39 36 32 09 31 32 09 31 31 39 09 30 32 09 78 41 30 33 45 0D 0A";
                Thread.Sleep(3000);
               //  RS232.WriteLine("");
                RS232.Write(StrToByteArr(str2), 0, str2.Split(' ').Length);
                RS232.Write(StrToByteArr(systring), 0, systring.Split(' ').Length);
 
                Thread.Sleep(3000);
-               str1 = "00 14 01 08 01 01 01 1C 36 00 00 00 33 00 00 3B A2 00 00 03 2B 00 45 00 00 00 00 00 01 F5 0D 0A";
+               str1 = "01 40 09 34 30 09 35 35 31 09 33 31 33 39 33 30 09 35 30 30 31 2E 39 36 32 09 31 32 09 31 31 39 09 30 32 09 78 41 30 33 45 0D 0A";
                RS232.Write(StrToByteArr(str1), 0, str1.Split(' ').Length);
                RS232.Write(StrToByteArr(systring), 0, systring.Split(' ').Length);
 
-               str2 = "00 14 01 08 01 01 01 1C 3B 00 00 00 34 00 00 3B A2 00 00 00 91 00 42 00 00 00 00 00 02 5B 0D 0A";
+               str2 = "01 40 09 34 30 09 35 35 31 09 33 31 33 39 33 30 09 35 30 30 31 2E 39 36 32 09 31 32 09 31 31 39 09 30 32 09 78 41 30 33 45 0D 0A";
                 RS232.Write(StrToByteArr(str2), 0, str2.Split(' ').Length);
                 RS232.Write(StrToByteArr(systring), 0, systring.Split(' ').Length);
 
                 Thread.Sleep(3000);
-                str1 = "00 14 01 08 01 01 01 1C 2B 00 00 00 34 00 00 5B A5 00 00 00 91 00 42 00 00 00 00 00 02 5B 0D 0A";
+                str1 = "01 40 09 34 30 09 35 35 31 09 33 31 33 39 33 30 09 35 30 30 31 2E 39 36 32 09 31 32 09 31 31 39 09 30 32 09 78 41 30 33 45 0D 0A";
                RS232.Write(StrToByteArr(str1), 0, str1.Split(' ').Length);
                RS232.Write(StrToByteArr(systring), 0, systring.Split(' ').Length);
-               str2 = "00 14 01 08 01 01 01 1C 29 00 00 00 31 00 00 3B A2 00 00 02 03 00 67 00 00 00 00 00 02 19 0D 0A";
+               str2 = "01 40 09 34 30 09 35 35 31 09 33 31 33 39 33 30 09 35 30 30 31 2E 39 36 32 09 31 32 09 31 31 39 09 30 32 09 78 41 30 33 45 0D 0A";
                 RS232.Write(StrToByteArr(str2), 0, str2.Split(' ').Length);
                 RS232.Write(StrToByteArr(systring), 0, systring.Split(' ').Length);
 
                 Thread.Sleep(3000);
-                str1 = "00 14 01 08 01 01 01 1C 3B 00 00 00 34 00 00 5B A5 00 00 00 91 00 42 00 00 00 00 00 02 5B 0D 0A";
+                str1 = "01 40 09 34 30 09 35 35 31 09 33 31 33 39 33 30 09 35 30 30 31 2E 39 36 32 09 31 32 09 31 31 39 09 30 32 09 78 41 30 33 45 0D 0A";
                 RS232.Write(StrToByteArr(str1), 0, str1.Split(' ').Length);
                 RS232.Write(StrToByteArr(systring), 0, systring.Split(' ').Length);
 
-                str2 = "00 14 01 08 01 01 01 1C 30 00 00 00 31 00 00 3B A2 00 00 02 04 00 67 00 00 00 00 00 02 19 0D 0A";
+                str2 = "01 40 09 34 30 09 35 35 31 09 33 31 33 39 33 30 09 35 30 30 31 2E 39 36 32 09 31 32 09 31 31 39 09 30 32 09 78 41 30 33 45 0D 0A";
                 RS232.Write(StrToByteArr(str2), 0, str2.Split(' ').Length);
                 RS232.Write(StrToByteArr(systring), 0, systring.Split(' ').Length);
                   Thread.Sleep(5000);

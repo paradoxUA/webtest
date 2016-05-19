@@ -460,29 +460,30 @@ namespace Prokard_Timing
 
         private void createDbBackup()
         {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            string connStr = config.AppSettings.Settings["crazykartConnectionString"].Value;
+            SqlConnection myConnection = new SqlConnection(connStr);
+            string dbname = myConnection.Database;
+            try
+            {
+                myConnection.Open();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = @"Бэкап базы данных (*.bak)|*.bak|Все файлы (*.*)|*.*";
+            saveFileDialog.FileName = DateTime.Now.Year.ToString() + "_" + DateTime.Now.Month.ToString() + "_" +
+                                      DateTime.Now.Day.ToString()+ "_" + dbname;
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                string connStr = config.AppSettings.Settings["crazykartConnectionString"].Value;
-                SqlConnection myConnection = new SqlConnection(connStr);
-                try
-                {
-                    myConnection.Open();
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show(e.ToString());
-                }
-                string dbname = myConnection.Database;
-                saveFileDialog.FileName = DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() +
-                                          DateTime.Now.Day.ToString() + "_" + dbname + ".bak";
+
                 SqlCommand com =
                     new SqlCommand(
                         String.Format(
                             @"BACKUP DATABASE {0} TO DISK = '{1}' WITH INIT , NOUNLOAD ,  NOSKIP , STATS = 10, NOFORMAT",
-                            dbname, saveFileDialog.FileName), myConnection);
+                            dbname, saveFileDialog.FileName ), myConnection);
 
                 SqlDataReader myreader = com.ExecuteReader();
                 Thread.Sleep(2000);

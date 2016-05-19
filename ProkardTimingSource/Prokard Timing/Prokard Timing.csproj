@@ -315,7 +315,6 @@
     <Compile Include="Forms\Petroleum\PetroleumSpend.Designer.cs">
       <DependentUpon>PetroleumSpend.cs</DependentUpon>
     </Compile>
-    <Compile Include="localSettsDb.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="model\cassa.cs">
       <DependentUpon>Model.tt</DependentUpon>

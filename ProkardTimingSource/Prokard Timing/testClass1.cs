@@ -47,7 +47,8 @@ namespace Prokard_Timing
 
                 //spL.ReadChar();
                 string s = spL.ReadLine();
-                s = s.Replace("\r\n", " ").Trim();
+                // @\t40\t551\t313930\t5001.962\t12\t119\t02\txA03E\r
+                //s = s.Replace("\r\n", " ").Trim();
                 s = convertAsciiTextToHex(s);
                 string[] hexBits = s.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 string[] hexValuesSplit = new string[hexBits.Length];
@@ -63,6 +64,7 @@ namespace Prokard_Timing
                 {
                     Console.WriteLine(@"String can not be parsed." + ex.Message);
                 }
+
                 // 2 - hours 1
             // 3 - minutes 1
             // 4 - seconds 1
