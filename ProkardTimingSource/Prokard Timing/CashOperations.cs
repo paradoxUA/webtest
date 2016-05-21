@@ -43,9 +43,9 @@ namespace Prokard_Timing
               admin = ad;
 
             discountCard = null;
-
            
             PilotID = ID;
+            User = admin.model.GetPilot(PilotID);
 
             int idDefaultRaceMode = Convert.ToInt32(admin.Settings["default_race_mode_id"]);
 
