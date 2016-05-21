@@ -50,9 +50,9 @@ namespace Prokard_Timing
             int idDefaultRaceMode = Convert.ToInt32(admin.Settings["default_race_mode_id"]);
 
                Race = R;
-
-            Sum = Convert.ToDouble(admin.GetPrice(admin.GetWeekDayNumber(R.Date), 
-               Convert.ToInt32(R.Hour), idDefaultRaceMode));//  R.RaceSum;
+            int idGroup = Convert.ToInt32(User["gr"]);
+            Sum = Convert.ToDouble(admin.GetPrice(admin.GetWeekDayNumber(R.Date),
+               Convert.ToInt32(R.Hour), idDefaultRaceMode, idGroup));//  R.RaceSum;
          
 
      //       ci = new comboBoxItem(null, -1);
@@ -227,12 +227,13 @@ namespace Prokard_Timing
 
 
 
-             comboBoxItem ci = new comboBoxItem("", -1);           
+             comboBoxItem ci = new comboBoxItem("", -1);
+             int idGroup = Convert.ToInt32(User["gr"]);
 
             // узнали полную цену для этого времени, с учётом указанного количества кругов
             Sum = Convert.ToDouble(admin.GetPrice(admin.GetWeekDayNumber(Race.Date),
-                Convert.ToInt16(Race.Hour), 
-                ci.getSelectedValue(halfModes_comboBox)));
+                Convert.ToInt16(Race.Hour),
+                ci.getSelectedValue(halfModes_comboBox), idGroup));
 
             
             /* есть такие скидки - certificateSale - скидка по сертификату

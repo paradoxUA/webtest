@@ -254,7 +254,7 @@ namespace Prokard_Timing
                         if (racesList_dataGridView1.Rows[i].Visible)
                         {
                             admin.Races[i, j].RaceSum =
-                                double.Parse(admin.GetPrice(dayNumber, i, 1)); // TODO режим гонки
+                                double.Parse(admin.GetPrice(dayNumber, i, 1, 1)); // TODO режим гонки
                         }
                     }
 
@@ -594,7 +594,7 @@ namespace Prokard_Timing
                     {
                         System.Drawing.StringFormat drawFormat = new System.Drawing.StringFormat();
                         drawFormat.Alignment = StringAlignment.Far;
-                        content = admin.GetPrice(admin.GetWeekDayNumber(), e.RowIndex, 1) + " грн"; //TODO режим гонки
+                        content = admin.GetPrice(admin.GetWeekDayNumber(), e.RowIndex, 1, 1) + " грн"; //TODO режим гонки
                         e.Graphics.DrawString(content, f2, Brushes.DarkSlateBlue, Rect.Right, Rect.Bottom - 17, drawFormat);
                         drawFormat.Dispose();
                     }

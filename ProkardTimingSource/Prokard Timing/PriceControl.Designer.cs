@@ -57,6 +57,8 @@ namespace Prokard_Timing
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.borderPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -79,14 +81,14 @@ namespace Prokard_Timing
             this.borderPanel1.Location = new System.Drawing.Point(0, 377);
             this.borderPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.borderPanel1.Name = "borderPanel1";
-            this.borderPanel1.Size = new System.Drawing.Size(789, 40);
+            this.borderPanel1.Size = new System.Drawing.Size(989, 40);
             this.borderPanel1.TabIndex = 2;
             this.borderPanel1.UseInnerColor = false;
             // 
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(323, 5);
+            this.button4.Location = new System.Drawing.Point(523, 5);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(150, 30);
             this.button4.TabIndex = 2;
@@ -98,7 +100,7 @@ namespace Prokard_Timing
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(479, 5);
+            this.button3.Location = new System.Drawing.Point(679, 5);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(150, 30);
             this.button3.TabIndex = 1;
@@ -109,7 +111,7 @@ namespace Prokard_Timing
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(635, 5);
+            this.button1.Location = new System.Drawing.Point(835, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 30);
             this.button1.TabIndex = 0;
@@ -130,7 +132,7 @@ namespace Prokard_Timing
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(789, 377);
+            this.panel1.Size = new System.Drawing.Size(989, 377);
             this.panel1.TabIndex = 3;
             // 
             // radioButton4
@@ -139,7 +141,7 @@ namespace Prokard_Timing
             this.radioButton4.Appearance = System.Windows.Forms.Appearance.Button;
             this.radioButton4.AutoSize = true;
             this.radioButton4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radioButton4.Location = new System.Drawing.Point(691, 115);
+            this.radioButton4.Location = new System.Drawing.Point(891, 115);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(64, 23);
             this.radioButton4.TabIndex = 5;
@@ -154,7 +156,7 @@ namespace Prokard_Timing
             this.radioButton2.Appearance = System.Windows.Forms.Appearance.Button;
             this.radioButton2.AutoSize = true;
             this.radioButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radioButton2.Location = new System.Drawing.Point(691, 86);
+            this.radioButton2.Location = new System.Drawing.Point(891, 86);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(64, 23);
             this.radioButton2.TabIndex = 1;
@@ -169,7 +171,7 @@ namespace Prokard_Timing
             this.radioButton3.Appearance = System.Windows.Forms.Appearance.Button;
             this.radioButton3.AutoSize = true;
             this.radioButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radioButton3.Location = new System.Drawing.Point(621, 115);
+            this.radioButton3.Location = new System.Drawing.Point(821, 115);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(64, 23);
             this.radioButton3.TabIndex = 4;
@@ -185,7 +187,7 @@ namespace Prokard_Timing
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
             this.radioButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radioButton1.Location = new System.Drawing.Point(621, 86);
+            this.radioButton1.Location = new System.Drawing.Point(821, 86);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(64, 23);
             this.radioButton1.TabIndex = 0;
@@ -248,7 +250,7 @@ namespace Prokard_Timing
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.RowHeadersWidth = 65;
-            this.dataGridView1.Size = new System.Drawing.Size(789, 341);
+            this.dataGridView1.Size = new System.Drawing.Size(989, 341);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
@@ -311,7 +313,9 @@ namespace Prokard_Timing
             this.borderPanel3.BorderPadding = new System.Windows.Forms.Padding(0);
             this.borderPanel3.BorderSides = Microsoft.TeamFoundation.Client.BorderPanel.Sides.Bottom;
             this.borderPanel3.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.borderPanel3.Controls.Add(this.label3);
             this.borderPanel3.Controls.Add(this.label1);
+            this.borderPanel3.Controls.Add(this.comboBox1);
             this.borderPanel3.Controls.Add(this.raceMode_comboBox1);
             this.borderPanel3.Controls.Add(this.checkBox1);
             this.borderPanel3.Controls.Add(this.button2);
@@ -321,7 +325,7 @@ namespace Prokard_Timing
             this.borderPanel3.InnerColor = System.Drawing.SystemColors.Control;
             this.borderPanel3.Location = new System.Drawing.Point(0, 0);
             this.borderPanel3.Name = "borderPanel3";
-            this.borderPanel3.Size = new System.Drawing.Size(789, 36);
+            this.borderPanel3.Size = new System.Drawing.Size(989, 36);
             this.borderPanel3.TabIndex = 2;
             this.borderPanel3.UseInnerColor = false;
             // 
@@ -341,7 +345,7 @@ namespace Prokard_Timing
             this.raceMode_comboBox1.FormattingEnabled = true;
             this.raceMode_comboBox1.Location = new System.Drawing.Point(514, 7);
             this.raceMode_comboBox1.Name = "raceMode_comboBox1";
-            this.raceMode_comboBox1.Size = new System.Drawing.Size(263, 21);
+            this.raceMode_comboBox1.Size = new System.Drawing.Size(189, 21);
             this.raceMode_comboBox1.TabIndex = 7;
             this.raceMode_comboBox1.SelectedIndexChanged += new System.EventHandler(this.raceMode_comboBox1_SelectedIndexChanged);
             // 
@@ -389,11 +393,31 @@ namespace Prokard_Timing
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 0;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(775, 8);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(189, 21);
+            this.comboBox1.TabIndex = 7;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Location = new System.Drawing.Point(727, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Группа";
+            // 
             // PriceControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 417);
+            this.ClientSize = new System.Drawing.Size(989, 417);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.borderPanel1);
             this.DoubleBuffered = true;
@@ -441,6 +465,8 @@ namespace Prokard_Timing
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox raceMode_comboBox1;
+        private Label label3;
+        private ComboBox comboBox1;
 
     }
 }

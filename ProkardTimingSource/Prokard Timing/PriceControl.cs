@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
+using System.Windows.Input;
 using Prokard_Timing.Controls;
+using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
 
 namespace Prokard_Timing
 {
@@ -25,6 +27,9 @@ namespace Prokard_Timing
             // режимы заезда
             fillRaceModes();
 
+            // режимы заезда
+            fillGroups();
+
             CreateWeekGreed(dataGridView1);
             UnselectAllCells();
             
@@ -40,6 +45,23 @@ namespace Prokard_Timing
                 dataGridView1.ReadOnly = false;
                 textBox2.Enabled = button2.Enabled = true;
             }
+        }
+
+        private void fillGroups()
+        {
+            List<Hashtable> data = parent.admin.model.GetAllGroups();
+
+        var dict = new Dictionary<int, string>();
+
+           for (int i = 0; i < data.Count; i++)
+           {
+               dict.Add(Convert.ToInt32(data[i]["id"]), data[i]["name"].ToString());
+
+           }
+
+        comboBox1.DataSource = new BindingSource(dict, null);
+        comboBox1.DisplayMember = "Value";
+        comboBox1.ValueMember = "Key";
         }
 
 
@@ -77,11 +99,27 @@ namespace Prokard_Timing
 
             if (ci.getSelectedValue(raceMode_comboBox1) == -1)
             {
+                MessageBox.Show(@"Выберите тип заезда.");
                 return;
             }
 
             int idRaceMode = ci.getSelectedValue(raceMode_comboBox1);
+            int idGroup = 1;
+            if (comboBox1.SelectedItem != null)
+            {
+                KeyValuePair<int, string> item = (KeyValuePair<int, string>) comboBox1.SelectedItem;
+                if (item.Key == 0)
+                {
+                    MessageBox.Show(@"Выберите группу.");
+                    return;
+                }
 
+            }
+            if (comboBox1.SelectedItem != null)
+            {
+                KeyValuePair<int, string> item = (KeyValuePair<int, string>)comboBox1.SelectedItem;
+                idGroup = item.Key;
+            }
             for (int i = 0; i < 24; i++)
             {
 
@@ -97,7 +135,7 @@ namespace Prokard_Timing
             for (int i = 0; i < 7; i++)
                 for (int j = 0; j < dv.Rows.Count; j++)
                 {
-                    dv[i, j].Value = parent.admin.GetPrice(i + 1, j, idRaceMode);
+                    dv[i, j].Value = parent.admin.GetPrice(i + 1, j, idRaceMode, idGroup);
                 }
 
         }
@@ -156,11 +194,16 @@ namespace Prokard_Timing
 
             if(idSelectedRaceMode == -1)
             {
-                MessageBox.Show("Необходимо выбрать режим");
+                MessageBox.Show(@"Необходимо выбрать режим");
                 return;
             }
-
-            parent.admin.SavePrices(dataGridView1, WeekNumber, idSelectedRaceMode);
+            int idGroup = ((KeyValuePair<int, string>)comboBox1.SelectedItem).Key;
+            if (idGroup == 0)
+            {
+                MessageBox.Show(@"Необходимо выбрать группу");
+                return;
+            }
+            parent.admin.SavePrices(dataGridView1, WeekNumber, idSelectedRaceMode, idGroup);
             button3.Enabled = false;
         }
 
@@ -186,6 +229,11 @@ namespace Prokard_Timing
         }
 
         private void raceMode_comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CreateWeekGreed(dataGridView1);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             CreateWeekGreed(dataGridView1);
         }

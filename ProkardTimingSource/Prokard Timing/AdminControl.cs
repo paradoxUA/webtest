@@ -41,6 +41,7 @@ namespace Prokard_Timing
         public class PricesForRaceModes
         {
             public int idRaceMode;
+            public int idGroup;
 
             // массив цен в виде d1/d2/...d7
             public string[] Prices = new string[8];
@@ -1368,7 +1369,7 @@ namespace Prokard_Timing
         }
 
         // Сохраняет цены
-        public void SavePrices(DataGridView dv, int week, int raceModeId)
+        public void SavePrices(DataGridView dv, int week, int raceModeId, int idGroup)
         {
             string DayPrices;
             string[] WeekPrices = new string[8];
@@ -1383,7 +1384,7 @@ namespace Prokard_Timing
                 WeekPrices[i + 1] = DayPrices;
             }
 
-            model.SavePrices(week, WeekPrices, raceModeId);
+            model.SavePrices(week, WeekPrices, raceModeId, idGroup);
 
             
             Prices = model.GetPrices();
@@ -1391,7 +1392,7 @@ namespace Prokard_Timing
 
         // Показывает цену на текущий час, и номер недели ??
         // sgavrilenko - возвращает цену за час для указанного дня и режима
-        public string GetPrice(int Day, int Hour, int idRaceMode)
+        public string GetPrice(int Day, int Hour, int idRaceMode, int idGroup)
         {
           //  MainForm.log("day: " + Day + ", hour: " + Hour + ", id race mode: " + idRaceMode);
  
@@ -1401,7 +1402,7 @@ namespace Prokard_Timing
 
             for (int i = 0; i < Prices.Count; i++)
             {
-                if (Prices[i].idRaceMode == idRaceMode)
+                if (Prices[i].idRaceMode == idRaceMode && Prices[i].idGroup == idGroup)
                 {
                     priceForSomeMode = Prices[i];
                     // MainForm.log("i =" + i);

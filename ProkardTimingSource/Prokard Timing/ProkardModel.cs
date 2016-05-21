@@ -2358,7 +2358,7 @@ namespace Prokard_Timing
         }
 
         // Сохраняет цены
-        public void SavePrices(int Week, string[] Prices, int raceModeId)
+        public void SavePrices(int Week, string[] Prices, int raceModeId, int idGroup)
         {
             DateTime startTime = DateTime.Now;
             if (connected)
@@ -2366,9 +2366,10 @@ namespace Prokard_Timing
 
                 using (SqlCommand cmd = new SqlCommand("delete from prices where week='" + Week.ToString()
                     + "' AND idRaceMode = " + raceModeId +
-                    "; insert into prices (week,d1,d2,d3,d4,d5,d6,d7, idRaceMode) values ('" + Week.ToString() + "','" + Prices[1] + "','" +
+                    " AND idGroup = " + idGroup +
+                    "; insert into prices (week,d1,d2,d3,d4,d5,d6,d7, idRaceMode, idGroup) values ('" + Week.ToString() + "','" + Prices[1] + "','" +
                     Prices[2] + "','" + Prices[3] + "','" + Prices[4] + "','" + Prices[5] + "','" +
-                    Prices[6] + "','" + Prices[7] + "', " + raceModeId + ")", db))
+                    Prices[6] + "','" + Prices[7] + "', " + raceModeId + ", " + idGroup + ")", db))
                 {
                     cmd.ExecuteNonQuery();
                 }
@@ -2406,6 +2407,7 @@ namespace Prokard_Timing
                             pricesForSomeRaceMode.Prices[i] = res["d" + i.ToString()].ToString();
                         }
                         pricesForSomeRaceMode.idRaceMode = Convert.ToInt32(res["idRaceMode"]);
+                        pricesForSomeRaceMode.idGroup = Convert.ToInt32(res["idGroup"]);
 
                         result.Add(pricesForSomeRaceMode);
                     }
