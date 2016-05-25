@@ -256,12 +256,22 @@ namespace Prokard_Timing
         // функция конвертации в хекс
         private String convertAsciiTextToHex(String i_asciiText)
         {
-            StringBuilder sBuffer = new StringBuilder();
-            for (int i = 0; i < i_asciiText.Length; i++)
+            string hexOutput = "";
+            foreach (char letter in i_asciiText)
             {
-                sBuffer.Append(Convert.ToInt32(i_asciiText[i]).ToString("x2") + " ");
+                // Get the integral value of the character.
+                int value = Convert.ToInt32(letter);
+                // Convert the decimal value to a hexadecimal value in string form.
+                hexOutput +=  value.ToString("x2") + " ";
+                Console.WriteLine("Hexadecimal value of {0} is {1}", letter, hexOutput);
             }
-            return sBuffer.ToString().ToUpper();
+            return hexOutput;
+            //StringBuilder sBuffer = new StringBuilder();
+            //for (int i = 0; i < i_asciiText.Length; i++)
+            //{
+            //    sBuffer.Append(Convert.ToInt16(i_asciiText[i]).ToString("x2") + " ");
+            //}
+            //return sBuffer.ToString().ToUpper();
         }
 
         // Сохраняет декодированные данные // TODO public for tests
@@ -479,7 +489,7 @@ namespace Prokard_Timing
             
             for (int i = 0; i < Members.Count; i++)
             {
-                if (Members[i].CarTransponder == (Convert.ToInt32(transponder)).ToString("000000"))
+                if (Members[i].CarTransponder == transponder)
                 {
                     index = i;
                     break;
@@ -557,21 +567,21 @@ namespace Prokard_Timing
                 if (s.Length >= 31*2 + 30)
                 {
                     s = s.Replace("\r\n", " ").Trim();
-                    string[] hexBits = s.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
-                    string[] hexValuesSplit = new string[hexBits.Length];
-                    try
-                    {
-                        for (int i = 0; i < hexBits.Length; i++)
-                        {
-                            hexValuesSplit[i] =
-                                int.Parse(hexBits[i], System.Globalization.NumberStyles.HexNumber).ToString();
-                            //Console.WriteLine(i + ". " + hexBits[i] + " = " + decBits[i]);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(@"String can not be parsed." + ex.Message);
-                    }
+                    string[] hexBits = s.Split(new[] {' '});
+                    string[] hexValuesSplit = hexBits;
+                    //try
+                    //{
+                    //    for (int i = 0; i < hexBits.Length; i++)
+                    //    {
+                    //        hexValuesSplit[i] =
+                    //            int.Parse(hexBits[i], System.Globalization.NumberStyles.HexNumber).ToString();
+                    //        //Console.WriteLine(i + ". " + hexBits[i] + " = " + decBits[i]);
+                    //    }
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    Console.WriteLine(@"String can not be parsed." + ex.Message);
+                    //}
 
                     //Console.WriteLine(sett["decoder"]);
                     // 0 - name protokol
@@ -595,24 +605,24 @@ namespace Prokard_Timing
                     string trans = "";
                     foreach (string transByte in decoderSetts[5].ToString().Trim().Split(','))
                     {
-                        trans += hexValuesSplit[Convert.ToInt32(transByte)];
+                        trans += hexValuesSplit[Convert.ToInt32(transByte)-1];
                     }
                     string msec = "";
                     foreach (string transByte in decoderSetts[6].ToString().Trim().Split(','))
                     {
-                        msec += hexValuesSplit[Convert.ToInt32(transByte)];
+                        msec += hexValuesSplit[Convert.ToInt32(transByte)-1];
                     }
                     string hit = "";
                     foreach (string transByte in decoderSetts[7].ToString().Trim().Split(','))
                     {
-                        hit += hexValuesSplit[Convert.ToInt32(transByte)];
+                        hit += hexValuesSplit[Convert.ToInt32(transByte)-1];
                     }
 
 
                     //  String.Concat(hexValuesSplit[13],hexValuesSplit[14],hexValuesSplit[15],hexValuesSplit[16]);
-                    string hour = hexValuesSplit[hourByte];
-                    string min = hexValuesSplit[minuteByte];
-                    string sec = hexValuesSplit[secondByte];
+                    string hour = hexValuesSplit[hourByte-1];
+                    string min = hexValuesSplit[minuteByte-1];
+                    string sec = hexValuesSplit[secondByte-1];
                     // string[] hexValuesSplit = s.Split(' ');
 
                     //string trans = String.Concat(hexValuesSplit[13], hexValuesSplit[14], hexValuesSplit[15],
