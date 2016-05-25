@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Prokard Timing")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Prokard Timing")]
+[assembly: AssemblyCompany("Nabster-CD")]
 [assembly: AssemblyProduct("Prokard Timing")]
-[assembly: AssemblyCopyright("Copyright © Prokard Timing")]
+[assembly: AssemblyCopyright("Copyright © Nabster-CD 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

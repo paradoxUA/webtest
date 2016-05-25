@@ -69,7 +69,7 @@
             this.labelSmooth2.Name = "labelSmooth2";
             this.labelSmooth2.Size = new System.Drawing.Size(41, 19);
             this.labelSmooth2.TabIndex = 1;
-            this.labelSmooth2.Text = "v 1.4";
+            this.labelSmooth2.Text = "v 1.3";
             this.labelSmooth2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             // 
             // labelSmooth1
@@ -79,9 +79,9 @@
             this.labelSmooth1.Font = new System.Drawing.Font("Calibri", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSmooth1.Location = new System.Drawing.Point(3, 3);
             this.labelSmooth1.Name = "labelSmooth1";
-            this.labelSmooth1.Size = new System.Drawing.Size(92, 33);
+            this.labelSmooth1.Size = new System.Drawing.Size(134, 33);
             this.labelSmooth1.TabIndex = 0;
-            this.labelSmooth1.Text = "Rentix ";
+            this.labelSmooth1.Text = "Crazy Kart ";
             this.labelSmooth1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             // 
             // borderPanel2
@@ -152,8 +152,7 @@
             this.Name = "About";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "О программе";
-            this.Load += new System.EventHandler(this.About_Load);
+            this.Text = "О программе Сrazy Kart";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.About_KeyDown);
             this.borderPanel1.ResumeLayout(false);
             this.borderPanel1.PerformLayout();
