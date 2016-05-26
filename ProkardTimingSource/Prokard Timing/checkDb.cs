@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     class checkDb
     {

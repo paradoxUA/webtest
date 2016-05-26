@@ -13,10 +13,10 @@ using System.Windows.Forms;
 using System.Linq;
 using System.Data.EntityClient;
 using System.Data.Entity;
-using Prokard_Timing.model;
+using Rentix.model;
 using System.IO;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     public class ProkardModel
     {
@@ -188,11 +188,6 @@ namespace Prokard_Timing
 
             List<race_times> result = new List<race_times>();
             TimeSpan executionTime;
-
-
-
-
-
 
             if (onlyUnique)
             { 

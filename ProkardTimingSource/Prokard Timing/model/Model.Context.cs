@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Prokard_Timing.model
+namespace Rentix.model
 {
     using System;
     using System.Data.Entity;

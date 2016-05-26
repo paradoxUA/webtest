@@ -11,7 +11,7 @@ using System.Xml;
 using System.Data.Common;
 using System.IO;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     public partial class ExportPilots : Form
     {

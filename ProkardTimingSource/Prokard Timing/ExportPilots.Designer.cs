@@ -1,4 +1,4 @@
-﻿namespace Prokard_Timing
+﻿namespace Rentix
 {
     partial class ExportPilots
     {
@@ -133,7 +133,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(353, 236);
             this.Controls.Add(this.withPhonesOnly_checkBox);

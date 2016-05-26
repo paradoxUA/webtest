@@ -1,4 +1,4 @@
-﻿namespace Prokard_Timing
+﻿namespace Rentix
 {
     partial class CertificateCash
     {
@@ -31,16 +31,16 @@
             this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.label12 = new Prokard_Timing.LabelSmooth();
-            this.label13 = new Prokard_Timing.LabelSmooth();
+            this.label12 = new Rentix.LabelSmooth();
+            this.label13 = new Rentix.LabelSmooth();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.labelSmooth1 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth1 = new Rentix.LabelSmooth();
             this.borderPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // borderPanel1
             // 
-            this.borderPanel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel1.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel1.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -134,7 +134,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(312, 133);
             this.Controls.Add(this.labelSmooth1);

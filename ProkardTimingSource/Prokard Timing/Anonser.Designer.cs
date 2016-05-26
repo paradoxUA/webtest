@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-namespace Prokard_Timing
+namespace Rentix
 {
     partial class Anonser
     {
@@ -66,22 +66,22 @@ namespace Prokard_Timing
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.labelSmooth6 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth5 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth6 = new Rentix.LabelSmooth();
+            this.labelSmooth5 = new Rentix.LabelSmooth();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.labelSmooth2 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth3 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth2 = new Rentix.LabelSmooth();
+            this.labelSmooth3 = new Rentix.LabelSmooth();
             this.bestResult_dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelSmooth1 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth4 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth1 = new Rentix.LabelSmooth();
+            this.labelSmooth4 = new Rentix.LabelSmooth();
             this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
             this.sponsor_pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.date_labelSmooth7 = new Prokard_Timing.LabelSmooth();
-            this.LH = new Prokard_Timing.LabelSmooth();
+            this.date_labelSmooth7 = new Rentix.LabelSmooth();
+            this.LH = new Rentix.LabelSmooth();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -134,7 +134,7 @@ namespace Prokard_Timing
             // anonserImage_pictureBox
             // 
             this.anonserImage_pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.anonserImage_pictureBox.InitialImage = global::Prokard_Timing.Properties.Resources.stop_flag;
+            this.anonserImage_pictureBox.InitialImage = global::Rentix.Properties.Resources.stop_flag;
             this.anonserImage_pictureBox.Location = new System.Drawing.Point(3, 3);
             this.anonserImage_pictureBox.Name = "anonserImage_pictureBox";
             this.anonserImage_pictureBox.Size = new System.Drawing.Size(547, 1);
@@ -420,7 +420,7 @@ namespace Prokard_Timing
             // 
             // panel5
             // 
-            this.panel5.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.panel5.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel5.Controls.Add(this.labelSmooth6);
             this.panel5.Controls.Add(this.labelSmooth5);
@@ -635,7 +635,7 @@ namespace Prokard_Timing
             // sponsor_pictureBox1
             // 
             this.sponsor_pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.sponsor_pictureBox1.Image = global::Prokard_Timing.Properties.Resources.noactiv_flag;
+            this.sponsor_pictureBox1.Image = global::Rentix.Properties.Resources.noactiv_flag;
             this.sponsor_pictureBox1.Location = new System.Drawing.Point(198, 3);
             this.sponsor_pictureBox1.Name = "sponsor_pictureBox1";
             this.sponsor_pictureBox1.Size = new System.Drawing.Size(234, 179);
@@ -684,7 +684,7 @@ namespace Prokard_Timing
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg2;
+            this.BackgroundImage = global::Rentix.Properties.Resources.bg2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(999, 509);
             this.Controls.Add(this.panel1);

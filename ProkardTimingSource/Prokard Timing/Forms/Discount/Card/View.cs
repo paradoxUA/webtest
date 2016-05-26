@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Prokard_Timing.Forms.Discount.Card
+namespace Rentix.Forms.Discount.Card
 {
     public partial class View : Form
     {

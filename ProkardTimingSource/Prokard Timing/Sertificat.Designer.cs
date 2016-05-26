@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-namespace Prokard_Timing
+namespace Rentix
 {
     partial class Sertificat
     {
@@ -37,7 +37,7 @@ namespace Prokard_Timing
             this.button1 = new System.Windows.Forms.Button();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.labelSmooth2 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth2 = new Rentix.LabelSmooth();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.dataGridView1 = new DataGridView();
@@ -67,7 +67,7 @@ namespace Prokard_Timing
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.labelSmooth1 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth1 = new Rentix.LabelSmooth();
             this.borderPanel1.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage6.SuspendLayout();
@@ -80,7 +80,7 @@ namespace Prokard_Timing
             // 
             // borderPanel1
             // 
-            this.borderPanel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel1.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel1.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -252,7 +252,7 @@ namespace Prokard_Timing
             // 
             // toolStrip1
             // 
-            this.toolStrip1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.toolStrip1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.toolStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -270,7 +270,7 @@ namespace Prokard_Timing
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::Prokard_Timing.Properties.Resources.edit_add;
+            this.toolStripButton1.Image = global::Rentix.Properties.Resources.edit_add;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
@@ -280,7 +280,7 @@ namespace Prokard_Timing
             // toolStripButton2
             // 
             this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::Prokard_Timing.Properties.Resources.edit__1_;
+            this.toolStripButton2.Image = global::Rentix.Properties.Resources.edit__1_;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
@@ -290,7 +290,7 @@ namespace Prokard_Timing
             // toolStripButton3
             // 
             this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = global::Prokard_Timing.Properties.Resources.edit_remove;
+            this.toolStripButton3.Image = global::Rentix.Properties.Resources.edit_remove;
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
@@ -405,7 +405,7 @@ namespace Prokard_Timing
             // 
             // borderPanel3
             // 
-            this.borderPanel3.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel3.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel3.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.borderPanel3.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -492,7 +492,7 @@ namespace Prokard_Timing
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(922, 387);
             this.Controls.Add(this.tabControl2);

@@ -11,13 +11,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Prokard_Timing.model;
+using Rentix.model;
 using FontStyle = System.Drawing.FontStyle;
 using MessageBox = System.Windows.Forms.MessageBox;
 using Point = System.Drawing.Point;
 
 
-namespace Prokard_Timing
+namespace Rentix
 {
     public partial class MainForm : Form
     {
@@ -794,7 +794,7 @@ namespace Prokard_Timing
             {
                 for (int i = 0; i < this.OwnedForms.Length; i++)
                 {
-                    if (this.OwnedForms[i].GetType().ToString().Equals("Prokard_Timing.Race"))
+                    if (this.OwnedForms[i].GetType().ToString().Equals("Rentix.Race"))
                     {
                         RaceClass rc = (this.OwnedForms[i] as Race).CurrentRace;
                         {
@@ -869,7 +869,7 @@ namespace Prokard_Timing
 
             for (int i = 0; i < this.OwnedForms.Length; i++)
             {
-                if (this.OwnedForms[i].GetType().ToString().Equals("Prokard_Timing.Race"))
+                if (this.OwnedForms[i].GetType().ToString().Equals("Rentix.Race"))
                 {
                     RaceClass rc = (this.OwnedForms[i] as Race).CurrentRace;
                     {
@@ -1078,7 +1078,7 @@ namespace Prokard_Timing
             {
                 if (!OnBgRed)
                 {
-                    borderPanel5.BackgroundImage = global::Prokard_Timing.Properties.Resources.redbg;
+                    borderPanel5.BackgroundImage = global::Rentix.Properties.Resources.redbg;
                     OnBgRed = true;
                     if (admin.Settings["beep_system"] != null && Boolean.Parse(admin.Settings["beep_system"].ToString())) Console.Beep(1000, 200);
                     if (admin.Settings["beep_windows"] != null && Boolean.Parse(admin.Settings["beep_windows"].ToString())) System.Media.SystemSounds.Asterisk.Play();
@@ -1088,7 +1088,7 @@ namespace Prokard_Timing
             {
                 if (OnBgRed)
                 {
-                    borderPanel5.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+                    borderPanel5.BackgroundImage = global::Rentix.Properties.Resources.bg;
                     OnBgRed = false;
                 }
             }
@@ -1183,7 +1183,7 @@ namespace Prokard_Timing
 
             for (int i = 0; i < this.OwnedForms.Length; i++)
             {
-                if (this.OwnedForms[i].GetType().ToString().Equals("Prokard_Timing.Race"))
+                if (this.OwnedForms[i].GetType().ToString().Equals("Rentix.Race"))
                 {
 
                     this.OwnedForms[i].WindowState = FormWindowState.Minimized;

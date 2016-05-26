@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Prokard_Timing.Properties {
+namespace Rentix.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

@@ -1,4 +1,4 @@
-﻿namespace Prokard_Timing
+﻿namespace Rentix
 {
     partial class PilotInfo
     {
@@ -33,7 +33,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.labelSmooth24 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth24 = new Rentix.LabelSmooth();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -45,31 +45,31 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.labelSmooth7 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth7 = new Rentix.LabelSmooth();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.labelSmooth20 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth22 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth18 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth19 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth21 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth23 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth9 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth8 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth10 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth12 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth20 = new Rentix.LabelSmooth();
+            this.labelSmooth22 = new Rentix.LabelSmooth();
+            this.labelSmooth18 = new Rentix.LabelSmooth();
+            this.labelSmooth19 = new Rentix.LabelSmooth();
+            this.labelSmooth21 = new Rentix.LabelSmooth();
+            this.labelSmooth23 = new Rentix.LabelSmooth();
+            this.labelSmooth9 = new Rentix.LabelSmooth();
+            this.labelSmooth8 = new Rentix.LabelSmooth();
+            this.labelSmooth10 = new Rentix.LabelSmooth();
+            this.labelSmooth12 = new Rentix.LabelSmooth();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.labelSmooth11 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth13 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth14 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth15 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth16 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth17 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth6 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth1 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth5 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth2 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth4 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth3 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth11 = new Rentix.LabelSmooth();
+            this.labelSmooth13 = new Rentix.LabelSmooth();
+            this.labelSmooth14 = new Rentix.LabelSmooth();
+            this.labelSmooth15 = new Rentix.LabelSmooth();
+            this.labelSmooth16 = new Rentix.LabelSmooth();
+            this.labelSmooth17 = new Rentix.LabelSmooth();
+            this.labelSmooth6 = new Rentix.LabelSmooth();
+            this.labelSmooth1 = new Rentix.LabelSmooth();
+            this.labelSmooth5 = new Rentix.LabelSmooth();
+            this.labelSmooth2 = new Rentix.LabelSmooth();
+            this.labelSmooth4 = new Rentix.LabelSmooth();
+            this.labelSmooth3 = new Rentix.LabelSmooth();
             this.borderPanel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -81,7 +81,7 @@
             // 
             // borderPanel3
             // 
-            this.borderPanel3.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel3.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel3.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel3.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -158,7 +158,7 @@
             // 
             // toolStrip1
             // 
-            this.toolStrip1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.toolStrip1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.toolStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -174,7 +174,7 @@
             // 
             // toolStripButton3
             // 
-            this.toolStripButton3.Image = global::Prokard_Timing.Properties.Resources.edit__1_;
+            this.toolStripButton3.Image = global::Rentix.Properties.Resources.edit__1_;
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Margin = new System.Windows.Forms.Padding(10, 1, 0, 2);
             this.toolStripButton3.Name = "toolStripButton3";
@@ -184,7 +184,7 @@
             // 
             // toolStripButton1
             // 
-            this.toolStripButton1.Image = global::Prokard_Timing.Properties.Resources.coins;
+            this.toolStripButton1.Image = global::Rentix.Properties.Resources.coins;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Margin = new System.Windows.Forms.Padding(10, 1, 0, 2);
             this.toolStripButton1.Name = "toolStripButton1";
@@ -194,7 +194,7 @@
             // 
             // toolStripButton2
             // 
-            this.toolStripButton2.Image = global::Prokard_Timing.Properties.Resources.layout;
+            this.toolStripButton2.Image = global::Rentix.Properties.Resources.layout;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Margin = new System.Windows.Forms.Padding(10, 1, 0, 2);
             this.toolStripButton2.Name = "toolStripButton2";

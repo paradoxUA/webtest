@@ -1,4 +1,4 @@
-﻿namespace Prokard_Timing
+﻿namespace Rentix
 {
     partial class GiftCertificate
     {
@@ -36,21 +36,21 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.labelSmooth12 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth11 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth9 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth10 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth7 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth8 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth6 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth5 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth12 = new Rentix.LabelSmooth();
+            this.labelSmooth11 = new Rentix.LabelSmooth();
+            this.labelSmooth9 = new Rentix.LabelSmooth();
+            this.labelSmooth10 = new Rentix.LabelSmooth();
+            this.labelSmooth7 = new Rentix.LabelSmooth();
+            this.labelSmooth8 = new Rentix.LabelSmooth();
+            this.labelSmooth6 = new Rentix.LabelSmooth();
+            this.labelSmooth5 = new Rentix.LabelSmooth();
             this.anonymous_radioButton = new System.Windows.Forms.RadioButton();
             this.named_radioButton1 = new System.Windows.Forms.RadioButton();
-            this.labelSmooth4 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth3 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth2 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth4 = new Rentix.LabelSmooth();
+            this.labelSmooth3 = new Rentix.LabelSmooth();
+            this.labelSmooth2 = new Rentix.LabelSmooth();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.labelSmooth1 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth1 = new Rentix.LabelSmooth();
             this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -78,7 +78,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.panel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.panel2);
@@ -105,8 +105,8 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Prokard_Timing.Properties.Resources.Certif;
-            this.pictureBox1.InitialImage = global::Prokard_Timing.Properties.Resources.Certif;
+            this.pictureBox1.Image = global::Rentix.Properties.Resources.Certif;
+            this.pictureBox1.InitialImage = global::Rentix.Properties.Resources.Certif;
             this.pictureBox1.Location = new System.Drawing.Point(403, 116);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 120);
@@ -335,7 +335,7 @@
             // 
             // borderPanel1
             // 
-            this.borderPanel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel1.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel1.BorderPadding = new System.Windows.Forms.Padding(0);

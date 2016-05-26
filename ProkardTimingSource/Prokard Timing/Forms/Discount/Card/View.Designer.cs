@@ -1,4 +1,4 @@
-﻿namespace Prokard_Timing.Forms.Discount.Card
+﻿namespace Rentix.Forms.Discount.Card
 {
     partial class View
     {

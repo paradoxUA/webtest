@@ -3,7 +3,7 @@ using System.Collections;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
-namespace Prokard_Timing
+namespace Rentix
 {
     public partial class AllPilots : Form
     {

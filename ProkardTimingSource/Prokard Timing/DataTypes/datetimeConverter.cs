@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     public static class datetimeConverter
     {

@@ -1,4 +1,4 @@
-﻿namespace Prokard_Timing.Forms.Discount.Card
+﻿namespace Rentix.Forms.Discount.Card
 {
     partial class AddCartsRange
     {
@@ -32,13 +32,13 @@
             this.cancel_button2 = new System.Windows.Forms.Button();
             this.cardGroup_comboBox1 = new System.Windows.Forms.ComboBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.labelSmooth2 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth1 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth8 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth2 = new Rentix.LabelSmooth();
+            this.labelSmooth1 = new Rentix.LabelSmooth();
+            this.labelSmooth8 = new Rentix.LabelSmooth();
             this.prefix_numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.rangeTo_numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.rangeFrom_numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.labelSmooth9 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth9 = new Rentix.LabelSmooth();
             ((System.ComponentModel.ISupportInitialize)(this.prefix_numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rangeTo_numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rangeFrom_numericUpDown4)).BeginInit();

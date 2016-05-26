@@ -1,4 +1,4 @@
-﻿namespace Prokard_Timing
+﻿namespace Rentix
 {
     partial class AddProgramUsers
     {
@@ -31,26 +31,26 @@
             this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.labelSmooth1 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth2 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth3 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth1 = new Rentix.LabelSmooth();
+            this.labelSmooth2 = new Rentix.LabelSmooth();
+            this.labelSmooth3 = new Rentix.LabelSmooth();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.labelSmooth4 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth4 = new Rentix.LabelSmooth();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.labelSmooth5 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth5 = new Rentix.LabelSmooth();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.labelSmooth6 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth6 = new Rentix.LabelSmooth();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.labelSmooth7 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth7 = new Rentix.LabelSmooth();
             this.borderPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // borderPanel1
             // 
-            this.borderPanel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel1.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel1.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -233,7 +233,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(319, 245);
             this.Controls.Add(this.textBox6);

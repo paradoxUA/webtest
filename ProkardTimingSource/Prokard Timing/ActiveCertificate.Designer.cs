@@ -1,4 +1,4 @@
-﻿namespace Prokard_Timing
+﻿namespace Rentix
 {
     partial class ActiveCertificate
     {
@@ -31,20 +31,20 @@
             this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.labelSmooth1 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth1 = new Rentix.LabelSmooth();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.labelSmooth12 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth13 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth7 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth8 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth9 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth10 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth11 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth6 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth5 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth4 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth3 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth2 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth12 = new Rentix.LabelSmooth();
+            this.labelSmooth13 = new Rentix.LabelSmooth();
+            this.labelSmooth7 = new Rentix.LabelSmooth();
+            this.labelSmooth8 = new Rentix.LabelSmooth();
+            this.labelSmooth9 = new Rentix.LabelSmooth();
+            this.labelSmooth10 = new Rentix.LabelSmooth();
+            this.labelSmooth11 = new Rentix.LabelSmooth();
+            this.labelSmooth6 = new Rentix.LabelSmooth();
+            this.labelSmooth5 = new Rentix.LabelSmooth();
+            this.labelSmooth4 = new Rentix.LabelSmooth();
+            this.labelSmooth3 = new Rentix.LabelSmooth();
+            this.labelSmooth2 = new Rentix.LabelSmooth();
             this.button3 = new System.Windows.Forms.Button();
             this.borderPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -52,7 +52,7 @@
             // 
             // borderPanel1
             // 
-            this.borderPanel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel1.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel1.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -283,7 +283,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(509, 273);
             this.Controls.Add(this.button3);

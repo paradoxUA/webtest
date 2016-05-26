@@ -1,4 +1,4 @@
-﻿namespace Prokard_Timing
+﻿namespace Rentix
 {
     partial class PetroleumSpend
     {
@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
-            this.labelSmooth2 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth2 = new Rentix.LabelSmooth();
             this.price_numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.litres_numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.spendPetroleum_button1 = new System.Windows.Forms.Button();
             this.cancel_button2 = new System.Windows.Forms.Button();
-            this.labelSmooth3 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth1 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth3 = new Rentix.LabelSmooth();
+            this.labelSmooth1 = new Rentix.LabelSmooth();
             this.borderPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.price_numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.litres_numericUpDown1)).BeginInit();
@@ -43,7 +43,7 @@
             // 
             // borderPanel1
             // 
-            this.borderPanel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel1.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel1.BorderPadding = new System.Windows.Forms.Padding(0);

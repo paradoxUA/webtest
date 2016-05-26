@@ -1,4 +1,4 @@
-﻿namespace Prokard_Timing.Forms.Discount.Card
+﻿namespace Rentix.Forms.Discount.Card
 {
     partial class Discount_Card_Add
     {
@@ -36,10 +36,10 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.owner_comboBox1 = new System.Windows.Forms.ComboBox();
             this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
-            this.labelSmooth1 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth3 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth2 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth4 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth1 = new Rentix.LabelSmooth();
+            this.labelSmooth3 = new Rentix.LabelSmooth();
+            this.labelSmooth2 = new Rentix.LabelSmooth();
+            this.labelSmooth4 = new Rentix.LabelSmooth();
             this.borderPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,7 +105,7 @@
             // 
             // borderPanel1
             // 
-            this.borderPanel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel1.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel1.BorderPadding = new System.Windows.Forms.Padding(0);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     using CopyingState = System.Collections.Generic.Dictionary<object, object>;
 

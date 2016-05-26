@@ -11,7 +11,7 @@ using System.Collections;
 using System.Drawing.Printing;
 using System.Drawing.Text;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     public partial class GiftCertificate : Form
     {

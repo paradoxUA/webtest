@@ -1,4 +1,4 @@
-﻿namespace Prokard_Timing
+﻿namespace Rentix
 {
     partial class CorrectBallance
     {
@@ -32,13 +32,13 @@
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.label10 = new Prokard_Timing.LabelSmooth();
-            this.label8 = new Prokard_Timing.LabelSmooth();
+            this.label10 = new Rentix.LabelSmooth();
+            this.label8 = new Rentix.LabelSmooth();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.label1 = new Prokard_Timing.LabelSmooth();
-            this.label6 = new Prokard_Timing.LabelSmooth();
-            this.label5 = new Prokard_Timing.LabelSmooth();
+            this.label1 = new Rentix.LabelSmooth();
+            this.label6 = new Rentix.LabelSmooth();
+            this.label5 = new Rentix.LabelSmooth();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
@@ -50,7 +50,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.panel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.radioButton4);
             this.panel1.Controls.Add(this.radioButton1);
@@ -210,7 +210,7 @@
             // 
             // borderPanel1
             // 
-            this.borderPanel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel1.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel1.BorderPadding = new System.Windows.Forms.Padding(0);

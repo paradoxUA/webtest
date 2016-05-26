@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Prokard_Timing.Controls
+namespace Rentix.Controls
 {
     #region нестандартный combobox item
     public class comboBoxItem

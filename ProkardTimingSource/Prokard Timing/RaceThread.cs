@@ -10,10 +10,10 @@ using System.IO.Ports;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text;
-using Prokard_Timing.model;
+using Rentix.model;
 using Timer = System.Threading.Timer;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     public class RaceThread
     {
@@ -32,7 +32,7 @@ namespace Prokard_Timing
         public string ErrorLine = String.Empty;
 
         public RaceClass Race = null;
-        
+
         public int RaceID = 0;  // ID заезда
         public string lastReceive = "";
         public long StartTick = 0;  // Время запуска гонки, в тиках
@@ -48,16 +48,16 @@ namespace Prokard_Timing
         private Hashtable Settings = new Hashtable();
         private bool IsWarmSubtracted = false; //Было ли отсечено время прогревочного круга
         private bool WarmLapShouldBeSubtracted = false; //Нужно ли отсекать время прогревочного круга
-        private bool StartAfterDetection = false; 
-       
+        private bool StartAfterDetection = false;
+
         // Пробуем эмулировать стек LIFO ?? sgavrilenko: в этой версии так и не попробовали...
-       // private Queue StackReceive = new Queue();
-       
+        // private Queue StackReceive = new Queue();
+
         // принятая строка от amb20
         public string stringForLogWindow = "";
 
-       public Emulator em = new Emulator();
-       public object[] decoderSetts = null;
+        public Emulator em = new Emulator();
+        public object[] decoderSetts = null;
 
         public void Nextval()
         {
@@ -130,7 +130,7 @@ namespace Prokard_Timing
             Settings = model.LoadSettings();
 
 
-             
+
 
             /*
             int RaceMaxTick = Convert.ToInt32(Settings["race_time"]);
@@ -146,7 +146,7 @@ namespace Prokard_Timing
              */
 
             StartAfterDetection = Convert.ToBoolean(Settings["start_after_detection"] ?? false);
-            
+
             // Старт времени независимо от первого прохождения карта
             if (!StartAfterDetection)
             {
@@ -165,10 +165,10 @@ namespace Prokard_Timing
             {
                 string[] st = new string[Members.Count];
                 for (int i = 0; i < Members.Count; i++)
-                {                   
+                {
                     if (Members[i].CarTransponder == "")
                     {
-                        Members[i].CarTransponder = (i+1).ToString("00");
+                        Members[i].CarTransponder = (i + 1).ToString("00");
                     }
 
                     st[i] = Members[i].CarTransponder;
@@ -248,7 +248,7 @@ namespace Prokard_Timing
 
             if (Status == 1 || Status == 2)
             {
-                    AMB20_SaveData(RS232.ReadLine());
+                AMB20_SaveData(RS232.ReadLine());
 
             }
         }
@@ -256,12 +256,22 @@ namespace Prokard_Timing
         // функция конвертации в хекс
         private String convertAsciiTextToHex(String i_asciiText)
         {
-            StringBuilder sBuffer = new StringBuilder();
-            for (int i = 0; i < i_asciiText.Length; i++)
+            string hexOutput = "";
+            foreach (char letter in i_asciiText)
             {
-                sBuffer.Append(Convert.ToInt32(i_asciiText[i]).ToString("x2") + " ");
+                // Get the integral value of the character.
+                int value = Convert.ToInt32(letter);
+                // Convert the decimal value to a hexadecimal value in string form.
+                hexOutput += value.ToString("x2") + " ";
+                //Console.WriteLine("Hexadecimal value of {0} is {1}", letter, hexOutput);
             }
-            return sBuffer.ToString().ToUpper();
+            return hexOutput;
+            //StringBuilder sBuffer = new StringBuilder();
+            //for (int i = 0; i < i_asciiText.Length; i++)
+            //{
+            //    sBuffer.Append(Convert.ToInt16(i_asciiText[i]).ToString("x2") + " ");
+            //}
+            //return sBuffer.ToString().ToUpper();
         }
 
         // Сохраняет декодированные данные // TODO public for tests
@@ -272,8 +282,8 @@ namespace Prokard_Timing
             // или в момент прихода сигнала от датчика @050000059140
             // @05-00-00-05-91-40		05 - датчик, 00 - часы, 00 - минуты, 05 - секунды, 91 - миллисекунды, 40 - хит - по непроверенной информации, это количество срабатываний прибора в момент прохода датчика над петлёй. то есть, если сигнал хороший (возможно и скорость меньше?), то число должно быть больше
 
-            
-        //    MainForm.log("AMB20_SaveData: " + s + " at system time: " + datetimeConverter.toDateTimeString(DateTime.Now) + "." + DateTime.Now.Millisecond.ToString());
+
+            //    MainForm.log("AMB20_SaveData: " + s + " at system time: " + datetimeConverter.toDateTimeString(DateTime.Now) + "." + DateTime.Now.Millisecond.ToString());
 
             if (Race == null)
             {
@@ -286,151 +296,151 @@ namespace Prokard_Timing
             //}
             //else
             //{
-           // if (s.Length > 30) { 
-                AMB20RX Res = AMB20_Decode(s);
-           // }
+            // if (s.Length > 30) { 
+            AMB20RX Res = AMB20_Decode(s);
+            // }
 
-                //if (Res.Transponder.Length > 0 && Res.Transponder != "00")
-                if (Res.Transponder != null && Res.Transponder.Length > 0)
+            //if (Res.Transponder.Length > 0 && Res.Transponder != "00")
+            if (Res.Transponder != null && Res.Transponder.Length > 0)
+            {
+                // we have got signal from transponder
+
+                #region processes signal from transponder
+
+                stringForLogWindow += s + "\r\n";
+                lastReceive = s;
+
+                int pilotInRaceIndex;
+
+                // когда может прийти такая строка?
+                if (stringForLogWindow.Length > 1024)
                 {
-                    // we have got signal from transponder
+                    stringForLogWindow = "";
+                }
 
-                    #region processes signal from transponder
+                // узнали индекс пилота в заезде.  
+                pilotInRaceIndex = FindMemberFromTransponder(Res.Transponder);
 
-                    stringForLogWindow += s + "\r\n";
-                    lastReceive = s;
+                // если это свободный режим, и пилоту едет на неназначенном карте, то назначим пилоту карт
+                if (pilotInRaceIndex < 0 && Race.Light_mode == 1)
+                {
+                    pilotInRaceIndex = AddKartToPilot(Res.Transponder);
+                }
 
-                    int pilotInRaceIndex;
 
-                    // когда может прийти такая строка?
-                    if (stringForLogWindow.Length > 1024)
+                //if (true)
+                if (pilotInRaceIndex >= 0)
+                {
+
+                    // создали тик из полученного времени
+                    long TickWhenSensorSignalReceived =
+                        new TimeSpan(0, Res.Hour, Res.Minutes, Res.Seconds, Res.Millisecond).Ticks;
+
+                    //       MainForm.log("receivedTick: " + TickWhenSensorSignalReceived.ToString());
+
+                    // приготовим строку для лога, который показывается на закладке Полученные данные
+                    stringForLogWindow += ">+ " + TickWhenSensorSignalReceived.ToString() + "  " +
+                                          new TimeSpan(Math.Abs(TickWhenSensorSignalReceived -
+                                                                Members[pilotInRaceIndex].LastTick)).TotalSeconds
+                                              .ToString() + "\r\n";
+                    stringForLogWindow += ">- " + Res.Hour.ToString("00") + ":" + Res.Minutes.ToString("00") +
+                                          ":" + Res.Seconds.ToString("00") + "." + Res.Millisecond.ToString("000") +
+                                          "/" +
+                                          Res.Hit.ToString("000")
+                                          + "\r\n\r\n";
+
+                    // Условие шумового времени
+                    // если надо вычитать время прогревочного круга
+                    if (WarmLapShouldBeSubtracted)
                     {
-                        stringForLogWindow = "";
-                    }
-
-                    // узнали индекс пилота в заезде.  
-                    pilotInRaceIndex = FindMemberFromTransponder(Res.Transponder);
-
-                    // если это свободный режим, и пилоту едет на неназначенном карте, то назначим пилоту карт
-                    if (pilotInRaceIndex < 0 && Race.Light_mode == 1)
-                    {
-                        pilotInRaceIndex = AddKartToPilot(Res.Transponder);
-                    }
-
-
-                    //if (true)
-                    if (pilotInRaceIndex >= 0)
-                    {
-
-                        // создали тик из полученного времени
-                        long TickWhenSensorSignalReceived =
-                            new TimeSpan(0, Res.Hour, Res.Minutes, Res.Seconds, Res.Millisecond).Ticks;
-
-                        //       MainForm.log("receivedTick: " + TickWhenSensorSignalReceived.ToString());
-
-                        // приготовим строку для лога, который показывается на закладке Полученные данные
-                        stringForLogWindow += ">+ " + TickWhenSensorSignalReceived.ToString() + "  " +
-                                              new TimeSpan(Math.Abs(TickWhenSensorSignalReceived -
-                                                                    Members[pilotInRaceIndex].LastTick)).TotalSeconds
-                                                  .ToString() + "\r\n";
-                        stringForLogWindow += ">- " + Res.Hour.ToString("00") + ":" + Res.Minutes.ToString("00") +
-                                              ":" + Res.Seconds.ToString("00") + "." + Res.Millisecond.ToString("000") +
-                                              "/" +
-                                              Res.Hit.ToString("000")
-                                              + "\r\n\r\n";
-
-                        // Условие шумового времени
-                        // если надо вычитать время прогревочного круга
-                        if (WarmLapShouldBeSubtracted)
+                        // и если оно не было вычтено ?? для всех или для первого? муть какая-то
+                        if (!IsWarmSubtracted)
                         {
-                            // и если оно не было вычтено ?? для всех или для первого? муть какая-то
-                            if (!IsWarmSubtracted)
-                            {
-                                MaxTicksForRace = MaxTicksForRace - WarmTicks;
-                                IsWarmSubtracted = true;
-                            }
-                        }
-
-                        // Глобальная метка времени первого пересечения
-                        if (StartAfterDetection && StartTick == 0)
-                        {
-                            StartTick = DateTime.Now.Ticks;
-                        }
-
-                        #region sgavrilenko: непонятно, чего убрано
-
-                        // 1 - Узнаем разницу времени от последнего пересечения круга
-                        /*
-                    if (Members[index].LastTick == 0)
-                    {
-                        T = 0;
-                    }
-                    else
-                    {
-                        T = NowT - Members[index].LastTick;
-                    }
-
-                    // 2 - Определение дельты времени
-                    if (Members[index].LapTime < (T - CorrectTime) && (T - CorrectTime) != 0)
-                    {
-                        Members[index].DeltaTime = "+";
-                    }
-                    else
-                    {
-                        Members[index].DeltaTime = "-";
-                    }
-                    Members[index].DeltaTime += Math.Round(new TimeSpan(Math.Abs(Members[index].LapTime - (T - CorrectTime))).TotalSeconds, 2).ToString();
-
-                    // 3 - Если это первый круг то запоминаем время
-                    //            if (Members[index].Laps == 0) Members[index].FirstTick = receivTick;
-                     */
-
-                        #endregion
-
-                        // 5 - Устанавливаем время круга
-                        long lapTime = Math.Abs(TickWhenSensorSignalReceived - Members[pilotInRaceIndex].LastTick);
-
-                        if (lapTime >= NoiseTime) // если время круга больше минимального, то...
-                        {
-
-                            if (Members[pilotInRaceIndex].LastTick > 0)
-                            {
-                                Members[pilotInRaceIndex].LapTime = lapTime < 0 ? 0 : lapTime;
-
-                                // 6 - Сохраняем общее время пилота
-                                Members[pilotInRaceIndex].TotalPilotTimeOfThisRace += lapTime;
-
-                                // 7 - Счетчик кругов
-                                Members[pilotInRaceIndex].Laps++;
-
-                                // 8 - Запись лучшего времени круга
-                                if (Members[pilotInRaceIndex].BestLapTime <= 0 ||
-                                    Members[pilotInRaceIndex].BestLapTime > Members[pilotInRaceIndex].LapTime)
-                                {
-                                    Members[pilotInRaceIndex].BestLapTime = Members[pilotInRaceIndex].LapTime;
-                                }
-
-                                // 9 - Сохраняем данные в базу
-                                if (Members[pilotInRaceIndex].Laps > 0)
-                                {
-                                    //    MainForm.log("lapTime: " + lapTime.ToString());
-
-                                    decimal pilotLapTime = Convert.ToDecimal(new TimeSpan(lapTime).TotalSeconds);
-
-                                    //    MainForm.log("AddTimeStamp: " + pilotLapTime.ToString());
-
-                                    model.AddTimeStamp(Members[pilotInRaceIndex].MemberID,
-                                        Members[pilotInRaceIndex].Laps, pilotLapTime);
-                                }
-                            }
-                            // 4 - Запоминаем время последнего тика
-                            Members[pilotInRaceIndex].LastTick = TickWhenSensorSignalReceived;
-
+                            MaxTicksForRace = MaxTicksForRace - WarmTicks;
+                            IsWarmSubtracted = true;
                         }
                     }
+
+                    // Глобальная метка времени первого пересечения
+                    if (StartAfterDetection && StartTick == 0)
+                    {
+                        StartTick = DateTime.Now.Ticks;
+                    }
+
+                    #region sgavrilenko: непонятно, чего убрано
+
+                    // 1 - Узнаем разницу времени от последнего пересечения круга
+                    /*
+                if (Members[index].LastTick == 0)
+                {
+                    T = 0;
+                }
+                else
+                {
+                    T = NowT - Members[index].LastTick;
+                }
+
+                // 2 - Определение дельты времени
+                if (Members[index].LapTime < (T - CorrectTime) && (T - CorrectTime) != 0)
+                {
+                    Members[index].DeltaTime = "+";
+                }
+                else
+                {
+                    Members[index].DeltaTime = "-";
+                }
+                Members[index].DeltaTime += Math.Round(new TimeSpan(Math.Abs(Members[index].LapTime - (T - CorrectTime))).TotalSeconds, 2).ToString();
+
+                // 3 - Если это первый круг то запоминаем время
+                //            if (Members[index].Laps == 0) Members[index].FirstTick = receivTick;
+                 */
 
                     #endregion
+
+                    // 5 - Устанавливаем время круга
+                    long lapTime = Math.Abs(TickWhenSensorSignalReceived - Members[pilotInRaceIndex].LastTick);
+
+                    if (lapTime >= NoiseTime) // если время круга больше минимального, то...
+                    {
+
+                        if (Members[pilotInRaceIndex].LastTick > 0)
+                        {
+                            Members[pilotInRaceIndex].LapTime = lapTime < 0 ? 0 : lapTime;
+
+                            // 6 - Сохраняем общее время пилота
+                            Members[pilotInRaceIndex].TotalPilotTimeOfThisRace += lapTime;
+
+                            // 7 - Счетчик кругов
+                            Members[pilotInRaceIndex].Laps++;
+
+                            // 8 - Запись лучшего времени круга
+                            if (Members[pilotInRaceIndex].BestLapTime <= 0 ||
+                                Members[pilotInRaceIndex].BestLapTime > Members[pilotInRaceIndex].LapTime)
+                            {
+                                Members[pilotInRaceIndex].BestLapTime = Members[pilotInRaceIndex].LapTime;
+                            }
+
+                            // 9 - Сохраняем данные в базу
+                            if (Members[pilotInRaceIndex].Laps > 0)
+                            {
+                                //    MainForm.log("lapTime: " + lapTime.ToString());
+
+                                decimal pilotLapTime = Convert.ToDecimal(new TimeSpan(lapTime).TotalSeconds);
+
+                                //    MainForm.log("AddTimeStamp: " + pilotLapTime.ToString());
+
+                                model.AddTimeStamp(Members[pilotInRaceIndex].MemberID,
+                                    Members[pilotInRaceIndex].Laps, pilotLapTime);
+                            }
+                        }
+                        // 4 - Запоминаем время последнего тика
+                        Members[pilotInRaceIndex].LastTick = TickWhenSensorSignalReceived;
+
+                    }
                 }
+
+                #endregion
+            }
 
             //}
         }
@@ -476,10 +486,10 @@ namespace Prokard_Timing
         private int FindMemberFromTransponder(string transponder)
         {
             int index = -1;
-            
+
             for (int i = 0; i < Members.Count; i++)
             {
-                if (Members[i].CarTransponder == (Convert.ToInt32(transponder)).ToString("000000"))
+                if (Members[i].CarTransponder == transponder)
                 {
                     index = i;
                     break;
@@ -506,7 +516,6 @@ namespace Prokard_Timing
         /// <returns></returns>
 
         public AMB20RX AMB20_Decode(string s)
-
         {
             AMB20RX Ret = new AMB20RX();
 
@@ -554,24 +563,24 @@ namespace Prokard_Timing
                 s = convertAsciiTextToHex(s); //вызов функция конвертации
                 // parses the string
 
-                if (s.Length >= 31*2 + 30)
+                if (s.Length >= 31 * 2 + 30)
                 {
                     s = s.Replace("\r\n", " ").Trim();
-                    string[] hexBits = s.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
-                    string[] hexValuesSplit = new string[hexBits.Length];
-                    try
-                    {
-                        for (int i = 0; i < hexBits.Length; i++)
-                        {
-                            hexValuesSplit[i] =
-                                int.Parse(hexBits[i], System.Globalization.NumberStyles.HexNumber).ToString();
-                            //Console.WriteLine(i + ". " + hexBits[i] + " = " + decBits[i]);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(@"String can not be parsed." + ex.Message);
-                    }
+                    string[] hexBits = s.Split(new[] { ' ' });
+                    string[] hexValuesSplit = hexBits;
+                    //try
+                    //{
+                    //    for (int i = 0; i < hexBits.Length; i++)
+                    //    {
+                    //        hexValuesSplit[i] =
+                    //            int.Parse(hexBits[i], System.Globalization.NumberStyles.HexNumber).ToString();
+                    //        //Console.WriteLine(i + ". " + hexBits[i] + " = " + decBits[i]);
+                    //    }
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    Console.WriteLine(@"String can not be parsed." + ex.Message);
+                    //}
 
                     //Console.WriteLine(sett["decoder"]);
                     // 0 - name protokol
@@ -595,24 +604,24 @@ namespace Prokard_Timing
                     string trans = "";
                     foreach (string transByte in decoderSetts[5].ToString().Trim().Split(','))
                     {
-                        trans += hexValuesSplit[Convert.ToInt32(transByte)];
+                        trans += hexValuesSplit[Convert.ToInt32(transByte) - 1];
                     }
                     string msec = "";
                     foreach (string transByte in decoderSetts[6].ToString().Trim().Split(','))
                     {
-                        msec += hexValuesSplit[Convert.ToInt32(transByte)];
+                        msec += hexValuesSplit[Convert.ToInt32(transByte) - 1];
                     }
                     string hit = "";
                     foreach (string transByte in decoderSetts[7].ToString().Trim().Split(','))
                     {
-                        hit += hexValuesSplit[Convert.ToInt32(transByte)];
+                        hit += hexValuesSplit[Convert.ToInt32(transByte) - 1];
                     }
 
 
                     //  String.Concat(hexValuesSplit[13],hexValuesSplit[14],hexValuesSplit[15],hexValuesSplit[16]);
-                    string hour = hexValuesSplit[hourByte];
-                    string min = hexValuesSplit[minuteByte];
-                    string sec = hexValuesSplit[secondByte];
+                    string hour = hexValuesSplit[hourByte - 1];
+                    string min = hexValuesSplit[minuteByte - 1];
+                    string sec = hexValuesSplit[secondByte - 1];
                     // string[] hexValuesSplit = s.Split(' ');
 
                     //string trans = String.Concat(hexValuesSplit[13], hexValuesSplit[14], hexValuesSplit[15],
@@ -664,17 +673,17 @@ namespace Prokard_Timing
 
         private static int flagComRead = 0;
         private static Timer Timer1;
-        public static Dictionary<long,string> dic = new Dictionary<long, string>(); 
+        public static Dictionary<long, string> dic = new Dictionary<long, string>();
 
 
         public void RS232_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            
-          //  Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-          //  connectionString = config.AppSettings.Settings["crazykartConnectionString"].Value;
 
-          //  db = new SqlConnection(connectionString);
-          //  db.Open();
+            //  Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            //  connectionString = config.AppSettings.Settings["crazykartConnectionString"].Value;
+
+            //  db = new SqlConnection(connectionString);
+            //  db.Open();
 
             if (RS232.IsOpen)
             {
@@ -688,25 +697,25 @@ namespace Prokard_Timing
                     Timer1.Change(1000, 1000);
                 }
                 string s = RS232.ReadLine();
-               // s = convertAsciiTextToHex(s);
+                // s = convertAsciiTextToHex(s);
                 dic.Add(DateTime.Now.Ticks, s);
                 //testClass1.WriteLog(" RS232_DataReceived ", "поток=" + Thread.CurrentThread.ManagedThreadId + " s =" + s);
 
-               // if (s.Length >= 31 * 2 + 30)
-               // {
-               //     var res = AMB20_Decode(s);
-               //     Console.WriteLine(res.receivedString);
-               //     using (SqlCommand cmd = new SqlCommand("insert into comlogs (comdata, created) values ('" + res.receivedString + "',GETDATE())", db))
-               //     {
+                // if (s.Length >= 31 * 2 + 30)
+                // {
+                //     var res = AMB20_Decode(s);
+                //     Console.WriteLine(res.receivedString);
+                //     using (SqlCommand cmd = new SqlCommand("insert into comlogs (comdata, created) values ('" + res.receivedString + "',GETDATE())", db))
+                //     {
                 //        cmd.ExecuteNonQuery();
                 //        testClass1.WriteLog(" RS232_DataReceived ", "поток=" + Thread.CurrentThread.ManagedThreadId + " cmd =" + cmd.CommandText);
                 //    }
 
-                    //    writetext.WriteLine(res.receivedString);
-               // }
+                //    writetext.WriteLine(res.receivedString);
+                // }
                 //string code = RS232.ReadExisting();
                 //Task.Factory.StartNew(new Action(startParser));
-               // db.Close();
+                // db.Close();
                 //  Console.WriteLine(code);
             }
         }
@@ -725,7 +734,7 @@ namespace Prokard_Timing
 
             foreach (var obj in dic)
             {
-               // AMB20_SaveData(obj.Value);
+                // AMB20_SaveData(obj.Value);
                 Thread.Sleep(500);
                 dic.Remove(obj.Key);
             }
@@ -810,7 +819,7 @@ namespace Prokard_Timing
             db1.Open();
             if (db1.State == ConnectionState.Open)
             {
-                
+
             }
             return res;
         }

@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections;
-namespace Prokard_Timing
+namespace Rentix
 {
     public partial class KartsControl : Form
     {
@@ -101,12 +101,12 @@ namespace Prokard_Timing
                 if (Convert.ToBoolean(dataGridView1.SelectedRows[0].Cells[7].Value))
                 {
                     toolStripButton9.Text = "Убрать со стоянки";
-                    toolStripButton9.Image = global::Prokard_Timing.Properties.Resources.house_go;
+                    toolStripButton9.Image = global::Rentix.Properties.Resources.house_go;
                 }
                 else
                 {
                     toolStripButton9.Text = "Поставить на стоянку";
-                    toolStripButton9.Image = global::Prokard_Timing.Properties.Resources.house;
+                    toolStripButton9.Image = global::Rentix.Properties.Resources.house;
                 }
             }
         }

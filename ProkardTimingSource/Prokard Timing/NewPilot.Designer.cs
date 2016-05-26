@@ -1,4 +1,4 @@
-﻿namespace Prokard_Timing
+﻿namespace Rentix
 {
     partial class NewPilot
     {
@@ -34,21 +34,21 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.nick_textBox3 = new System.Windows.Forms.TextBox();
-            this.label3 = new Prokard_Timing.LabelSmooth();
+            this.label3 = new Rentix.LabelSmooth();
             this.name_textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new Prokard_Timing.LabelSmooth();
+            this.label2 = new Rentix.LabelSmooth();
             this.lastName_textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new Prokard_Timing.LabelSmooth();
+            this.label1 = new Rentix.LabelSmooth();
             this.phone_textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label4 = new Prokard_Timing.LabelSmooth();
-            this.label5 = new Prokard_Timing.LabelSmooth();
-            this.label6 = new Prokard_Timing.LabelSmooth();
-            this.label7 = new Prokard_Timing.LabelSmooth();
-            this.label8 = new Prokard_Timing.LabelSmooth();
+            this.label4 = new Rentix.LabelSmooth();
+            this.label5 = new Rentix.LabelSmooth();
+            this.label6 = new Rentix.LabelSmooth();
+            this.label7 = new Rentix.LabelSmooth();
+            this.label8 = new Rentix.LabelSmooth();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
-            this.labelSmooth1 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth1 = new Rentix.LabelSmooth();
             this.phoneComment_label = new System.Windows.Forms.Label();
             this.detailedPhoneComment_label = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -274,7 +274,7 @@
             // 
             // borderPanel1
             // 
-            this.borderPanel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel1.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel1.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -378,7 +378,7 @@
             this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CancelButton = this.button2;
             this.ClientSize = new System.Drawing.Size(316, 371);

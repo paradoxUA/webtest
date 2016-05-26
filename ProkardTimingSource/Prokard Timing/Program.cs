@@ -4,7 +4,7 @@ using System.Threading;
 using System.Diagnostics;
 using System.IO;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     static class Program
     {

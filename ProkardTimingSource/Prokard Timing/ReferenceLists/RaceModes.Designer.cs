@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-namespace Prokard_Timing
+namespace Rentix
 {
     partial class RaceModes
     {
@@ -79,7 +79,7 @@ namespace Prokard_Timing
             // 
             // toolStrip1
             // 
-            this.toolStrip1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.toolStrip1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.toolStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -97,7 +97,7 @@ namespace Prokard_Timing
             // addRaceMode_toolStripButton
             // 
             this.addRaceMode_toolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.addRaceMode_toolStripButton.Image = global::Prokard_Timing.Properties.Resources.edit_add;
+            this.addRaceMode_toolStripButton.Image = global::Rentix.Properties.Resources.edit_add;
             this.addRaceMode_toolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.addRaceMode_toolStripButton.Name = "addRaceMode_toolStripButton";
             this.addRaceMode_toolStripButton.Size = new System.Drawing.Size(23, 22);
@@ -108,7 +108,7 @@ namespace Prokard_Timing
             // editRaceMode_toolStripButton3
             // 
             this.editRaceMode_toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.editRaceMode_toolStripButton3.Image = global::Prokard_Timing.Properties.Resources.edit__1_;
+            this.editRaceMode_toolStripButton3.Image = global::Rentix.Properties.Resources.edit__1_;
             this.editRaceMode_toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.editRaceMode_toolStripButton3.Name = "editRaceMode_toolStripButton3";
             this.editRaceMode_toolStripButton3.Size = new System.Drawing.Size(23, 22);
@@ -118,7 +118,7 @@ namespace Prokard_Timing
             // deleteRaceMode_toolStripButton2
             // 
             this.deleteRaceMode_toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.deleteRaceMode_toolStripButton2.Image = global::Prokard_Timing.Properties.Resources.edit_remove;
+            this.deleteRaceMode_toolStripButton2.Image = global::Rentix.Properties.Resources.edit_remove;
             this.deleteRaceMode_toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.deleteRaceMode_toolStripButton2.Name = "deleteRaceMode_toolStripButton2";
             this.deleteRaceMode_toolStripButton2.Size = new System.Drawing.Size(23, 22);
@@ -133,7 +133,7 @@ namespace Prokard_Timing
             // 
             // borderPanel3
             // 
-            this.borderPanel3.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel3.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel3.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel3.BorderPadding = new System.Windows.Forms.Padding(0);

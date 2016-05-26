@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-namespace Prokard_Timing
+namespace Rentix
 {
     partial class DayStatistic
     {
@@ -54,32 +54,32 @@ namespace Prokard_Timing
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.deletedPilotsCount_labelSmooth12 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth20 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth19 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth10 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth13 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth11 = new Prokard_Timing.LabelSmooth();
+            this.deletedPilotsCount_labelSmooth12 = new Rentix.LabelSmooth();
+            this.labelSmooth20 = new Rentix.LabelSmooth();
+            this.labelSmooth19 = new Rentix.LabelSmooth();
+            this.labelSmooth10 = new Rentix.LabelSmooth();
+            this.labelSmooth13 = new Rentix.LabelSmooth();
+            this.labelSmooth11 = new Rentix.LabelSmooth();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.unfinishedRacesForToday_label = new Prokard_Timing.LabelSmooth();
-            this.finishedRacesForToday_label = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth21 = new Prokard_Timing.LabelSmooth();
-            this.totalRaces_label = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth7 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth6 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth4 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth5 = new Prokard_Timing.LabelSmooth();
+            this.unfinishedRacesForToday_label = new Rentix.LabelSmooth();
+            this.finishedRacesForToday_label = new Rentix.LabelSmooth();
+            this.labelSmooth21 = new Rentix.LabelSmooth();
+            this.totalRaces_label = new Rentix.LabelSmooth();
+            this.labelSmooth7 = new Rentix.LabelSmooth();
+            this.labelSmooth6 = new Rentix.LabelSmooth();
+            this.labelSmooth4 = new Rentix.LabelSmooth();
+            this.labelSmooth5 = new Rentix.LabelSmooth();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cashTotal_labelSmooth32 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth33 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth30 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth31 = new Prokard_Timing.LabelSmooth();
-            this.cashForToday_labelSmooth9 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth8 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth3 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth2 = new Prokard_Timing.LabelSmooth();
+            this.cashTotal_labelSmooth32 = new Rentix.LabelSmooth();
+            this.labelSmooth33 = new Rentix.LabelSmooth();
+            this.labelSmooth30 = new Rentix.LabelSmooth();
+            this.labelSmooth31 = new Rentix.LabelSmooth();
+            this.cashForToday_labelSmooth9 = new Rentix.LabelSmooth();
+            this.labelSmooth8 = new Rentix.LabelSmooth();
+            this.labelSmooth3 = new Rentix.LabelSmooth();
+            this.labelSmooth2 = new Rentix.LabelSmooth();
             this.borderPanel2 = new Microsoft.TeamFoundation.Client.BorderPanel();
-            this.labelSmooth1 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth1 = new Rentix.LabelSmooth();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.racesJournal_dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -90,7 +90,7 @@ namespace Prokard_Timing
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.borderPanel3 = new Microsoft.TeamFoundation.Client.BorderPanel();
-            this.labelSmooth38 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth38 = new Rentix.LabelSmooth();
             this.button2 = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.pageSize_toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
@@ -100,13 +100,13 @@ namespace Prokard_Timing
             this.previousPage_toolStripButton12 = new System.Windows.Forms.ToolStripButton();
             this.firstPage_toolStripButton11 = new System.Windows.Forms.ToolStripButton();
             this.createReport_button = new System.Windows.Forms.Button();
-            this.labelSmooth40 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth40 = new Rentix.LabelSmooth();
             this.eventsInRacesJournal_comboBox = new System.Windows.Forms.ComboBox();
             this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
-            this.labelSmooth18 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth17 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth16 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth14 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth18 = new Rentix.LabelSmooth();
+            this.labelSmooth17 = new Rentix.LabelSmooth();
+            this.labelSmooth16 = new Rentix.LabelSmooth();
+            this.labelSmooth14 = new Rentix.LabelSmooth();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.top40_dataGridView = new System.Windows.Forms.DataGridView();
@@ -122,20 +122,20 @@ namespace Prokard_Timing
             this.IdLap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.borderPanel4 = new Microsoft.TeamFoundation.Client.BorderPanel();
             this.printTop40_button3 = new System.Windows.Forms.Button();
-            this.top40Record_labelSmooth12 = new Prokard_Timing.LabelSmooth();
+            this.top40Record_labelSmooth12 = new Rentix.LabelSmooth();
             this.tracks_comboBox1 = new System.Windows.Forms.ComboBox();
-            this.labelSmooth15 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth15 = new Rentix.LabelSmooth();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.borderPanel5 = new Microsoft.TeamFoundation.Client.BorderPanel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.totalAmountOfDeletedPilots_labelSmooth12 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth22 = new Prokard_Timing.LabelSmooth();
-            this.totalPilotsBallance_labelSmooth28 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth29 = new Prokard_Timing.LabelSmooth();
-            this.bannedPilots_labelSmooth24 = new Prokard_Timing.LabelSmooth();
-            this.totalPilots_label = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth26 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth27 = new Prokard_Timing.LabelSmooth();
+            this.totalAmountOfDeletedPilots_labelSmooth12 = new Rentix.LabelSmooth();
+            this.labelSmooth22 = new Rentix.LabelSmooth();
+            this.totalPilotsBallance_labelSmooth28 = new Rentix.LabelSmooth();
+            this.labelSmooth29 = new Rentix.LabelSmooth();
+            this.bannedPilots_labelSmooth24 = new Rentix.LabelSmooth();
+            this.totalPilots_label = new Rentix.LabelSmooth();
+            this.labelSmooth26 = new Rentix.LabelSmooth();
+            this.labelSmooth27 = new Rentix.LabelSmooth();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -148,11 +148,11 @@ namespace Prokard_Timing
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.borderPanel6 = new Microsoft.TeamFoundation.Client.BorderPanel();
             this.button4 = new System.Windows.Forms.Button();
-            this.usedForPeriod_label = new Prokard_Timing.LabelSmooth();
-            this.filledForPeriod_label = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth35 = new Prokard_Timing.LabelSmooth();
+            this.usedForPeriod_label = new Rentix.LabelSmooth();
+            this.filledForPeriod_label = new Rentix.LabelSmooth();
+            this.labelSmooth35 = new Rentix.LabelSmooth();
             this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
-            this.labelSmooth34 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth34 = new Rentix.LabelSmooth();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.unregisteredDetection_dataGridView4 = new System.Windows.Forms.DataGridView();
@@ -163,11 +163,11 @@ namespace Prokard_Timing
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.borderPanel7 = new Microsoft.TeamFoundation.Client.BorderPanel();
-            this.labelSmooth9 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth9 = new Rentix.LabelSmooth();
             this.endDate_dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
             this.button5 = new System.Windows.Forms.Button();
-            this.labelSmooth39 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth41 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth39 = new Rentix.LabelSmooth();
+            this.labelSmooth41 = new Rentix.LabelSmooth();
             this.startDate_dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
@@ -177,7 +177,7 @@ namespace Prokard_Timing
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.borderPanel8 = new Microsoft.TeamFoundation.Client.BorderPanel();
             this.button6 = new System.Windows.Forms.Button();
-            this.labelSmooth43 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth43 = new Rentix.LabelSmooth();
             this.dateTimePicker8 = new System.Windows.Forms.DateTimePicker();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.petroleum_dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -187,16 +187,16 @@ namespace Prokard_Timing
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.borderPanel9 = new Microsoft.TeamFoundation.Client.BorderPanel();
-            this.labelSmooth12 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth12 = new Rentix.LabelSmooth();
             this.petroleumStatEndDate_dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
             this.button3 = new System.Windows.Forms.Button();
-            this.totalPetroleum_labelSmooth23 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth24 = new Prokard_Timing.LabelSmooth();
+            this.totalPetroleum_labelSmooth23 = new Rentix.LabelSmooth();
+            this.labelSmooth24 = new Rentix.LabelSmooth();
             this.petroleumStatStartDate_dateTimePicker7 = new System.Windows.Forms.DateTimePicker();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.dailyStatistic_webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.borderPanel10 = new Microsoft.TeamFoundation.Client.BorderPanel();
-            this.labelSmooth23 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth23 = new Rentix.LabelSmooth();
             this.dailyStatistic_dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
             this.borderPanel1.SuspendLayout();
             this.tabControl2_del.SuspendLayout();
@@ -233,7 +233,7 @@ namespace Prokard_Timing
             // 
             // borderPanel1
             // 
-            this.borderPanel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel1.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel1.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -683,7 +683,7 @@ namespace Prokard_Timing
             // 
             // borderPanel2
             // 
-            this.borderPanel2.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel2.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel2.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel2.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -721,7 +721,7 @@ namespace Prokard_Timing
             // 
             // tabPage2
             // 
-            this.tabPage2.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.tabPage2.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.tabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tabPage2.Controls.Add(this.racesJournal_dataGridView1);
             this.tabPage2.Controls.Add(this.borderPanel3);
@@ -811,7 +811,7 @@ namespace Prokard_Timing
             // 
             // borderPanel3
             // 
-            this.borderPanel3.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel3.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel3.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel3.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -852,7 +852,7 @@ namespace Prokard_Timing
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImage = global::Prokard_Timing.Properties.Resources.printer1;
+            this.button2.BackgroundImage = global::Rentix.Properties.Resources.printer1;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.DialogResult = System.Windows.Forms.DialogResult.No;
@@ -1179,7 +1179,7 @@ namespace Prokard_Timing
             // 
             // borderPanel4
             // 
-            this.borderPanel4.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel4.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel4.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel4.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -1203,7 +1203,7 @@ namespace Prokard_Timing
             // 
             this.printTop40_button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.printTop40_button3.BackColor = System.Drawing.Color.Transparent;
-            this.printTop40_button3.BackgroundImage = global::Prokard_Timing.Properties.Resources.printer1;
+            this.printTop40_button3.BackgroundImage = global::Rentix.Properties.Resources.printer1;
             this.printTop40_button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.printTop40_button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.printTop40_button3.DialogResult = System.Windows.Forms.DialogResult.No;
@@ -1264,7 +1264,7 @@ namespace Prokard_Timing
             // 
             // borderPanel5
             // 
-            this.borderPanel5.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel5.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel5.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel5.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -1394,7 +1394,7 @@ namespace Prokard_Timing
             // 
             // tabPage5
             // 
-            this.tabPage5.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.tabPage5.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.tabPage5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tabPage5.Controls.Add(this.dataGridView3);
             this.tabPage5.Controls.Add(this.borderPanel6);
@@ -1513,7 +1513,7 @@ namespace Prokard_Timing
             // 
             // borderPanel6
             // 
-            this.borderPanel6.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel6.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel6.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel6.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -1537,7 +1537,7 @@ namespace Prokard_Timing
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.Transparent;
-            this.button4.BackgroundImage = global::Prokard_Timing.Properties.Resources.printer1;
+            this.button4.BackgroundImage = global::Rentix.Properties.Resources.printer1;
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.DialogResult = System.Windows.Forms.DialogResult.No;
@@ -1720,7 +1720,7 @@ namespace Prokard_Timing
             // 
             // borderPanel7
             // 
-            this.borderPanel7.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel7.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel7.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel7.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -1763,7 +1763,7 @@ namespace Prokard_Timing
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.Transparent;
-            this.button5.BackgroundImage = global::Prokard_Timing.Properties.Resources.printer1;
+            this.button5.BackgroundImage = global::Rentix.Properties.Resources.printer1;
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button5.DialogResult = System.Windows.Forms.DialogResult.No;
@@ -1898,7 +1898,7 @@ namespace Prokard_Timing
             // 
             // borderPanel8
             // 
-            this.borderPanel8.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel8.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel8.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel8.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -1918,7 +1918,7 @@ namespace Prokard_Timing
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.Transparent;
-            this.button6.BackgroundImage = global::Prokard_Timing.Properties.Resources.printer1;
+            this.button6.BackgroundImage = global::Rentix.Properties.Resources.printer1;
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button6.DialogResult = System.Windows.Forms.DialogResult.No;
@@ -2047,7 +2047,7 @@ namespace Prokard_Timing
             // 
             // borderPanel9
             // 
-            this.borderPanel9.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel9.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel9.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel9.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -2090,7 +2090,7 @@ namespace Prokard_Timing
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.BackgroundImage = global::Prokard_Timing.Properties.Resources.printer1;
+            this.button3.BackgroundImage = global::Rentix.Properties.Resources.printer1;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.DialogResult = System.Windows.Forms.DialogResult.No;
@@ -2158,7 +2158,7 @@ namespace Prokard_Timing
             // 
             // borderPanel10
             // 
-            this.borderPanel10.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel10.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel10.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel10.BorderPadding = new System.Windows.Forms.Padding(0);

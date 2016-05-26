@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-namespace Prokard_Timing
+namespace Rentix
 {
     partial class PrintResult1
     {
@@ -57,12 +57,12 @@ namespace Prokard_Timing
             this.Date1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BestLap1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelSmooth4 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth4 = new Rentix.LabelSmooth();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button2 = new System.Windows.Forms.Button();
-            this.labelSmooth3 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth2 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth1 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth3 = new Rentix.LabelSmooth();
+            this.labelSmooth2 = new Rentix.LabelSmooth();
+            this.labelSmooth1 = new Rentix.LabelSmooth();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.button4 = new System.Windows.Forms.Button();
@@ -77,7 +77,7 @@ namespace Prokard_Timing
             // 
             // borderPanel1
             // 
-            this.borderPanel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel1.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel1.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -119,7 +119,7 @@ namespace Prokard_Timing
             // 
             // panel1
             // 
-            this.panel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.panel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.panel2);
@@ -388,7 +388,7 @@ namespace Prokard_Timing
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.button2.Image = global::Prokard_Timing.Properties.Resources.printer1;
+            this.button2.Image = global::Rentix.Properties.Resources.printer1;
             this.button2.Location = new System.Drawing.Point(278, 16);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(63, 56);

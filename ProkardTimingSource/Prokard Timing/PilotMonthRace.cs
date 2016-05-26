@@ -4,7 +4,7 @@ using System.Drawing.Printing;
 using System.Windows.Forms;
 using DateTimeExtensions;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     public partial class PilotMonthRace : Form
     {

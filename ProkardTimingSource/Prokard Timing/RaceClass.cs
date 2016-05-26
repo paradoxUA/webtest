@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Prokard_Timing.model;
-namespace Prokard_Timing
+
+namespace Rentix
 {
     public class RaceClass
     {

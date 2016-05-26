@@ -4,9 +4,9 @@ using System.Drawing.Text;
 using System.Windows.Forms;
 using System.Collections;
 using System.Collections.Generic;
-using Prokard_Timing.Controls;
+using Rentix.Controls;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     public partial class Race : Form
     {

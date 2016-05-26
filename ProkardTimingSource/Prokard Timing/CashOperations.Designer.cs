@@ -1,4 +1,4 @@
-﻿namespace Prokard_Timing
+﻿namespace Rentix
 {
     partial class CashOperations
     {
@@ -40,32 +40,32 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.priceForHalfMode_label = new Prokard_Timing.LabelSmooth();
+            this.priceForHalfMode_label = new Rentix.LabelSmooth();
             this.halfModes_comboBox = new System.Windows.Forms.ComboBox();
-            this.labelSmooth5 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth5 = new Rentix.LabelSmooth();
             this.userSelectedMode_comboBox1 = new System.Windows.Forms.ComboBox();
-            this.labelSmooth4 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth4 = new Rentix.LabelSmooth();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.labelSmooth3 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth2 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth1 = new Prokard_Timing.LabelSmooth();
-            this.label12 = new Prokard_Timing.LabelSmooth();
-            this.label13 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth3 = new Rentix.LabelSmooth();
+            this.labelSmooth2 = new Rentix.LabelSmooth();
+            this.labelSmooth1 = new Rentix.LabelSmooth();
+            this.label12 = new Rentix.LabelSmooth();
+            this.label13 = new Rentix.LabelSmooth();
             this.priceForCurrentRace_textBox5 = new System.Windows.Forms.TextBox();
             this.moveRestToUserAccount_checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label11 = new Prokard_Timing.LabelSmooth();
-            this.label10 = new Prokard_Timing.LabelSmooth();
+            this.label11 = new Rentix.LabelSmooth();
+            this.label10 = new Rentix.LabelSmooth();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label9 = new Prokard_Timing.LabelSmooth();
-            this.label8 = new Prokard_Timing.LabelSmooth();
+            this.label9 = new Rentix.LabelSmooth();
+            this.label8 = new Rentix.LabelSmooth();
             this.cashFromPilot_textBox3 = new System.Windows.Forms.TextBox();
-            this.label6 = new Prokard_Timing.LabelSmooth();
-            this.label5 = new Prokard_Timing.LabelSmooth();
+            this.label6 = new Rentix.LabelSmooth();
+            this.label5 = new Rentix.LabelSmooth();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.pilotNameForCashOperations_textBox1 = new System.Windows.Forms.TextBox();
-            this.startTimeLabel_label3 = new Prokard_Timing.LabelSmooth();
-            this.label2 = new Prokard_Timing.LabelSmooth();
-            this.label1 = new Prokard_Timing.LabelSmooth();
+            this.startTimeLabel_label3 = new Rentix.LabelSmooth();
+            this.label2 = new Rentix.LabelSmooth();
+            this.label1 = new Rentix.LabelSmooth();
             this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
@@ -543,7 +543,7 @@
             // 
             // borderPanel1
             // 
-            this.borderPanel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel1.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel1.BorderPadding = new System.Windows.Forms.Padding(0);

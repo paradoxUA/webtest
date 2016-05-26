@@ -6,11 +6,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Prokard_Timing.objects.discount;
-using Prokard_Timing.model;
-using Prokard_Timing.Controls;
+using Rentix.Controls;
+using Rentix;
+using Rentix.model;
 
-namespace Prokard_Timing.Forms.Discount.Card
+namespace Rentix.Forms.Discount.Card
 {
     public partial class Discount_Card_Add : Form
     {

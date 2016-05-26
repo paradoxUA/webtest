@@ -1,4 +1,4 @@
-﻿namespace Prokard_Timing
+﻿namespace Rentix
 {
     partial class AddTrack
     {
@@ -32,15 +32,15 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new Prokard_Timing.LabelSmooth();
+            this.label4 = new Rentix.LabelSmooth();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label3 = new Prokard_Timing.LabelSmooth();
+            this.label3 = new Rentix.LabelSmooth();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new Prokard_Timing.LabelSmooth();
+            this.label2 = new Rentix.LabelSmooth();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new Prokard_Timing.LabelSmooth();
+            this.label1 = new Rentix.LabelSmooth();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.borderPanel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -49,7 +49,7 @@
             // 
             // borderPanel3
             // 
-            this.borderPanel3.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel3.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel3.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel3.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -90,7 +90,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.panel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.button3);

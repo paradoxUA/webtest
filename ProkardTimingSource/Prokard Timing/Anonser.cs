@@ -10,7 +10,7 @@ using System.Drawing.Text;
 using System.Drawing.Drawing2D;
 using System.IO;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     public partial class Anonser : Form
     {

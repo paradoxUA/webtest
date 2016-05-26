@@ -12,10 +12,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using Prokard_Timing.model;
+using Rentix.model;
 using MessageBox = System.Windows.Forms.MessageBox;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     class testClass1
     {

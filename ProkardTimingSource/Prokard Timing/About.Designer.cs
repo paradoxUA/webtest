@@ -1,4 +1,4 @@
-﻿namespace Prokard_Timing
+﻿namespace Rentix
 {
     partial class About
     {
@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
             this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
-            this.labelSmooth2 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth1 = new Prokard_Timing.LabelSmooth();
+            this.labelSmooth2 = new Rentix.LabelSmooth();
+            this.labelSmooth1 = new Rentix.LabelSmooth();
             this.borderPanel2 = new Microsoft.TeamFoundation.Client.BorderPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -43,7 +43,7 @@
             // 
             // borderPanel1
             // 
-            this.borderPanel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel1.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel1.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -86,7 +86,7 @@
             // 
             // borderPanel2
             // 
-            this.borderPanel2.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel2.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel2.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel2.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -115,7 +115,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.panel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.richTextBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -135,32 +135,6 @@
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
-            // 
-            // About
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 273);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.borderPanel2);
-            this.Controls.Add(this.borderPanel1);
-            this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.KeyPreview = true;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "About";
-            this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "О программе";
-            this.Load += new System.EventHandler(this.About_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.About_KeyDown);
-            this.borderPanel1.ResumeLayout(false);
-            this.borderPanel1.PerformLayout();
-            this.borderPanel2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.ResumeLayout(false);
-
         }
 
         #endregion

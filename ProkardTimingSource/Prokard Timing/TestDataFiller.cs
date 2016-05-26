@@ -7,9 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
-using Prokard_Timing.Controls;
+using Rentix;
+using Rentix.Controls;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     public partial class TestDataFiller : Form
     {

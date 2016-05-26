@@ -8,7 +8,7 @@ using System.Text;
 using System.Collections;
 using System.Windows.Forms;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     public partial class ShowEventMessage : Form
     {

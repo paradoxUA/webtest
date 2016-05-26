@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-namespace Prokard_Timing
+namespace Rentix
 {
     partial class CassaJurnal
     {
@@ -73,7 +73,7 @@ namespace Prokard_Timing
             // 
             // borderPanel1
             // 
-            this.borderPanel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel1.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel1.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -116,7 +116,7 @@ namespace Prokard_Timing
             // 
             // borderPanel2
             // 
-            this.borderPanel2.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel2.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel2.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel2.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -143,7 +143,7 @@ namespace Prokard_Timing
             // toolStrip1
             // 
             this.toolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.toolStrip1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.toolStrip1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.toolStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
@@ -341,7 +341,7 @@ namespace Prokard_Timing
             // 
             // borderPanel3
             // 
-            this.borderPanel3.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel3.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel3.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel3.BorderPadding = new System.Windows.Forms.Padding(0);

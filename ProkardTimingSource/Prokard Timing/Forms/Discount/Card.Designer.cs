@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-namespace Prokard_Timing
+namespace Rentix
 {
     partial class Discount_Card
     {
@@ -209,7 +209,7 @@ namespace Prokard_Timing
             // addCard_Button1
             // 
             this.addCard_Button1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.addCard_Button1.Image = global::Prokard_Timing.Properties.Resources.add;
+            this.addCard_Button1.Image = global::Rentix.Properties.Resources.add;
             this.addCard_Button1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.addCard_Button1.Name = "addCard_Button1";
             this.addCard_Button1.Size = new System.Drawing.Size(23, 22);
@@ -219,7 +219,7 @@ namespace Prokard_Timing
             // blockCard_Button2
             // 
             this.blockCard_Button2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.blockCard_Button2.Image = global::Prokard_Timing.Properties.Resources.edit_remove;
+            this.blockCard_Button2.Image = global::Rentix.Properties.Resources.edit_remove;
             this.blockCard_Button2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.blockCard_Button2.Name = "blockCard_Button2";
             this.blockCard_Button2.Size = new System.Drawing.Size(23, 22);
@@ -229,7 +229,7 @@ namespace Prokard_Timing
             // addCartsRange_toolStripButton3
             // 
             this.addCartsRange_toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.addCartsRange_toolStripButton3.Image = global::Prokard_Timing.Properties.Resources.gnome_window_manager;
+            this.addCartsRange_toolStripButton3.Image = global::Rentix.Properties.Resources.gnome_window_manager;
             this.addCartsRange_toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.addCartsRange_toolStripButton3.Name = "addCartsRange_toolStripButton3";
             this.addCartsRange_toolStripButton3.Size = new System.Drawing.Size(23, 22);
@@ -239,7 +239,7 @@ namespace Prokard_Timing
             // editCard_Button3
             // 
             this.editCard_Button3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.editCard_Button3.Image = global::Prokard_Timing.Properties.Resources.edit__1_;
+            this.editCard_Button3.Image = global::Rentix.Properties.Resources.edit__1_;
             this.editCard_Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.editCard_Button3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.editCard_Button3.Name = "editCard_Button3";
@@ -250,7 +250,7 @@ namespace Prokard_Timing
             // cardDetails_Button4
             // 
             this.cardDetails_Button4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.cardDetails_Button4.Image = global::Prokard_Timing.Properties.Resources.getinfo;
+            this.cardDetails_Button4.Image = global::Rentix.Properties.Resources.getinfo;
             this.cardDetails_Button4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.cardDetails_Button4.Name = "cardDetails_Button4";
             this.cardDetails_Button4.Size = new System.Drawing.Size(23, 22);
@@ -284,7 +284,7 @@ namespace Prokard_Timing
             // applyFilter_Button5
             // 
             this.applyFilter_Button5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.applyFilter_Button5.Image = global::Prokard_Timing.Properties.Resources.apply;
+            this.applyFilter_Button5.Image = global::Rentix.Properties.Resources.apply;
             this.applyFilter_Button5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.applyFilter_Button5.Name = "applyFilter_Button5";
             this.applyFilter_Button5.Size = new System.Drawing.Size(23, 22);
@@ -294,7 +294,7 @@ namespace Prokard_Timing
             // clearFilter_Button6
             // 
             this.clearFilter_Button6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.clearFilter_Button6.Image = global::Prokard_Timing.Properties.Resources.delete;
+            this.clearFilter_Button6.Image = global::Rentix.Properties.Resources.delete;
             this.clearFilter_Button6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.clearFilter_Button6.Name = "clearFilter_Button6";
             this.clearFilter_Button6.Size = new System.Drawing.Size(23, 22);
@@ -328,7 +328,7 @@ namespace Prokard_Timing
             // addDiscountcardType_toolStripButton3
             // 
             this.addDiscountcardType_toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.addDiscountcardType_toolStripButton3.Image = global::Prokard_Timing.Properties.Resources.add;
+            this.addDiscountcardType_toolStripButton3.Image = global::Rentix.Properties.Resources.add;
             this.addDiscountcardType_toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.addDiscountcardType_toolStripButton3.Name = "addDiscountcardType_toolStripButton3";
             this.addDiscountcardType_toolStripButton3.Size = new System.Drawing.Size(23, 22);
@@ -338,7 +338,7 @@ namespace Prokard_Timing
             // deleteDiscountCardType_toolStripButton4
             // 
             this.deleteDiscountCardType_toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.deleteDiscountCardType_toolStripButton4.Image = global::Prokard_Timing.Properties.Resources.delete;
+            this.deleteDiscountCardType_toolStripButton4.Image = global::Rentix.Properties.Resources.delete;
             this.deleteDiscountCardType_toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.deleteDiscountCardType_toolStripButton4.Name = "deleteDiscountCardType_toolStripButton4";
             this.deleteDiscountCardType_toolStripButton4.Size = new System.Drawing.Size(23, 22);
@@ -395,7 +395,7 @@ namespace Prokard_Timing
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::Prokard_Timing.Properties.Resources.add;
+            this.toolStripButton1.Image = global::Rentix.Properties.Resources.add;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
@@ -404,7 +404,7 @@ namespace Prokard_Timing
             // toolStripButton2
             // 
             this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::Prokard_Timing.Properties.Resources.delete;
+            this.toolStripButton2.Image = global::Rentix.Properties.Resources.delete;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(23, 22);

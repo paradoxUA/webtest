@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     public partial class ChangeRace : Form
     {

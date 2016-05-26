@@ -12,10 +12,10 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.Collections;
 using System.Drawing.Printing;
-using Prokard_Timing.Controls;
+using Rentix.Controls;
 using System.Configuration;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     public partial class Settings : Form
     {

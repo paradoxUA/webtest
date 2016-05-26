@@ -9,9 +9,9 @@ using System.Collections;
 using System.Windows.Forms;
 using System.Drawing.Printing;
 using System.Drawing.Text;
-using Prokard_Timing.Controls;
+using Rentix.Controls;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     public partial class CashOperations : Form
     {

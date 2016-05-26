@@ -11,7 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     public partial class DbSettings : Form
     {

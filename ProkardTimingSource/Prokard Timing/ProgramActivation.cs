@@ -5,7 +5,7 @@ using System.Text;
 using System.Management;
 using System.Security.Cryptography;
 using System.Configuration;
-namespace Prokard_Timing
+namespace Rentix
 {
     class ProgramActivation
     {

@@ -8,10 +8,10 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 using System.Windows.Input;
-using Prokard_Timing.Controls;
+using Rentix.Controls;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     public partial class PriceControl : Form
     {

@@ -10,7 +10,7 @@ using System.Drawing.Text;
 using System.Collections;
 using System.Linq;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     public partial class PrintResult1 : Form
     {
