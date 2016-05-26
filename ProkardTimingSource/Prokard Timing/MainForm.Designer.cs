@@ -178,35 +178,35 @@ namespace Rentix
             this.contextMenuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Table;
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(178, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(171, 76);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.toolStripMenuItem1.Image = global::Rentix.Properties.Resources.users;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(170, 22);
             this.toolStripMenuItem1.Text = "Добавить пилота";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // перейтиКЗаездуToolStripMenuItem1
             // 
             this.перейтиКЗаездуToolStripMenuItem1.Name = "перейтиКЗаездуToolStripMenuItem1";
-            this.перейтиКЗаездуToolStripMenuItem1.Size = new System.Drawing.Size(177, 22);
+            this.перейтиКЗаездуToolStripMenuItem1.Size = new System.Drawing.Size(170, 22);
             this.перейтиКЗаездуToolStripMenuItem1.Text = "Открыть заезд";
             this.перейтиКЗаездуToolStripMenuItem1.Click += new System.EventHandler(this.перейтиКЗаездуToolStripMenuItem1_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(174, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(167, 6);
             // 
             // перейтиКЗаездуToolStripMenuItem
             // 
             this.перейтиКЗаездуToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.перейтиКЗаездуToolStripMenuItem.Name = "перейтиКЗаездуToolStripMenuItem";
             this.перейтиКЗаездуToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.перейтиКЗаездуToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.перейтиКЗаездуToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.перейтиКЗаездуToolStripMenuItem.Text = "Обновить поле";
             this.перейтиКЗаездуToolStripMenuItem.Click += new System.EventHandler(this.перейтиКЗаездуToolStripMenuItem_Click);
             // 
@@ -1013,7 +1013,7 @@ namespace Rentix
             // 
             this.toolStripStatusLabel1.BackColor = System.Drawing.Color.Transparent;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(56, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(48, 17);
             this.toolStripStatusLabel1.Text = "No Login";
             // 
             // menuStrip1
@@ -1046,14 +1046,14 @@ namespace Rentix
             this.выдатьСертификатToolStripMenuItem,
             this.поискСертификатаToolStripMenuItem});
             this.пилотыToolStripMenuItem.Name = "пилотыToolStripMenuItem";
-            this.пилотыToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.пилотыToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.пилотыToolStripMenuItem.Text = "Пилоты";
             // 
             // создатьКарточкуToolStripMenuItem
             // 
             this.создатьКарточкуToolStripMenuItem.Image = global::Rentix.Properties.Resources.user_add1;
             this.создатьКарточкуToolStripMenuItem.Name = "создатьКарточкуToolStripMenuItem";
-            this.создатьКарточкуToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.создатьКарточкуToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.создатьКарточкуToolStripMenuItem.Text = "Создать карточку";
             this.создатьКарточкуToolStripMenuItem.Click += new System.EventHandler(this.создатьКарточкуToolStripMenuItem_Click);
             // 
@@ -1061,27 +1061,27 @@ namespace Rentix
             // 
             this.просмотрВсехToolStripMenuItem.Image = global::Rentix.Properties.Resources.group;
             this.просмотрВсехToolStripMenuItem.Name = "просмотрВсехToolStripMenuItem";
-            this.просмотрВсехToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.просмотрВсехToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.просмотрВсехToolStripMenuItem.Text = "Просмотр всех";
             this.просмотрВсехToolStripMenuItem.Click += new System.EventHandler(this.просмотрВсехToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(222, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(207, 6);
             // 
             // участникиМесячнойГонкиToolStripMenuItem
             // 
             this.участникиМесячнойГонкиToolStripMenuItem.Image = global::Rentix.Properties.Resources.award_star_gold_2;
             this.участникиМесячнойГонкиToolStripMenuItem.Name = "участникиМесячнойГонкиToolStripMenuItem";
-            this.участникиМесячнойГонкиToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.участникиМесячнойГонкиToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.участникиМесячнойГонкиToolStripMenuItem.Text = "Участники месячной гонки";
             this.участникиМесячнойГонкиToolStripMenuItem.Click += new System.EventHandler(this.участникиМесячнойГонкиToolStripMenuItem_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(222, 6);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(207, 6);
             // 
             // выдатьСертификатToolStripMenuItem
             // 
@@ -1089,7 +1089,7 @@ namespace Rentix
             this.выдатьСертификатToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.выдатьСертификатToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("выдатьСертификатToolStripMenuItem.Image")));
             this.выдатьСертификатToolStripMenuItem.Name = "выдатьСертификатToolStripMenuItem";
-            this.выдатьСертификатToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.выдатьСертификатToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.выдатьСертификатToolStripMenuItem.Text = "Выдать сертификат";
             this.выдатьСертификатToolStripMenuItem.Click += new System.EventHandler(this.выдатьСертификатToolStripMenuItem_Click);
             // 
@@ -1098,7 +1098,7 @@ namespace Rentix
             this.поискСертификатаToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.поискСертификатаToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("поискСертификатаToolStripMenuItem.Image")));
             this.поискСертификатаToolStripMenuItem.Name = "поискСертификатаToolStripMenuItem";
-            this.поискСертификатаToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.поискСертификатаToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.поискСертификатаToolStripMenuItem.Text = "Поиск сертификата";
             this.поискСертификатаToolStripMenuItem.Click += new System.EventHandler(this.поискСертификатаToolStripMenuItem_Click);
             // 
@@ -1111,7 +1111,7 @@ namespace Rentix
             this.балансПользователейToolStripMenuItem});
             this.кассаToolStripMenuItem.Enabled = false;
             this.кассаToolStripMenuItem.Name = "кассаToolStripMenuItem";
-            this.кассаToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.кассаToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.кассаToolStripMenuItem.Text = "Касса";
             // 
             // журналToolStripMenuItem
@@ -1119,7 +1119,7 @@ namespace Rentix
             this.журналToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.журналToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("журналToolStripMenuItem.Image")));
             this.журналToolStripMenuItem.Name = "журналToolStripMenuItem";
-            this.журналToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.журналToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.журналToolStripMenuItem.Text = "Журнал кассы";
             this.журналToolStripMenuItem.Click += new System.EventHandler(this.журналToolStripMenuItem_Click);
             // 
@@ -1128,21 +1128,21 @@ namespace Rentix
             this.закрытьКассуToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.закрытьКассуToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("закрытьКассуToolStripMenuItem.Image")));
             this.закрытьКассуToolStripMenuItem.Name = "закрытьКассуToolStripMenuItem";
-            this.закрытьКассуToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.закрытьКассуToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.закрытьКассуToolStripMenuItem.Text = "Закрыть кассу";
             this.закрытьКассуToolStripMenuItem.Click += new System.EventHandler(this.закрытьКассуToolStripMenuItem_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(159, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(151, 6);
             // 
             // балансПользователейToolStripMenuItem
             // 
             this.балансПользователейToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.балансПользователейToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("балансПользователейToolStripMenuItem.Image")));
             this.балансПользователейToolStripMenuItem.Name = "балансПользователейToolStripMenuItem";
-            this.балансПользователейToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.балансПользователейToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.балансПользователейToolStripMenuItem.Text = "Баланс пилотов";
             this.балансПользователейToolStripMenuItem.Click += new System.EventHandler(this.балансПользователейToolStripMenuItem_Click);
             // 
@@ -1163,7 +1163,7 @@ namespace Rentix
             this.petroleumSpend_ToolStripMenuItem,
             this.competitionMode_menuItem});
             this.управлениеToolStripMenuItem1.Name = "управлениеToolStripMenuItem1";
-            this.управлениеToolStripMenuItem1.Size = new System.Drawing.Size(85, 20);
+            this.управлениеToolStripMenuItem1.Size = new System.Drawing.Size(80, 20);
             this.управлениеToolStripMenuItem1.Text = "Управление";
             // 
             // управлениеToolStripMenuItem
@@ -1171,7 +1171,7 @@ namespace Rentix
             this.управлениеToolStripMenuItem.Image = global::Rentix.Properties.Resources.car;
             this.управлениеToolStripMenuItem.Name = "управлениеToolStripMenuItem";
             this.управлениеToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.K)));
-            this.управлениеToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.управлениеToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.управлениеToolStripMenuItem.Text = "Карты";
             this.управлениеToolStripMenuItem.Click += new System.EventHandler(this.управлениеToolStripMenuItem_Click_1);
             // 
@@ -1180,7 +1180,7 @@ namespace Rentix
             this.трассыToolStripMenuItem1.Image = global::Rentix.Properties.Resources.photos;
             this.трассыToolStripMenuItem1.Name = "трассыToolStripMenuItem1";
             this.трассыToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.трассыToolStripMenuItem1.Size = new System.Drawing.Size(203, 22);
+            this.трассыToolStripMenuItem1.Size = new System.Drawing.Size(192, 22);
             this.трассыToolStripMenuItem1.Text = "Трассы";
             this.трассыToolStripMenuItem1.Click += new System.EventHandler(this.трассыToolStripMenuItem1_Click);
             // 
@@ -1189,7 +1189,7 @@ namespace Rentix
             this.ценыToolStripMenuItem.Image = global::Rentix.Properties.Resources.coins1;
             this.ценыToolStripMenuItem.Name = "ценыToolStripMenuItem";
             this.ценыToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.ценыToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.ценыToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.ценыToolStripMenuItem.Text = "Цены";
             this.ценыToolStripMenuItem.Click += new System.EventHandler(this.ценыToolStripMenuItem_Click);
             // 
@@ -1198,7 +1198,7 @@ namespace Rentix
             this.событияToolStripMenuItem.Image = global::Rentix.Properties.Resources.time;
             this.событияToolStripMenuItem.Name = "событияToolStripMenuItem";
             this.событияToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.событияToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.событияToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.событияToolStripMenuItem.Text = "События";
             this.событияToolStripMenuItem.Click += new System.EventHandler(this.событияToolStripMenuItem_Click);
             // 
@@ -1207,7 +1207,7 @@ namespace Rentix
             this.группыToolStripMenuItem.Image = global::Rentix.Properties.Resources.edit_group;
             this.группыToolStripMenuItem.Name = "группыToolStripMenuItem";
             this.группыToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
-            this.группыToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.группыToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.группыToolStripMenuItem.Text = "Группы";
             this.группыToolStripMenuItem.Click += new System.EventHandler(this.группыToolStripMenuItem_Click);
             // 
@@ -1218,7 +1218,7 @@ namespace Rentix
             this.RaceModesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("RaceModesToolStripMenuItem.Image")));
             this.RaceModesToolStripMenuItem.Name = "RaceModesToolStripMenuItem";
             this.RaceModesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.RaceModesToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.RaceModesToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.RaceModesToolStripMenuItem.Text = "Режимы заезда";
             this.RaceModesToolStripMenuItem.Click += new System.EventHandler(this.RaceModesToolStripMenuItem_Click);
             // 
@@ -1227,7 +1227,7 @@ namespace Rentix
             this.настройкиToolStripMenuItem.Enabled = false;
             this.настройкиToolStripMenuItem.Image = global::Rentix.Properties.Resources.wrench;
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
-            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.настройкиToolStripMenuItem.Text = "Настройки";
             this.настройкиToolStripMenuItem.Click += new System.EventHandler(this.настройкиToolStripMenuItem_Click);
             // 
@@ -1236,7 +1236,7 @@ namespace Rentix
             this.сертификатыToolStripMenuItem.Enabled = false;
             this.сертификатыToolStripMenuItem.Image = global::Rentix.Properties.Resources.layout;
             this.сертификатыToolStripMenuItem.Name = "сертификатыToolStripMenuItem";
-            this.сертификатыToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.сертификатыToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.сертификатыToolStripMenuItem.Text = "Сертификаты";
             this.сертификатыToolStripMenuItem.Click += new System.EventHandler(this.сертификатыToolStripMenuItem_Click);
             // 
@@ -1246,7 +1246,7 @@ namespace Rentix
             this.скидочныеКартыToolStripMenuItem.Enabled = false;
             this.скидочныеКартыToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("скидочныеКартыToolStripMenuItem.Image")));
             this.скидочныеКартыToolStripMenuItem.Name = "скидочныеКартыToolStripMenuItem";
-            this.скидочныеКартыToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.скидочныеКартыToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.скидочныеКартыToolStripMenuItem.Text = "Скидочные карты";
             this.скидочныеКартыToolStripMenuItem.Click += new System.EventHandler(this.скидочныеКартыToolStripMenuItem_Click);
             // 
@@ -1255,7 +1255,7 @@ namespace Rentix
             this.testData_ToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.testData_ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("testData_ToolStripMenuItem.Image")));
             this.testData_ToolStripMenuItem.Name = "testData_ToolStripMenuItem";
-            this.testData_ToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.testData_ToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.testData_ToolStripMenuItem.Text = "Тестовые данные";
             this.testData_ToolStripMenuItem.Visible = false;
             this.testData_ToolStripMenuItem.Click += new System.EventHandler(this.testData_ToolStripMenuItem_Click);
@@ -1265,7 +1265,7 @@ namespace Rentix
             this.CheckSensorsMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.CheckSensorsMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("CheckSensorsMenuItem.Image")));
             this.CheckSensorsMenuItem.Name = "CheckSensorsMenuItem";
-            this.CheckSensorsMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.CheckSensorsMenuItem.Size = new System.Drawing.Size(192, 22);
             this.CheckSensorsMenuItem.Text = "Проверка датчиков";
             this.CheckSensorsMenuItem.Click += new System.EventHandler(this.CheckSensorsMenuItem_Click);
             // 
@@ -1274,7 +1274,7 @@ namespace Rentix
             this.petroleumSpend_ToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.petroleumSpend_ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("petroleumSpend_ToolStripMenuItem.Image")));
             this.petroleumSpend_ToolStripMenuItem.Name = "petroleumSpend_ToolStripMenuItem";
-            this.petroleumSpend_ToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.petroleumSpend_ToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.petroleumSpend_ToolStripMenuItem.Text = "Списать бензин";
             this.petroleumSpend_ToolStripMenuItem.Click += new System.EventHandler(this.petroleumSpend_ToolStripMenuItem_Click);
             // 
@@ -1282,7 +1282,7 @@ namespace Rentix
             // 
             this.competitionMode_menuItem.CheckOnClick = true;
             this.competitionMode_menuItem.Name = "competitionMode_menuItem";
-            this.competitionMode_menuItem.Size = new System.Drawing.Size(203, 22);
+            this.competitionMode_menuItem.Size = new System.Drawing.Size(192, 22);
             this.competitionMode_menuItem.Text = "Соревнования";
             this.competitionMode_menuItem.Visible = false;
             this.competitionMode_menuItem.Click += new System.EventHandler(this.competitionMode_menuItem_Click);
@@ -1297,7 +1297,7 @@ namespace Rentix
             this.поПилотамToolStripMenuItem,
             this.поКартамToolStripMenuItem});
             this.статистикаToolStripMenuItem.Name = "статистикаToolStripMenuItem";
-            this.статистикаToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.статистикаToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.статистикаToolStripMenuItem.Text = "Статистика";
             // 
             // заСегодняToolStripMenuItem
@@ -1305,7 +1305,7 @@ namespace Rentix
             this.заСегодняToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.заСегодняToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("заСегодняToolStripMenuItem.Image")));
             this.заСегодняToolStripMenuItem.Name = "заСегодняToolStripMenuItem";
-            this.заСегодняToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.заСегодняToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.заСегодняToolStripMenuItem.Text = "За сегодня";
             this.заСегодняToolStripMenuItem.Click += new System.EventHandler(this.заСегодняToolStripMenuItem_Click);
             // 
@@ -1314,7 +1314,7 @@ namespace Rentix
             this.журналРейсовToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.журналРейсовToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("журналРейсовToolStripMenuItem.Image")));
             this.журналРейсовToolStripMenuItem.Name = "журналРейсовToolStripMenuItem";
-            this.журналРейсовToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.журналРейсовToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.журналРейсовToolStripMenuItem.Text = "Журнал рейсов";
             this.журналРейсовToolStripMenuItem.Click += new System.EventHandler(this.журналРейсовToolStripMenuItem_Click);
             // 
@@ -1323,21 +1323,21 @@ namespace Rentix
             this.лучшееВремяToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.лучшееВремяToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("лучшееВремяToolStripMenuItem.Image")));
             this.лучшееВремяToolStripMenuItem.Name = "лучшееВремяToolStripMenuItem";
-            this.лучшееВремяToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.лучшееВремяToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.лучшееВремяToolStripMenuItem.Text = "Лучшее время";
             this.лучшееВремяToolStripMenuItem.Click += new System.EventHandler(this.лучшееВремяToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(157, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
             // 
             // поПилотамToolStripMenuItem
             // 
             this.поПилотамToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.поПилотамToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("поПилотамToolStripMenuItem.Image")));
             this.поПилотамToolStripMenuItem.Name = "поПилотамToolStripMenuItem";
-            this.поПилотамToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.поПилотамToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.поПилотамToolStripMenuItem.Text = "По пилотам";
             this.поПилотамToolStripMenuItem.Click += new System.EventHandler(this.поПилотамToolStripMenuItem_Click);
             // 
@@ -1347,7 +1347,7 @@ namespace Rentix
             this.поКартамToolStripMenuItem.Enabled = false;
             this.поКартамToolStripMenuItem.Image = global::Rentix.Properties.Resources.car;
             this.поКартамToolStripMenuItem.Name = "поКартамToolStripMenuItem";
-            this.поКартамToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.поКартамToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.поКартамToolStripMenuItem.Text = "По картам";
             this.поКартамToolStripMenuItem.Click += new System.EventHandler(this.поКартамToolStripMenuItem_Click);
             // 
@@ -1359,7 +1359,7 @@ namespace Rentix
             this.показатьПрошедшиеЧасыToolStripMenuItem,
             this.анонсерToolStripMenuItem});
             this.окнаToolStripMenuItem.Name = "окнаToolStripMenuItem";
-            this.окнаToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.окнаToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.окнаToolStripMenuItem.Text = "Окна";
             // 
             // панельИнструментовToolStripMenuItem
@@ -1369,7 +1369,7 @@ namespace Rentix
             this.панельИнструментовToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("панельИнструментовToolStripMenuItem.Image")));
             this.панельИнструментовToolStripMenuItem.Name = "панельИнструментовToolStripMenuItem";
             this.панельИнструментовToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.панельИнструментовToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.панельИнструментовToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.панельИнструментовToolStripMenuItem.Text = "Панель инструментов";
             this.панельИнструментовToolStripMenuItem.Click += new System.EventHandler(this.панельИнструментовToolStripMenuItem_Click);
             // 
@@ -1378,7 +1378,7 @@ namespace Rentix
             this.обновитьToolStripMenuItem.Image = global::Rentix.Properties.Resources.table_refresh;
             this.обновитьToolStripMenuItem.Name = "обновитьToolStripMenuItem";
             this.обновитьToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.обновитьToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.обновитьToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.обновитьToolStripMenuItem.Text = "Обновить";
             this.обновитьToolStripMenuItem.Click += new System.EventHandler(this.обновитьToolStripMenuItem_Click);
             // 
@@ -1388,7 +1388,7 @@ namespace Rentix
             this.показатьПрошедшиеЧасыToolStripMenuItem.Image = global::Rentix.Properties.Resources.table_add;
             this.показатьПрошедшиеЧасыToolStripMenuItem.Name = "показатьПрошедшиеЧасыToolStripMenuItem";
             this.показатьПрошедшиеЧасыToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
-            this.показатьПрошедшиеЧасыToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.показатьПрошедшиеЧасыToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.показатьПрошедшиеЧасыToolStripMenuItem.Text = "Показать прошедшие часы";
             this.показатьПрошедшиеЧасыToolStripMenuItem.Click += new System.EventHandler(this.показатьПрошедшиеЧасыToolStripMenuItem_Click);
             // 
@@ -1398,7 +1398,7 @@ namespace Rentix
             this.анонсерToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("анонсерToolStripMenuItem.Image")));
             this.анонсерToolStripMenuItem.Name = "анонсерToolStripMenuItem";
             this.анонсерToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F9;
-            this.анонсерToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.анонсерToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.анонсерToolStripMenuItem.Text = "Анонсер";
             this.анонсерToolStripMenuItem.Click += new System.EventHandler(this.анонсерToolStripMenuItem_Click);
             // 
@@ -1410,7 +1410,7 @@ namespace Rentix
             this.toolStripMenuItem6,
             this.пользователиToolStripMenuItem});
             this.администраторToolStripMenuItem.Name = "администраторToolStripMenuItem";
-            this.администраторToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
+            this.администраторToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
             this.администраторToolStripMenuItem.Text = "Пользователь";
             // 
             // войтиВРежимToolStripMenuItem
@@ -1418,7 +1418,7 @@ namespace Rentix
             this.войтиВРежимToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.войтиВРежимToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("войтиВРежимToolStripMenuItem.Image")));
             this.войтиВРежимToolStripMenuItem.Name = "войтиВРежимToolStripMenuItem";
-            this.войтиВРежимToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.войтиВРежимToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.войтиВРежимToolStripMenuItem.Text = "Сменить пользователя";
             this.войтиВРежимToolStripMenuItem.Click += new System.EventHandler(this.войтиВРежимToolStripMenuItem_Click);
             // 
@@ -1428,21 +1428,21 @@ namespace Rentix
             this.выйтиToolStripMenuItem.Enabled = false;
             this.выйтиToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("выйтиToolStripMenuItem.Image")));
             this.выйтиToolStripMenuItem.Name = "выйтиToolStripMenuItem";
-            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.выйтиToolStripMenuItem.Text = "Выйти";
             this.выйтиToolStripMenuItem.Click += new System.EventHandler(this.выйтиToolStripMenuItem_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(197, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(188, 6);
             // 
             // пользователиToolStripMenuItem
             // 
             this.пользователиToolStripMenuItem.Enabled = false;
             this.пользователиToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("пользователиToolStripMenuItem.Image")));
             this.пользователиToolStripMenuItem.Name = "пользователиToolStripMenuItem";
-            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.пользователиToolStripMenuItem.Text = "Пользователи";
             this.пользователиToolStripMenuItem.Click += new System.EventHandler(this.пользователиToolStripMenuItem_Click);
             // 
@@ -1451,7 +1451,7 @@ namespace Rentix
             this.справкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.оПрограммеToolStripMenuItem});
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.справкаToolStripMenuItem.Text = "Справка";
             // 
             // оПрограммеToolStripMenuItem
@@ -1459,7 +1459,7 @@ namespace Rentix
             this.оПрограммеToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.оПрограммеToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("оПрограммеToolStripMenuItem.Image")));
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
@@ -1475,7 +1475,7 @@ namespace Rentix
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "Rentix Timing Software";
+            this.Text = "Prokart Timing Software";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.MainForm_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
