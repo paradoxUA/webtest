@@ -9,7 +9,7 @@
     <transponder>14,15,16,17</transponder>
     <msec>18,19,20,21</msec>
     <hit>22,23</hit>
-    <portspeed>9600</portspeed>
+    <portspeed>115200</portspeed>
     <bits>8</bits>
     <stopbit>1</stopbit>
   </Table1>
@@ -33,6 +33,7 @@
     <bits>8</bits>
     <stopbit>1</stopbit>
   </Table1>
+  <Table1 />
   <Table1 />
   <Table1 />
   <Table1 />
