@@ -4,9 +4,9 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using Prokard_Timing.Controls;
+using Rentix.Controls;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     public partial class NewPilot : Form
     {
@@ -208,14 +208,14 @@ namespace Prokard_Timing
             }
 
             // не разрешаем двум пилотам иметь одинаковые ники
-            if ((isEditMode == false && nick_textBox3.Text.Length > 0 
-                && admin.model.isNickUnique(nick_textBox3.Text) == false) ||
-                (isEditMode == true && nick_textBox3.Text != pilotNick &&
-                admin.model.isNickUnique(nick_textBox3.Text) == false))
-            {
-                MessageBox.Show("Пилот с таким никнеймом уже зарегистрирован");
-                return;
-            }
+            //if ((isEditMode == false && nick_textBox3.Text.Length > 0 
+            //    && admin.model.isNickUnique(nick_textBox3.Text) == false) ||
+            //    (isEditMode == true && nick_textBox3.Text != pilotNick &&
+            //    admin.model.isNickUnique(nick_textBox3.Text) == false))
+            //{
+            //    MessageBox.Show("Пилот с таким никнеймом уже зарегистрирован");
+            //    return;
+            //}
 
             // если ник не указан, не разрешаем двум пилотам иметь одинаковое имя и фамилию
             if ((isEditMode == false &&

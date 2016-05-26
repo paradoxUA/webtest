@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-namespace Prokard_Timing
+namespace Rentix
 {
     partial class AddPilot
     {
@@ -33,25 +33,18 @@ namespace Prokard_Timing
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddPilot));
             this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
             this.button3 = new System.Windows.Forms.Button();
-            this.label13 = new Prokard_Timing.LabelSmooth();
+            this.label13 = new Rentix.LabelSmooth();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.borderPanel4 = new Microsoft.TeamFoundation.Client.BorderPanel();
-            this.label5 = new Prokard_Timing.LabelSmooth();
-            this.label4 = new Prokard_Timing.LabelSmooth();
-            this.label3 = new Prokard_Timing.LabelSmooth();
-            this.label1 = new Prokard_Timing.LabelSmooth();
+            this.label5 = new Rentix.LabelSmooth();
+            this.label4 = new Rentix.LabelSmooth();
+            this.label3 = new Rentix.LabelSmooth();
+            this.label1 = new Rentix.LabelSmooth();
             this.borderPanel3 = new Microsoft.TeamFoundation.Client.BorderPanel();
             this.borderPanel5 = new Microsoft.TeamFoundation.Client.BorderPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.foundPilots_dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
@@ -62,37 +55,9 @@ namespace Prokard_Timing
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.borderPanel2 = new Microsoft.TeamFoundation.Client.BorderPanel();
-            this.label12 = new Prokard_Timing.LabelSmooth();
-            this.label11 = new Prokard_Timing.LabelSmooth();
+            this.label12 = new Rentix.LabelSmooth();
+            this.label11 = new Rentix.LabelSmooth();
             this.otherRacers_dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.labelSmooth4 = new Prokard_Timing.LabelSmooth();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label9 = new Prokard_Timing.LabelSmooth();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label6 = new Prokard_Timing.LabelSmooth();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.label2 = new Prokard_Timing.LabelSmooth();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label8 = new Prokard_Timing.LabelSmooth();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label7 = new Prokard_Timing.LabelSmooth();
-            this.label10 = new Prokard_Timing.LabelSmooth();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.borderPanel6 = new Microsoft.TeamFoundation.Client.BorderPanel();
-            this.labelSmooth3 = new Prokard_Timing.LabelSmooth();
-            this.labelSmooth2 = new Prokard_Timing.LabelSmooth();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.labelSmooth1 = new Prokard_Timing.LabelSmooth();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,6 +67,41 @@ namespace Prokard_Timing
             this.RaceMode_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idRaceMode_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pilot_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.labelSmooth4 = new Rentix.LabelSmooth();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label9 = new Rentix.LabelSmooth();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label6 = new Rentix.LabelSmooth();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.label2 = new Rentix.LabelSmooth();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label8 = new Rentix.LabelSmooth();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label7 = new Rentix.LabelSmooth();
+            this.label10 = new Rentix.LabelSmooth();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.borderPanel6 = new Microsoft.TeamFoundation.Client.BorderPanel();
+            this.labelSmooth3 = new Rentix.LabelSmooth();
+            this.labelSmooth2 = new Rentix.LabelSmooth();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.labelSmooth1 = new Rentix.LabelSmooth();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.borderPanel1.SuspendLayout();
             this.borderPanel4.SuspendLayout();
             this.borderPanel3.SuspendLayout();
@@ -117,7 +117,7 @@ namespace Prokard_Timing
             // 
             // borderPanel1
             // 
-            this.borderPanel1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel1.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel1.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -181,7 +181,7 @@ namespace Prokard_Timing
             // 
             // borderPanel4
             // 
-            this.borderPanel4.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel4.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel4.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel4.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -252,7 +252,7 @@ namespace Prokard_Timing
             // 
             // borderPanel3
             // 
-            this.borderPanel3.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel3.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel3.BorderColor = System.Drawing.SystemColors.ActiveCaption;
             this.borderPanel3.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -313,8 +313,8 @@ namespace Prokard_Timing
             this.foundPilots_dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.foundPilots_dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
-            this.Column2,
             this.Column3,
+            this.Column2,
             this.Column4,
             this.Column5,
             this.Column6,
@@ -334,53 +334,9 @@ namespace Prokard_Timing
             this.foundPilots_dataGridView3.SelectionChanged += new System.EventHandler(this.dataGridView3_SelectionChanged);
             this.foundPilots_dataGridView3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_KeyDown);
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "ID";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Имя";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Фамилия";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Никнейм";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Email";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Создан";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "Banned";
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            this.Column13.Visible = false;
-            // 
             // toolStrip1
             // 
-            this.toolStrip1.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.toolStrip1.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.toolStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -406,7 +362,7 @@ namespace Prokard_Timing
             this.toolStripButton3.CheckOnClick = true;
             this.toolStripButton3.CheckState = System.Windows.Forms.CheckState.Checked;
             this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = global::Prokard_Timing.Properties.Resources.users;
+            this.toolStripButton3.Image = global::Rentix.Properties.Resources.users;
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
@@ -420,7 +376,7 @@ namespace Prokard_Timing
             this.toolStripButton4.CheckOnClick = true;
             this.toolStripButton4.CheckState = System.Windows.Forms.CheckState.Checked;
             this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = global::Prokard_Timing.Properties.Resources.gnome_window_manager;
+            this.toolStripButton4.Image = global::Rentix.Properties.Resources.gnome_window_manager;
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
@@ -443,7 +399,7 @@ namespace Prokard_Timing
             this.toolStripButton8.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripButton8.CheckOnClick = true;
             this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton8.Image = global::Prokard_Timing.Properties.Resources.layout;
+            this.toolStripButton8.Image = global::Rentix.Properties.Resources.layout;
             this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton8.Name = "toolStripButton8";
             this.toolStripButton8.Size = new System.Drawing.Size(23, 22);
@@ -454,7 +410,7 @@ namespace Prokard_Timing
             // 
             this.toolStripButton2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::Prokard_Timing.Properties.Resources.edit_add;
+            this.toolStripButton2.Image = global::Rentix.Properties.Resources.edit_add;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
@@ -464,7 +420,7 @@ namespace Prokard_Timing
             // toolStripButton5
             // 
             this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton5.Image = global::Prokard_Timing.Properties.Resources.preferences_desktop_user;
+            this.toolStripButton5.Image = global::Rentix.Properties.Resources.preferences_desktop_user;
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
             this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
@@ -474,7 +430,7 @@ namespace Prokard_Timing
             // toolStripButton6
             // 
             this.toolStripButton6.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripButton6.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.toolStripButton6.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.toolStripButton6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.toolStripButton6.CheckOnClick = true;
             this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -489,7 +445,7 @@ namespace Prokard_Timing
             // toolStripButton7
             // 
             this.toolStripButton7.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripButton7.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.toolStripButton7.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.toolStripButton7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.toolStripButton7.CheckOnClick = true;
             this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -583,6 +539,73 @@ namespace Prokard_Timing
             this.otherRacers_dataGridView2.TabIndex = 1;
             this.otherRacers_dataGridView2.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView2_CellPainting);
             // 
+            // Column12
+            // 
+            this.Column12.FillWeight = 38.59413F;
+            this.Column12.HeaderText = "№";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "ID";
+            this.Column7.MinimumWidth = 2;
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Visible = false;
+            // 
+            // Column8
+            // 
+            this.Column8.FillWeight = 200.8877F;
+            this.Column8.HeaderText = "Имя";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.FillWeight = 53.66539F;
+            this.Column9.HeaderText = "Карт";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "BaseID";
+            this.Column10.MinimumWidth = 2;
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column10.Visible = false;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Column11";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Visible = false;
+            // 
+            // RaceMode_Column
+            // 
+            this.RaceMode_Column.FillWeight = 109.1371F;
+            this.RaceMode_Column.HeaderText = "Режим";
+            this.RaceMode_Column.Name = "RaceMode_Column";
+            this.RaceMode_Column.ReadOnly = true;
+            // 
+            // idRaceMode_Column
+            // 
+            this.idRaceMode_Column.FillWeight = 97.71574F;
+            this.idRaceMode_Column.HeaderText = "id режима заезда";
+            this.idRaceMode_Column.Name = "idRaceMode_Column";
+            this.idRaceMode_Column.ReadOnly = true;
+            this.idRaceMode_Column.Visible = false;
+            // 
+            // pilot_id
+            // 
+            this.pilot_id.HeaderText = "pilot_id";
+            this.pilot_id.Name = "pilot_id";
+            this.pilot_id.ReadOnly = true;
+            this.pilot_id.Visible = false;
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
@@ -626,7 +649,7 @@ namespace Prokard_Timing
             // button5
             // 
             this.button5.BackColor = System.Drawing.SystemColors.Control;
-            this.button5.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.button5.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button5.Location = new System.Drawing.Point(757, 60);
             this.button5.Name = "button5";
@@ -639,7 +662,7 @@ namespace Prokard_Timing
             // button4
             // 
             this.button4.BackColor = System.Drawing.SystemColors.Control;
-            this.button4.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.button4.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button4.Location = new System.Drawing.Point(757, 32);
             this.button4.Name = "button4";
@@ -842,7 +865,7 @@ namespace Prokard_Timing
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::Prokard_Timing.Properties.Resources.add;
+            this.toolStripButton1.Image = global::Rentix.Properties.Resources.add;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
@@ -851,7 +874,7 @@ namespace Prokard_Timing
             // borderPanel6
             // 
             this.borderPanel6.BackColor = System.Drawing.SystemColors.Control;
-            this.borderPanel6.BackgroundImage = global::Prokard_Timing.Properties.Resources.bg;
+            this.borderPanel6.BackgroundImage = global::Rentix.Properties.Resources.bg;
             this.borderPanel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel6.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel6.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -964,72 +987,49 @@ namespace Prokard_Timing
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // Column12
+            // Column1
             // 
-            this.Column12.FillWeight = 38.59413F;
-            this.Column12.HeaderText = "№";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
+            this.Column1.HeaderText = "ID";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
             // 
-            // Column7
+            // Column3
             // 
-            this.Column7.HeaderText = "ID";
-            this.Column7.MinimumWidth = 2;
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Visible = false;
+            this.Column3.HeaderText = "Фамилия";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
-            // Column8
+            // Column2
             // 
-            this.Column8.FillWeight = 200.8877F;
-            this.Column8.HeaderText = "Имя";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
+            this.Column2.HeaderText = "Имя";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
-            // Column9
+            // Column4
             // 
-            this.Column9.FillWeight = 53.66539F;
-            this.Column9.HeaderText = "Карт";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
+            this.Column4.HeaderText = "Телефон";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
-            // Column10
+            // Column5
             // 
-            this.Column10.HeaderText = "BaseID";
-            this.Column10.MinimumWidth = 2;
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            this.Column10.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column10.Visible = false;
+            this.Column5.HeaderText = "Email";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
-            // Column11
+            // Column6
             // 
-            this.Column11.HeaderText = "Column11";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            this.Column11.Visible = false;
+            this.Column6.HeaderText = "Ранк";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
-            // RaceMode_Column
+            // Column13
             // 
-            this.RaceMode_Column.FillWeight = 109.1371F;
-            this.RaceMode_Column.HeaderText = "Режим";
-            this.RaceMode_Column.Name = "RaceMode_Column";
-            this.RaceMode_Column.ReadOnly = true;
-            // 
-            // idRaceMode_Column
-            // 
-            this.idRaceMode_Column.FillWeight = 97.71574F;
-            this.idRaceMode_Column.HeaderText = "id режима заезда";
-            this.idRaceMode_Column.Name = "idRaceMode_Column";
-            this.idRaceMode_Column.ReadOnly = true;
-            this.idRaceMode_Column.Visible = false;
-            // 
-            // pilot_id
-            // 
-            this.pilot_id.HeaderText = "pilot_id";
-            this.pilot_id.Name = "pilot_id";
-            this.pilot_id.ReadOnly = true;
-            this.pilot_id.Visible = false;
+            this.Column13.HeaderText = "Banned";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            this.Column13.Visible = false;
             // 
             // AddPilot
             // 
@@ -1109,13 +1109,6 @@ namespace Prokard_Timing
         private Microsoft.TeamFoundation.Client.BorderPanel borderPanel5;
         private System.Windows.Forms.Panel panel1;
         private DataGridView foundPilots_dataGridView3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
@@ -1147,5 +1140,12 @@ namespace Prokard_Timing
         private DataGridViewTextBoxColumn RaceMode_Column;
         private DataGridViewTextBoxColumn idRaceMode_Column;
         private DataGridViewTextBoxColumn pilot_id;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
+        private DataGridViewTextBoxColumn Column13;
     }
 }

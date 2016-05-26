@@ -8,13 +8,13 @@ using System.Text;
 using System.Configuration;
 using System.Drawing;
 using System.Drawing.Printing;
-using Prokard_Timing.model;
+using Rentix.model;
 using System.Data;
 using System.Data.Entity;
 using System.Data.EntityClient;
 using System.Linq;
 
-namespace Prokard_Timing
+namespace Rentix
 {
     public class AdminControl
     {
@@ -590,14 +590,14 @@ namespace Prokard_Timing
                 dv.Rows[i].Height = 40;
                 dv[0, i].Value = i + 1;
                 
-                if (Data[i]["nickname"].ToString().Length > 0)
-                {
-                    dv[1, i].Value = "[" + Data[i]["nickname"] + "]";
-                }
-                else
-                {
+                //if (Data[i]["nickname"].ToString().Length > 0)
+                //{
+                //    dv[1, i].Value = "[" + Data[i]["nickname"] + "]";
+                //}
+                //else
+                //{
                     dv[1, i].Value = Data[i]["name"] + " " + Data[i]["surname"];
-                }
+                //}
 
                 dv[2, i].Value = Math.Round(Convert.ToDouble(Data[i]["seconds"]), 2).ToString().Replace(',', '.');
 
@@ -1621,12 +1621,11 @@ namespace Prokard_Timing
                 dr.CreateCells(dv);
 
                 dr.Cells[0].Value = row["id"].ToString();
-                dr.Cells[1].Value = row["name"].ToString();
-                dr.Cells[2].Value = row["surname"].ToString();
-                dr.Cells[3].Value = row["nickname"].ToString();
+                dr.Cells[1].Value = row["surname"].ToString();
+                dr.Cells[2].Value = row["name"].ToString();
+                dr.Cells[3].Value = row["tel"].ToString();
                 dr.Cells[4].Value = row["email"].ToString();
                 dr.Cells[5].Value = Convert.ToDateTime(row["created"].ToString()).ToString("yyyy-MM-dd");
-                dr.Cells[6].Value = row["banned"];
                 dv.Rows.Add(dr);
 
                 /*
