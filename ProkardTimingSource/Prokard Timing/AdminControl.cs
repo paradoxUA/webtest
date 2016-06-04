@@ -753,10 +753,10 @@ namespace Rentix
                     {
                         string pilotName = "";
 
-                        if (Data[i].PilotNickName.ToString().Length > 0)
-                        {
-                            pilotName = "[" + Data[i].PilotNickName + "] ";
-                        }
+                        //if (Data[i].PilotNickName.ToString().Length > 0)
+                        //{
+                        //    pilotName = "[" + Data[i].PilotNickName + "] ";
+                        //}
 
                         pilotName = pilotName + Data[i].PilotName;
                         dv[2, i].Value = pilotName;
@@ -1625,7 +1625,7 @@ namespace Rentix
                 dr.Cells[2].Value = row["name"].ToString();
                 dr.Cells[3].Value = row["tel"].ToString();
                 dr.Cells[4].Value = row["email"].ToString();
-                dr.Cells[5].Value = Convert.ToDateTime(row["created"].ToString()).ToString("yyyy-MM-dd");
+                dr.Cells[5].Value = row["banned"].ToString();
                 dv.Rows.Add(dr);
 
                 /*

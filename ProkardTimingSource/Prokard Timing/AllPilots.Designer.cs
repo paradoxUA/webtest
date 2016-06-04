@@ -29,8 +29,8 @@ namespace Rentix
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AllPilots));
             this.borderPanel2 = new Microsoft.TeamFoundation.Client.BorderPanel();
             this.pilotsList_dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -105,19 +105,19 @@ namespace Rentix
             this.pilotsList_dataGridView1.AllowUserToOrderColumns = true;
             this.pilotsList_dataGridView1.AllowUserToResizeColumns = false;
             this.pilotsList_dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pilotsList_dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pilotsList_dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.pilotsList_dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.pilotsList_dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.pilotsList_dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.pilotsList_dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.pilotsList_dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.pilotsList_dataGridView1.ColumnHeadersHeight = 30;
             this.pilotsList_dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.pilotsList_dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -422,7 +422,7 @@ namespace Rentix
             this.pageSize_toolStripComboBox2.Margin = new System.Windows.Forms.Padding(10, 0, 1, 0);
             this.pageSize_toolStripComboBox2.MergeIndex = 0;
             this.pageSize_toolStripComboBox2.Name = "pageSize_toolStripComboBox2";
-            this.pageSize_toolStripComboBox2.Size = new System.Drawing.Size(47, 21);
+            this.pageSize_toolStripComboBox2.Size = new System.Drawing.Size(47, 23);
             this.pageSize_toolStripComboBox2.ToolTipText = "Элементов на странице";
             this.pageSize_toolStripComboBox2.SelectedIndexChanged += new System.EventHandler(this.pageSizeComboboxIndexChanged);
             // 
@@ -463,7 +463,7 @@ namespace Rentix
             this.pageNumber_toolStripComboBox.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.pageNumber_toolStripComboBox.MergeIndex = 0;
             this.pageNumber_toolStripComboBox.Name = "pageNumber_toolStripComboBox";
-            this.pageNumber_toolStripComboBox.Size = new System.Drawing.Size(60, 21);
+            this.pageNumber_toolStripComboBox.Size = new System.Drawing.Size(60, 23);
             this.pageNumber_toolStripComboBox.ToolTipText = "Страница";
             this.pageNumber_toolStripComboBox.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_Click);
             // 
@@ -499,7 +499,7 @@ namespace Rentix
             this.toolStripLabel1.BackColor = System.Drawing.Color.Transparent;
             this.toolStripLabel1.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(43, 28);
+            this.toolStripLabel1.Size = new System.Drawing.Size(46, 28);
             this.toolStripLabel1.Text = "Группа";
             // 
             // groupFilter_toolStripComboBox
@@ -514,7 +514,7 @@ namespace Rentix
             // 
             this.toolStripLabel2.BackColor = System.Drawing.Color.Transparent;
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(48, 28);
+            this.toolStripLabel2.Size = new System.Drawing.Size(51, 28);
             this.toolStripLabel2.Text = " Фильтр";
             // 
             // filter_TextBox

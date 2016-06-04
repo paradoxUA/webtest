@@ -229,7 +229,7 @@ namespace Rentix
 
                     using (SqlCommand newmCommand
                         = new SqlCommand(
-                            "select race_times.*, " +
+                            "select TOP 70 race_times.*, " +
                             "race_data.race_id as raceid, " +
                             "users.name , " +
                             "users.surname, " +
