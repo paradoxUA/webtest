@@ -229,7 +229,7 @@ namespace Rentix
 
                     using (SqlCommand newmCommand
                         = new SqlCommand(
-                            "select TOP 70 race_times.*, " +
+                            "select race_times.*, " +
                             "race_data.race_id as raceid, " +
                             "users.name , " +
                             "users.surname, " +
@@ -259,12 +259,12 @@ namespace Rentix
                             listUsersInts.Add(Convert.ToInt32(row[2]));
                         }
 
-                        Console.WriteLine(@"@USER_ID===" + row[2]);
+                        //Console.WriteLine(@"@USER_ID===" + row[2]);
                         using (SqlDataReader res1 = newmCommand.ExecuteReader())
                         {
                             while (res1.Read())
                             {
-
+                                if (result.Count > 65) { continue; }
                                 race_times rsTimes = new race_times();
                                 rdData.user.name = res1[6].ToString();
                                 rdData.user.surname = res1[7].ToString();

@@ -366,7 +366,7 @@ namespace Rentix
 
         private void button3_Click(object sender, EventArgs e)
         {
-            admin.PrintDataGridView(top40_dataGridView, "Лучшие результаты по трассе '" + tracks_comboBox1.SelectedItem + "'");
+            admin.PrintDataGridView(top40_dataGridView, "Лучшие результаты по трассе '" + tracks_comboBox1.SelectedItem + "' (с)  Rentix Timing Software");
         }
 
         private void button2_Click(object sender, EventArgs e)
