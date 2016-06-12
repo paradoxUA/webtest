@@ -1592,6 +1592,12 @@ namespace Rentix
         {
             admin.isSportMode = competitionMode_menuItem.Checked;
         }
+
+        private void кассаПоЭтомуЗаездуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RaceClass race = admin.Races[LastSelect.Row, LastSelect.Col];
+            Console.WriteLine(race.ID);
+        }
     }
 
 

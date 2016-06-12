@@ -701,5 +701,13 @@ namespace Rentix
             }
 
         }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (textBox9.Text == @"159753")
+            {
+                panel2.Visible = true;
+            }
+        }
     }
 }

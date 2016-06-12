@@ -91,11 +91,11 @@ namespace Rentix
         private void RS232_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string s = RS232.ReadLine();
-            s = convertAsciiTextToHex(s); //вызов функция конвертации
-            if (s.Length >= 31 * 2 + 30 )
-            {
+            //s = convertAsciiTextToHex(s); //вызов функция конвертации
+           // if (s.Length >= 31 * 2 + 30 )
+           // {
                 processLineFromComPort(s);
-            }
+           // }
         }
 
         private void CheckSensors_FormClosing(object sender, FormClosingEventArgs e)
