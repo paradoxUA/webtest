@@ -806,8 +806,8 @@
             <End Role="program_users" EntitySet="program_users" />
           </AssociationSet>
           <AssociationSet Name="user_cashjurnal" Association="crazykart.user_cashjurnal">
-            <End Role="user_cash" EntitySet="user_cash" />
-            <End Role="jurnal" EntitySet="jurnal" />
+            <End EntitySet="user_cash" Role="user_cash" />
+            <End EntitySet="jurnal" Role="jurnal" />
           </AssociationSet>
           <AssociationSet Name="certificatecertificate_type" Association="crazykart.certificatecertificate_type">
             <End Role="certificate" EntitySet="certificates" />
@@ -1330,8 +1330,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="user_cashjurnal">
-          <End Type="crazykart.user_cash" Role="user_cash" Multiplicity="*" />
-          <End Type="crazykart.jurnal" Role="jurnal" Multiplicity="1" />
+          <End Type="crazykart.user_cash" Multiplicity="*" Role="user_cash" />
+          <End Type="crazykart.jurnal" Multiplicity="1" Role="jurnal" />
           <ReferentialConstraint>
             <Principal Role="jurnal">
               <PropertyRef Name="id" />
@@ -1856,7 +1856,7 @@
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram Name="crazykart" DisplayType="true" ZoomLevel="88" >
+      <Diagram Name="crazykart" DisplayType="true" ZoomLevel="85" >
         <EntityTypeShape EntityType="crazykart.cassa" Width="1.5" PointX="17.625" PointY="9.125" Height="1.9210009765625031" />
         <EntityTypeShape EntityType="crazykart.certificate" Width="2.25" PointX="5.25" PointY="3.25" Height="2.7427376302083335" />
         <EntityTypeShape EntityType="crazykart.users" Width="2.5" PointX="4.875" PointY="8" Height="5.0436002604166656" />
@@ -1945,9 +1945,26 @@
           <ConnectorPoint PointX="27.875" PointY="13.878326822916666" />
           <ConnectorPoint PointX="26.75" PointY="13.878326822916666" />
         </AssociationConnector>
-        <AssociationConnector Association="crazykart.user_cashjurnal" ManuallyRouted="true">
-          <ConnectorPoint PointX="11" PointY="11.658396809895834" />
-          <ConnectorPoint PointX="13.5" PointY="11.658396809895834" />
+        <AssociationConnector ManuallyRouted="true" Association="crazykart.user_cashjurnal">
+          <ConnectorPoint PointX="11" PointY="13.807190755208334" />
+          <ConnectorPoint PointX="11" PointY="15.720397969336194" />
+          <ConnectorPoint PointX="12.143543429026231" PointY="15.720397969336194" />
+          <ConnectorPoint PointX="13.393543429026231" PointY="19.604788373777609" />
+          <ConnectorPoint PointX="13.393543429026231" PointY="15.383434357824971" />
+          <ConnectorPoint PointX="12.676137327491068" PointY="15.383434357824971" />
+          <ConnectorPoint PointX="12.5094706608244" PointY="15.383434357824971" />
+          <ConnectorPoint PointX="12.429497639456647" PointY="15.383434357824971" />
+          <ConnectorPoint PointX="12.429497639456647" PointY="15.474832207545767" />
+          <ConnectorPoint PointX="12.592803994157734" PointY="15.474832207545767" />
+          <ConnectorPoint PointX="12.592803994157734" PointY="14.92486489385767" />
+          <ConnectorPoint PointX="11.253788845926586" PointY="14.92486489385767" />
+          <ConnectorPoint PointX="11.253788845926586" PointY="14.372781222990469" />
+          <ConnectorPoint PointX="11.610795719010273" PointY="14.372781222990469" />
+          <ConnectorPoint PointX="11.610795719010273" PointY="13.826969286042488" />
+          <ConnectorPoint PointX="12.071970279264374" PointY="13.826969286042488" />
+          <ConnectorPoint PointX="13.321970279264374" PointY="12.647651589654437" />
+          <ConnectorPoint PointX="13.5" PointY="12.647651589654437" />
+          <ConnectorPoint PointX="13.5" PointY="12.066793619791666" />
         </AssociationConnector>
         <AssociationConnector Association="crazykart.certificatecertificate_type">
           <ConnectorPoint PointX="22" PointY="6.1873478190104167" />

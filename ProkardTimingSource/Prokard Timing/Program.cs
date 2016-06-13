@@ -26,6 +26,12 @@ namespace Rentix
             //test.testClass11();
 
             //Application.Run(new DbSettings()); 
+
+           // var test = new Server(90);
+           // test.testClass11();
+
+//            Application.Run(new DbSettings()); 
+
             var pa = new ProgramActivation();
 
             if (args.Length > 0)

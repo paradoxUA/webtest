@@ -549,6 +549,7 @@
     <Compile Include="Sertificat.Designer.cs">
       <DependentUpon>Sertificat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Server.cs" />
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
     </Compile>

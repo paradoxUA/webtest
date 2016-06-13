@@ -74,8 +74,8 @@
       <End Role="program_users" EntitySet="program_users" />
     </AssociationSet>
     <AssociationSet Name="user_cashjurnal" Association="crazykart.user_cashjurnal">
-      <End Role="user_cash" EntitySet="user_cash" />
-      <End Role="jurnal" EntitySet="jurnal" />
+      <End EntitySet="user_cash" Role="user_cash" />
+      <End EntitySet="jurnal" Role="jurnal" />
     </AssociationSet>
     <AssociationSet Name="certificatecertificate_type" Association="crazykart.certificatecertificate_type">
       <End Role="certificate" EntitySet="certificates" />
@@ -598,8 +598,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="user_cashjurnal">
-    <End Type="crazykart.user_cash" Role="user_cash" Multiplicity="*" />
-    <End Type="crazykart.jurnal" Role="jurnal" Multiplicity="1" />
+    <End Type="crazykart.user_cash" Multiplicity="*" Role="user_cash" />
+    <End Type="crazykart.jurnal" Multiplicity="1" Role="jurnal" />
     <ReferentialConstraint>
       <Principal Role="jurnal">
         <PropertyRef Name="id" />

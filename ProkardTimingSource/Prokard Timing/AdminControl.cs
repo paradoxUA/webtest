@@ -1241,7 +1241,7 @@ namespace Rentix
         }
 
         // Показывает данные кассы за выбранную дату
-        public void GetCassaReport(DataGridView dv, DateTime Date, int reportType, DateTime Date2, PageLister Pages)
+        public void GetCassaReport(DataGridView dv, DateTime Date, int reportType, DateTime Date2, PageLister Pages, int race_id=0)
         {
             // если наоборот даты, то поменяем местами
             if (Date2 < Date)
@@ -1254,7 +1254,7 @@ namespace Rentix
             Date = datetimeConverter.toStartDateTime(Date);
             Date2 = datetimeConverter.toEndDateTime(Date2);
 
-            List<Hashtable> Cassa = model.GetCassaReport(Date, reportType, Date2, Pages);
+            List<Hashtable> Cassa = model.GetCassaReport(Date, reportType, Date2, Pages, race_id);
             dv.Rows.Clear();
 
             int lastRaceId = -1; // между рейсами вставим чёрную строку, чтобы их разделять в списке

@@ -3387,7 +3387,7 @@ namespace Rentix
         }
 
         // Получает сумму в кассе
-        public double GetCassaSumm(DateTime D1, DateTime D2, int TP, int sign)
+        public double GetCassaSumm(DateTime D1, DateTime D2, int TP, int sign, int race_id = 0)
         {
             DateTime startTime = DateTime.Now;
 
@@ -3397,16 +3397,20 @@ namespace Rentix
             {
 
                 string query = String.Empty;
-                string q1 = "select sum(c.sum*1.0) from jurnal j, cassa c where c.doc_id=j.id and j.created between '" +
+                string q1 = "select sum(c.sum*1.0) from jurnal j, cassa c where c.doc_id=j.id"+
+                    (race_id != 0 ? " and (j.race_id = " + race_id + ") " : " and j.created between '" +
                     datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(D1)) +
                     "' and '" +
                     datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(D2))
-                     + "' and c.sign='" + sign.ToString() + "' ";
-                string q2 = "select sum(u.sum*1.0) from jurnal j, user_cash u where u.doc_id = j.id and j.created between '" +
+                     + "'") +
+                     " and c.sign='" + sign.ToString() + "' ";
+                string q2 = "select sum(u.sum*1.0) from jurnal j, user_cash u where u.doc_id = j.id"+
+                    (race_id != 0 ? " and (j.race_id = " + race_id + ") " : " and j.created between '" +
                     datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(D1)) +
                     "' and '" +
                     datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(D2))
-                    + "' and u.sign='" + sign.ToString() + "' ";
+                     + "'") +
+                     " and u.sign='" + sign.ToString() + "' ";
 
                 switch (TP)
                 {
@@ -3437,7 +3441,7 @@ namespace Rentix
 
         // Получает список операций по кассе за период
         // 1 reportType = реальные, 2 = виртуальные
-        public List<Hashtable> GetCassaReport(DateTime Date, int reportType, DateTime Date2, PageLister page)
+        public List<Hashtable> GetCassaReport(DateTime Date, int reportType, DateTime Date2, PageLister page, int race_id=0)
         {
             DateTime startTime = DateTime.Now;
 
@@ -3501,21 +3505,32 @@ namespace Rentix
 
                 #endregion
 
-
                 string StoredProcName = "GetCassaReport";
-
-                if (reportType == 2)
+                SqlCommand cmd = null;
+                if (race_id > 0)
                 {
-                    StoredProcName = "GetVirtualCassaReport";
+                    cmd = new SqlCommand("SELECT j.id, j.created as 'date', j.comment, j.user_id, j.tp, j.race_id, c.sum, c.sign" +
+                                         " from jurnal as j" +
+                                         " left join  cassa c on c.doc_id = j.id" +
+                                         " where race_id = @race_id", db2);
+                   // cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@race_id", SqlDbType.Int).Value = race_id;
                 }
+                else
+                {
+                    if (reportType == 2)
+                    {
+                        StoredProcName = "GetVirtualCassaReport";
+                    }
+                    cmd = new SqlCommand(StoredProcName, db2);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@PageIndex", SqlDbType.Int).Value = page.CurrentPageNumber;
+                    cmd.Parameters.Add("@PageSize", SqlDbType.Int).Value = page.PageSize;
+                    cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = Date;
+                    cmd.Parameters.Add("@endDate", SqlDbType.DateTime).Value = Date2;
 
 
-                SqlCommand cmd = new SqlCommand(StoredProcName, db2);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@PageIndex", SqlDbType.Int).Value = page.CurrentPageNumber;
-                cmd.Parameters.Add("@PageSize", SqlDbType.Int).Value = page.PageSize;
-                cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = Date;
-                cmd.Parameters.Add("@endDate", SqlDbType.DateTime).Value = Date2;
+                }
 
                 using (SqlDataReader res = cmd.ExecuteReader())
                 {
@@ -3797,7 +3812,7 @@ namespace Rentix
         /// <param name="AllSumm"></param>
         /// <param name="NoTransf"></param>
         /// <returns></returns>
-        public string GetCashFromCassa(DateTime Date, bool forOneDay = false, bool NotTransferDoc = false, bool AllSumm = true, bool NoTransf = true)
+        public string GetCashFromCassa(DateTime Date, bool forOneDay = false, bool NotTransferDoc = false, bool AllSumm = true, bool NoTransf = true, int race_id = 0)
         {
             string ret = String.Empty;
             string temp;
@@ -3825,6 +3840,7 @@ namespace Rentix
                     // за один день
                     commandText = "select (sum(CASE WHEN(sign=0)THEN sum*1.0 else 0 end)-sum(case when (sign=1) then sum*1.0 else 0 end)) as summa from cassa c, jurnal j where j.id=doc_id " +
                        (!NoTransf ? "and (j.tp != 7 and j.tp!= 15)" : "") +
+                       (race_id != 0 ? "and (j.race_id = "+race_id+")" : "") +
                        " and c.date >= '" +
                        datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(Date)) +
                        "' and c.date <= '" +
@@ -3847,7 +3863,22 @@ namespace Rentix
                 }
                 else // за всё время
                 {
-                    commandText = "select (sum(CASE WHEN(sign=0)THEN sum*1.0 else 0 end)-sum(case when (sign=1) then sum*1.0 else 0 end)) as summa from cassa c, jurnal j where j.id=doc_id " + (!NoTransf ? "and (j.tp != 7 and j.tp!= 15)" : "") + " and c.date <= '" + datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(Date)) + "'";
+                    if (race_id != 0)
+                    {
+                        commandText =
+                            "select (sum(CASE WHEN(sign=0)THEN sum*1.0 else 0 end)-sum(case when (sign=1) then sum*1.0 else 0 end)) as summa from cassa c, jurnal j where j.id=doc_id " +
+                            (!NoTransf ? "and (j.tp != 7 and j.tp!= 15)" : "") +
+                            (race_id != 0 ? "and (j.race_id = " + race_id + ")" : "");
+
+
+                    }
+                    else
+                    {
+                        commandText = "select (sum(CASE WHEN(sign=0)THEN sum*1.0 else 0 end)-sum(case when (sign=1) then sum*1.0 else 0 end)) as summa from cassa c, jurnal j where j.id=doc_id " +
+                            (!NoTransf ? "and (j.tp != 7 and j.tp!= 15)" : "") +
+                            " and c.date <= '" + datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(Date)) + "'";
+                        
+                    }
 
                     //commandText = "select (sum(CASE WHEN(sign=0)THEN sum*1.0 else 0 end)-sum(case when (sign=1) then sum*1.0 else 0 end)) as summa from cassa c, jurnal j where j.id=doc_id " + (!NoTransf ? "and (j.tp != 7 and j.tp!= 15)" : "") + " and c.date >= '" + datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(Date)) + "' and c.date <='" + datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(Date)) + "'";
                 }

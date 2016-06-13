@@ -16,20 +16,21 @@ namespace Rentix
         PageLister Pages;
         int idRaceForCellColor; // будем подкрашивать разным фоном разные рейсы
         bool isWhiteBackground; // будем чередовать серый / белый фон для разных рейсов
+        int _race_id; // фильтр кассы на определенную гонку
 
-        public CassaJurnal(AdminControl adm)
+        public CassaJurnal(AdminControl adm, int race_id = 0)
         {
             InitializeComponent();
             admin = adm;
             Pages = new PageLister(toolStripComboBox1, toolStripButton11, toolStripButton12, toolStripButton9, toolStripButton10);
-
+            _race_id = race_id;
             Pages.PageSize = 25;
             Pages.CurrentPageNumber = 1;
             // ShowAllPilots(dataGridView1);
             pageSize_toolStripComboBox.SelectedIndex = pageSize_toolStripComboBox.Items.IndexOf("25");
 
            // admin.GetCassaReport(dataGridView1, DateTime.Now, GlobalRadio, DateTime.Now, Pages);
-            inCash_label2.Text = "В кассе:  " + admin.model.GetCashFromCassa(DateTime.Now) + " грн.";
+            inCash_label2.Text = "В кассе:  " + admin.model.GetCashFromCassa(DateTime.Now, false, false, true, true, race_id) + " грн.";
             GetCashData();
           //  dateTimePicker1.Value = DateTime.Now;
           //  dateTimePicker2.Value = DateTime.Now;
@@ -45,9 +46,9 @@ namespace Rentix
         {
 
             double Credet = admin.model.GetCassaSumm(datetimeConverter.toStartDateTime(dateTimePicker1.Value),
-                datetimeConverter.toEndDateTime(dateTimePicker2.Value), GlobalRadio, 1);
+                datetimeConverter.toEndDateTime(dateTimePicker2.Value), GlobalRadio, 1, _race_id);
             double Debet = admin.model.GetCassaSumm(datetimeConverter.toStartDateTime(dateTimePicker1.Value),
-                datetimeConverter.toEndDateTime(dateTimePicker2.Value), GlobalRadio, 0);
+                datetimeConverter.toEndDateTime(dateTimePicker2.Value), GlobalRadio, 0, _race_id);
             /*  double Dt = 0, Ct = 0, Sl = 0, Tmp = 0;
 
               for (int i = 0; i < dataGridView1.Rows.Count; i++)
@@ -265,7 +266,7 @@ namespace Rentix
                 
                 Pages.OnChange = true;
                 //ShowAllPilots(dataGridView1);
-                admin.GetCassaReport(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, Pages);
+                admin.GetCassaReport(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, Pages, _race_id);
 
                 Pages.FillPageNumbers();
 

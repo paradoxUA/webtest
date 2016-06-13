@@ -1596,7 +1596,12 @@ namespace Rentix
         private void кассаПоЭтомуЗаездуToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RaceClass race = admin.Races[LastSelect.Row, LastSelect.Col];
-            Console.WriteLine(race.ID);
+            CassaJurnal form = new CassaJurnal(admin, Convert.ToInt32(race.RaceID));
+            form.Owner = this;
+            form.ShowDialog();
+            form.Dispose();
+
+            //Console.WriteLine(race.ID);
         }
     }
 
