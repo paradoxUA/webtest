@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO.Ports;
+using System.IO;
+using System.Collections;
 
 namespace Rentix
 {
@@ -14,28 +16,61 @@ namespace Rentix
     {
         private SerialPort RS232;
         AdminControl admin;
+        public object[] decoderSetts = null;
+        private ProkardModel model = new ProkardModel();
+        private Hashtable Settings = new Hashtable();
 
         public CheckSensors(AdminControl adm)
         {
             InitializeComponent();
-            this.admin = adm;           
+            this.admin = adm;
+            model.Connect(); // Создаем дополнительное подключение с базой
+            Settings = model.LoadSettings();
+            string path = "transetts.xml";
+            if (File.Exists(path))
+            {
+                DataSet ds = new DataSet();
+
+                ds.ReadXml(path);
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    if (row.ItemArray[0].ToString().Trim() == Settings["decoder"].ToString().Trim())
+                    {
+                        decoderSetts = row.ItemArray;
+                    }
+                }
+
+            }
+
+
         }
 
 
         public void ShowDiagForm()
         {
-            if (string.IsNullOrEmpty(admin.Settings["rs232_port"].ToString()))
+            if (Settings["rs232_port"].ToString().Length > 2)
             {
-                MessageBox.Show("Не выбран COM порт, к которому подключён преобразователь AMB-20.\r\nПожалуйста, укажите COM порт в настройках программы", "Ошибка COM порта", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
-                return;
-            }
+                int portSpeed = Convert.ToInt32(decoderSetts[8]);
+                int bits = Convert.ToInt32(decoderSetts[9]);
+                // Открываем порт для чтения
+                try
+                {
+                    RS232 = new SerialPort(Settings["rs232_port"].ToString(), portSpeed, Parity.None, bits, StopBits.One);
+                    RS232.WriteBufferSize = 1024 * 1024;
+                    RS232.ReadBufferSize = 1024 * 1024 * 2;
+                    RS232.DataReceived += new SerialDataReceivedEventHandler(RS232_DataReceived);
+                    RS232.RtsEnable = true;
+                    RS232.Open();
 
-            RS232 = new SerialPort(Convert.ToString(admin.Settings["rs232_port"]), 9600, Parity.None, 8, StopBits.One);
-            //RS232.RtsEnable = true;
-           // RS232.ReadTimeout = 100;
-            RS232.DataReceived += new SerialDataReceivedEventHandler(RS232_DataReceived);
-            RS232.Open();
+                }
+                catch (Exception ex)
+                {
+                    //InError = true;
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else MessageBox.Show("Не установлен COM-порт, программа запускается без детекции");
+
             this.ShowDialog();
         }
 
@@ -47,7 +82,7 @@ namespace Rentix
               //string someAmbString = "@" + transponderNumber_textBox2.Text + DateTime.Now.ToString("HHmmssff") + rnd.Next(50).ToString("00");
             RaceThread rt = new RaceThread(admin);
              AMB20RX Res =  rt.AMB20_Decode(someLine);
-
+            string someLine1 = convertAsciiTextToHex(someLine);
              if (Res.Transponder.Length > 0 && Res.Transponder != "00")
              {
                  // we have got signal from transponder
@@ -61,7 +96,7 @@ namespace Rentix
                  }
 
                  stringForLog = "Time" + Res.Hour + ":" + Res.Minutes + ":" + Res.Seconds + ":" + Res.Millisecond + " Датчик " + Res.Transponder +
-                     ", уровень сигнала: " + signalLevel + " (" + Res.Hit.ToString("00") + "), (data: " + someLine.Trim() + ")" + "\r\n" + "\r\n";                 //stringForLog = DateTime.Now.ToLongTimeString() + " Датчик " + Res.Transponder +
+                     ", уровень сигнала: " + signalLevel + " (" + Res.Hit.ToString("00") + "), (data: " + someLine1.Trim() + ")" + "\r\n" + "\r\n";                 //stringForLog = DateTime.Now.ToLongTimeString() + " Датчик " + Res.Transponder +
                      //", уровень сигнала: " + signalLevel + " (" + Res.Hit.ToString("00") + "), (data: " + someLine.Trim() + ")" + "\r\n" + "\r\n";
 
 
