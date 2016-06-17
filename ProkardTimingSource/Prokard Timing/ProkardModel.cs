@@ -5142,5 +5142,27 @@ namespace Rentix
 
 
 
+
+        internal bool IsDoublePilot(int pilot_id, int RaceID)
+        {
+            bool returnValue = false;
+            if (connected)
+            {
+
+                SqlCommand cmd =
+                    new SqlCommand(
+                        "select id from race_data where race_id='" + RaceID + "' and pilot_id = '" + pilot_id + "' ",
+                        db2);
+                var res =  cmd.ExecuteScalar();
+                
+
+                if (res != null)
+                {
+                    returnValue = true;
+                }
+                        
+            }
+            return returnValue;
+        }
     }
 }

@@ -106,6 +106,12 @@ namespace Rentix
                    int discountCardId = -1;
                    int idRaceMode = Convert.ToInt32(admin.Settings["default_race_mode_id"]);
 
+                   if (admin.model.IsDoublePilot(pilot_id, CurrRace.RaceID))
+                   {
+                       MessageBox.Show(@"Данный пилот уже добавлен в текущий рейс.");
+                       return;
+                   }
+
                 if (!checkBox1.Checked)
                 {
                     // форма принятия денег
