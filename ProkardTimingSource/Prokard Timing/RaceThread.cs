@@ -282,7 +282,9 @@ namespace Rentix
             // или в момент прихода сигнала от датчика @050000059140
             // @05-00-00-05-91-40		05 - датчик, 00 - часы, 00 - минуты, 05 - секунды, 91 - миллисекунды, 40 - хит - по непроверенной информации, это количество срабатываний прибора в момент прохода датчика над петлёй. то есть, если сигнал хороший (возможно и скорость меньше?), то число должно быть больше
 
-
+            using (StreamWriter sw = new StreamWriter("sqlTobase.txt", true)){
+                sw.Write("\r\n"+DateTime.Now+":::"+s);
+            }
             //    MainForm.log("AMB20_SaveData: " + s + " at system time: " + datetimeConverter.toDateTimeString(DateTime.Now) + "." + DateTime.Now.Millisecond.ToString());
 
             if (Race == null)
