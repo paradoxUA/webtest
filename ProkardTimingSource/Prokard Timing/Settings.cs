@@ -709,5 +709,13 @@ namespace Rentix
                 panel2.Visible = true;
             }
         }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            var t = textBox10.Text;
+            //MultiServer serv = new MultiServer();
+            Echo ec = new Echo();
+            MultiServer.SocketServer.WebSocketServices.Broadcast(t);
+        }
     }
 }

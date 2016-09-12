@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using DateTimeExtensions;
@@ -11,6 +12,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Microsoft.TeamFoundation.Client.Reporting;
 using Rentix.model;
 using FontStyle = System.Drawing.FontStyle;
 using MessageBox = System.Windows.Forms.MessageBox;
@@ -31,6 +33,7 @@ namespace Rentix
 
         public MainForm()
         {
+            //serverTask.Start(server.start(null));
            // MessageBox.Show("MainForm"); 
             log("checkDb");
            // return;

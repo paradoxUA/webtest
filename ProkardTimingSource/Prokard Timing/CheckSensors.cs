@@ -125,11 +125,20 @@ namespace Rentix
 
         private void RS232_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            string s = RS232.ReadLine();
+           // string s = RS232.ReadLine();
             //s = convertAsciiTextToHex(s); //вызов функция конвертации
            // if (s.Length >= 31 * 2 + 30 )
            // {
-                processLineFromComPort(s);
+            SerialPort sp = (SerialPort)sender;
+            //sp.Write(GET_TIME, 0, GET_TIME.Length);
+            //Thread.Sleep(500);//Даем больше времени на ожидание данных
+            //string readex = newPort.ReadExisting();//Убираем эту строку и заменяем на
+            int byteRecieved = sp.BytesToRead;
+            byte[] messByte = new byte[byteRecieved];
+            sp.Read(messByte, 0, byteRecieved);
+            string indata = BitConverter.ToString(messByte);
+            indata = indata.Replace('-', ' ');
+            processLineFromComPort(indata);
            // }
         }
 

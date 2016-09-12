@@ -147,6 +147,8 @@
             this.sponsorsImagesFolder_textBox9 = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.button12 = new System.Windows.Forms.Button();
+            this.textBox10 = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.nextRacePilotsTimer_numericUpDown11 = new System.Windows.Forms.NumericUpDown();
@@ -166,6 +168,11 @@
             this.anonserImagesFolder_textBox9 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.button11 = new System.Windows.Forms.Button();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
+            this.label38 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.protocol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bytes = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -178,9 +185,7 @@
             this.portspeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bits = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stopbit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button8 = new System.Windows.Forms.Button();
             this.label29 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
             this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
@@ -188,9 +193,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
             this.labelSmooth4 = new Rentix.LabelSmooth();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.button11 = new System.Windows.Forms.Button();
             this.borderPanel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -229,16 +231,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.bestResultTimer_numericUpDown13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.anonserImageRotator_numericUpDown2)).BeginInit();
             this.tabPage7.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.borderPanel1.SuspendLayout();
             this.tabControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // borderPanel2
             // 
-            this.borderPanel2.BackgroundImage = global::Rentix.Properties.Resources.bg;
+            this.borderPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("borderPanel2.BackgroundImage")));
             this.borderPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel2.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.borderPanel2.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -274,7 +276,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.BackgroundImage = global::Rentix.Properties.Resources.bg;
+            this.tabPage1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage1.BackgroundImage")));
             this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tabPage1.Controls.Add(this.showUniqueBestResults_checkBox);
             this.tabPage1.Controls.Add(this.groupBox9);
@@ -543,7 +545,7 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.BackgroundImage = global::Rentix.Properties.Resources.bg;
+            this.tabPage3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage3.BackgroundImage")));
             this.tabPage3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tabPage3.Controls.Add(this.groupBox5);
             this.tabPage3.Controls.Add(this.groupBox4);
@@ -675,7 +677,7 @@
             // 
             // toolStrip1
             // 
-            this.toolStrip1.BackgroundImage = global::Rentix.Properties.Resources.bg;
+            this.toolStrip1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("toolStrip1.BackgroundImage")));
             this.toolStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -692,7 +694,7 @@
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::Rentix.Properties.Resources.run_flag;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
@@ -703,7 +705,7 @@
             // 
             this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButton2.Enabled = false;
-            this.toolStripButton2.Image = global::Rentix.Properties.Resources.stop_flag;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(24, 24);
@@ -731,7 +733,7 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.BackgroundImage = global::Rentix.Properties.Resources.bg;
+            this.tabPage4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage4.BackgroundImage")));
             this.tabPage4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tabPage4.Controls.Add(this.groupBox3);
             this.tabPage4.Controls.Add(this.groupBox2);
@@ -1016,7 +1018,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.BackgroundImage = global::Rentix.Properties.Resources.bg;
+            this.tabPage2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage2.BackgroundImage")));
             this.tabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tabPage2.Controls.Add(this.dateTimePicker2);
             this.tabPage2.Controls.Add(this.button10);
@@ -1414,7 +1416,7 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.BackgroundImage = global::Rentix.Properties.Resources.bg;
+            this.tabPage5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage5.BackgroundImage")));
             this.tabPage5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tabPage5.Controls.Add(this.label14);
             this.tabPage5.Controls.Add(this.isHalfModesEnabled_checkBox);
@@ -1551,7 +1553,7 @@
             // 
             // anonser_tabPage
             // 
-            this.anonser_tabPage.BackgroundImage = global::Rentix.Properties.Resources.bg;
+            this.anonser_tabPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("anonser_tabPage.BackgroundImage")));
             this.anonser_tabPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.anonser_tabPage.Controls.Add(this.setSponsorsImagesFolder_button);
             this.anonser_tabPage.Controls.Add(this.label26);
@@ -1636,6 +1638,8 @@
             // groupBox11
             // 
             this.groupBox11.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox11.Controls.Add(this.button12);
+            this.groupBox11.Controls.Add(this.textBox10);
             this.groupBox11.Controls.Add(this.label19);
             this.groupBox11.Controls.Add(this.label24);
             this.groupBox11.Controls.Add(this.nextRacePilotsTimer_numericUpDown11);
@@ -1650,10 +1654,28 @@
             this.groupBox11.Controls.Add(this.label23);
             this.groupBox11.Location = new System.Drawing.Point(12, 109);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(319, 117);
+            this.groupBox11.Size = new System.Drawing.Size(883, 205);
             this.groupBox11.TabIndex = 18;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Частота обновления данных";
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(369, 149);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(235, 50);
+            this.button12.TabIndex = 24;
+            this.button12.Text = "Отправить текст на страницу";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(313, 19);
+            this.textBox10.Multiline = true;
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(564, 124);
+            this.textBox10.TabIndex = 18;
             // 
             // label19
             // 
@@ -1856,6 +1878,57 @@
             this.tabPage7.Text = "Протоколы";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(193, 6);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(260, 23);
+            this.button11.TabIndex = 7;
+            this.button11.Text = "Получить доступ к настройкам протоколов";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(8, 6);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(163, 20);
+            this.textBox9.TabIndex = 6;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.button8);
+            this.panel2.Controls.Add(this.label38);
+            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Controls.Add(this.label29);
+            this.panel2.Location = new System.Drawing.Point(3, 40);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(896, 268);
+            this.panel2.TabIndex = 5;
+            this.panel2.Visible = false;
+            // 
+            // button8
+            // 
+            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button8.Location = new System.Drawing.Point(318, 225);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(230, 30);
+            this.button8.TabIndex = 1;
+            this.button8.Text = "Сохранить протоколы";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.ForeColor = System.Drawing.Color.Red;
+            this.label38.Location = new System.Drawing.Point(224, 13);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(455, 13);
+            this.label38.TabIndex = 3;
+            this.label38.Text = "Укажите байты, которые необходимо обрабатывать, через запятую, начиная отсчет с 1" +
+    "";
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -1937,17 +2010,6 @@
             this.stopbit.Name = "stopbit";
             this.stopbit.Width = 50;
             // 
-            // button8
-            // 
-            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button8.Location = new System.Drawing.Point(318, 225);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(230, 30);
-            this.button8.TabIndex = 1;
-            this.button8.Text = "Сохранить протоколы";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
             // label29
             // 
             this.label29.AutoSize = true;
@@ -1959,20 +2021,9 @@
             this.label29.Text = "Сохранено!";
             this.label29.Visible = false;
             // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.ForeColor = System.Drawing.Color.Red;
-            this.label38.Location = new System.Drawing.Point(224, 13);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(455, 13);
-            this.label38.TabIndex = 3;
-            this.label38.Text = "Укажите байты, которые необходимо обрабатывать, через запятую, начиная отсчет с 1" +
-    "";
-            // 
             // borderPanel1
             // 
-            this.borderPanel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
+            this.borderPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("borderPanel1.BackgroundImage")));
             this.borderPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.borderPanel1.BorderColor = System.Drawing.SystemColors.ControlLight;
             this.borderPanel1.BorderPadding = new System.Windows.Forms.Padding(0);
@@ -2059,35 +2110,6 @@
             this.labelSmooth4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             this.labelSmooth4.Visible = false;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.button8);
-            this.panel2.Controls.Add(this.label38);
-            this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Controls.Add(this.label29);
-            this.panel2.Location = new System.Drawing.Point(3, 40);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(896, 268);
-            this.panel2.TabIndex = 5;
-            this.panel2.Visible = false;
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(8, 6);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(163, 20);
-            this.textBox9.TabIndex = 6;
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(193, 6);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(260, 23);
-            this.button11.TabIndex = 7;
-            this.button11.Text = "Получить доступ к настройкам протоколов";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2163,13 +2185,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.anonserImageRotator_numericUpDown2)).EndInit();
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.borderPanel1.ResumeLayout(false);
             this.borderPanel1.PerformLayout();
             this.tabControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2338,5 +2360,7 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.TextBox textBox10;
     }
 }

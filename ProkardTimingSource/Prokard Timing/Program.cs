@@ -22,15 +22,18 @@ namespace Rentix
             Application.SetCompatibleTextRenderingDefault(false);
 
 
-            //var test = new testClass1();
-            //test.testClass11();
+            MultiServer server = new MultiServer();
+            server.startMultiServer();
+            
 
-            //Application.Run(new DbSettings()); 
+
+
+           // Application.Run(new DbSettings()); 
 
            // var test = new Server(90);
            // test.testClass11();
 
-//            Application.Run(new DbSettings()); 
+           // Application.Run(new DbSettings()); 
 
             var pa = new ProgramActivation();
 

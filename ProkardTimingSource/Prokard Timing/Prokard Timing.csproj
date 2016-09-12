@@ -11,7 +11,8 @@
     <RootNamespace>Rentix</RootNamespace>
     <AssemblyName>Rentix</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <SccProjectName>SAK</SccProjectName>
@@ -83,6 +84,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\dlls\Microsoft.TeamFoundation.Client.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore">
       <Private>True</Private>
     </Reference>
@@ -122,6 +127,7 @@
     <Reference Include="System.Transactions">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Services">
       <Private>True</Private>
     </Reference>
@@ -146,6 +152,9 @@
     </Reference>
     <Reference Include="System.Xml">
       <Private>True</Private>
+    </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>..\..\..\..\2016_07\websocket-sharp-master\websocket-sharp-master\websocket-sharp\bin\Debug_Ubuntu\websocket-sharp.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase">
       <Private>True</Private>
@@ -474,6 +483,7 @@
     <Compile Include="model\user_cash.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="MultiServer.cs" />
     <Compile Include="NewPilot.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -563,6 +573,7 @@
     <Compile Include="ShowEventMessage.Designer.cs">
       <DependentUpon>ShowEventMessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="socketServer.cs" />
     <Compile Include="testClass1.cs" />
     <Compile Include="TestDataFiller.cs">
       <SubType>Form</SubType>
@@ -576,6 +587,7 @@
     <Compile Include="TrackControl.Designer.cs">
       <DependentUpon>TrackControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="WebAnouncer.cs" />
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -771,6 +783,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model.cs</LastGenOutput>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\About.datasource" />
     <None Include="Properties\DataSources\MySql.Data.MySqlClient.CustomInstaller.datasource" />
     <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlBulkLoader.datasource" />

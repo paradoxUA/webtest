@@ -186,7 +186,7 @@ namespace Rentix
                 {
                     RS232 = new SerialPort(Settings["rs232_port"].ToString(), portSpeed, Parity.None, bits, StopBits.One);
                     RS232.WriteBufferSize = 1024 * 1024;
-                    RS232.ReadBufferSize = 1024 * 1024 * 2;
+                    RS232.ReadBufferSize = 32;
                     RS232.DataReceived += new SerialDataReceivedEventHandler(RS232_Receive);
                     RS232.RtsEnable = true;
                     RS232.Open();
@@ -245,10 +245,16 @@ namespace Rentix
         // Функция приема данных с RS232 
         void RS232_Receive(object sender, SerialDataReceivedEventArgs e)
         {
+            SerialPort sp = (SerialPort)sender;
+            int byteRecieved = sp.BytesToRead;
+            byte[] messByte = new byte[byteRecieved];
+            sp.Read(messByte, 0, byteRecieved);
+            string indata = BitConverter.ToString(messByte);
+            indata = indata.Replace('-', ' ');
 
             if (Status == 1 || Status == 2)
             {
-                AMB20_SaveData(RS232.ReadLine());
+                AMB20_SaveData(indata);
 
             }
         }
@@ -282,7 +288,7 @@ namespace Rentix
             // или в момент прихода сигнала от датчика @050000059140
             // @05-00-00-05-91-40		05 - датчик, 00 - часы, 00 - минуты, 05 - секунды, 91 - миллисекунды, 40 - хит - по непроверенной информации, это количество срабатываний прибора в момент прохода датчика над петлёй. то есть, если сигнал хороший (возможно и скорость меньше?), то число должно быть больше
 
-            using (StreamWriter sw = new StreamWriter("sqlTobase.txt", true)){
+            using (StreamWriter sw = new StreamWriter("logs.txt", true)){
                 sw.Write("\r\n"+DateTime.Now+":::"+s);
             }
             //    MainForm.log("AMB20_SaveData: " + s + " at system time: " + datetimeConverter.toDateTimeString(DateTime.Now) + "." + DateTime.Now.Millisecond.ToString());
@@ -301,7 +307,6 @@ namespace Rentix
             // if (s.Length > 30) { 
             AMB20RX Res = AMB20_Decode(s);
             // }
-
             //if (Res.Transponder.Length > 0 && Res.Transponder != "00")
             if (Res.Transponder != null && Res.Transponder.Length > 0)
             {
@@ -562,8 +567,12 @@ namespace Rentix
             }
             else
             {
-                s = convertAsciiTextToHex(s); //вызов функция конвертации
+              //  s = convertAsciiTextToHex(s); //вызов функция конвертации
                 // parses the string
+                using (StreamWriter sw = new StreamWriter("sqlTobase.txt", true))
+                {
+                    sw.Write("\r\n" + DateTime.Now + ":::" + s);
+                }
 
                 if (s.Length >= 31 * 2 + 30)
                 {
@@ -664,6 +673,10 @@ namespace Rentix
                 }
 
             }
+            Webanounserdata data = new Webanounserdata { method = "newlap", data = Ret };
+            WebAnouncer anouncer = new WebAnouncer();
+            anouncer.action(data);
+
             return Ret;
         }
 

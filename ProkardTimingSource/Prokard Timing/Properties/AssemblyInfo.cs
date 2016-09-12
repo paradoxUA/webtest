@@ -5,19 +5,19 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("Prokard Timing")]
+[assembly: AssemblyTitle("Rentix")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Nabster-CD")]
-[assembly: AssemblyProduct("Prokard Timing")]
-[assembly: AssemblyCopyright("Copyright © Nabster-CD 2011")]
+[assembly: AssemblyCompany("Rentix")]
+[assembly: AssemblyProduct("Rentix")]
+[assembly: AssemblyCopyright("Copyright © Rentix 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Параметр ComVisible со значением FALSE делает типы в сборке невидимыми 
 // для COM-компонентов.  Если требуется обратиться к типу в этой сборке через 
 // COM, задайте атрибуту ComVisible значение TRUE для этого типа.
-[assembly: ComVisible(false)]
+[assembly: ComVisible(true)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
 [assembly: Guid("4bc34de1-9fed-4740-92de-7bd72eef412e")]
