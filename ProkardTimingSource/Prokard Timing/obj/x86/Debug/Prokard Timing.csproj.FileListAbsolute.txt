@@ -681,3 +681,7 @@ D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\Rentix.pdb
 D:\000\webtest\ProkardTimingSource\Prokard Timing\obj\x86\Debug\Rentix.exe
 D:\000\webtest\ProkardTimingSource\Prokard Timing\obj\x86\Debug\Rentix.pdb
 D:\000\webtest\ProkardTimingSource\Prokard Timing\obj\x86\Debug\Prokard Timing.csprojResolveAssemblyReference.cache
+D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\Newtonsoft.Json.dll
+D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\websocket-sharp.dll
+D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\Newtonsoft.Json.xml
+D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\websocket-sharp.pdb
