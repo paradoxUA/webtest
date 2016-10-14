@@ -81,42 +81,42 @@ namespace Rentix
         {
             string stringForLog = "";
 
-              //string someAmbString = "@" + transponderNumber_textBox2.Text + DateTime.Now.ToString("HHmmssff") + rnd.Next(50).ToString("00");
+            //string someAmbString = "@" + transponderNumber_textBox2.Text + DateTime.Now.ToString("HHmmssff") + rnd.Next(50).ToString("00");
             RaceThread rt = new RaceThread(admin);
-             AMB20RX Res =  rt.AMB20_Decode(someLine);
+            AMB20RX Res = rt.AMB20_Decode(someLine);
             if (Res.Hit == 0)
             {
                 return;
             }
             string someLine1 = convertAsciiTextToHex(someLine);
-             if (Res.Transponder.Length > 0 && Res.Transponder != "00")
-             {
-                 // we have got signal from transponder
-                 #region processes signal from transponder
+            if (Res.Transponder.Length > 0 && Res.Transponder != "00")
+            {
+                // we have got signal from transponder
+                #region processes signal from transponder
 
-                 string signalLevel = "слабый";
+                string signalLevel = "слабый";
 
-                 if (Res.Hit >= 20)
-                 {
-                     signalLevel = "хороший";
-                 }
+                if (Res.Hit >= 20)
+                {
+                    signalLevel = "хороший";
+                }
 
-                 stringForLog = "Time" + Res.Hour + ":" + Res.Minutes + ":" + Res.Seconds + ":" + Res.Millisecond + " Датчик " + Res.Transponder +
-                     ", уровень сигнала: " + signalLevel + " (" + Res.Hit.ToString("00") + "), (data: " + someLine1.Trim() + ")" + "\r\n" + "\r\n";                 //stringForLog = DateTime.Now.ToLongTimeString() + " Датчик " + Res.Transponder +
-                     //", уровень сигнала: " + signalLevel + " (" + Res.Hit.ToString("00") + "), (data: " + someLine.Trim() + ")" + "\r\n" + "\r\n";
+                stringForLog = "Time" + Res.Hour + ":" + Res.Minutes + ":" + Res.Seconds + ":" + Res.Millisecond + " Датчик " + Res.Transponder +
+                    ", уровень сигнала: " + signalLevel + " (" + Res.Hit.ToString("00") + "), (data: " + someLine1.Trim() + ")" + "\r\n" + "\r\n";                 //stringForLog = DateTime.Now.ToLongTimeString() + " Датчик " + Res.Transponder +
+                //", уровень сигнала: " + signalLevel + " (" + Res.Hit.ToString("00") + "), (data: " + someLine.Trim() + ")" + "\r\n" + "\r\n";
 
 
-                 sensorsLog_richText.Invoke((MethodInvoker)delegate
-             {
-                 sensorsLog_richText.Text = stringForLog + sensorsLog_richText.Text;
-             });
+                sensorsLog_richText.Invoke((MethodInvoker)delegate
+                {
+                    sensorsLog_richText.Text = stringForLog + sensorsLog_richText.Text;
+                });
 
-                 #endregion
-             }
-             else
-             {
-                
-             }
+                #endregion
+            }
+            else
+            {
+
+            }
         }
         // функция конвертации в хекс
         private String convertAsciiTextToHex(String i_asciiText)
@@ -146,22 +146,24 @@ namespace Rentix
             {
                 try
                 {
+
                     string tempStr = "";
                     //побайтовое чтение того, что порт посылает
+                    if (!sp.IsOpen) { return; }
                     byte newByte = (byte)sp.BaseStream.ReadByte();
                     tempBytesList.Add(newByte);
                     byte[] tempBytes = tempBytesList.ToArray();
                     tempStr = Encoding.ASCII.GetString(tempBytes);
                     tempBytesList.Clear();
-                   // Encoding.ASCII.GetChars()
+                    // Encoding.ASCII.GetChars()
                     sBuffer.Add(newByte);
                     if (sBuffer.Count > 0)
                     {
                         //преобразование их в массив
                         if (tempStr == "\n")
                         {
-                        byte[] recivedByte = sBuffer.ToArray();
-                        string recivedStr = Encoding.ASCII.GetString(recivedByte);
+                            byte[] recivedByte = sBuffer.ToArray();
+                            string recivedStr = Encoding.ASCII.GetString(recivedByte);
                             processLineFromComPort(recivedStr);
                             this.sBuffer.Clear();
                         }
@@ -170,18 +172,19 @@ namespace Rentix
                     }
                 }
                 //если кончилось время ожидания..
-                catch (TimeoutException)
+                catch (Exception exp)
                 {
+                    Console.WriteLine(exp.Message);
                 }
             }
 
-           // this.spPort.Close();
+            // this.spPort.Close();
             //this.Invoke(new EventHandler(displayText));
 
-           // string s = RS232.ReadLine();
+            // string s = RS232.ReadLine();
             //s = convertAsciiTextToHex(s); //вызов функция конвертации
-           // if (s.Length >= 31 * 2 + 30 )
-           // {
+            // if (s.Length >= 31 * 2 + 30 )
+            // {
 
             //try
             //{
@@ -225,7 +228,7 @@ namespace Rentix
             //sp.Write(GET_TIME, 0, GET_TIME.Length);
             //Thread.Sleep(500);//Даем больше времени на ожидание данных
             //string readex = newPort.ReadExisting();//Убираем эту строку и заменяем на
-           // int byteRecieved = sp.BytesToRead;
+            // int byteRecieved = sp.BytesToRead;
             //byte[] messByte = new byte[sp.BytesToRead];
             //sp.Read(messByte, 0, sp.BytesToRead);
             //Console.WriteLine(BitConverter.ToString(messByte));
@@ -234,8 +237,8 @@ namespace Rentix
             //  //  Console.Write(b.ToString() + @" ");
             //}
             //bytesHashtable.Add(DateTime.UtcNow.Ticks, messByte);
-           // processData(messByte);
-           // }
+            // processData(messByte);
+            // }
         }
 
         //private void displayText(object sender, EventArgs e)
@@ -275,7 +278,7 @@ namespace Rentix
         //    //indata = indata.Replace('-', ' ');
         //    //Console.WriteLine(indata);
         //    //    bytesHashtable.Remove();.Values[b].
-              
+
         //    //}
 
         //    //foreach (byte b in messByte)
@@ -285,7 +288,7 @@ namespace Rentix
         //    //indata = indata.Replace('-', ' ');
         //    //Console.WriteLine(indata);
         //    //    bytesHashtable.Remove();.Values[b].
-              
+
         //    //}
         //    //processLineFromComPort(indata);
         //}
@@ -294,6 +297,8 @@ namespace Rentix
         {
             if (RS232 != null && RS232.IsOpen)
             {
+                RS232.DiscardInBuffer();
+                RS232.Dispose();
                 RS232.Close();
             }
         }
@@ -301,12 +306,12 @@ namespace Rentix
         private void button1_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-             string someAmbString = "@" + (rnd.Next(11) + 1).ToString("00") + DateTime.Now.ToString("HHmmssff") + rnd.Next(50).ToString("00");
-             processLineFromComPort(someAmbString);
+            string someAmbString = "@" + (rnd.Next(11) + 1).ToString("00") + DateTime.Now.ToString("HHmmssff") + rnd.Next(50).ToString("00");
+            processLineFromComPort(someAmbString);
         }
 
 
-        
+
 
 
     }

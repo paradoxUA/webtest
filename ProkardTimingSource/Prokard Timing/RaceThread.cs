@@ -241,20 +241,70 @@ namespace Rentix
             }
         }
 
+        bool mIsConnected;
+
+        char[] inputBuffer = new char[45];
+
+        ulong mRxCounter;
+        ulong bytesCounter;
+        ulong mTxCounter;
+        private bool boolRead = true;
+        List<byte> sBuffer = new List<byte>();
+        List<byte> tempBytesList = new List<byte>();
 
         // Функция приема данных с RS232 
         void RS232_Receive(object sender, SerialDataReceivedEventArgs e)
         {
             SerialPort sp = (SerialPort)sender;
-            int byteRecieved = sp.BytesToRead;
-            byte[] messByte = new byte[byteRecieved];
-            sp.Read(messByte, 0, byteRecieved);
-            string indata = BitConverter.ToString(messByte);
-            indata = indata.Replace('-', ' ');
-
-            if (Status == 1 || Status == 2)
+            while (boolRead)
             {
-                AMB20_SaveData(indata);
+                try
+                {
+
+                    string tempStr = "";
+                    //побайтовое чтение того, что порт посылает
+                    if (!sp.IsOpen) { return; }
+                    byte newByte = (byte)sp.BaseStream.ReadByte();
+                    tempBytesList.Add(newByte);
+                    byte[] tempBytes = tempBytesList.ToArray();
+                    tempStr = Encoding.ASCII.GetString(tempBytes);
+                    tempBytesList.Clear();
+                    // Encoding.ASCII.GetChars()
+                    sBuffer.Add(newByte);
+                    if (sBuffer.Count > 0)
+                    {
+                        //преобразование их в массив
+                        if (tempStr == "\n")
+                        {
+                            byte[] recivedByte = sBuffer.ToArray();
+                            string recivedStr = Encoding.ASCII.GetString(recivedByte);
+                            if (Status == 1 || Status == 2)
+                            {
+                                AMB20_SaveData(recivedStr);
+
+                            }
+                            this.sBuffer.Clear();
+                        }
+
+                        // FullMessageRecived(recivedStr);
+                    }
+                }
+                //если кончилось время ожидания..
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp.Message);
+                }
+
+                //SerialPort sp = (SerialPort)sender;
+                //int byteRecieved = sp.BytesToRead;
+                //byte[] messByte = new byte[byteRecieved];
+                //sp.Read(messByte, 0, byteRecieved);
+                //string indata = BitConverter.ToString(messByte);
+                //indata = indata.Replace('-', ' ');
+
+                //if (Status == 1 || Status == 2)
+                //{
+                //    AMB20_SaveData(indata);
 
             }
         }
@@ -288,8 +338,9 @@ namespace Rentix
             // или в момент прихода сигнала от датчика @050000059140
             // @05-00-00-05-91-40		05 - датчик, 00 - часы, 00 - минуты, 05 - секунды, 91 - миллисекунды, 40 - хит - по непроверенной информации, это количество срабатываний прибора в момент прохода датчика над петлёй. то есть, если сигнал хороший (возможно и скорость меньше?), то число должно быть больше
 
-            using (StreamWriter sw = new StreamWriter("logs.txt", true)){
-                sw.Write("\r\n"+DateTime.Now+":::"+s);
+            using (StreamWriter sw = new StreamWriter("logs.txt", true))
+            {
+                sw.Write("\r\n" + DateTime.Now + ":::" + s);
             }
             //    MainForm.log("AMB20_SaveData: " + s + " at system time: " + datetimeConverter.toDateTimeString(DateTime.Now) + "." + DateTime.Now.Millisecond.ToString());
 
@@ -567,7 +618,7 @@ namespace Rentix
             }
             else
             {
-              //  s = convertAsciiTextToHex(s); //вызов функция конвертации
+                //  s = convertAsciiTextToHex(s); //вызов функция конвертации
                 // parses the string
                 using (StreamWriter sw = new StreamWriter("sqlTobase.txt", true))
                 {
