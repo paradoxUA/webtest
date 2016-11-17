@@ -362,6 +362,7 @@ namespace Rentix
             if (Res.Transponder != null && Res.Transponder.Length > 0)
             {
                 // we have got signal from transponder
+                Res.Transponder = Convert.ToInt32(Res.Transponder).ToString("000000");
 
                 #region processes signal from transponder
 
@@ -724,10 +725,9 @@ namespace Rentix
                 }
 
             }
-            Webanounserdata data = new Webanounserdata { method = "newlap", data = Ret };
-            WebAnouncer anouncer = new WebAnouncer();
-            anouncer.action(data);
-
+           // Webanounserdata data = new Webanounserdata { method = "newlap", data = Ret };
+           // WebAnouncer anouncer = new WebAnouncer();
+            //anouncer.action(data);
             return Ret;
         }
 
