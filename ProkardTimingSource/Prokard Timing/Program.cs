@@ -56,23 +56,23 @@ namespace Rentix
 
                         Thread.CurrentThread.Priority = ThreadPriority.Highest;
                         Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.High;
-                        if (!checkDb.ConnectGood())
-                        {
-                            if (
-                                MessageBox.Show(@"Ошибка доступа к БД! Желаете настроить доступы?", @"Ошибка БД",
-                                    MessageBoxButtons.YesNo) == DialogResult.Yes)
-                            {
-                                Application.Run(new DbSettings());
-                            }
-                            else
-                            {
+                        //if (!checkDb.ConnectGood())
+                        //{
+                        //    if (
+                        //        MessageBox.Show(@"Ошибка доступа к БД! Желаете настроить доступы?", @"Ошибка БД",
+                        //            MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        //    {
+                        //        Application.Run(new DbSettings());
+                        //    }
+                        //    else
+                        //    {
                                 Application.Run(new MainForm());
-                            }
-                        }
-                        else
-                        {
-                            Application.Run(new MainForm());
-                        }
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    Application.Run(new MainForm());
+                        //}
 
                     }
                     break;

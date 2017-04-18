@@ -11,7 +11,6 @@ using System.Drawing.Printing;
 using Rentix.model;
 using System.Data;
 using System.Data.Entity;
-using System.Data.EntityClient;
 using System.Linq;
 
 namespace Rentix

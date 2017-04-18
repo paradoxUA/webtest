@@ -11,10 +11,10 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 
 using System.Linq;
-using System.Data.EntityClient;
 using System.Data.Entity;
 using Rentix.model;
 using System.IO;
+using System.Data.SQLite;
 
 namespace Rentix
 {
@@ -190,17 +190,17 @@ namespace Rentix
             TimeSpan executionTime;
 
             if (onlyUnique)
-            { 
+            {
                 SqlConnection conn = new SqlConnection(connectionString);
                 SqlDataAdapter da = new SqlDataAdapter();
                 SqlCommand SqlCommand = conn.CreateCommand();
 
                 SqlCommand.CommandText = "" +
-                            " select race_data.*, users.id as user_id, users.name as username " +
-                            " from race_data " +
-                            " join races on races.id = race_data.race_id " +
-                            " join users on race_data.pilot_id = users.id " +
-                            " where races.track_id = @TRACK_ID ";
+                                         " select race_data.*, users.id as user_id, users.name as username " +
+                                         " from race_data " +
+                                         " join races on races.id = race_data.race_id " +
+                                         " join users on race_data.pilot_id = users.id " +
+                                         " where races.track_id = @TRACK_ID";
                 SqlCommand.Parameters.AddWithValue("@TRACK_ID", idTrack);
                 da.SelectCommand = SqlCommand;
                 DataSet ds = new DataSet();
@@ -215,7 +215,7 @@ namespace Rentix
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
 
-                    
+
                     race_data rdData = new race_data();
                     rdData.user = new users();
                     rdData.race = new races();
@@ -247,7 +247,7 @@ namespace Rentix
                             "select min(race_times.seconds)  " +
                             "from race_times  join race_data on race_times.member_id = race_data.id  " +
                             "where race_data.pilot_id = @USER_ID)  " +
-                            "and race_data.pilot_id = @USER_ID ", db))
+                            "and race_data.pilot_id = @USER_ID  GROUP BY users.id", db))
                     {
                         newmCommand.Parameters.AddWithValue("@USER_ID", row[2]);
                         if (listUsersInts.Contains(Convert.ToInt32(row[2])))
@@ -264,7 +264,10 @@ namespace Rentix
                         {
                             while (res1.Read())
                             {
-                                if (result.Count > 65) { continue; }
+                                if (result.Count > 65)
+                                {
+                                    continue;
+                                }
                                 race_times rsTimes = new race_times();
                                 rdData.user.name = res1[6].ToString();
                                 rdData.user.surname = res1[7].ToString();
@@ -281,7 +284,7 @@ namespace Rentix
                                 rsTimes.lap = Convert.ToInt32(res1[1]);
                                 rsTimes.seconds = Convert.ToDecimal(res1[2]);
                                 rsTimes.created = Convert.ToDateTime(res1[3]);
-                                rsTimes.race_data = (race_data)(rdData);
+                                rsTimes.race_data = (race_data) (rdData);
                                 result.Add(rsTimes);
                             }
                         }
@@ -292,11 +295,75 @@ namespace Rentix
             }
             else
             {
-                result = edb.race_times.Where(m => m.race_data.light_mode != true).Where(m =>
-                     m.race_data.race.track_id ==
-                     idTrack).Where(m => m.race_data.user.deleted != true).Where(m => m.race_data.modified >= startDate).Where(m =>
-                         m.race_data.modified <= endDate).OrderBy(m =>
-                         m.seconds).Take(40).ToList();
+
+                if (idTrack > 0)
+                {
+                    result = edb.race_times.GroupBy(m => m.race_data.user.id)
+                        .Select(g => g.OrderBy(rt => rt.seconds).FirstOrDefault()).Where(t => t.race_data.race.track_id == idTrack).OrderBy(f=>f.seconds)
+                        .Take(40)
+                        .ToList();
+
+                }
+                else
+                {
+                result = edb.race_times.GroupBy(m => m.race_data.user.id)
+                    .Select(g => g.OrderBy(rt => rt.seconds).FirstOrDefault()).OrderBy(f=>f.seconds).Take(40).ToList();
+                    
+                }
+                //IEnumerable<IGrouping<int, race_times>> times = edb.race_times.GroupBy(m =>m.race_data.user.id).ToList();
+                //    Select(g => new 
+                //{
+                //    //id = g.Select(s => s).Select(x=>x.id),
+                //    user_id = g.Key,
+                //    seconds = g.Min(x => x.seconds)
+                //}).
+              //  OrderBy(y => y.seconds).
+                //Take(40).
+               // ToList();
+
+                //foreach (var groupingByRace_times in times)
+                //{
+                //    //int user_id = groupingByRace_times.user_id;
+                //    //var tm = edb.race_times.Select(t => t.seconds == groupingByRace_times.seconds);
+                //    //  List<race_times> newList = smths.ToList();
+                //    //iterating through values
+                //    //foreach (race_times race_time in groupingByRace_times)
+                //    //{
+                //    //    //var minTime = groupingByRace_times.SelectMin(s => s.seconds);
+                //    //    Console.WriteLine(race_time.seconds);
+                //    //    //int key = race_time.seconds;
+                //    //}
+                //}
+
+
+                //List<race_times> list = new List<race_times>();
+                //IEnumerable<race_times> smths = times.SelectMany(group => group);
+                //List<race_times> newList = smths.ToList();
+
+                //foreach (IGrouping<int, race_times> group in times)
+                //{
+
+                //    //Console.WriteLine(string.Format("Key (Color): {0}tCount: {1}", group.Key, group.Value.seconds));
+                //}
+                //foreach (var time in times)
+                //{
+
+                //    Console.WriteLine("<----------->");
+                //    Console.WriteLine(time.Key);
+                //    //Console.WriteLine(time..race_data.user.email);
+                //    //Console.WriteLine(time.seconds);
+                //    //Console.WriteLine(time.race_data.created);
+                //}
+                //var results = edb.race_times.GroupBy(m => m, m => m.race_data.user.id).Take(40).ToList();
+                //.GroupBy(m=>m.race_data.user.id)
+                //result = times.AsQueryable().Where(m => m.race_data.light_mode != true).
+                //    Where(m => m.race_data.race.track_id == idTrack).
+                //    Where(m => m.race_data.user.deleted != true).
+                //    Where(m => m.race_data.modified >= startDate).
+                //    Where(m => m.race_data.modified <= endDate).
+                //    OrderBy(m => m.seconds).
+                //    Take(40).
+                //    ToList();
             }
 
             executionTime = DateTime.Now - startTime;
@@ -2102,10 +2169,16 @@ namespace Rentix
         // Cохраняет настройки
         public void SaveSettings(Hashtable sett)
         {
-            if (connected)
+            m_dbConnection =
+                new SQLiteConnection("Data Source=setts.sqlite;Version=3;");
+            m_dbConnection.Open();
+
+            if (m_dbConnection.State == ConnectionState.Open)
             {
+
                 if (sett.Count > 0)
-                    using (SqlCommand cmd = new SqlCommand("delete from settings", db))
+                    using (SQLiteCommand cmd =
+                        new SQLiteCommand("delete from settings", m_dbConnection))
                     {
                         cmd.ExecuteNonQuery();
                     }
@@ -2113,13 +2186,35 @@ namespace Rentix
                 foreach (DictionaryEntry d in sett)
                 {
 
-                    using (SqlCommand cmd = new SqlCommand("insert into settings (name,val) values ('" + d.Key.ToString() + "','" + d.Value.ToString() + "')", db))
+                    using (SQLiteCommand cmd =
+                        new SQLiteCommand(
+                            "insert into settings (name,val) values ('" + d.Key.ToString() + "','" +
+                            d.Value.ToString() + "')", m_dbConnection))
                     {
                         cmd.ExecuteNonQuery();
                     }
 
                 }
             }
+
+            //if (connected)
+            //{
+            //    if (sett.Count > 0)
+            //        using (SqlCommand cmd = new SqlCommand("delete from settings", db))
+            //        {
+            //            cmd.ExecuteNonQuery();
+            //        }
+
+            //    foreach (DictionaryEntry d in sett)
+            //    {
+
+            //        using (SqlCommand cmd = new SqlCommand("insert into settings (name,val) values ('" + d.Key.ToString() + "','" + d.Value.ToString() + "')", db))
+            //        {
+            //            cmd.ExecuteNonQuery();
+            //        }
+
+            //    }
+            //}
         }
 
 
@@ -2259,29 +2354,76 @@ namespace Rentix
 
         }
 
+        SQLiteConnection m_dbConnection;
+
         // Загружает настройки
         public Hashtable LoadSettings()
         {
             Hashtable ret = new Hashtable();
-            if (connected)
+            m_dbConnection =
+                new SQLiteConnection("Data Source=setts.sqlite;Version=3;");
+            try
             {
-                 // MessageBox.Show("load Settings");
+                m_dbConnection.Open();
+            }
+            catch (Exception exp)
+            {
+                //   m_dbConnection.
+                SQLiteConnection.CreateFile("setts.sqlite");
+                SQLiteCommand cmd =
+                    new SQLiteCommand("create table settings (name varchar(40), val varchar(40))",
+                        m_dbConnection);
+                ret = DefaultSettings();
+                SaveSettings(ret);
+            }
 
-                using (SqlCommand cmd = new SqlCommand("select name,val from settings", db2))
+             if (m_dbConnection.State == ConnectionState.Open) 
+            {
+                try
                 {
-                    using (SqlDataReader res = cmd.ExecuteReader())
-                    {
-                        while (res.Read())
-                        {
-                            // один раз как-то получилось, что в БД было по несколько значений с одним ключом. 
 
-                            if (ret[res["name"]] == null)
+                    // MessageBox.Show("load Settings");
+                    using (SQLiteCommand cmd =
+                        new SQLiteCommand("select name,val from settings", m_dbConnection))
+                    {
+                        using (SQLiteDataReader res = cmd.ExecuteReader())
+                        {
+                            while (res.Read())
                             {
-                                ret.Add(res["name"], res["val"]);
+                                // один раз как-то получилось, что в БД было по несколько значений с одним ключом. 
+
+                                if (ret[res["name"]] == null)
+                                {
+                                    ret.Add(res["name"], res["val"]);
+                                }
                             }
                         }
                     }
                 }
+                catch (Exception exp)
+                {
+                    SQLiteCommand cmd =
+                        new SQLiteCommand("create table settings (name varchar(40), val varchar(40))",
+                            m_dbConnection);
+                    cmd.ExecuteNonQuery();
+                    ret = DefaultSettings();
+                    SaveSettings(ret);
+                }
+                //using (SqlCommand cmd = new SqlCommand("select name,val from settings", db2))
+                //{
+                //    using (SqlDataReader res = cmd.ExecuteReader())
+                //    {
+                //        while (res.Read())
+                //        {
+                //            // один раз как-то получилось, что в БД было по несколько значений с одним ключом. 
+
+                //            if (ret[res["name"]] == null)
+                //            {
+                //                ret.Add(res["name"], res["val"]);
+                //            }
+                //        }
+                //    }
+                //}
             }
 
             if (ret.Count == 0)
@@ -2289,15 +2431,17 @@ namespace Rentix
                 //  MessageBox.Show("DefaultSettings");
 
                 ret = DefaultSettings();
-
+                SaveSettings(ret);
             }
 
             ret = DefaultAnonserSettings(ret);
 
-            SaveSettings(ret);
+            //SaveSQLiteSettings(ret);
+           // SaveSettings(ret);
 
             return ret;
         }
+
 
         // Получает максимальное количество картов
         public int GetMaxKarts()
@@ -2402,7 +2546,8 @@ namespace Rentix
                             pricesForSomeRaceMode.Prices[i] = res["d" + i.ToString()].ToString();
                         }
                         pricesForSomeRaceMode.idRaceMode = Convert.ToInt32(res["idRaceMode"]);
-                        pricesForSomeRaceMode.idGroup = Convert.ToInt32(res["idGroup"]);
+
+                        pricesForSomeRaceMode.idGroup = res["idGroup"] != DBNull.Value ? Convert.ToInt32(res["idGroup"]) : 0;
 
                         result.Add(pricesForSomeRaceMode);
                     }
@@ -3035,22 +3180,44 @@ namespace Rentix
 
                 for (int i = 0; i < raceTimes.Count; i++)
                 {
-                    race_times someRaceTime = raceTimes.ElementAt(i);
+                     Hashtable row = new Hashtable();
+                    try
+                    {
+                        race_times someRaceTime = raceTimes.ElementAt(i);
+                        //row["track_name"] = someRaceTime.race_data.race.track.name;
+                        row["name"] = someRaceTime.race_data.user.name;
+                        row["nickname"] = someRaceTime.race_data.user.nickname;
+                        row["created"] = someRaceTime.race_data.created;
+                        row["tel"] = someRaceTime.race_data.user.tel;
+                        row["surname"] = someRaceTime.race_data.user.surname;
+                        row["seconds"] = someRaceTime.seconds;
+                        row["email"] = someRaceTime.race_data.user.email;
+                        row["pilot_id"] = someRaceTime.race_data.pilot_id;
+                        row["racedate"] = someRaceTime.race_data.race.racedate;
+                        row["id"] = someRaceTime.id;
+                        row["track_id"] = someRaceTime.race_data.race.track_id;
+                        row["race_id"] = someRaceTime.race_data.race.raceid;
 
-                    Hashtable row = new Hashtable();
-                    row["track_name"] = someRaceTime.race_data.race.track.name;
-                    row["name"] = someRaceTime.race_data.user.name;
-                    row["nickname"] = someRaceTime.race_data.user.nickname;
-                    row["created"] = someRaceTime.race_data.created;
-                    row["tel"] = someRaceTime.race_data.user.tel;
-                    row["surname"] = someRaceTime.race_data.user.surname;
-                    row["seconds"] = someRaceTime.seconds;
-                    row["email"] = someRaceTime.race_data.user.email;
-                    row["pilot_id"] = someRaceTime.race_data.pilot_id;
-                    row["racedate"] = someRaceTime.race_data.race.racedate;
-                    row["id"] = someRaceTime.id;
-                    row["track_id"] = someRaceTime.race_data.race.track_id;
-                    row["race_id"] = someRaceTime.race_data.race.raceid;
+                    }
+                    catch (Exception)
+                    {
+
+                        race_times someRaceTime = raceTimes.ElementAt(i);
+                        row["track_name"] = "track_name";
+                        row["name"] = someRaceTime.race_data.user.name;
+                        row["nickname"] = someRaceTime.race_data.user.nickname;
+                        row["created"] = someRaceTime.race_data.created;
+                        row["tel"] = someRaceTime.race_data.user.tel;
+                        row["surname"] = someRaceTime.race_data.user.surname;
+                        row["seconds"] = someRaceTime.seconds;
+                        row["email"] = someRaceTime.race_data.user.email;
+                        row["pilot_id"] = someRaceTime.race_data.pilot_id;
+                        row["racedate"] = DateTime.Now;
+                        row["id"] = someRaceTime.id;
+                        row["track_id"] = 0;
+                        row["race_id"] = 0;
+                    }
+
 
                     ret.Add(row);
                 }

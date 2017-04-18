@@ -603,7 +603,6 @@ D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\PresentationFramewor
 D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Configuration.dll
 D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Data.DataSetExtensions.dll
 D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Data.dll
-D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Data.Entity.dll
 D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Deployment.dll
 D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.DirectoryServices.dll
 D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.dll
@@ -621,7 +620,6 @@ D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\WindowsBase.dll
 D:\000\webtest\ProkardTimingSource\Prokard Timing\obj\x86\Debug\Prokard Timing.csproj.GenerateResource.Cache
 D:\000\webtest\ProkardTimingSource\Prokard Timing\obj\x86\Debug\RdlCompile.cache
 D:\000\webtest\ProkardTimingSource\Prokard Timing\obj\x86\Debug\RdlCompile.compiled
-D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\SQLite.NET.dll
 D:\000\webtest\ProkardTimingSource\Prokard Timing\obj\x86\Debug\Rentix.About.resources
 D:\000\webtest\ProkardTimingSource\Prokard Timing\obj\x86\Debug\Rentix.ActiveCertificate.resources
 D:\000\webtest\ProkardTimingSource\Prokard Timing\obj\x86\Debug\Rentix.AddCash.resources
@@ -683,5 +681,11 @@ D:\000\webtest\ProkardTimingSource\Prokard Timing\obj\x86\Debug\Rentix.pdb
 D:\000\webtest\ProkardTimingSource\Prokard Timing\obj\x86\Debug\Prokard Timing.csprojResolveAssemblyReference.cache
 D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\Newtonsoft.Json.dll
 D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\websocket-sharp.dll
-D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\Newtonsoft.Json.xml
-D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\websocket-sharp.pdb
+D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\EntityFramework.dll
+D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\EntityFramework.SqlServer.dll
+D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Data.SQLite.dll
+D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Data.SQLite.EF6.dll
+D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Data.SQLite.Linq.dll
+D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\EntityFramework.xml
+D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\EntityFramework.SqlServer.xml
+D:\000\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Data.SQLite.xml

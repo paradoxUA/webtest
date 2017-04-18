@@ -50,13 +50,21 @@ namespace Rentix
                 for (int i = 0; i < Tracks.Count; i++)
                     comboBox2.Items.Add(Tracks[i]["name"]);
             }
-            PrinterSettings.StringCollection sc = PrinterSettings.InstalledPrinters;
-            for (int i = 0; i < sc.Count; i++)
+            try
             {
-                comboBox4.Items.Add(sc[i]);
-                comboBox5.Items.Add(sc[i]);
-            }
+                PrinterSettings.StringCollection sc = PrinterSettings.InstalledPrinters;
+                for (int i = 0; i < sc.Count; i++)
+                {
+                    comboBox4.Items.Add(sc[i]);
+                    comboBox5.Items.Add(sc[i]);
+                }
 
+
+            }
+            catch (Exception exp)
+            {
+                
+            }
             LoadSettings();
 
         }
