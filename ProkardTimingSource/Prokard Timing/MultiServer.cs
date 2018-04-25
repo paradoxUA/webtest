@@ -17,7 +17,7 @@ namespace Rentix
 {
     class MultiServer
     {
-        public static  TcpListener serverSocket = new TcpListener(8888);
+        public static TcpListener serverSocket = new TcpListener(8888);
         public static TcpClient clientSocket = default(TcpClient);
         public static Socket socketWeb = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
         public static WebSocketServer SocketServer = new WebSocketServer(System.Net.IPAddress.Any, 4649);
@@ -29,7 +29,7 @@ namespace Rentix
 
         //private void startServer()
         //{
-            
+
         //    int counter = 0;
         //   // serverSocket.LocalEndpoint
         //    serverSocket.Start();
@@ -100,7 +100,7 @@ namespace Rentix
     {
         private TcpClient clientSocket;
         private string clNo;
-       // public IPAddress ListenOn { get; set; }
+        // public IPAddress ListenOn { get; set; }
 
         public void startClient(TcpClient inClientSocket, string clineNo)
         {

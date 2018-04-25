@@ -193,6 +193,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
             this.labelSmooth4 = new Rentix.LabelSmooth();
+            this.button13 = new System.Windows.Forms.Button();
             this.borderPanel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -560,6 +561,7 @@
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox5.Controls.Add(this.button13);
             this.groupBox5.Controls.Add(this.checkBox2);
             this.groupBox5.Controls.Add(this.comboBox4);
             this.groupBox5.Controls.Add(this.labelSmooth2);
@@ -2110,6 +2112,16 @@
             this.labelSmooth4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             this.labelSmooth4.Visible = false;
             // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(30, 158);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(135, 23);
+            this.button13.TabIndex = 8;
+            this.button13.Text = "Настройки страницы";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2362,5 +2374,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Button button13;
     }
 }

@@ -15,6 +15,7 @@ using System.Data.Entity;
 using Rentix.model;
 using System.IO;
 using System.Data.SQLite;
+using DocumentPrinter.Models;
 
 namespace Rentix
 {
@@ -25,8 +26,9 @@ namespace Rentix
 
         public ProkardModel()
         {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            connectionString = config.AppSettings.Settings["crazykartConnectionString"].Value;
+            //Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            //connectionString = config.AppSettings.Settings["crazykartConnectionString"].Value;
+            connectionString = ConfigurationManager.ConnectionStrings["crazykartConnectionString"].ConnectionString;
             try
             {
                 edb = new crazykartContainer();
@@ -284,7 +286,7 @@ namespace Rentix
                                 rsTimes.lap = Convert.ToInt32(res1[1]);
                                 rsTimes.seconds = Convert.ToDecimal(res1[2]);
                                 rsTimes.created = Convert.ToDateTime(res1[3]);
-                                rsTimes.race_data = (race_data) (rdData);
+                                rsTimes.race_data = (race_data)(rdData);
                                 result.Add(rsTimes);
                             }
                         }
@@ -299,16 +301,16 @@ namespace Rentix
                 if (idTrack > 0)
                 {
                     result = edb.race_times.GroupBy(m => m.race_data.user.id)
-                        .Select(g => g.OrderBy(rt => rt.seconds).FirstOrDefault()).Where(t => t.race_data.race.track_id == idTrack).OrderBy(f=>f.seconds)
+                        .Select(g => g.OrderBy(rt => rt.seconds).FirstOrDefault()).Where(t => t.race_data.race.track_id == idTrack).OrderBy(f => f.seconds)
                         .Take(40)
                         .ToList();
 
                 }
                 else
                 {
-                result = edb.race_times.GroupBy(m => m.race_data.user.id)
-                    .Select(g => g.OrderBy(rt => rt.seconds).FirstOrDefault()).OrderBy(f=>f.seconds).Take(40).ToList();
-                    
+                    result = edb.race_times.GroupBy(m => m.race_data.user.id)
+                        .Select(g => g.OrderBy(rt => rt.seconds).FirstOrDefault()).OrderBy(f => f.seconds).Take(40).ToList();
+
                 }
                 //IEnumerable<IGrouping<int, race_times>> times = edb.race_times.GroupBy(m =>m.race_data.user.id).ToList();
                 //    Select(g => new 
@@ -317,9 +319,9 @@ namespace Rentix
                 //    user_id = g.Key,
                 //    seconds = g.Min(x => x.seconds)
                 //}).
-              //  OrderBy(y => y.seconds).
+                //  OrderBy(y => y.seconds).
                 //Take(40).
-               // ToList();
+                // ToList();
 
                 //foreach (var groupingByRace_times in times)
                 //{
@@ -456,6 +458,58 @@ namespace Rentix
             Logger.AddRecord("GetRace(sql command)", Logger.LogType.info, executionTime);
         }
 
+        // Получает рейс по Id
+        public RaceClass GetRace(DateTime date, int id)
+        {
+            RaceClass Race = new RaceClass();
+
+            if (connected)
+            {
+                //  MessageBox.Show("GetRace 2");
+
+                // TODO обрезать время
+
+                //string command = "select * from races where id='" + id + "'";
+                string command = "select * from races where racedate='" + datetimeConverter.toDateTimeString(date) + "' and raceid='" + Race.ID + "'";
+                // MessageBox.Show(command);
+
+                SqlCommand cmd = new SqlCommand(command, db);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+
+                        //   MessageBox.Show("GetRace read");
+
+                        Race.Status = Convert.ToInt32(reader["stat"]);
+                        Race.RaceID = Convert.ToInt32(reader["id"]);
+                        Race.Created = reader["racedate"].ToString();
+                        Race.TrackID = Convert.ToInt32(reader["track_id"]);
+                        Race.TrackName = GetTrackName(reader["track_id"].ToString());
+                        Race.Light_mode = Convert.ToInt32(reader["light_mode"]);
+                    }
+                    else
+                    {
+                        //   MessageBox.Show("GetRace can not read");
+                        Race.Status = 0;
+                        Race.RaceID = -1;
+                        Race.Created = "";
+                        Race.TrackID = 0;
+                        Race.TrackName = "Default";
+                        Race.Light_mode = 0;
+                    }
+                }
+
+                cmd.Dispose();
+            }
+            else
+            {
+                //  MessageBox.Show("GetRace 3 not connected");
+            }
+            return Race;
+        }
         // Получает абсолютный рекорд трассы
         public string GetRecord(int TrackID)
         {
@@ -499,6 +553,52 @@ namespace Rentix
             return ret;
         }
 
+
+        // Получает абсолютный рекорд трассы
+        public AbsoluteRecordOfRace GetAbsoluteRecordOfRace(int TrackID)
+        {
+            DateTime startTime = DateTime.Now;
+            AbsoluteRecordOfRace aror = new AbsoluteRecordOfRace();
+
+            string ret = String.Empty;
+            List<Hashtable> br = GetBestResults(TrackID,
+                true, DateTime.Now.AddYears(-100),
+                DateTime.Now.AddYears(100), 1);
+
+
+            if (br.Count > 0)
+            {
+                double min = Double.MaxValue;
+                int index = 0;
+                for (int i = 0; i < br.Count; i++)
+                {
+                    if (min > Convert.ToDouble(br[i]["seconds"]))
+                    {
+                        min = Convert.ToDouble(br[i]["seconds"]);
+                        index = i;
+                    }
+
+                }
+
+                if (br[index]["nickname"].ToString().Length > 0)
+                {
+                    ret = "[" + br[index]["nickname"] + "] ";
+                }
+
+                aror.Date = Convert.ToDateTime(br[index]["racedate"]);
+                aror.RecordTime = br[index]["seconds"].ToString();
+                aror.Pilot = ret + br[index]["name"].ToString() + " " + br[index]["surname"].ToString();
+            }
+            else
+            {
+                ret = "";
+            }
+
+            TimeSpan executionTime = DateTime.Now - startTime;
+            Logger.AddRecord("GetRecord", Logger.LogType.info, executionTime);
+
+            return aror;
+        }
         // Изменяет режим без картов
         public void ChangeRaceLightMode(string LM, string RaceID)
         {
@@ -1611,7 +1711,7 @@ namespace Rentix
                 created = DateTime.Now
             };
             edb.race_times.Add(someLapTime);
-            edb.SaveChanges();                
+            edb.SaveChanges();
 
             /*
 
@@ -1869,14 +1969,18 @@ namespace Rentix
 
             switch (objectType)
             {
-                case 0: commandText = "insert into messages (id_kart, m_type,message,date,created,subject, modified) values (" + idObject.ToString() + "," + MessageType.ToString() + ",'" + Message + "','" + datetimeConverter.toDateTimeString(Date)
-                    + "','" + getDate() + "','" + Subject + "', GETDATE())"; break;
-                case 1: commandText = "insert into messages (id_pilot, m_type,message,date,created,subject, modified) values (" + idObject.ToString() + "," + MessageType.ToString() + ",'" + Message + "','" + datetimeConverter.toDateTimeString(Date)
-                    + "','" + getDate() + "','" + Subject + "', GETDATE())"; break;
-                case 2: commandText = "insert into messages (id_program_user, m_type,message,date,created,subject, modified) values (" + idObject.ToString() + "," + MessageType.ToString() + ",'" + Message + "','" + datetimeConverter.toDateTimeString(Date)
-                    + "','" + getDate() + "','" + Subject + "', GETDATE())"; break;
-                case -1: commandText = "insert into messages (m_type,message,date,created,subject, modified) values (" + MessageType.ToString() + ",'" + Message + "','" + datetimeConverter.toDateTimeString(Date)
+                case 0:
+                    commandText = "insert into messages (id_kart, m_type,message,date,created,subject, modified) values (" + idObject.ToString() + "," + MessageType.ToString() + ",'" + Message + "','" + datetimeConverter.toDateTimeString(Date)
                 + "','" + getDate() + "','" + Subject + "', GETDATE())"; break;
+                case 1:
+                    commandText = "insert into messages (id_pilot, m_type,message,date,created,subject, modified) values (" + idObject.ToString() + "," + MessageType.ToString() + ",'" + Message + "','" + datetimeConverter.toDateTimeString(Date)
+                + "','" + getDate() + "','" + Subject + "', GETDATE())"; break;
+                case 2:
+                    commandText = "insert into messages (id_program_user, m_type,message,date,created,subject, modified) values (" + idObject.ToString() + "," + MessageType.ToString() + ",'" + Message + "','" + datetimeConverter.toDateTimeString(Date)
+                + "','" + getDate() + "','" + Subject + "', GETDATE())"; break;
+                case -1:
+                    commandText = "insert into messages (m_type,message,date,created,subject, modified) values (" + MessageType.ToString() + ",'" + Message + "','" + datetimeConverter.toDateTimeString(Date)
+           + "','" + getDate() + "','" + Subject + "', GETDATE())"; break;
 
             }
 
@@ -2377,7 +2481,7 @@ namespace Rentix
                 SaveSettings(ret);
             }
 
-             if (m_dbConnection.State == ConnectionState.Open) 
+            if (m_dbConnection.State == ConnectionState.Open)
             {
                 try
                 {
@@ -2437,7 +2541,7 @@ namespace Rentix
             ret = DefaultAnonserSettings(ret);
 
             //SaveSQLiteSettings(ret);
-           // SaveSettings(ret);
+            // SaveSettings(ret);
 
             return ret;
         }
@@ -2659,16 +2763,18 @@ namespace Rentix
                 {
                     case 0: commandText = "select id,[date],message,subject from messages where " + objectTypeName + " m_type=0 order by created asc"; break; // за всё время
                     case 1: commandText = "select id,[date],message,subject from messages where " + objectTypeName + " m_type=0 and [date] >= GETDATE() order by created asc"; break; // будущие
-                    case 2: commandText = "select id,[date],message,subject from messages where " + objectTypeName + " m_type=0 and [date] <= '" +
-                        datetimeConverter.toDateTimeString(DateTime.Now) + "' order by created asc"; break; // прошедшие
-                    case 3: commandText = "select id,[date],message,subject from messages where " + objectTypeName + " m_type=0 and [date] >= '" +
-                   datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(someDate)) + "' order by [date] asc"; break;
+                    case 2:
+                        commandText = "select id,[date],message,subject from messages where " + objectTypeName + " m_type=0 and [date] <= '" +
+                    datetimeConverter.toDateTimeString(DateTime.Now) + "' order by created asc"; break; // прошедшие
+                    case 3:
+                        commandText = "select id,[date],message,subject from messages where " + objectTypeName + " m_type=0 and [date] >= '" +
+               datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(someDate)) + "' order by [date] asc"; break;
 
-                    /*
-                    case 3: commandText = "select id,[date],message,subject from messages where " + objectTypeName + " m_type=0 and [date] >= '" +
-                    datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(someDate)) + "' and [date] <= '" +
-                    datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(someDate)) + "' order by created asc"; break;
-                    */
+                        /*
+                        case 3: commandText = "select id,[date],message,subject from messages where " + objectTypeName + " m_type=0 and [date] >= '" +
+                        datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(someDate)) + "' and [date] <= '" +
+                        datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(someDate)) + "' order by created asc"; break;
+                        */
 
                 }
 
@@ -2803,7 +2909,7 @@ namespace Rentix
 
                     AddToJurnal("14", -1, -1, "Оператор программы " +
                         operatorNick + " удалил круг " + idLap + " (время: " + lapTime + ") пилота " + pilot);
-                 
+
                     result = true;
                 }
 
@@ -2816,7 +2922,7 @@ namespace Rentix
         // удалить все круги пилота по определённой трассе
         public bool delPilotStatisticForSomeTrack(int idPilot, string operatorNick, int trackId)
         {
-            bool result = false;          
+            bool result = false;
 
             IEnumerable<race_times> pilotLaps = edb.race_times.Where(m => m.race_data.pilot_id == idPilot).Where(m => m.race_data.race.track_id == trackId);
 
@@ -2826,11 +2932,11 @@ namespace Rentix
             int i = 1;
 
             bool isCancelled = false;
-                       
-            edb.Configuration.AutoDetectChangesEnabled = false;        
+
+            edb.Configuration.AutoDetectChangesEnabled = false;
 
             foreach (race_times item in pilotLaps)
-            {                
+            {
                 edb.Entry(item).State = EntityState.Deleted;
                 isCancelled = busyForm.SetProgressValue(i);
                 if (isCancelled)
@@ -2846,7 +2952,7 @@ namespace Rentix
 
             if (isCancelled)
             {
-                busyForm.CancelForm();                
+                busyForm.CancelForm();
             }
             else
             {
@@ -2893,7 +2999,7 @@ namespace Rentix
             foreach (race_times item in pilotLaps)
             {
                 edb.Entry(item).State = EntityState.Deleted;
-               isCancelled  = busyForm.SetProgressValue(i);
+                isCancelled = busyForm.SetProgressValue(i);
                 if (isCancelled)
                 {
                     break;
@@ -2902,7 +3008,7 @@ namespace Rentix
             }
 
             edb.Configuration.AutoDetectChangesEnabled = true;
-           
+
             edb.Database.Connection.Close();
             edb.Database.Connection.Open();
 
@@ -3157,10 +3263,9 @@ namespace Rentix
         }
 
         // Получает лучшие результаты
-        public List<Hashtable> GetBestResults(int TrackID, bool uniq,
-            DateTime startDate, DateTime endDate, int amountOfRecords)
+        public List<Hashtable> GetBestResults(int TrackID, bool uniq, DateTime startDate, DateTime endDate, int amountOfRecords)
         {
-            DateTime startTime = DateTime.Now;           
+            DateTime startTime = DateTime.Now;
 
             List<Hashtable> ret = new List<Hashtable>();
             TimeSpan executionTime;
@@ -3180,7 +3285,7 @@ namespace Rentix
 
                 for (int i = 0; i < raceTimes.Count; i++)
                 {
-                     Hashtable row = new Hashtable();
+                    Hashtable row = new Hashtable();
                     try
                     {
                         race_times someRaceTime = raceTimes.ElementAt(i);
@@ -3233,7 +3338,7 @@ namespace Rentix
             Logger.AddRecord("GetBestResults", Logger.LogType.info, executionTime);
 
             return ret;
-            
+
 
 
 
@@ -3285,6 +3390,44 @@ namespace Rentix
             return ret;
              * */
         }
+
+        // Возвращает лучший результат дня
+        public List<BestPilots> GetBestPilots(int TrackID, bool uniq, DateTime startDate, DateTime endDate, int amountOfRecords)
+        {
+            List<BestPilots> bestPilots = new List<BestPilots>();
+
+            if (connected)
+            {
+                List<race_times> raceTimes =
+                    getTop40LapsTimes(TrackID, startDate, endDate, uniq, amountOfRecords);
+
+                for (int i = 0; i < raceTimes.Count; i++)
+                {
+                    Hashtable row = new Hashtable();
+                    try
+                    {
+                        race_times someRaceTime = raceTimes.ElementAt(i);
+
+                        var temp = new BestPilots()
+                        {
+                            PilotName = someRaceTime.race_data.user.name + " " + someRaceTime.race_data.user.surname,
+                            DateOfRecord = someRaceTime.race_data.race.racedate.Value.ToString("dd MMMM yyyy"),
+                            RecordTime = someRaceTime.seconds.ToString(),
+                        };
+
+                        bestPilots.Add(temp);
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
+            }
+
+            return bestPilots;
+        }
+
+
+
 
         // Получает счета пользователей
         public List<Hashtable> GetUsersBallans()
@@ -3564,14 +3707,14 @@ namespace Rentix
             {
 
                 string query = String.Empty;
-                string q1 = "select sum(c.sum*1.0) from jurnal j, cassa c where c.doc_id=j.id"+
+                string q1 = "select sum(c.sum*1.0) from jurnal j, cassa c where c.doc_id=j.id" +
                     (race_id != 0 ? " and (j.race_id = " + race_id + ") " : " and j.created between '" +
                     datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(D1)) +
                     "' and '" +
                     datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(D2))
                      + "'") +
                      " and c.sign='" + sign.ToString() + "' ";
-                string q2 = "select sum(u.sum*1.0) from jurnal j, user_cash u where u.doc_id = j.id"+
+                string q2 = "select sum(u.sum*1.0) from jurnal j, user_cash u where u.doc_id = j.id" +
                     (race_id != 0 ? " and (j.race_id = " + race_id + ") " : " and j.created between '" +
                     datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(D1)) +
                     "' and '" +
@@ -3608,7 +3751,7 @@ namespace Rentix
 
         // Получает список операций по кассе за период
         // 1 reportType = реальные, 2 = виртуальные
-        public List<Hashtable> GetCassaReport(DateTime Date, int reportType, DateTime Date2, PageLister page, int race_id=0)
+        public List<Hashtable> GetCassaReport(DateTime Date, int reportType, DateTime Date2, PageLister page, int race_id = 0)
         {
             DateTime startTime = DateTime.Now;
 
@@ -3680,7 +3823,7 @@ namespace Rentix
                                          " from jurnal as j" +
                                          " left join  cassa c on c.doc_id = j.id" +
                                          " where race_id = @race_id", db2);
-                   // cmd.CommandType = CommandType.StoredProcedure;
+                    // cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@race_id", SqlDbType.Int).Value = race_id;
                 }
                 else
@@ -3793,7 +3936,7 @@ namespace Rentix
                     case 1: query = q1; break;
                     case 2: query = q2; break;
                     case 3: query = "(" + q1 + ")" + " union " + "(" + q2 + ") ORDER BY j.id"; break;
-                   
+
                    // case 3: query = q1 + " union " + q2 + " order by j.id"; break;
                 }
 
@@ -4007,7 +4150,7 @@ namespace Rentix
                     // за один день
                     commandText = "select (sum(CASE WHEN(sign=0)THEN sum*1.0 else 0 end)-sum(case when (sign=1) then sum*1.0 else 0 end)) as summa from cassa c, jurnal j where j.id=doc_id " +
                        (!NoTransf ? "and (j.tp != 7 and j.tp!= 15)" : "") +
-                       (race_id != 0 ? "and (j.race_id = "+race_id+")" : "") +
+                       (race_id != 0 ? "and (j.race_id = " + race_id + ")" : "") +
                        " and c.date >= '" +
                        datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(Date)) +
                        "' and c.date <= '" +
@@ -4044,7 +4187,7 @@ namespace Rentix
                         commandText = "select (sum(CASE WHEN(sign=0)THEN sum*1.0 else 0 end)-sum(case when (sign=1) then sum*1.0 else 0 end)) as summa from cassa c, jurnal j where j.id=doc_id " +
                             (!NoTransf ? "and (j.tp != 7 and j.tp!= 15)" : "") +
                             " and c.date <= '" + datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(Date)) + "'";
-                        
+
                     }
 
                     //commandText = "select (sum(CASE WHEN(sign=0)THEN sum*1.0 else 0 end)-sum(case when (sign=1) then sum*1.0 else 0 end)) as summa from cassa c, jurnal j where j.id=doc_id " + (!NoTransf ? "and (j.tp != 7 and j.tp!= 15)" : "") + " and c.date >= '" + datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(Date)) + "' and c.date <='" + datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(Date)) + "'";
@@ -4542,12 +4685,12 @@ namespace Rentix
                         while (res.Read())
                         {
                             Dictionary<string, string> temp = new Dictionary<string, string>();
-                           
+
                             for (int i = 0; i < res.FieldCount; i++)
                             {
                                 temp.Add(res.GetName(i), res.GetValue(i).ToString());
                             }
-                            
+
                             result.Add(count, temp);
                             count++;
                             temp = null;
@@ -4668,7 +4811,7 @@ namespace Rentix
         public Hashtable GetProgramUserBarCode(string BarCode)
         {
             Hashtable ret = new Hashtable();
-         //   Hashtable ret = localSetts.GetProgramUserBarCode(BarCode);
+            //   Hashtable ret = localSetts.GetProgramUserBarCode(BarCode);
 
             if (connected)
             {
@@ -5320,16 +5463,23 @@ namespace Rentix
                     new SqlCommand(
                         "select id from race_data where race_id='" + RaceID + "' and pilot_id = '" + pilot_id + "' ",
                         db2);
-                var res =  cmd.ExecuteScalar();
-                
+                var res = cmd.ExecuteScalar();
+
 
                 if (res != null)
                 {
                     returnValue = true;
                 }
-                        
+
             }
             return returnValue;
         }
     }
+    public class AbsoluteRecordOfRace
+    {
+        public string Pilot { get; set; }
+        public DateTime Date { get; set; }
+        public string RecordTime { get; set; }
+    }
+
 }

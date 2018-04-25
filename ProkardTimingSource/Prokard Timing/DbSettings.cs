@@ -22,14 +22,15 @@ namespace Rentix
         public DbSettings()
         {
             InitializeComponent();
-            Configuration config = System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Configuration.ConfigurationUserLevel.None);
+            //Configuration config = System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Configuration.ConfigurationUserLevel.None);
             try
             {
-                richTextBox1.Text = config.AppSettings.Settings["crazykartConnectionString"].Value;
+                //richTextBox1.Text = config.AppSettings.Settings["crazykartConnectionString"].Value;
+                richTextBox1.Text = ConfigurationManager.ConnectionStrings["crazykartConnectionString"].ConnectionString;
             }
             catch (Exception exception)
             {
-                config.AppSettings.Settings.Add("crazykartConnectionString", "");
+                //config.AppSettings.Settings.Add("crazykartConnectionString", "");
             }
             
         }

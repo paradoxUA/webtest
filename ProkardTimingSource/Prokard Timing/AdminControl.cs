@@ -12,6 +12,8 @@ using Rentix.model;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using DocumentPrinter.Models;
+using DocumentPrinter.Services;
 
 namespace Rentix
 {
@@ -26,7 +28,7 @@ namespace Rentix
         public int MaxKarts = 0;
         public int DopRace = 900;
         public RaceClass[,] Races = new RaceClass[24, 6]; // Массив рейсов 24 часа и 5 этапов
-       
+
         public List<races> SportRaces = new List<races>(); // набор заездов на сегодня для режима Спорт, расширяется по мере добавления новых заездов. 
 
         public ProkardModel model;
@@ -35,7 +37,7 @@ namespace Rentix
         public bool isSportMode;
 
         private List<PricesForRaceModes> Prices = new List<PricesForRaceModes>();
-      
+
         // массив цен на все дни, для одного режима заезда
         public class PricesForRaceModes
         {
@@ -54,7 +56,7 @@ namespace Rentix
         public bool IS_ADMIN = false;
         public bool IS_SUPER_ADMIN = false;
         public string User_Name = "No User";
-        public int USER_ID = 0;      
+        public int USER_ID = 0;
 
         DataGridViewPrinter MyDataGridViewPrinter;
 
@@ -65,7 +67,7 @@ namespace Rentix
         /// <param name="RaceID"></param>
         /// <param name="isContinue">тип гонки, 0 =  новая, 1 = продолжение</param>
         /// <param name="TimeIndex"></param>
-        public void RaceStart(int RaceID, int isContinue = 0, int TimeIndex=0)
+        public void RaceStart(int RaceID, int isContinue = 0, int TimeIndex = 0)
         {
             Hashtable res = model.GetDetalRaceInfo(RaceID), row = new Hashtable();
 
@@ -218,7 +220,7 @@ namespace Rentix
                 if (tcurr < t20) //  && Race.Status == 0 &&  model.isRaceCanBeStarted(Convert.ToInt32(Race.ID)) == false) // если не был запущен за 20 минут, то и нельзя запускать
                 {
                     // добавить проверку - если есть пилоты в заезде, и он не запускался, то разрешить его запуск
-                  
+
                     ret = false;
                 }
                 else
@@ -291,12 +293,12 @@ namespace Rentix
                 //if (Races[I, J].Status == 2)
                 GetNextRaceTime(out H, out M, out I, out J, true);
             }
-            
+
 
             l1.Text = (H.ToString().Length == 1 ? "0" + H.ToString() : H.ToString()) + ":" + (M.ToString().Length == 1 ? "0" + M.ToString() : M.ToString());
             dv.Rows.Clear();
 
-           IEnumerable<race_data> races_data = model.GetRacePilots(Races[I, J].RaceID); //, row = new Hashtable();
+            IEnumerable<race_data> races_data = model.GetRacePilots(Races[I, J].RaceID); //, row = new Hashtable();
 
             if (RaceTH.Status == 0)
             {
@@ -309,8 +311,8 @@ namespace Rentix
 
             bool c2 = false;
             int cr = -1;
-            foreach (race_data item in races_data) 
-            {              
+            foreach (race_data item in races_data)
+            {
                 if (c2)
                 {
                     dv.Rows[cr].Cells[1].Value = item.user.nickname + "*" + item.user.name;
@@ -438,7 +440,7 @@ namespace Rentix
                 case 0: ret = dt.Minute.ToString("00") + ":" + dt.Second.ToString("00") + "." + dt.Millisecond.ToString("000"); break;
                 case 1: ret = dt.Hour.ToString("00") + ":" + dt.Minute.ToString("00") + ":" + dt.Second.ToString("00") + "." + dt.Millisecond.ToString("000"); break;
                 case 2: ret = new TimeSpan(Ticks <= 0 ? Math.Abs(Ticks) : Ticks).TotalSeconds.ToString() + " сек"; break;
-               
+
                     /*
                 case 0: ret = dt.Minute.ToString() + ":" + dt.Second.ToString() + "." + dt.Millisecond.ToString(); break;
                 case 1: ret = dt.Hour.ToString() + ":" + dt.Minute.ToString() + ":" + dt.Second.ToString() + "." + dt.Millisecond.ToString(); break;
@@ -469,7 +471,7 @@ namespace Rentix
                 dv.Rows[i].Cells[0].Value = 0;
                 if (RaceTH.Members[i].LightMode == true)
                 {
-                   dv.Rows[i].Cells[1].Value = "";
+                    dv.Rows[i].Cells[1].Value = "";
                 }
                 else
                 {
@@ -482,11 +484,11 @@ namespace Rentix
                         dv.Rows[i].Cells[1].Value = "[" + RaceTH.Members[i].PilotNickName + "] " + RaceTH.Members[i].PilotName + " " + RaceTH.Members[i].PilotLastName; ;
                     }
                 }
-               // dv.Rows[i].Cells[1].Value = RaceTH.Members[i].LightMode ? "" : RaceTH.Members[i].PilotNickName;
+                // dv.Rows[i].Cells[1].Value = RaceTH.Members[i].LightMode ? "" : RaceTH.Members[i].PilotNickName;
                 dv.Rows[i].Cells[2].Value = RaceTH.Members[i].CarNum;
                 dv.Rows[i].Cells[3].Value = RaceTH.Members[i].CarTransponder == "" ? "" : Convert.ToInt32(RaceTH.Members[i].CarTransponder).ToString();
                 dv.Rows[i].Cells[4].Value = RaceTH.Members[i].Laps;
-                dv.Rows[i].Cells[5].Value =  ConvertTicks(RaceTH.Members[i].LapTime, 0, false, RaceTH.Members[i].TimeST);
+                dv.Rows[i].Cells[5].Value = ConvertTicks(RaceTH.Members[i].LapTime, 0, false, RaceTH.Members[i].TimeST);
                 dv.Rows[i].Cells[6].Value = RaceTH.Members[i].DeltaTime;
                 dv.Rows[i].Cells[7].Value = ConvertTicks(RaceTH.Members[i].BestLapTime, 0, false, RaceTH.Members[i].TimeST);
 
@@ -499,8 +501,8 @@ namespace Rentix
                     dv.Rows[i].Cells[9].Value = 1;
                 }
 
-               
-                 dv.Rows[i].Cells[8].Value = RaceTH.Members[i].TotalPilotTimeOfThisRace <= 0 ? 1 : RaceTH.Members[i].TotalPilotTimeOfThisRace;
+
+                dv.Rows[i].Cells[8].Value = RaceTH.Members[i].TotalPilotTimeOfThisRace <= 0 ? 1 : RaceTH.Members[i].TotalPilotTimeOfThisRace;
                 //dv.Rows[i].Cells[8].Value = new TimeSpan(RaceTH.Members[i].AllTime <= 0 ? 1 : RaceTH.Members[i].AllTime).TotalSeconds;
             }
 
@@ -517,7 +519,7 @@ namespace Rentix
                 //DateTime dl = DateTime.Parse(dv[8, 0].Value.ToString().Length < 2 ? "1980-01-01 00:00:00" : dv[8, 0].Value.ToString());
                 for (int i = 1; i < dv.Rows.Count; i++)
                 {
-                //    dv[6, i].Value = "+" + ConvertTicks(dl.Ticks - DateTime.Parse(dv[8, i].Value.ToString().Length < 2 ? "1980-01-01 00:00:00" : dv[8, i].Value.ToString()).Ticks);
+                    //    dv[6, i].Value = "+" + ConvertTicks(dl.Ticks - DateTime.Parse(dv[8, i].Value.ToString().Length < 2 ? "1980-01-01 00:00:00" : dv[8, i].Value.ToString()).Ticks);
 
                     dv[6, i].Value = "+" + ConvertTicks(long.Parse(dv[8, 0].Value.ToString()) - long.Parse(dv[8, i].Value.ToString()));
 
@@ -526,7 +528,7 @@ namespace Rentix
             }
         }
 
-        
+
 
         // Показывает лучшее время за день, неделю, месяц, год
         public void ShowAnonserBestResult(DataGridView dv, int TP, int idTrack)
@@ -558,7 +560,7 @@ namespace Rentix
 
                 case 3:
                     startDate = datetimeConverter.toStartDateTime(DateTime.Now.AddYears(-100));
-                                    
+
                     break;
 
                     /*
@@ -577,7 +579,7 @@ namespace Rentix
             }
 
             endDate = datetimeConverter.toEndDateTime(DateTime.Now);
-                    
+
             //endDate = DateTime.Now;
 
             List<Hashtable> Data;
@@ -588,14 +590,14 @@ namespace Rentix
                 dv.Rows.Add();
                 dv.Rows[i].Height = 40;
                 dv[0, i].Value = i + 1;
-                
+
                 //if (Data[i]["nickname"].ToString().Length > 0)
                 //{
                 //    dv[1, i].Value = "[" + Data[i]["nickname"] + "]";
                 //}
                 //else
                 //{
-                    dv[1, i].Value = Data[i]["name"] + " " + Data[i]["surname"];
+                dv[1, i].Value = Data[i]["name"] + " " + Data[i]["surname"];
                 //}
 
                 dv[2, i].Value = Math.Round(Convert.ToDouble(Data[i]["seconds"]), 2).ToString().Replace(',', '.');
@@ -613,8 +615,8 @@ namespace Rentix
                 else
                 {
                     dv[3, i].Value = Convert.ToDateTime(Data[i]["racedate"]).ToString("dd.M.yy");
-                }                 
-                
+                }
+
                 /*
                 dv[3, i].Value = Convert.ToDateTime(Data[i]["racedate"]).ToString("dd MMMM");
                  */
@@ -622,9 +624,9 @@ namespace Rentix
 
             dv.Sort(new RowComparer3(SortOrder.Descending, 2));
             for (int i = 0; i < dv.Rows.Count; i++)
-                {
+            {
                 dv[0, i].Value = i + 1;
-                }
+            }
 
 
         }
@@ -643,7 +645,7 @@ namespace Rentix
             }
             else
             {
-                Data = model.GetBestResults(TrackID, UniqueBestResult, 
+                Data = model.GetBestResults(TrackID, UniqueBestResult,
                     datetimeConverter.toStartDateTime(DateTime.Now),
                     datetimeConverter.toEndDateTime(DateTime.Now), 10);
 
@@ -667,7 +669,7 @@ namespace Rentix
                 dv.Rows.Add();
 
 
-                dv[0, i].Value = i+1;
+                dv[0, i].Value = i + 1;
 
                 if (i < Data.Count)
                 {
@@ -675,13 +677,13 @@ namespace Rentix
                     {
                         dv[1, i].Value = Convert.ToDateTime(Data[i]["racedate"]).ToString("dd MMMM yyyy");
                     }
-                   
+
 
                     string pilotName = "";
 
                     if (Data[i]["nickname"].ToString().Length > 0)
                     {
-                       // pilotName = "[" + Data[i]["nickname"] + "] ";
+                        // pilotName = "[" + Data[i]["nickname"] + "] ";
                     }
 
                     pilotName = pilotName + Data[i]["name"] + " " + Data[i]["surname"];
@@ -691,14 +693,15 @@ namespace Rentix
                 }
             }
 
-           /* dv.Sort(new RowComparer3(SortOrder.Descending, 3));
-            for (int i = 0; i < dv.Rows.Count; i++)
-                dv[0, i].Value = i + 1;
+            /* dv.Sort(new RowComparer3(SortOrder.Descending, 3));
+             for (int i = 0; i < dv.Rows.Count; i++)
+                 dv[0, i].Value = i + 1;
 
-            */
+             */
 
         }
 
+        
         // Функция отображает финальный вид заезда
         public void ShowFinnalyRaceResult(DataGridView dv, int RaceID)
         {
@@ -761,14 +764,14 @@ namespace Rentix
                         dv[2, i].Value = pilotName;
                     }
 
-                  //  dv[2, i].Value = Data[i].Light ? "" : Data[i].PilotNickName;
+                    //  dv[2, i].Value = Data[i].Light ? "" : Data[i].PilotNickName;
                     dv[4, i].Value = formatTimeString(Data[i].BestTime) + "/" + Data[i].BestTimeLap; // Math.Round(Data[i].BestTime, 2) + "/" + Data[i].BestTimeLap;
                     dv[3, i].Value = Data[i].CarNum;
 
                     for (int j = 0; j < Data[i].Times.Count; j++)
                     {
                         TempLap = (j + 1).ToString();
-                                                
+
                         dv["Lap" + TempLap, i].Value = formatTimeString(Data[i].Times[j]); // (Math.Round(Data[i].Times[j], 3)).ToString("0.000");
                     }
 
@@ -804,7 +807,7 @@ namespace Rentix
                 case 1: Filter = " and active=0 and  date_end >= GETDATE() "; break;
                 case 2: Filter = " and  date_end < GETDATE() "; break;
                 case 3: Filter = ""; break;
-                
+
                     /*
                 case 0: Filter = " and active=1 and date(date_end)>=date(now()) "; break;
                 case 1: Filter = " and active=0 and date(date_end)>=date(now()) "; break;
@@ -838,12 +841,12 @@ namespace Rentix
             if (Mt >= 0 && Mt <= 5) { M = 0; j = 1; }
             else
                 if (Mt > 5 && Mt <= 20) { M = 15; j = 2; }
-                else
+            else
                     if (Mt > 20 && Mt <= 35) { M = 30; j = 3; }
-                    else
+            else
                         if (Mt > 35 && Mt < 50) { M = 45; j = 4; }
-                        else
-                        { M = 0; j = 1; }
+            else
+            { M = 0; j = 1; }
 
             return M;
         }
@@ -865,12 +868,12 @@ namespace Rentix
             if (Mt >= 0 && Mt <= 5) { M = 0; j = 1; }
             else
                 if (Mt > 5 && Mt <= 20) { M = 15; j = 2; }
-                else
+            else
                     if (Mt > 20 && Mt <= 35) { M = 30; j = 3; }
-                    else
+            else
                         if (Mt > 35 && Mt < 50) { M = 45; j = 4; }
-                        else
-                        { M = 0; j = 1; }
+            else
+            { M = 0; j = 1; }
 
             i = H;
         }
@@ -900,17 +903,17 @@ namespace Rentix
             if (result)
             {
 
-               // int idRace = model.CreateRace(new DateTime(CurrentYear, CurrentMonth, CurrentDay).ToString("yyyy-MM-dd ") + Hour.ToString() + ":" + (GetMinutesFromIndex(Stage) == 60 ? 59 : GetMinutesFromIndex(Stage)).ToString(), Races[Hour, Stage].ID, Settings["default_track"].ToString());
-                                           
-                 int minutes = ProkardModel.GetMinutesFromIndex(Stage);
+                // int idRace = model.CreateRace(new DateTime(CurrentYear, CurrentMonth, CurrentDay).ToString("yyyy-MM-dd ") + Hour.ToString() + ":" + (GetMinutesFromIndex(Stage) == 60 ? 59 : GetMinutesFromIndex(Stage)).ToString(), Races[Hour, Stage].ID, Settings["default_track"].ToString());
+
+                int minutes = ProkardModel.GetMinutesFromIndex(Stage);
 
                 int idRace = model.CreateRace(new DateTime(CurrentYear, CurrentMonth,
                 CurrentDay, Hour, minutes, 0), Races[Hour, Stage].ID, Settings["default_track"].ToString(), Stage);
 
 
 
-                    //      CurrentDay).ToString("yyyy-MM-dd ") + "0:0:0", Races[Hour, Stage].ID, Settings["default_track"].ToString());
-                
+                //      CurrentDay).ToString("yyyy-MM-dd ") + "0:0:0", Races[Hour, Stage].ID, Settings["default_track"].ToString());
+
                 Races[Hour, Stage].Status = 1; // по умолчанию сделать неактивными кнопки для запуска заезда
                 Races[Hour, Stage].RaceID = idRace;
 
@@ -931,7 +934,7 @@ namespace Rentix
             foreach (race_data item in races_data) //  (int i = 0; i < res.Count; i++)
             {
                 dv.Rows.Add();
-            //    row = (Hashtable)res[i];
+                //    row = (Hashtable)res[i];
 
                 // Режим предпросмотра в главной форме
                 dv.Rows[i].Cells[0].Value = (i + 1).ToString();
@@ -963,13 +966,13 @@ namespace Rentix
                     {
                         dv.Rows[i].Cells[3].Value = item.kart.number;
                     }
-                    
+
                 }
 
 
                 dv.Rows[i].Cells[4].Value = item.id; // row["BaseID"] ?? 0;
-                
-                dv.Rows[i].Cells[8].Value = item.pilot_id; 
+
+                dv.Rows[i].Cells[8].Value = item.pilot_id;
 
 
                 if (item.reserv.HasValue && item.reserv.Value == false)
@@ -1122,10 +1125,10 @@ namespace Rentix
         // Показывает журнал заездов
         public void ShowRaceJurnal(PageLister pages, DataGridView dv, DateTime startDate, DateTime endDate, int eventId)
         {
-           // List<Hashtable> RaceJurnal = model.GetRaceJurnal(Date, Date2, Flt);
+            // List<Hashtable> RaceJurnal = model.GetRaceJurnal(Date, Date2, Flt);
 
             List<Hashtable> RaceJurnal = model.GetRaceJurnal(pages, startDate, endDate, eventId, pages.CurrentPageNumber, pages.PageSize);
-           
+
             dv.Rows.Clear();
 
             for (int i = 0; i < RaceJurnal.Count; i++)
@@ -1143,7 +1146,7 @@ namespace Rentix
 
         // Показывает список лучших результатов
         public void ShowBestResults(DataGridView dv, int idTrack, LabelSmooth Records, bool ShowRaceID = false)
-        {         
+        {
             List<Hashtable> Best = model.GetBestResults(idTrack, UniqueBestResult, DateTime.Now.AddYears(-1000), DateTime.Now.AddYears(1000), 40); // вдруг машину времени изобретут...
 
             dv.Rows.Clear();
@@ -1168,7 +1171,7 @@ namespace Rentix
                 dv[2, i].Value = pilotname;
                 dv[3, i].Value = Best[i]["email"];
                 dv[4, i].Value = Best[i]["tel"];
-                dv[5, i].Value =  Convert.ToDouble(Best[i]["seconds"]).ToString("0.000").Replace(',', '.');
+                dv[5, i].Value = Convert.ToDouble(Best[i]["seconds"]).ToString("0.000").Replace(',', '.');
                 dv[6, i].Value = Best[i]["track_name"];
                 dv[7, i].Value = Convert.ToDateTime(Best[i]["created"]).ToString("dd MMMM yyyy");
                 if (ShowRaceID)
@@ -1240,7 +1243,7 @@ namespace Rentix
         }
 
         // Показывает данные кассы за выбранную дату
-        public void GetCassaReport(DataGridView dv, DateTime Date, int reportType, DateTime Date2, PageLister Pages, int race_id=0)
+        public void GetCassaReport(DataGridView dv, DateTime Date, int reportType, DateTime Date2, PageLister Pages, int race_id = 0)
         {
             // если наоборот даты, то поменяем местами
             if (Date2 < Date)
@@ -1294,8 +1297,8 @@ namespace Rentix
                     lastRaceId = -1;
                 }
 
-                 if (isDivider == true)
-                {                  
+                if (isDivider == true)
+                {
                     isDivider = false;
                     DataGridViewRow dr2 = new DataGridViewRow();
                     dr2.CreateCells(dv);
@@ -1304,7 +1307,7 @@ namespace Rentix
                     dv.Rows.Add(dr2);
                 }
 
-                dv.Rows.Add(dr);               
+                dv.Rows.Add(dr);
             }
         }
 
@@ -1385,7 +1388,7 @@ namespace Rentix
 
             model.SavePrices(week, WeekPrices, raceModeId, idGroup);
 
-            
+
             Prices = model.GetPrices();
         }
 
@@ -1393,8 +1396,8 @@ namespace Rentix
         // sgavrilenko - возвращает цену за час для указанного дня и режима
         public string GetPrice(int Day, int Hour, int idRaceMode, int idGroup)
         {
-          //  MainForm.log("day: " + Day + ", hour: " + Hour + ", id race mode: " + idRaceMode);
- 
+            //  MainForm.log("day: " + Day + ", hour: " + Hour + ", id race mode: " + idRaceMode);
+
 
             // получить массив цен для указанного режима
             PricesForRaceModes priceForSomeMode = null;
@@ -1405,11 +1408,11 @@ namespace Rentix
                 {
                     priceForSomeMode = Prices[i];
                     // MainForm.log("i =" + i);
- 
+
                     break;
                 }
             }
-            
+
             // вернуть имеющуюся цену или цену по умолчанию
             string RetMess = "100";
             if (priceForSomeMode != null)
@@ -1420,15 +1423,15 @@ namespace Rentix
             else
             {
                 MainForm.log("price is null");
- 
+
             }
 
             return RetMess;
         }
 
 
-         
-      
+
+
 
 
         // Конструктор
@@ -1438,20 +1441,20 @@ namespace Rentix
             CurrentYear = Year;
             CurrentMonth = Month;
 
-          //  MainForm.log("before prokard model init");
+            //  MainForm.log("before prokard model init");
 
             model = new ProkardModel();
 
-         //   MainForm.log("after prokard model init");
-           
+            //   MainForm.log("after prokard model init");
+
 
             List<string> SettFromFile = LoadSettings();
 
-         //   MainForm.log("mysql settings are loaded");
-            
+            //   MainForm.log("mysql settings are loaded");
+
             if (SettFromFile.Count > 0)
             {
-              //  string[] MySQLData = ParseMySQLConfig(SettFromFile[0]);
+                //  string[] MySQLData = ParseMySQLConfig(SettFromFile[0]);
                 /*
                 model.Server = MySQLData[0];
                 model.Port = MySQLData[1];
@@ -1460,13 +1463,13 @@ namespace Rentix
                 model.Database = MySQLData[2];
                  */
 
-            //    MainForm.log("before raceThread init");
+                //    MainForm.log("before raceThread init");
 
                 RaceTH = new RaceThread(this);
 
-           //     MainForm.log("after raceThread init");
+                //     MainForm.log("after raceThread init");
 
-               
+
             }
 
 
@@ -1485,42 +1488,42 @@ namespace Rentix
 
             if (!model.Connect())
             {
-                MessageBox.Show("can not connect"); 
+                MessageBox.Show("can not connect");
 
                 InError = true;
                 TypeError = 1;
                 ErrorMessage = model.LastError;
             }
 
-        
 
-        //    MainForm.log("before reload table");
+
+            //    MainForm.log("before reload table");
 
             ReloadTable();
 
-         //   MainForm.log("after reload table");
+            //   MainForm.log("after reload table");
 
-       
+
 
             Settings = model.LoadSettings();
 
-         //   MainForm.log("after model.load settings");
+            //   MainForm.log("after model.load settings");
 
-     
+
 
 
             UniqueBestResult = Settings["uniquebestres"] == null ? false : Boolean.Parse(Settings["uniquebestres"].ToString());
-            
+
             MaxKarts = model.GetMaxKarts();
 
-       //     MainForm.log("after getMaxKarts");
-     
+            //     MainForm.log("after getMaxKarts");
+
 
             Prices = model.GetPrices();
 
-         //   MainForm.log("after getPrices");
+            //   MainForm.log("after getPrices");
 
-       
+
         }
 
         // Деструктор
@@ -1563,28 +1566,28 @@ namespace Rentix
                 {
 
                     Races[i, j].Minute = Minutes.ToString().Length == 1 ? "0" + Minutes.ToString() : Minutes.ToString();
-                   if ( Races[i, j].Minute == "60")
+                    if (Races[i, j].Minute == "60")
                     {
-                         Races[i, j].Minute = "59"; // классно придумано, и всё потому-что кто-то не знает, что данные бывают разных типов и использует string вместо int
+                        Races[i, j].Minute = "59"; // классно придумано, и всё потому-что кто-то не знает, что данные бывают разных типов и использует string вместо int
                     }
                     Races[i, j].Hour = i.ToString();
                     Races[i, j].Date = new DateTime(CurrentYear, CurrentMonth, CurrentDay, i, Minutes >= 60 ? 59 : Minutes, 0);
                     model.GetRace(new DateTime(CurrentYear, CurrentMonth, CurrentDay), Races[i, j]);
-                    
+
                     Races[i, j].Karts = model.GetRaceKarts(Races[i, j].RaceID);
 
                     Minutes += 15;
 
-                    
+
                 }
             }
 
-           /*
-            MessageBox.Show("before GC");
-            GC.Collect();
+            /*
+             MessageBox.Show("before GC");
+             GC.Collect();
 
-            MessageBox.Show("after GC");
-            */
+             MessageBox.Show("after GC");
+             */
         }
 
         // Обновляет таблицу с заданной датой
@@ -1592,26 +1595,26 @@ namespace Rentix
         {
             CurrDate = new DateTime(CurrentYear, CurrentMonth, CurrentDay);
 
-           // MessageBox.Show("ReloadTable 1");
+            // MessageBox.Show("ReloadTable 1");
             LoadRaces(CurrentYear, CurrentMonth, CurrentDay);
-           // MessageBox.Show("ReloadTable 2");
+            // MessageBox.Show("ReloadTable 2");
         }
 
-       
+
 
         // Выводит список найденных пилотов по фильтру ??
-        public void ShowPilots(DataGridView dv, List<int> existPilots,  string filter = "")
+        public void ShowPilots(DataGridView dv, List<int> existPilots, string filter = "")
         {
-         //   MessageBox.Show("ShowPilots");
+            //   MessageBox.Show("ShowPilots");
             dv.Rows.Clear();
-                        
+
             Hashtable res = model.GetAllPilots(filter), row = new Hashtable();
             for (int i = 0; i < res.Count; i++)
             {
-                 row = (Hashtable)res[i];
+                row = (Hashtable)res[i];
 
                 // если в списке пилотов заезда уже есть этот пилот, не показываем в списке для фильтра
-                if(existPilots.IndexOf(Convert.ToInt32(row["id"])) >= 0)
+                if (existPilots.IndexOf(Convert.ToInt32(row["id"])) >= 0)
                 {
                     continue;
                 }
@@ -1641,7 +1644,7 @@ namespace Rentix
                 dv.Rows[i].Cells[6].Value = row["banned"];
                  */
             }
-             
+
         }
 
         // Посмотреть всю статистику картов
@@ -1790,7 +1793,7 @@ namespace Rentix
         public int GetWeekDayNumber(DateTime day)
         {
             int ret = 1;
-           // DateTime date = new DateTime(CurrentYear, CurrentMonth, CurrentDay);
+            // DateTime date = new DateTime(CurrentYear, CurrentMonth, CurrentDay);
 
             switch (day.DayOfWeek)
             {
@@ -1805,7 +1808,7 @@ namespace Rentix
 
             return ret;
         }
-       
+
 
 
         // Получает минуты по этапу
@@ -1820,9 +1823,9 @@ namespace Rentix
             {
                 Minutes = 59;
             }
-            
-                return Minutes;
-            
+
+            return Minutes;
+
         }
 
         public RaceClass GetRace(int Hour, int Stage)
@@ -1972,14 +1975,14 @@ namespace Rentix
             //Release resources held by TripleDes Encryptor
             tdes.Clear();
             //Return the encrypted data into unreadable string format
-            
+
             string result = Convert.ToBase64String(resultArray, 0, resultArray.Length);
 
-           // MessageBox.Show(result);
+            // MessageBox.Show(result);
             return result;
         }
 
-        
+
         /// <summary>
         /// Показывает все события
         /// </summary>

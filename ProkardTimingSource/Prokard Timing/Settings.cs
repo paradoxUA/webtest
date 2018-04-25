@@ -14,6 +14,7 @@ using System.Collections;
 using System.Drawing.Printing;
 using Rentix.Controls;
 using System.Configuration;
+using DocumentPrinter.Services;
 
 namespace Rentix
 {
@@ -162,9 +163,11 @@ namespace Rentix
             numericUpDown8.Value = Convert.ToInt32(sett["warm_time"]??0);
 
             // connection string
-            Configuration config = System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Configuration.ConfigurationUserLevel.None);
-            connectionString_textBox9.Text = config.AppSettings.Settings["crazykartConnectionString"].Value;
+            //Configuration config = System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Configuration.ConfigurationUserLevel.None);
+            //connectionString_textBox9.Text = config.AppSettings.Settings["crazykartConnectionString"].Value;
 
+            connectionString_textBox9.Text = ConfigurationManager.ConnectionStrings["crazykartConnectionString"].ConnectionString;
+            
             //Закладка временных скидок
             isTimeDiscountsAvailable_checkBox13.Checked = Convert.ToBoolean(sett["racesale"] ?? false);
             numericUpDown9.Value = Convert.ToInt32(sett["sale_onelap"] ?? 0);
@@ -469,8 +472,10 @@ namespace Rentix
 
         private void createDbBackup()
         {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            string connStr = config.AppSettings.Settings["crazykartConnectionString"].Value;
+            //Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            //string connStr = config.AppSettings.Settings["crazykartConnectionString"].Value;
+
+            var connStr = ConfigurationManager.ConnectionStrings["crazykartConnectionString"].ConnectionString; 
             SqlConnection myConnection = new SqlConnection(connStr);
             string dbname = myConnection.Database;
             try
@@ -502,15 +507,17 @@ namespace Rentix
 
         private void loadDbList()
         {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            string connStr = config.AppSettings.Settings["crazykartConnectionString"].Value;
-            string[] connstStrings = connStr.Trim().Split(';');
-            string connNew = "";
-            if (connstStrings.Length == 4)
-            {
-                connNew = String.Format("{0};{1};", connstStrings[0], connstStrings[2]);
-            }
-            SqlConnection myConnection = new SqlConnection(connNew);
+            //Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            //string connStr = config.AppSettings.Settings["crazykartConnectionString"].Value;
+            //string[] connstStrings = connStr.Trim().Split(';');
+            //string connNew = "";
+
+            //if (connstStrings.Length == 4)
+            //{
+            //    connNew = String.Format("{0};{1};", connstStrings[0], connstStrings[2]);
+            //}
+            
+            SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["crazykartConnectionString"].ConnectionString);
             string dbname = myConnection.Database;
             try
             {
@@ -588,8 +595,10 @@ namespace Rentix
         public string restoreDbFile = "";
         private void restoreDb()
         {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            string connStr = config.AppSettings.Settings["crazykartConnectionString"].Value;
+            //Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            //string connStr = config.AppSettings.Settings["crazykartConnectionString"].Value;
+
+            string connStr = ConfigurationManager.ConnectionStrings["crazykartConnectionString"].ConnectionString;
             SqlConnection myConnection = new SqlConnection(connStr);
             if (myConnection.State != ConnectionState.Open)
             {
@@ -648,9 +657,14 @@ namespace Rentix
         {
 
            this.Cursor = Cursors.WaitCursor;
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            string connStr = config.AppSettings.Settings["crazykartConnectionString"].Value;
+
+            //Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            //string connStr = config.AppSettings.Settings["crazykartConnectionString"].Value;
+
+            var connStr = ConfigurationManager.ConnectionStrings["crazykartConnectionString"].ConnectionString;
+
             SqlConnection myConnection = new SqlConnection(connStr);
+
             SqlConnection delConnection = new SqlConnection(connStr);
             Console.WriteLine(DtFrom.ToString());
             if (myConnection.State != ConnectionState.Open)
@@ -724,6 +738,12 @@ namespace Rentix
             //MultiServer serv = new MultiServer();
             Echo ec = new Echo();
             MultiServer.SocketServer.WebSocketServices.Broadcast(t);
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            PrinterService test = new PrinterService();
+            test.ShowAdminPanel();
         }
     }
 }

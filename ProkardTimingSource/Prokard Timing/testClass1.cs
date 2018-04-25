@@ -32,11 +32,12 @@ namespace Rentix
         private static object[] decoderSetts = null;
 
 
-        public  void RS232_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        public void RS232_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
 
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            connectionString = config.AppSettings.Settings["crazykartConnectionString"].Value;
+            //Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            //connectionString = config.AppSettings.Settings["crazykartConnectionString"].Value;
+            connectionString = ConfigurationManager.ConnectionStrings["crazykartConnectionString"].ConnectionString;
 
             db = new SqlConnection(connectionString);
             db.Open();
@@ -67,36 +68,36 @@ namespace Rentix
                 }
 
                 // 2 - hours 1
-            // 3 - minutes 1
-            // 4 - seconds 1
-            // 5 - transponder
-            // 6 - mseconds
-            // 7 - hits
+                // 3 - minutes 1
+                // 4 - seconds 1
+                // 5 - transponder
+                // 6 - mseconds
+                // 7 - hits
                 int hourByte = Convert.ToInt32(decoderSetts[2].ToString().Trim());
                 int minuteByte = Convert.ToInt32(decoderSetts[3].ToString().Trim());
                 int secondByte = Convert.ToInt32(decoderSetts[4].ToString().Trim());
 
                 //int[] transBytes = new int[decoderSetts[5].ToString().Trim().Split(',').Length];
 
-                int index=0;
+                int index = 0;
                 string trans = "";
                 foreach (string transByte in decoderSetts[5].ToString().Trim().Split(','))
                 {
-                   trans += hexValuesSplit[Convert.ToInt32(transByte)];
+                    trans += hexValuesSplit[Convert.ToInt32(transByte)];
                 }
                 string msec = "";
                 foreach (string transByte in decoderSetts[6].ToString().Trim().Split(','))
                 {
-                   msec += hexValuesSplit[Convert.ToInt32(transByte)];
+                    msec += hexValuesSplit[Convert.ToInt32(transByte)];
                 }
                 string hit = "";
                 foreach (string transByte in decoderSetts[7].ToString().Trim().Split(','))
                 {
-                   hit += hexValuesSplit[Convert.ToInt32(transByte)];
+                    hit += hexValuesSplit[Convert.ToInt32(transByte)];
                 }
-                
 
-              //  String.Concat(hexValuesSplit[13],hexValuesSplit[14],hexValuesSplit[15],hexValuesSplit[16]);
+
+                //  String.Concat(hexValuesSplit[13],hexValuesSplit[14],hexValuesSplit[15],hexValuesSplit[16]);
                 string hour = hexValuesSplit[hourByte];
                 string min = hexValuesSplit[minuteByte];
                 string sec = hexValuesSplit[secondByte];
@@ -110,7 +111,7 @@ namespace Rentix
                 var Millisecond = Convert.ToInt16(msec, 16);
 
                 var Hit = Convert.ToInt16(hit, 16);
-               // var receivedString = s;
+                // var receivedString = s;
 
 
 
@@ -140,41 +141,41 @@ namespace Rentix
                 //LogFile.Write(bytesToRec, 0, bytesToRec.Length);
                 //LogFile.Close();
 
-           //     flagComRead = 1;
-           //     if (Timer1 == null)
-           //     {
-           //         startReadComDataFormDb();
-           //     }
-           //     else
-           //     {
-           //         Timer1.Change(1000, 1000);
-           //     }
-                
-           //     //{
-           //     //    Task.Factory.StartNew(startReadComDataFormDb);
-           //     //}
-                
-           //   //  StreamWriter writetext = new StreamWriter("write.txt");
-           // string s = RS232.ReadLine();
-           // testClass1.WriteLog(" RS232_DataReceived ", "поток=" + Thread.CurrentThread.ManagedThreadId + " s =" + s);
-           //// s = convertAsciiTextToHex(s); //вызов функция конвертации
+                //     flagComRead = 1;
+                //     if (Timer1 == null)
+                //     {
+                //         startReadComDataFormDb();
+                //     }
+                //     else
+                //     {
+                //         Timer1.Change(1000, 1000);
+                //     }
 
-           // if (s.Length >= 31 * 2 + 30)
-           // {
-           //     var res = AMB20_Decode(s);
-           //     Console.WriteLine(res.receivedString);
-           //     using (SqlCommand cmd = new SqlCommand("insert into comlogs (comdata, created) values ('" + res.receivedString + "',GETDATE())", db))
-           //     {
-           //         cmd.ExecuteNonQuery();
-           //         testClass1.WriteLog(" RS232_DataReceived ", "поток=" + Thread.CurrentThread.ManagedThreadId + " cmd =" + cmd.CommandText);
-           //     }
+                //     //{
+                //     //    Task.Factory.StartNew(startReadComDataFormDb);
+                //     //}
 
-           //     //    writetext.WriteLine(res.receivedString);
-           // }
-           //     //string code = RS232.ReadExisting();
-           //     //Task.Factory.StartNew(new Action(startParser));
-           //     db.Close();
-           //   //  Console.WriteLine(code);
+                //   //  StreamWriter writetext = new StreamWriter("write.txt");
+                // string s = RS232.ReadLine();
+                // testClass1.WriteLog(" RS232_DataReceived ", "поток=" + Thread.CurrentThread.ManagedThreadId + " s =" + s);
+                //// s = convertAsciiTextToHex(s); //вызов функция конвертации
+
+                // if (s.Length >= 31 * 2 + 30)
+                // {
+                //     var res = AMB20_Decode(s);
+                //     Console.WriteLine(res.receivedString);
+                //     using (SqlCommand cmd = new SqlCommand("insert into comlogs (comdata, created) values ('" + res.receivedString + "',GETDATE())", db))
+                //     {
+                //         cmd.ExecuteNonQuery();
+                //         testClass1.WriteLog(" RS232_DataReceived ", "поток=" + Thread.CurrentThread.ManagedThreadId + " cmd =" + cmd.CommandText);
+                //     }
+
+                //     //    writetext.WriteLine(res.receivedString);
+                // }
+                //     //string code = RS232.ReadExisting();
+                //     //Task.Factory.StartNew(new Action(startParser));
+                //     db.Close();
+                //   //  Console.WriteLine(code);
             }
         }
 
@@ -192,9 +193,9 @@ namespace Rentix
 
             if (flagComRead == 1)
             {
-                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                connectionString = config.AppSettings.Settings["crazykartConnectionString"].Value;
-
+                //Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                //connectionString = config.AppSettings.Settings["crazykartConnectionString"].Value;
+                connectionString = ConfigurationManager.ConnectionStrings["crazykartConnectionString"].ConnectionString;
                 db1 = new SqlConnection(connectionString);
                 db1.Open();
 
@@ -207,7 +208,7 @@ namespace Rentix
                         "поток=" + Thread.CurrentThread.ManagedThreadId + " cmd = " + cmd.CommandText);
                     //cmd.ExecuteScalar();
                     var res = cmd.ExecuteScalar();
-                    if(res==null) { flagComRead = 0; }
+                    if (res == null) { flagComRead = 0; }
                     SqlDataReader reader = cmd.ExecuteReader();
 
 
@@ -239,7 +240,7 @@ namespace Rentix
             }
             else
             {
-                Timer1.Change(60*1000, 60*1000*5);
+                Timer1.Change(60 * 1000, 60 * 1000 * 5);
             }
         }
 
@@ -335,7 +336,7 @@ namespace Rentix
             return Ret;
 
         }
- 
+
         private void startParser()
         {
 
@@ -344,8 +345,11 @@ namespace Rentix
         public void testClass11()
         {
 
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            string connStr = config.AppSettings.Settings["crazykartConnectionString"].Value;
+            //Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            //string connStr = config.AppSettings.Settings["crazykartConnectionString"].Value;
+
+            var connStr = ConfigurationManager.ConnectionStrings["crazykartConnectionString"].ConnectionString;
+
             string[] connstStrings = connStr.Trim().Split(';');
             string connNew = "";
             if (connstStrings.Length == 4)
@@ -364,7 +368,7 @@ namespace Rentix
             }
 
             var dblist = myConnection.GetSchema("Databases");
-            string[] sysdbs = new[] {"master", "model", "msdb", "tempdb"};
+            string[] sysdbs = new[] { "master", "model", "msdb", "tempdb" };
             foreach (DataRow database in dblist.Rows)
             {
                 String databaseName = database.Field<String>("database_name");
@@ -412,16 +416,16 @@ namespace Rentix
             // 10 - StopBits
             int portSpeed = Convert.ToInt32(decoderSetts[8]);
             int bits = Convert.ToInt32(decoderSetts[9]);
-           // var stopBits = null;
+            // var stopBits = null;
             //if (Convert.ToInt32(decoderSetts[9]) == 1)
-           // {
+            // {
             //    stopBits = StopBits.One;
-          //  }
-          //  string stopBits = decoderSetts[10].ToString();
+            //  }
+            //  string stopBits = decoderSetts[10].ToString();
 
             RS232 = new SerialPort(Convert.ToString("COM4"), portSpeed, Parity.None, bits, StopBits.One);
-           // RS232.ReadBufferSize = 32;
-          //  RS232.RtsEnable = true;
+            // RS232.ReadBufferSize = 32;
+            //  RS232.RtsEnable = true;
             RS232.DataReceived += new SerialDataReceivedEventHandler(RS232_DataReceived);
             RS232.Open();
 
@@ -438,7 +442,7 @@ namespace Rentix
         {
 
 
-           // Thread thread = new Thread();
+            // Thread thread = new Thread();
 
 
 
@@ -448,8 +452,11 @@ namespace Rentix
 
             int idTrack = 9;
             int amountOfRecords = 20;
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            connectionString = config.AppSettings.Settings["crazykartConnectionString"].Value;
+            //Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            //connectionString = config.AppSettings.Settings["crazykartConnectionString"].Value;
+
+            connectionString = ConfigurationManager.ConnectionStrings["crazykartConnectionString"].ConnectionString;
+
             db = new SqlConnection(connectionString);
             db.Open();
             db1 = new SqlConnection(connectionString);
@@ -508,7 +515,7 @@ namespace Rentix
                     {
                         listUsersInts.Add(Convert.ToInt32(row[2]));
                     }
-                    
+
                     Console.WriteLine(@"@USER_ID===" + row[2]);
                     using (SqlDataReader res1 = newmCommand.ExecuteReader())
                     {
@@ -554,7 +561,7 @@ namespace Rentix
                     {
                         race_data rdData = new race_data();
                         rdData.pilot_id = Convert.ToInt32(res[2]);
-                       // rdData.car_id = Convert.ToInt32(res["car_id"]);
+                        // rdData.car_id = Convert.ToInt32(res["car_id"]);
                         rdData.id = Convert.ToInt32(res[0]);
                         rdData.race_id = Convert.ToInt32(res[1]);
                         rdData.created = Convert.ToDateTime(res[4]);
@@ -581,7 +588,7 @@ namespace Rentix
                             {
                                 listUsersInts.Add(Convert.ToInt32(res[2]));
                             }
-                            
+
                             using (SqlDataReader res1 = newmCommand.ExecuteReader())
                             {
                                 while (res1.Read())
@@ -595,7 +602,7 @@ namespace Rentix
                                     resObjects.Add(rsTimes);
                                 }
                             }
-                          //  Console.WriteLine(res["id"]);
+                            //  Console.WriteLine(res["id"]);
                         }
                         //Console.WriteLine(res["id"]);
                         //  string val = res[0].ToString();
@@ -611,7 +618,7 @@ namespace Rentix
 
 
 
-            
+
 
 
         }

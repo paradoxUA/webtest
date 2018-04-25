@@ -9,6 +9,10 @@ using DGVPrinterHelper;
 using System.Drawing.Text;
 using System.Collections;
 using System.Linq;
+using DocumentPrinter.Services;
+using DocumentPrinter;
+using Rentix;
+using DocumentPrinter.Models;
 
 namespace Rentix
 {
@@ -22,7 +26,7 @@ namespace Rentix
             CurrentRace = Race;
             admin = ad;
             labelSmooth1.Text = "Заезд №" + (Race.RaceNum > admin.DopRace ? (Race.RaceNum - admin.DopRace).ToString() + "a" : Race.RaceNum.ToString());
-            labelSmooth2.Text = Race.Date.ToString("dd MMMM yyyy") + " " +Race.Hour+":"+Race.Minute;
+            labelSmooth2.Text = Race.Date.ToString("dd MMMM yyyy") + " " + Race.Hour + ":" + Race.Minute;
             labelSmooth4.Text = "Трасса - " + Race.TrackName;
 
             numericUpDown1.Value = admin.model.GetRacePilots(CurrentRace.RaceID).Count();
@@ -42,11 +46,73 @@ namespace Rentix
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            
         }
 
+        
+        public static bool Printing(RaceClass race, int trakId)
+        {
+            PrinterService ps = new PrinterService();
+            PageService PageData = new PageService();
+
+
+            //int trackId = 6668;
+
+            ProkardModel pm = new ProkardModel();
+            pm.Connect();
+            //var race = pm.GetRace(,raceId);                                  // Получаем информацию о заезде
+            var pilots = pm.GetFinallyRaceInfo(race.RaceID);                     // Получаем участников заезда
+
+            var tempTime = pilots.FirstOrDefault().BestTime;
+            var bestTime = pilots.FirstOrDefault(x => x.BestTime < tempTime).BestTime;
+
+            AbsoluteRecordOfRace absoluteRaceRecord = null;
+            try
+            {
+                absoluteRaceRecord = pm.GetAbsoluteRecordOfRace(trakId);     // Абсолютный рекорд трассы
+            }
+            catch
+            {
+
+            }
+            PageData.Info = new RaceInfo();
+            PageData.Info.Trek = race.TrackName;
+            PageData.Info.DateNow = race.Date.ToString("dd MMMM yyyy");
+            PageData.Info.RaceNumber = race.RaceNum.ToString();
+            PageData.Info.Time = race.Hour + ":" + race.Minute;
+            PageData.Info.RaceOfRecordUser = absoluteRaceRecord?.Pilot;
+            PageData.Info.RaceOfRecordDate = absoluteRaceRecord?.Date.ToString("dd MMMM yyyy");
+            PageData.Info.RaceOfRecordTime = absoluteRaceRecord?.RecordTime;
+            PageData.Info.RecordOfDay = pm.GetBestPilots(trakId, true, DateTime.Today, DateTime.Now, 5);
+            PageData.Info.RecordOfMounth = pm.GetBestPilots(trakId, true, DateTime.Today, DateTime.Now, 5);
+            PageData.Info.RaceResults = pilots?.Select(x => new RaceResult
+            {
+                UserName = x.PilotName,
+                Kart = x.CarNum,
+                BestCheckIn = (x.BestTime - bestTime).ToString(),
+                AmountTime = x.Times.Sum().ToString(),
+                RaceTimes = RaceTimeConvert(x.Times)
+            }).ToList();
+
+            return true;
+        }
+
+        private static List<RaceTime> RaceTimeConvert(List<double> times)
+        {
+            List<RaceTime> temp = new List<RaceTime>();
+            if (times == null || times.Count < 1) return temp;
+
+            for (int i = 0; i < times.Count; i++)
+            {
+                temp.Add(new RaceTime() { Range = (i + 1).ToString(), Time = times[i].ToString() });
+            }
+            return temp;
+        }
         private void button3_Click(object sender, EventArgs e)
         {
+
+            if (Printing(CurrentRace, CurrentRace.TrackID)) return;//CurrentRace.TrackID)) return;
+
 
             PrintDialog MyPrintDialog = new PrintDialog();
             MyPrintDialog.AllowCurrentPage = false;
@@ -54,8 +120,8 @@ namespace Rentix
             MyPrintDialog.AllowSelection = false;
             MyPrintDialog.AllowSomePages = false;
             MyPrintDialog.PrintToFile = false;
-            MyPrintDialog.ShowHelp = false;
             MyPrintDialog.ShowNetwork = false;
+            MyPrintDialog.ShowHelp = false;
             MyPrintDialog.PrinterSettings.PrinterName = admin.Settings["printer_result"].ToString();
 
             printDocument1.PrinterSettings = MyPrintDialog.PrinterSettings;
@@ -77,20 +143,20 @@ namespace Rentix
 
                 //MessageBox.Show(printDocument1.DefaultPageSettings.PaperSize.Width.ToString() + " " + printDocument1.DefaultPageSettings.PaperSize.Height.ToString());
 
-				try
-				{
-					printDocument1.Print();
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show("Не удалось распечатать документ. Ошибка: " + ex.Message);
-				}
-				//  printPreviewDialog1.ShowDialog();
+                try
+                {
+                    printDocument1.Print();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не удалось распечатать документ. Ошибка: " + ex.Message);
+                }
+                //  printPreviewDialog1.ShowDialog();
 
-				MyPrintDialog.Dispose();
-				this.Close();
-			}
-			else
+                MyPrintDialog.Dispose();
+                this.Close();
+            }
+            else
             {
                 MessageBox.Show("Не указан принтер для печати отчётов. Перейдите в раздел Управление - Настройки - Оборудование и выберите принтер в списке 'Печать результатов'");
             }
@@ -133,8 +199,8 @@ namespace Rentix
             using (Pen p = new Pen(Color.Black, 2))
             {
                 g.DrawRectangle(p, new Rectangle(654, 140, 289, 145));
-                g.DrawRectangle(p, new Rectangle(949, 140, 179,( (dv1.Rows.Count + 9) * 20)+5));
-                g.DrawRectangle(p, new Rectangle(39, 300, 905, ((dv1.Rows.Count+1)*20)+5));
+                g.DrawRectangle(p, new Rectangle(949, 140, 179, ((dv1.Rows.Count + 9) * 20) + 5));
+                g.DrawRectangle(p, new Rectangle(39, 300, 905, ((dv1.Rows.Count + 1) * 20) + 5));
                 //g.DrawRectangle(p, new Rectangle(39, 745, 905, 40));
             }
 
@@ -144,15 +210,15 @@ namespace Rentix
                 drawFormat.Alignment = StringAlignment.Center;
                 drawFormat.LineAlignment = StringAlignment.Center;
 
-               // g.DrawString("Тип:    Квалификация", f, Brushes.Black, 50, 755);
-            
+                // g.DrawString("Тип:    Квалификация", f, Brushes.Black, 50, 755);
+
                 g.DrawString("Лучший результат месяца", f, Brushes.Black, new Rectangle(654, 140, 289, 20), drawFormat);
                 g.DrawString("Лучший результат дня", f, Brushes.Black, new Rectangle(949, 140, 179, 20), drawFormat);
 
-                
+
 
                 drawFormat.Alignment = StringAlignment.Far;
-                g.DrawString("Трек:    "+CurrentRace.TrackName, f, Brushes.Black, 650, 195, drawFormat);
+                g.DrawString("Трек:    " + CurrentRace.TrackName, f, Brushes.Black, 650, 195, drawFormat);
 
                 g.DrawString("Дата:  " + CurrentRace.Date.ToString("dd MMMM yyyy"), f, Brushes.Black, 650, 235, drawFormat);
                 g.DrawString("Время:  " + CurrentRace.Hour + ":" + CurrentRace.Minute, f, Brushes.Black, 650, 175, drawFormat);
@@ -216,9 +282,9 @@ namespace Rentix
                     }
                     else
                         if (j > 4)
-                        {
-                            g.DrawString((Lap++).ToString(), font, Brushes.Black, new RectangleF(marginleft - 1, margintop + 1, DV1width(j), 25), drawFormat);
-                        }
+                    {
+                        g.DrawString((Lap++).ToString(), font, Brushes.Black, new RectangleF(marginleft - 1, margintop + 1, DV1width(j), 25), drawFormat);
+                    }
 
                     marginleft += DV1width(j);
                 }
@@ -341,7 +407,7 @@ namespace Rentix
 
             margintop += 5;
 
-            for (int i = 0; i < dv1.Rows.Count+7; i++)
+            for (int i = 0; i < dv1.Rows.Count + 7; i++)
             {
                 margintop += cellheight;
                 marginleft = ML;
@@ -498,7 +564,7 @@ namespace Rentix
         {
             admin.ShowBestDMResult(dv2, CurrentRace.Date.ToString("yyyy-MM-dd"), CurrentRace.TrackID, true, "1");
             admin.ShowBestDMResult(dv3, CurrentRace.Date.ToString("yyyy-MM-dd"), CurrentRace.TrackID, false, "2");
-     
+
         }
 
 

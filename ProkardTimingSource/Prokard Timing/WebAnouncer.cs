@@ -19,5 +19,4 @@ namespace Rentix
        public string method;
        public object data;
     }
-
 }

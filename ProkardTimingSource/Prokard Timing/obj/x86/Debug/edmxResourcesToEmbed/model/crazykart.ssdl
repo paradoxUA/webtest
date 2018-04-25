@@ -1,29 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="crazykart.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+<Schema Namespace="crazykart.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="crazykartStoreContainer">
-    <EntitySet Name="cassa" EntityType="crazykart.Store.cassa" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="certificates" EntityType="crazykart.Store.certificates" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="users" EntityType="crazykart.Store.users" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="certificate_type" EntityType="crazykart.Store.certificate_type" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="fuel" EntityType="crazykart.Store.fuel" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="karts" EntityType="crazykart.Store.karts" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="groups" EntityType="crazykart.Store.groups" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="jurnal" EntityType="crazykart.Store.jurnal" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="races" EntityType="crazykart.Store.races" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tracks" EntityType="crazykart.Store.tracks" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="logins" EntityType="crazykart.Store.logins" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="messages" EntityType="crazykart.Store.messages" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="noracekart" EntityType="crazykart.Store.noracekart" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="prices" EntityType="crazykart.Store.prices" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="race_modes" EntityType="crazykart.Store.race_modes" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="program_users" EntityType="crazykart.Store.program_users" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="race_data" EntityType="crazykart.Store.race_data" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="race_times" EntityType="crazykart.Store.race_times" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="settings" EntityType="crazykart.Store.settings" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="user_cash" EntityType="crazykart.Store.user_cash" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="DiscountCards" EntityType="crazykart.Store.DiscountCards" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="DiscountCardGroups" EntityType="crazykart.Store.DiscountCardGroups" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Petroleums" EntityType="crazykart.Store.Petroleums" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="cassa" EntityType="crazykart.Store.cassa" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="certificates" EntityType="crazykart.Store.certificates" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="users" EntityType="crazykart.Store.users" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="certificate_type" EntityType="crazykart.Store.certificate_type" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="fuel" EntityType="crazykart.Store.fuel" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="karts" EntityType="crazykart.Store.karts" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="groups" EntityType="crazykart.Store.groups" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="jurnal" EntityType="crazykart.Store.jurnal" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="races" EntityType="crazykart.Store.races" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="tracks" EntityType="crazykart.Store.tracks" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="logins" EntityType="crazykart.Store.logins" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="messages" EntityType="crazykart.Store.messages" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="noracekart" EntityType="crazykart.Store.noracekart" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="prices" EntityType="crazykart.Store.prices" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="race_modes" EntityType="crazykart.Store.race_modes" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="program_users" EntityType="crazykart.Store.program_users" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="race_data" EntityType="crazykart.Store.race_data" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="race_times" EntityType="crazykart.Store.race_times" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="settings" EntityType="crazykart.Store.settings" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="user_cash" EntityType="crazykart.Store.user_cash" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="DiscountCards" EntityType="crazykart.Store.DiscountCards" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="DiscountCardGroups" EntityType="crazykart.Store.DiscountCardGroups" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="Petroleums" EntityType="crazykart.Store.Petroleums" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
     <AssociationSet Name="certificateusers" Association="crazykart.Store.certificateusers">
       <End Role="certificate" EntitySet="certificates" />
       <End Role="users" EntitySet="users" />

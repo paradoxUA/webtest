@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="crazykart" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
-  <EntityContainer Name="crazykartContainer" annotation:LazyLoadingEnabled="true">
+<Schema Namespace="crazykart" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="crazykartContainer" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
     <EntitySet Name="cassa" EntityType="crazykart.cassa" />
     <EntitySet Name="certificates" EntityType="crazykart.certificate" />
     <EntitySet Name="users" EntityType="crazykart.users" />
@@ -133,7 +133,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Double" Name="sum" Nullable="true" />
     <Property Type="Int32" Name="sign" Nullable="false" />
     <Property Type="DateTime" Name="date" Nullable="true" />
@@ -144,7 +144,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="bar_number" Nullable="false" />
     <NavigationProperty Name="user" Relationship="crazykart.certificateusers" FromRole="certificate" ToRole="users" />
     <Property Type="Int32" Name="user_id" Nullable="true" />
@@ -160,7 +160,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="name" Nullable="true" />
     <Property Type="String" Name="surname" Nullable="true" />
     <Property Type="Boolean" Name="gender" Nullable="false" />
@@ -206,7 +206,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="name" Nullable="false" />
     <Property Type="String" Name="nominal" Nullable="true" />
     <Property Type="Double" Name="cost" Nullable="false" />
@@ -219,7 +219,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <NavigationProperty Name="kart" Relationship="crazykart.fuelkarts" FromRole="fuel" ToRole="karts" />
     <Property Type="Int32" Name="car_id" Nullable="true" />
     <Property Type="Double" Name="fuel_value" Nullable="false" />
@@ -231,7 +231,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="name" Nullable="true" />
     <Property Type="String" Name="number" Nullable="true" />
     <Property Type="String" Name="transponder" Nullable="false" />
@@ -261,7 +261,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="name" Nullable="false" />
     <Property Type="String" Name="sale" Nullable="true" />
     <Property Type="DateTime" Name="created" Nullable="true" />
@@ -284,7 +284,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int32" Name="tp" Nullable="false" />
     <Property Type="String" Name="comment" Nullable="true" />
     <Property Type="DateTime" Name="created" Nullable="false" />
@@ -299,7 +299,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="DateTime" Name="racedate" Nullable="true" />
     <Property Type="String" Name="raceid" Nullable="false" />
     <Property Type="DateTime" Name="created" Nullable="false" />
@@ -321,7 +321,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="name" Nullable="true" />
     <Property Type="Double" Name="length" Nullable="true" />
     <Property Type="String" Name="file" Nullable="true" />
@@ -369,7 +369,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int32" Name="stat" Nullable="true" />
     <Property Type="DateTime" Name="created" Nullable="false" />
     <NavigationProperty Name="program_users" Relationship="crazykart.loginsprogram_users" FromRole="logins" ToRole="program_users" />
@@ -379,7 +379,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int32" Name="m_type" Nullable="false" />
     <Property Type="String" Name="message" Nullable="true" />
     <Property Type="DateTime" Name="created" Nullable="false" />
@@ -397,7 +397,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="transponder" Nullable="true" />
     <NavigationProperty Name="race" Relationship="crazykart.noracekartraces" FromRole="noracekart" ToRole="races" />
     <Property Type="Int32" Name="race_id" Nullable="true" />
@@ -419,7 +419,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int32" Name="week" Nullable="false" />
     <Property Type="String" Name="d1" Nullable="true" />
     <Property Type="String" Name="d2" Nullable="true" />
@@ -435,7 +435,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="name" Nullable="false" />
     <Property Type="Int32" Name="length" Nullable="false" />
     <NavigationProperty Name="prices" Relationship="crazykart.pricesrace_modes" FromRole="race_modes" ToRole="prices" />
@@ -458,7 +458,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="login" Nullable="false" />
     <Property Type="String" Name="password" Nullable="false" />
     <Property Type="Int32" Name="stat" Nullable="true" />
@@ -480,7 +480,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <NavigationProperty Name="race" Relationship="crazykart.race_dataraces" FromRole="race_data" ToRole="races" />
     <Property Type="Int32" Name="race_id" Nullable="true" />
     <NavigationProperty Name="user" Relationship="crazykart.race_datausers" FromRole="race_data" ToRole="users" />
@@ -544,7 +544,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int32" Name="lap" Nullable="true" />
     <Property Type="Decimal" Name="seconds" Nullable="false" Precision="18" Scale="7" />
     <Property Type="DateTime" Name="created" Nullable="false" />
@@ -555,7 +555,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="name" Nullable="false" />
     <Property Type="String" Name="val" Nullable="false" />
     <Property Type="String" Name="description" Nullable="true" />
@@ -564,7 +564,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <NavigationProperty Name="user" Relationship="crazykart.user_cashusers" FromRole="user_cash" ToRole="users" />
     <Property Type="Int32" Name="user_id" Nullable="true" />
     <Property Type="Double" Name="sum" Nullable="true" />
@@ -685,7 +685,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <NavigationProperty Name="owner" Relationship="crazykart.DiscountCardusers" FromRole="DiscountCard" ToRole="users" />
     <Property Type="Int32" Name="idOwner" Nullable="true" />
     <NavigationProperty Name="seller" Relationship="crazykart.DiscountCardprogram_users" FromRole="DiscountCard" ToRole="program_users" />
@@ -730,7 +730,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int16" Name="PercentOfDiscount" Nullable="false" />
     <NavigationProperty Name="DiscountCards" Relationship="crazykart.DiscountCardDiscountCardGroup" FromRole="DiscountCardGroup" ToRole="DiscountCard" />
     <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
@@ -763,7 +763,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Double" Name="litres" Nullable="false" />
     <NavigationProperty Name="program_users" Relationship="crazykart.Petrolprogram_users" FromRole="Petrol" ToRole="program_users" />
     <Property Type="Int32" Name="program_users_id" Nullable="false" />

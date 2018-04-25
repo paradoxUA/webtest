@@ -18,11 +18,11 @@ namespace Rentix
         public static bool ConnectGood()
         {
             var connectGood = false;
-            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            //var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             try
             {
-                connectionString = config.AppSettings.Settings["crazykartConnectionString"].Value;
-
+                //connectionString = config.AppSettings.Settings["crazykartConnectionString"].Value;
+                connectionString = ConfigurationManager.ConnectionStrings["crazykartConnectionString"].ConnectionString;
                 connectGood = false;
                 var db = new SqlConnection(connectionString);
                 try
