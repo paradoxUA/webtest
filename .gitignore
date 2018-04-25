@@ -15,3 +15,5 @@ ProkardTimingSource/Prokard Timing/obj/x86/Debug/Prokard_Timing.exe
 Debug/
 Debug/
 .vs/
+
+*.orig
