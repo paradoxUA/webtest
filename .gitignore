@@ -12,3 +12,6 @@ ProkardTimingSource/CrazyKartActivation/bin/Debug/CrazyKartActivation.exe
 ProkardTimingSource/Prokard Timing/obj/x86/Debug/Prokard_Timing.exe
 *.Cache
 *.cache
+Debug/
+Debug/
+.vs/

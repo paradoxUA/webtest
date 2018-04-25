@@ -29,7 +29,7 @@ namespace Rentix.model
         public Nullable<int> stat { get; set; }
         public int track_id { get; set; }
         public bool light_mode { get; set; }
-        public Nullable<bool> is_race { get; set; }
+        //public Nullable<bool> is_race { get; set; }
     
         public virtual tracks track { get; set; }
         public virtual ICollection<jurnal> jurnals { get; set; }

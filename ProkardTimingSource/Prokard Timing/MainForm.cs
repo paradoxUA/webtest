@@ -122,7 +122,7 @@ namespace Rentix
             DateTime endDate = startDate.AddDays(1).AddMilliseconds(-1);
 
             // получили набор заездов за выбранный день
-            List<races> someRaces = db.races.Where(m => m.is_race == true).Where(m => m.created >= startDate).Where(m => m.created <= endDate).OrderBy(m => m.created).ToList();
+            List<races> someRaces = db.races/*.Where(m => m.is_race == true)*/.Where(m => m.created >= startDate).Where(m => m.created <= endDate).OrderBy(m => m.created).ToList();
 
             DateTime startTime = DateTime.Now;
             racesList_dataGridView1.SuspendLayout();
@@ -201,7 +201,7 @@ namespace Rentix
             racesList_dataGridView1.Refresh();
             racesList_dataGridView1.ResumeLayout(false);
 
-            labelSmooth1.Text = "Трек - " + admin.model.GetTrackName(admin.Settings["default_track"].ToString());
+            labelSmooth1.Text = "Трек - " + admin.model.GetTrackName(admin.Settings.ContainsKey("default_track") ? (int)admin.Settings["default_track"] : -1);
             SetControlButton();
 
             TimeSpan executionTime = DateTime.Now - startTime;
@@ -266,8 +266,8 @@ namespace Rentix
 
                 racesList_dataGridView1.Refresh();
                 racesList_dataGridView1.ResumeLayout(false);
-
-                labelSmooth1.Text = "Трек - " + admin.model.GetTrackName(admin.Settings["default_track"].ToString());
+				if(admin.Settings["default_track"] == null)
+                labelSmooth1.Text = "Трек - " + admin.model.GetTrackName(admin.Settings.ContainsKey("default_track") ? (int)admin.Settings["default_track"] : -1);
                 SetControlButton();
 
                 TimeSpan executionTime = DateTime.Now - startTime;
@@ -935,7 +935,7 @@ namespace Rentix
             if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 admin.Settings = admin.model.LoadSettings();
-                labelSmooth1.Text = "Трек - " + admin.model.GetTrackName(admin.Settings["default_track"].ToString());
+                labelSmooth1.Text = "Трек - " + admin.model.GetTrackName(admin.Settings.ContainsKey("default_track") ? (int)admin.Settings["default_track"] : -1);
                 ShowEvents();
             }
             form.Dispose();

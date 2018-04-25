@@ -15,10 +15,15 @@ namespace Rentix.model
     
     public partial class crazykartContainer : DbContext
     {
-        public crazykartContainer()
-            : base("name=crazykartContainer")
+        public crazykartContainer(string connectionString)
+            : base(connectionString)
         {
         }
+
+		public crazykartContainer() : base("name=crazykartContainer")
+		{
+
+		}
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -125,7 +125,7 @@ namespace Rentix.Forms.Discount.Card
         // добавим карту
         private void button1_Click(object sender, EventArgs e)
         {
-            if (ci.getSelectedValue(cardGroup_comboBox1) == -1)
+            if (comboBoxItem.getSelectedValue(cardGroup_comboBox1) == -1)
             {
                 statusStrip1.Text = "Необходимо указать тип скидочной карты";
                 return;
@@ -133,10 +133,10 @@ namespace Rentix.Forms.Discount.Card
 
             if (isEditMode)
             {
-                currentCardForEditMode.idOwner = ci.getSelectedValue(owner_comboBox1);
+                currentCardForEditMode.idOwner = comboBoxItem.getSelectedValue(owner_comboBox1);
             //    currentCardForEditMode.Number = cardNumber_textBox1.Text;
                 currentCardForEditMode.idSeller = admin.USER_ID;
-                currentCardForEditMode.IdDiscountCardGroup = ci.getSelectedValue(cardGroup_comboBox1);
+                currentCardForEditMode.IdDiscountCardGroup = comboBoxItem.getSelectedValue(cardGroup_comboBox1);
                admin.model.editDiscountCard(currentCardForEditMode);
                this.Close();
             }
@@ -144,14 +144,14 @@ namespace Rentix.Forms.Discount.Card
             {
                 DiscountCard someCard = new DiscountCard
                 {
-                    idOwner = ci.getSelectedValue(owner_comboBox1),
+                    idOwner = comboBoxItem.getSelectedValue(owner_comboBox1),
                     Number = cardNumber_textBox1.Text,
                     Created = assigned_dateTimePicker1.Value,
                     idSeller = admin.USER_ID,
                     ValidUntil = DateTime.Now.AddYears(100),
                     IsBlocked = false,
                     SalePlace = "",
-                    IdDiscountCardGroup = ci.getSelectedValue(cardGroup_comboBox1)
+                    IdDiscountCardGroup = comboBoxItem.getSelectedValue(cardGroup_comboBox1)
 
                 };
 

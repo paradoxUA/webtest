@@ -105,7 +105,7 @@ namespace Rentix
                     string idRace = startDate.Hour.ToString() + "," + (cell+1).ToString();
                     
                     int newRaceId = admin.model.CreateRace(startDate, idRace, 
-                        Convert.ToString(ci.getSelectedValue(tracks_comboBox)), cell + 1);
+                        comboBoxItem.getSelectedValue(tracks_comboBox).ToString(), cell + 1);
 
                     racesIds.Add(newRaceId);
                     label3.Text = racesIds.Count.ToString();

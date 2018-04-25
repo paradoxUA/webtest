@@ -70,7 +70,7 @@ namespace Rentix
             {
                 case 0: GetDaySatistic(); break;
                 case 1: /*admin.ShowRaceJurnal(Pages, dataGridView1, dateTimePicker2.Value, dateTimePicker5.Value, eventsInRacesJournal_comboBox.SelectedIndex); RaceJurnalCalculate();*/ break;
-                case 2: admin.ShowBestResults(top40_dataGridView, ci.getSelectedValue(tracks_comboBox1), top40Record_labelSmooth12,true);  break;
+                case 2: admin.ShowBestResults(top40_dataGridView, comboBoxItem.getSelectedValue(tracks_comboBox1), top40Record_labelSmooth12,true);  break;
                 case 3: GetAllUsersStatistic(); break;
                 case 4: GetAllKartStatistic(); break;
             }
@@ -83,7 +83,10 @@ namespace Rentix
                 tabPage8.Parent = tabControl2_del;
             }
 
-        }
+			var firstDayOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+			dateTimePicker6.Value = firstDayOfMonth;
+			dateTimePicker7.Value = firstDayOfMonth.AddMonths(1).AddDays(-1).Add(new TimeSpan(23,59,59));
+		}
 
         private void RaceJurnalCalculate()
         {
@@ -112,10 +115,10 @@ namespace Rentix
         // выбрана другая траса на закладке Лучшее время
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedIndex == 2)
-            {
-                admin.ShowBestResults(top40_dataGridView, ci.getSelectedValue(tracks_comboBox1), top40Record_labelSmooth12,true);
-            }
+			if (tabControl1.SelectedIndex == 2)
+			{
+				FillBestResults();
+			}
         }
 
 
@@ -135,8 +138,7 @@ namespace Rentix
                     RaceJurnalCalculate(); } */ break;
                 case 2: if (top40_dataGridView.Rows.Count == 0)
                     {
-                        admin.ShowBestResults(top40_dataGridView, ci.getSelectedValue(tracks_comboBox1), top40Record_labelSmooth12,true);
-
+						FillBestResults();
                     }
                     break;
                 case 3: GetAllUsersStatistic(); break;
@@ -152,6 +154,11 @@ namespace Rentix
 
             }
         }
+
+		private void FillBestResults()
+		{
+			admin.ShowBestResults(top40_dataGridView, comboBoxItem.getSelectedValue(tracks_comboBox1), top40Record_labelSmooth12, true, dateTimePicker6.Value, dateTimePicker7.Value);
+		}
 
 
         private void fillPetroleumStat()
@@ -560,7 +567,7 @@ namespace Rentix
                 busyForm.SetProgressValue(1);                
             }           
 
-            admin.ShowBestResults(top40_dataGridView, ci.getSelectedValue(tracks_comboBox1), top40Record_labelSmooth12, true);
+            FillBestResults();;
 
             busyForm.CloseForm();
 
@@ -596,7 +603,7 @@ namespace Rentix
                 admin.model.delPilotStatistic(idPilot, admin.User_Name);
             }
 
-            admin.ShowBestResults(top40_dataGridView, ci.getSelectedValue(tracks_comboBox1), top40Record_labelSmooth12, true);
+            FillBestResults();;
 
             if (top40_dataGridView.Rows.Count > 0)
             {
@@ -614,11 +621,11 @@ namespace Rentix
             for (int i = 0; i < top40_dataGridView.SelectedRows.Count; i++)
             {
                 int idPilot = Convert.ToInt32(top40_dataGridView.SelectedRows[i].Cells[9].Value);
-                int trackId = ci.getSelectedValue(tracks_comboBox1);
+                int trackId = comboBoxItem.getSelectedValue(tracks_comboBox1);
                 admin.model.delPilotStatisticForSomeTrack(idPilot, admin.User_Name, trackId);
             }
 
-            admin.ShowBestResults(top40_dataGridView, ci.getSelectedValue(tracks_comboBox1), top40Record_labelSmooth12, true);
+            FillBestResults();;
 
             if (top40_dataGridView.Rows.Count > 0)
             {
@@ -626,9 +633,14 @@ namespace Rentix
             }
         }
 
-      
-      
+		private void dateTimePicker6_ValueChanged_1(object sender, EventArgs e)
+		{
+			FillBestResults();
+		}
 
-
-    }
+		private void dateTimePicker7_ValueChanged(object sender, EventArgs e)
+		{
+			FillBestResults();
+		}
+	}
 }

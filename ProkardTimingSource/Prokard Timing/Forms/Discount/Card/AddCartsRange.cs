@@ -56,7 +56,7 @@ namespace Rentix.Forms.Discount.Card
         // добавим карту
         private void button1_Click(object sender, EventArgs e)
         {
-            if (ci.getSelectedValue(cardGroup_comboBox1) == -1)
+            if (comboBoxItem.getSelectedValue(cardGroup_comboBox1) == -1)
             {
                 statusStrip1.Text = "Необходимо указать тип скидочной карты";
                 return;
@@ -76,7 +76,7 @@ namespace Rentix.Forms.Discount.Card
                     ValidUntil = DateTime.Now.AddYears(100),
                     IsBlocked = false,
                     SalePlace = "",
-                    IdDiscountCardGroup = ci.getSelectedValue(cardGroup_comboBox1)
+                    IdDiscountCardGroup = comboBoxItem.getSelectedValue(cardGroup_comboBox1)
                 };
 
                 bool isAdded = admin.model.assignDiscountCard(someCard);

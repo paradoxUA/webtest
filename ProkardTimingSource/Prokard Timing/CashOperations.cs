@@ -233,7 +233,7 @@ namespace Rentix
             // узнали полную цену для этого времени, с учётом указанного количества кругов
             Sum = Convert.ToDouble(admin.GetPrice(admin.GetWeekDayNumber(Race.Date),
                 Convert.ToInt16(Race.Hour),
-                ci.getSelectedValue(halfModes_comboBox), idGroup));
+                comboBoxItem.getSelectedValue(halfModes_comboBox), idGroup));
 
             
             /* есть такие скидки - certificateSale - скидка по сертификату
@@ -569,7 +569,7 @@ namespace Rentix
 
             string priceForHalfMode = admin.GetPrice(admin.GetWeekDayNumber(Race.Date),
                 Convert.ToInt16(Race.Hour), 
-                ci.getSelectedValue(halfModes_comboBox));
+                comboBoxItem.getSelectedValue(halfModes_comboBox));
 
             priceForCurrentRace_textBox5.Text = priceForHalfMode;
             cashFromPilot_textBox3.Text = priceForHalfMode;

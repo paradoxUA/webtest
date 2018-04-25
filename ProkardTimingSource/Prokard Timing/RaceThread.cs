@@ -94,7 +94,7 @@ namespace Rentix
                 ds.ReadXml(path);
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
-                    if (row.ItemArray[0].ToString().Trim() == Settings["decoder"].ToString().Trim())
+                    if (row.ItemArray[0].ToString().Trim() == Settings["decoder"]?.ToString().Trim())
                     {
                         decoderSetts = row.ItemArray;
                     }

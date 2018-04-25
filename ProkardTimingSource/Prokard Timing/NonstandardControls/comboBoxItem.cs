@@ -24,14 +24,14 @@ namespace Rentix.Controls
         }
 
         /*
-        public string getSelectedValue()
+        public comboBoxItem getSelectedValue()
         {
             return Convert.ToString(this.value);
         }
         */
 
         // так как comboboxы содержат нестандартные items, то и выделять их надо нестандартно ;-)
-        public Int32 getSelectedValue(ComboBox someComboBox)
+        public static int getSelectedValue(ComboBox someComboBox)
         {
             if(someComboBox.SelectedIndex < 0)
             {

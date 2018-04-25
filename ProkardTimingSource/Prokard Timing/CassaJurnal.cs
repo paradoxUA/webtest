@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rentix.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -36,11 +37,30 @@ namespace Rentix
           //  dateTimePicker2.Value = DateTime.Now;
             button2.Enabled = cassa_dataGridView1.Rows.Count > 0;
 
-            if (!admin.IS_ADMIN)
+			FillRaceTypes();
+
+
+			if (!admin.IS_ADMIN)
             {
                 this.Close();
             }
+
+			
         }
+
+		private void FillRaceTypes()
+		{
+			raceTypeComboBox.Items.Clear();
+			var raceModes = admin.model.GetAllRaceModes("and is_deleted <> 1");
+			raceTypeComboBox.Items.Add(new comboBoxItem("", -1));
+			foreach (var item in raceModes)
+			{
+				var comboBoxItem  = new comboBoxItem(
+					Convert.ToString(item["name"]),
+					Convert.ToInt32(item["id"]));
+				raceTypeComboBox.Items.Add(comboBoxItem);
+			}
+		}
 
         private void GetCashData()
         {
@@ -141,32 +161,31 @@ namespace Rentix
         // изменён диапазон дат
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            admin.GetCassaReport(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, Pages);
+            UpdateCassaReport();
             GetCashData();
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            admin.GetCassaReport(cassa_dataGridView1, dateTimePicker1.Value, 1, dateTimePicker2.Value, Pages);
             GlobalRadio = 1;
-            GetCashData();
+			UpdateCassaReport();
+			GetCashData();
           
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            admin.GetCassaReport(cassa_dataGridView1, dateTimePicker1.Value, 2, dateTimePicker2.Value, Pages);
-            GlobalRadio = 2;
-            GetCashData();
+			GlobalRadio = 2;
+			GetCashData();
           
         }
 
         // sgavrilenko опция не используется (visible = false)
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-            admin.GetCassaReport(cassa_dataGridView1, dateTimePicker1.Value, 3, dateTimePicker2.Value, Pages);
             GlobalRadio = 3;
-            GetCashData();
+			UpdateCassaReport();
+			GetCashData();
           
         }
 
@@ -185,7 +204,7 @@ namespace Rentix
                 {
                     Pages.ToPage(Convert.ToInt32(toolStripComboBox1.Items[toolStripComboBox1.SelectedIndex].ToString()));
                     // ShowAllPilots(dataGridView1);
-                    admin.GetCassaReport(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, Pages);
+                    UpdateCassaReport();
 
                 }
             }
@@ -199,7 +218,7 @@ namespace Rentix
 
                 Pages.First();
                 //ShowAllPilots(dataGridView1);
-                admin.GetCassaReport(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, Pages);
+                UpdateCassaReport();
 
             }
         }
@@ -212,7 +231,7 @@ namespace Rentix
             {
                 Pages.Prev();
                 //ShowAllPilots(dataGridView1);
-                admin.GetCassaReport(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, Pages);
+                UpdateCassaReport();
 
             }
         }
@@ -225,7 +244,7 @@ namespace Rentix
             {
                 Pages.Next();
                 //ShowAllPilots(dataGridView1);
-                admin.GetCassaReport(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, Pages);
+                UpdateCassaReport();
 
             }
         }
@@ -237,7 +256,7 @@ namespace Rentix
             {
                 Pages.Last();
                 //ShowAllPilots(dataGridView1);
-                admin.GetCassaReport(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, Pages);
+                UpdateCassaReport();
 
             }
         }
@@ -265,10 +284,10 @@ namespace Rentix
                 }
                 
                 Pages.OnChange = true;
-                //ShowAllPilots(dataGridView1);
-                admin.GetCassaReport(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, Pages, _race_id);
+				//ShowAllPilots(dataGridView1);
+				UpdateCassaReport();
 
-                Pages.FillPageNumbers();
+				Pages.FillPageNumbers();
 
                 /*
                 if (Pages.CurrentPageNumber < toolStripComboBox1.Items.Count)
@@ -279,9 +298,16 @@ namespace Rentix
             }
         }
 
-        private void radioButton2_CheckedChanged_1(object sender, EventArgs e)
-        {
+		private void UpdateCassaReport()
+		{
+			admin.GetCassaReport(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, Pages, _race_id, comboBoxItem.getSelectedValue(raceTypeComboBox));
+			var sum = admin.GetCassaSum(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, Pages, _race_id, comboBoxItem.getSelectedValue(raceTypeComboBox));
+			label8.Text = "Сумма операций: " + sum + "грн.";
+		}
 
-        }
-    }
+		private void raceTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			UpdateCassaReport();
+		}
+	}
 }

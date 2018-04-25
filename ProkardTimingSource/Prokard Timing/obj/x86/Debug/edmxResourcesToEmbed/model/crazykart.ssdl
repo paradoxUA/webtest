@@ -246,7 +246,7 @@
     <Property Name="stat" Type="int" Nullable="true" />
     <Property Name="track_id" Type="int" Nullable="false" />
     <Property Name="light_mode" Type="bit" Nullable="false" />
-    <Property Name="is_race" Type="bit" Nullable="true" />
+    <!--<Property Name="is_race" Type="bit" Nullable="true" />-->
   </EntityType>
   <EntityType Name="tracks">
     <Key>

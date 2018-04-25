@@ -124,7 +124,7 @@ namespace Rentix
                         }
                         ret = true;
                         paidAmount = Convert.ToDouble(form.priceForCurrentRace_textBox5.Text);
-                        idRaceMode = ci.getSelectedValue(form.halfModes_comboBox);
+                        idRaceMode = comboBoxItem.getSelectedValue(form.halfModes_comboBox);
                     }
                 }
                 else

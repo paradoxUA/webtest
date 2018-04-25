@@ -1144,10 +1144,10 @@ namespace Rentix
 
         }
 
-        // Показывает список лучших результатов
-        public void ShowBestResults(DataGridView dv, int idTrack, LabelSmooth Records, bool ShowRaceID = false)
+		// Показывает список лучших результатов
+		public void ShowBestResults(DataGridView dv, int idTrack, LabelSmooth Records, bool ShowRaceID = false, DateTime? dateTimeBegin = null, DateTime? dateTimeEnd = null)
         {
-            List<Hashtable> Best = model.GetBestResults(idTrack, UniqueBestResult, DateTime.Now.AddYears(-1000), DateTime.Now.AddYears(1000), 40); // вдруг машину времени изобретут...
+            List<Hashtable> Best = model.GetBestResults(idTrack, UniqueBestResult, dateTimeBegin ?? DateTime.Now.AddYears(-1000), dateTimeEnd ?? DateTime.Now.AddYears(1000), 40); // вдруг машину времени изобретут...
 
             dv.Rows.Clear();
             string pilotname = "";
@@ -1243,7 +1243,7 @@ namespace Rentix
         }
 
         // Показывает данные кассы за выбранную дату
-        public void GetCassaReport(DataGridView dv, DateTime Date, int reportType, DateTime Date2, PageLister Pages, int race_id = 0)
+        public void GetCassaReport(DataGridView dv, DateTime Date, int reportType, DateTime Date2, PageLister Pages, int race_id = 0, int raceTypeId = -1)
         {
             // если наоборот даты, то поменяем местами
             if (Date2 < Date)
@@ -1256,7 +1256,7 @@ namespace Rentix
             Date = datetimeConverter.toStartDateTime(Date);
             Date2 = datetimeConverter.toEndDateTime(Date2);
 
-            List<Hashtable> Cassa = model.GetCassaReport(Date, reportType, Date2, Pages, race_id);
+            List<Hashtable> Cassa = model.GetCassaReport(Date, reportType, Date2, Pages, race_id, raceTypeId);
             dv.Rows.Clear();
 
             int lastRaceId = -1; // между рейсами вставим чёрную строку, чтобы их разделять в списке
@@ -1310,6 +1310,11 @@ namespace Rentix
                 dv.Rows.Add(dr);
             }
         }
+
+		public double GetCassaSum(DataGridView dv, DateTime Date, int reportType, DateTime Date2, PageLister Pages, int race_id = 0, int raceTypeId = -1)
+		{
+			return model.GetCassaReportSum(Date, reportType, Date2, Pages, race_id, raceTypeId);
+		}
 
         // Показывает имя документа
         private string GetDocName(int DocNum)

@@ -98,7 +98,7 @@ namespace Rentix
             string selectedTimeString = RaceMode_comboBox.SelectedItem.ToString(); // 10 минут 
             selectedTimeString = selectedTimeString.Substring(0,selectedTimeString.IndexOf(" "));
               
-            RaceMaxTick = Convert.ToInt16(selectedTimeString.Trim()); // Convert.ToInt16(ci.getSelectedValue(RaceMode_comboBox));
+            RaceMaxTick = Convert.ToInt16(selectedTimeString.Trim()); // comboBoxItem.getSelectedValue(RaceMode_comboBox));
 
             /*
             switch (RaceMode_comboBox.SelectedIndex)
@@ -1067,7 +1067,7 @@ namespace Rentix
                 return;
             }
 
-            timeMode_label.Text = parent.admin.model.GetRaceModeById(ci.getSelectedValue(RaceMode_comboBox)).length.ToString() + ":00";
+            timeMode_label.Text = (comboBoxItem.getSelectedValue(RaceMode_comboBox)).ToString() + ":00";
             
         }
          

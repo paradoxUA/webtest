@@ -97,130 +97,139 @@ namespace Rentix
 
             Hashtable sett = parent.admin.model.LoadSettings();
 
-            // Закладка Общие настройки
-            numericUpDown4.Value = Convert.ToInt32(sett["time_start"]);
-            numericUpDown5.Value = Convert.ToInt32(sett["time_end"]);
-            checkBox1.Checked = Convert.ToBoolean(sett["time_wrap"]);
-            numericUpDown1.Value = Convert.ToInt32(sett["wrap_pos"]);
-            checkBox8.Checked = Convert.ToBoolean(sett["show_events"]);
-            numericUpDown1.Enabled = checkBox1.Checked;
-            checkBox6.Checked = Convert.ToBoolean(sett["enter_password"]);
-            numericUpDown7.Value = Convert.ToInt32(sett["sertificat_day"]);
-            checkBox9.Checked = Convert.ToBoolean(sett["card_user"]);
-            checkBox10.Checked = Convert.ToBoolean(sett["beep_system"] ?? false);
-            checkBox11.Checked = Convert.ToBoolean(sett["beep_windows"] ?? false);
-            showUniqueBestResults_checkBox.Checked = Convert.ToBoolean(sett["uniquebestres"] ?? false);
+			try
+			{
+				// Закладка Общие настройки
+				numericUpDown4.Value = Convert.ToInt32(sett["time_start"]);
+				numericUpDown5.Value = Convert.ToInt32(sett["time_end"]);
+				checkBox1.Checked = Convert.ToBoolean(sett["time_wrap"]);
+				numericUpDown1.Value = Convert.ToInt32(sett["wrap_pos"]);
+				checkBox8.Checked = Convert.ToBoolean(sett["show_events"]);
+				numericUpDown1.Enabled = checkBox1.Checked;
+				checkBox6.Checked = Convert.ToBoolean(sett["enter_password"]);
+				numericUpDown7.Value = Convert.ToInt32(sett["sertificat_day"]);
+				checkBox9.Checked = Convert.ToBoolean(sett["card_user"]);
+				checkBox10.Checked = Convert.ToBoolean(sett["beep_system"] ?? false);
+				checkBox11.Checked = Convert.ToBoolean(sett["beep_windows"] ?? false);
+				showUniqueBestResults_checkBox.Checked = Convert.ToBoolean(sett["uniquebestres"] ?? false);
 
 
-            // Закладка оборудование
-            comboBox1.SelectedIndex = comboBox1.Items.IndexOf(sett["rs232_port"]);
-            comboBox3.SelectedIndex = comboBox3.Items.IndexOf(sett["decoder"]);
-            comboBox4.SelectedIndex = comboBox4.Items.IndexOf(sett["printer_result"]);
-            comboBox5.SelectedIndex = comboBox5.Items.IndexOf(sett["printer_check"]);
-            checkBox2.Checked = Convert.ToBoolean(sett["print_check"]);
+				// Закладка оборудование
 
-            // Закладка Гонка
-            checkBox3.Checked = Convert.ToBoolean(sett["stop_on_pause"]);
-            checkBox4.Checked = Convert.ToBoolean(sett["start_after_detection"]);
-            checkBox5.Checked = Convert.ToBoolean(sett["print_result"]);
-            checkBox7.Checked = Convert.ToBoolean(sett["show_zero_lap"]);
-            minimumLapTime_numericUpDown2.Value = Convert.ToInt32(sett["noise_time"]);
-            numericUpDown3.Value = Convert.ToInt32(sett["track_length"]);
-            //numericUpDown6.Value = Convert.ToInt32(sett["race_time"]);
+				comboBox1.SelectedIndex = comboBox1.Items.IndexOf(sett["rs232_port"]);
+				comboBox3.SelectedIndex = comboBox3.Items.IndexOf(sett["decoder"]);
+				comboBox4.SelectedIndex = comboBox4.Items.IndexOf(sett["printer_result"]);
+				comboBox5.SelectedIndex = comboBox5.Items.IndexOf(sett["printer_check"]);
+				checkBox2.Checked = Convert.ToBoolean(sett["print_check"]);
 
-            // время гонки по умолчанию
-            // заполнить список с временами гонки
+				// Закладка Гонка
+				checkBox3.Checked = Convert.ToBoolean(sett["stop_on_pause"]);
+				checkBox4.Checked = Convert.ToBoolean(sett["start_after_detection"]);
+				checkBox5.Checked = Convert.ToBoolean(sett["print_result"]);
+				checkBox7.Checked = Convert.ToBoolean(sett["show_zero_lap"]);
+				minimumLapTime_numericUpDown2.Value = Convert.ToInt32(sett["noise_time"]);
+				numericUpDown3.Value = Convert.ToInt32(sett["track_length"]);
+				//numericUpDown6.Value = Convert.ToInt32(sett["race_time"]);
 
-            if (sett["default_race_mode_id"] != null)
-            {
-                comboBoxItem ci = new comboBoxItem("", -1);
-                ci.selectComboBoxValueById(defaultRaceMode_comboBox6, Convert.ToInt32(sett["default_race_mode_id"]));
-            }
-                // defaultRaceMode_comboBox6.SelectedValue = sett["default_race_mode_id"]; 
+				// время гонки по умолчанию
+				// заполнить список с временами гонки
+
+				if (sett["default_race_mode_id"] != null)
+				{
+					comboBoxItem ci = new comboBoxItem("", -1);
+					ci.selectComboBoxValueById(defaultRaceMode_comboBox6, Convert.ToInt32(sett["default_race_mode_id"]));
+				}
+				// defaultRaceMode_comboBox6.SelectedValue = sett["default_race_mode_id"]; 
 
 
-            try
-            {
-                textBox1.Text = sett["fuel_on_lap"].ToString();
-            }
-            catch (Exception ex)
-            {
+				try
+				{
+					textBox1.Text = sett["fuel_on_lap"].ToString();
+				}
+				catch (Exception ex)
+				{
 
-            }
+				}
 
-            comboBox2.SelectedIndex = comboBox2.Items.IndexOf(parent.admin.model.GetTrackName(sett["default_track"].ToString()));
-                      
+				comboBox2.SelectedIndex = comboBox2.Items.IndexOf(parent.admin.model.GetTrackName((int)sett["default_track"]));
 
-             if(Convert.ToBoolean(sett["warm_subtract"]) == true)
-            {
-            checkBox14.Checked =  true;
-            }
-            else
-            {
-                checkBox14.Checked = false;
-            }
 
-            numericUpDown8.Value = Convert.ToInt32(sett["warm_time"]??0);
+				if (Convert.ToBoolean(sett["warm_subtract"]) == true)
+				{
+					checkBox14.Checked = true;
+				}
+				else
+				{
+					checkBox14.Checked = false;
+				}
 
-            // connection string
+				numericUpDown8.Value = Convert.ToInt32(sett["warm_time"] ?? 0);
+
+				// connection string
             //Configuration config = System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Configuration.ConfigurationUserLevel.None);
             //connectionString_textBox9.Text = config.AppSettings.Settings["crazykartConnectionString"].Value;
 
             connectionString_textBox9.Text = ConfigurationManager.ConnectionStrings["crazykartConnectionString"].ConnectionString;
             
-            //Закладка временных скидок
-            isTimeDiscountsAvailable_checkBox13.Checked = Convert.ToBoolean(sett["racesale"] ?? false);
-            numericUpDown9.Value = Convert.ToInt32(sett["sale_onelap"] ?? 0);
-            numericUpDown10.Value = Convert.ToInt32(sett["sale_half"] ?? 0);
+				//Закладка временных скидок
+				isTimeDiscountsAvailable_checkBox13.Checked = Convert.ToBoolean(sett["racesale"] ?? false);
+				numericUpDown9.Value = Convert.ToInt32(sett["sale_onelap"] ?? 0);
+				numericUpDown10.Value = Convert.ToInt32(sett["sale_half"] ?? 0);
 
-            isHalfModesEnabled_checkBox.Checked = Convert.ToBoolean(sett["halfModesEnabled"] ?? false);
-            
-            // Анонсер
-            if (sett["images_for_anonser"] != null)
-            {
-                anonserImagesFolder_textBox9.Text = sett["images_for_anonser"].ToString();
-               
-            }
-            else
-            {
-                anonserImagesFolder_textBox9.Text = "";
-            }
+				isHalfModesEnabled_checkBox.Checked = Convert.ToBoolean(sett["halfModesEnabled"] ?? false);
 
-             if (sett["sponsors_images_for_anonser"] != null)
-            {
-               sponsorsImagesFolder_textBox9.Text = sett["sponsors_images_for_anonser"].ToString();
-               
-            }
-            else
-            {
-                sponsorsImagesFolder_textBox9.Text = "";
-            }
+				// Анонсер
+				if (sett["images_for_anonser"] != null)
+				{
+					anonserImagesFolder_textBox9.Text = sett["images_for_anonser"].ToString();
 
-            nextRacePilotsTimer_numericUpDown11.Value =
-                Convert.ToInt32(sett["anonser_nextRacePilotsTimer"]); // Показывает пилотов следующего рейса
-            
-            raceLoadTimer_numericUpDown12.Value = Convert.ToInt32(sett["anonser_raceLoadTimer"]); // Показывает загрузку рейса
-            bestResultTimer_numericUpDown13.Value = Convert.ToInt32(sett["anonser_bestResultTimer"]);  // Показывает лучший результат
-            currentResultTimer_numericUpDown14.Value = Convert.ToInt32(sett["anonser_currentResultTimer"]); // время по кругам
-            anonserImageRotator_numericUpDown2.Value = Convert.ToInt32(sett["anonser_imageRotateTimer"]);  // смена картинки, когда нет заезда         
+				}
+				else
+				{
+					anonserImagesFolder_textBox9.Text = "";
+				}
 
-            sponsorsImagesRotator_numericUpDown2.Value = Convert.ToInt32(sett["sponsors_images_rotate_timer"]);            
-            sponsorsImagesFolder_textBox9.Text = Convert.ToString(sett["sponsors_images_for_anonser"]);
+				if (sett["sponsors_images_for_anonser"] != null)
+				{
+					sponsorsImagesFolder_textBox9.Text = sett["sponsors_images_for_anonser"].ToString();
 
+				}
+				else
+				{
+					sponsorsImagesFolder_textBox9.Text = "";
+				}
 
+				nextRacePilotsTimer_numericUpDown11.Value =
+					Convert.ToInt32(sett["anonser_nextRacePilotsTimer"]); // Показывает пилотов следующего рейса
+
+				raceLoadTimer_numericUpDown12.Value = Convert.ToInt32(sett["anonser_raceLoadTimer"]); // Показывает загрузку рейса
+				bestResultTimer_numericUpDown13.Value = Convert.ToInt32(sett["anonser_bestResultTimer"]);  // Показывает лучший результат
+				currentResultTimer_numericUpDown14.Value = Convert.ToInt32(sett["anonser_currentResultTimer"]); // время по кругам
+				anonserImageRotator_numericUpDown2.Value = Convert.ToInt32(sett["anonser_imageRotateTimer"]);  // смена картинки, когда нет заезда         
+
+				sponsorsImagesRotator_numericUpDown2.Value = Convert.ToInt32(sett["sponsors_images_rotate_timer"]);
+				sponsorsImagesFolder_textBox9.Text = Convert.ToString(sett["sponsors_images_for_anonser"]);
 
 
-            List<string> SettFromFile = parent.admin.LoadSettings();
-            if (SettFromFile.Count > 0)
-            {
-                string[] MySQLData = parent.admin.ParseMySQLConfig(SettFromFile[0]);
 
-                textBox2.Text = MySQLData[0];
-                textBox3.Text = MySQLData[1];
-                textBox4.Text = MySQLData[2];
-                textBox5.Text = MySQLData[3];
-                textBox6.Text = MySQLData[4];
-            }
+
+				List<string> SettFromFile = parent.admin.LoadSettings();
+				if (SettFromFile.Count > 0)
+				{
+					string[] MySQLData = parent.admin.ParseMySQLConfig(SettFromFile[0]);
+
+					textBox2.Text = MySQLData[0];
+					textBox3.Text = MySQLData[1];
+					textBox4.Text = MySQLData[2];
+					textBox5.Text = MySQLData[3];
+					textBox6.Text = MySQLData[4];
+				}
+
+			}
+			catch
+			{
+
+			}
             
         }
       
@@ -238,6 +247,7 @@ namespace Rentix
         private void button2_Click(object sender, EventArgs e)
         {
             Hashtable sett = new Hashtable();
+
             InSave = true;
             // Закладка Общие настройки
             sett["time_start"] = numericUpDown4.Value;
@@ -257,7 +267,7 @@ namespace Rentix
                 sett["rs232_port"] = comboBox1.Items.Count == 0 ? "" : parent.admin.Settings["rs232_port"];
             else
                 sett["rs232_port"] = comboBox1.Items[comboBox1.SelectedIndex];
-            sett["decoder"] = comboBox3.Items[comboBox3.SelectedIndex];
+            sett["decoder"] = comboBox3.SelectedIndex == -1 ? "" : comboBox3.Items[comboBox3.SelectedIndex];
 
             sett["printer_check"] = comboBox5.SelectedIndex >= 0 ? comboBox5.Items[comboBox5.SelectedIndex] : "";
             sett["printer_result"] = comboBox4.SelectedIndex >= 0 ? comboBox4.Items[comboBox4.SelectedIndex] : "";
@@ -276,8 +286,7 @@ namespace Rentix
           //  sett["race_time"] = numericUpDown6.Value;
 
             // время гонки по умолчанию
-            comboBoxItem ci = new comboBoxItem("", -1);
-            sett["default_race_mode_id"] = ci.getSelectedValue(defaultRaceMode_comboBox6); // defaultRaceMode_comboBox6.SelectedValue;
+            sett["default_race_mode_id"] = comboBoxItem.getSelectedValue(defaultRaceMode_comboBox6); // defaultRaceMode_comboBox6.SelectedValue;
 
             sett["warm_subtract"] = checkBox14.Checked;
             sett["warm_time"] = numericUpDown8.Value;

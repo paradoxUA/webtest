@@ -311,11 +311,11 @@
     <NavigationProperty Name="jurnals" Relationship="crazykart.jurnalraces" FromRole="races" ToRole="jurnal" />
     <NavigationProperty Name="noracekarts" Relationship="crazykart.noracekartraces" FromRole="races" ToRole="noracekart" />
     <NavigationProperty Name="race_data" Relationship="crazykart.race_dataraces" FromRole="races" ToRole="race_data" />
-    <Property Type="Boolean" Name="is_race" Nullable="true">
-      <Documentation>
-        <LongDescription>режим Спорт, при котором не должны учитываться деньги, заезды могут начинаться и заканчиваться по нажатию Старт/Стоп, нет привязки к 15-минутной сетке</LongDescription>
-      </Documentation>
-    </Property>
+    <!--<Property Type="Boolean" Name="is_race" Nullable="true" >
+            <Documentation>
+              <LongDescription>режим Спорт, при котором не должны учитываться деньги, заезды могут начинаться и заканчиваться по нажатию Старт/Стоп, нет привязки к 15-минутной сетке</LongDescription>
+            </Documentation>
+          </Property>-->
   </EntityType>
   <EntityType Name="tracks">
     <Key>

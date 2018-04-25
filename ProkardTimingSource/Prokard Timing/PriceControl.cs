@@ -97,13 +97,13 @@ namespace Rentix
         {
             dv.Rows.Clear();
 
-            if (ci.getSelectedValue(raceMode_comboBox1) == -1)
+            if(comboBoxItem.getSelectedValue(raceMode_comboBox1) == -1)
             {
                 MessageBox.Show(@"Выберите тип заезда.");
                 return;
             }
 
-            int idRaceMode = ci.getSelectedValue(raceMode_comboBox1);
+            int idRaceMode = comboBoxItem.getSelectedValue(raceMode_comboBox1);
             int idGroup = 1;
             if (comboBox1.SelectedItem != null)
             {
@@ -190,7 +190,7 @@ namespace Rentix
         private void button3_Click(object sender, EventArgs e)
         {
           
-            int idSelectedRaceMode = ci.getSelectedValue(raceMode_comboBox1);
+            int idSelectedRaceMode = comboBoxItem.getSelectedValue(raceMode_comboBox1);
 
             if(idSelectedRaceMode == -1)
             {

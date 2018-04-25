@@ -297,22 +297,22 @@ namespace Rentix
             }
             else
             {
+				try
+				{
+					result = edb.race_times
+						.Where(m => m.race_data.light_mode != true)
+						.Where(m => m.race_data.race.track_id == idTrack)
+						.Where(m => m.race_data.user.deleted != true)
+						.Where(m => m.race_data.modified >= startDate)
+						.Where(m => m.race_data.modified <= endDate)
+						.OrderBy(m => m.seconds)
+						.Take(40)
+						.ToList();
+				}
+				catch
+				{
 
-                if (idTrack > 0)
-                {
-                    result = edb.race_times.GroupBy(m => m.race_data.user.id)
-                        .Select(g => g.OrderBy(rt => rt.seconds).FirstOrDefault()).Where(t => t.race_data.race.track_id == idTrack).OrderBy(f => f.seconds)
-                        .Take(40)
-                        .ToList();
-
-                }
-                else
-                {
-                    result = edb.race_times.GroupBy(m => m.race_data.user.id)
-                        .Select(g => g.OrderBy(rt => rt.seconds).FirstOrDefault()).OrderBy(f => f.seconds).Take(40).ToList();
-
-                }
-                //IEnumerable<IGrouping<int, race_times>> times = edb.race_times.GroupBy(m =>m.race_data.user.id).ToList();
+				}
                 //    Select(g => new 
                 //{
                 //    //id = g.Select(s => s).Select(x=>x.id),
@@ -432,7 +432,7 @@ namespace Rentix
                         Race.RaceID = Convert.ToInt32(reader["id"]);
                         Race.Created = reader["racedate"].ToString();
                         Race.TrackID = Convert.ToInt32(reader["track_id"]);
-                        Race.TrackName = GetTrackName(reader["track_id"].ToString());
+                        Race.TrackName = GetTrackName((int)reader["track_id"]);
                         Race.Light_mode = Convert.ToInt32(reader["light_mode"]);
                     }
                     else
@@ -2650,7 +2650,7 @@ namespace Rentix
                             pricesForSomeRaceMode.Prices[i] = res["d" + i.ToString()].ToString();
                         }
                         pricesForSomeRaceMode.idRaceMode = Convert.ToInt32(res["idRaceMode"]);
-
+                        pricesForSomeRaceMode.idGroup = res["idGroup"] == DBNull.Value ? -1 : Convert.ToInt32(res["idGroup"]);
                         pricesForSomeRaceMode.idGroup = res["idGroup"] != DBNull.Value ? Convert.ToInt32(res["idGroup"]) : 0;
 
                         result.Add(pricesForSomeRaceMode);
@@ -3751,7 +3751,7 @@ namespace Rentix
 
         // Получает список операций по кассе за период
         // 1 reportType = реальные, 2 = виртуальные
-        public List<Hashtable> GetCassaReport(DateTime Date, int reportType, DateTime Date2, PageLister page, int race_id = 0)
+        public List<Hashtable> GetCassaReport(DateTime Date, int reportType, DateTime Date2, PageLister page, int race_id, int raceTypeId)
         {
             DateTime startTime = DateTime.Now;
 
@@ -3813,7 +3813,7 @@ namespace Rentix
                     // filter += page.Filter;
                 }
 
-                #endregion
+				#endregion
 
                 string StoredProcName = "GetCassaReport";
                 SqlCommand cmd = null;
@@ -3828,21 +3828,36 @@ namespace Rentix
                 }
                 else
                 {
-                    if (reportType == 2)
-                    {
-                        StoredProcName = "GetVirtualCassaReport";
-                    }
-                    cmd = new SqlCommand(StoredProcName, db2);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@PageIndex", SqlDbType.Int).Value = page.CurrentPageNumber;
-                    cmd.Parameters.Add("@PageSize", SqlDbType.Int).Value = page.PageSize;
-                    cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = Date;
-                    cmd.Parameters.Add("@endDate", SqlDbType.DateTime).Value = Date2;
+
+					cmd = new SqlCommand(
+						"SELECT * FROM " +
+							"(SELECT ROW_NUMBER() OVER(ORDER BY j.id) AS RowNum, " +
+							"j.id, j.created as 'date', j.comment, " +
+							"j.user_id, j.tp, j.race_id, c.sum, c.sign " +
+							"FROM (jurnal j LEFT JOIN race_data r ON j.race_id = r.race_id), " + (reportType == 2 ? "user_cash" : "cassa") + " c " +
+							"WHERE c.doc_id = j.id and j.created between @startDate and @endDate " + ((raceTypeId > -1) ? "and r.id_race_mode = " + raceTypeId : "") + ") as some_table " +
+						"WHERE RowNum BETWEEN(@PageIndex -1) * @PageSize + 1 and @PageIndex * @PageSize" +
+						" ORDER BY id", db2);
+					cmd.Parameters.Add("@PageIndex", SqlDbType.Int).Value = page.CurrentPageNumber;
+					cmd.Parameters.Add("@PageSize", SqlDbType.Int).Value = page.PageSize;
+					cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = Date;
+					cmd.Parameters.Add("@endDate", SqlDbType.DateTime).Value = Date2;
+
+					//if (reportType == 2)
+					//               {
+					//                   StoredProcName = "GetVirtualCassaReport";
+					//               }
+					//               cmd = new SqlCommand(StoredProcName, db2);
+					//               cmd.CommandType = CommandType.StoredProcedure;
+					//               cmd.Parameters.Add("@PageIndex", SqlDbType.Int).Value = page.CurrentPageNumber;
+					//               cmd.Parameters.Add("@PageSize", SqlDbType.Int).Value = page.PageSize;
+					//               cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = Date;
+					//               cmd.Parameters.Add("@endDate", SqlDbType.DateTime).Value = Date2;
 
 
-                }
+				}
 
-                using (SqlDataReader res = cmd.ExecuteReader())
+				using (SqlDataReader res = cmd.ExecuteReader())
                 {
                     Hashtable row = new Hashtable();
                     int rows = 0;
@@ -3967,8 +3982,33 @@ namespace Rentix
             return ret;
         }
 
-        // Получает весь список трасс
-        public List<Hashtable> GetAllTracks()
+		public double GetCassaReportSum(DateTime Date, int reportType, DateTime Date2, PageLister page, int race_id, int raceTypeId)
+		{
+			var result = 0d;
+			if (!connected)
+			{
+				return result;
+			}
+			var cmd = new SqlCommand(
+							"SELECT c.sum, c.sign " +
+							"FROM (jurnal j LEFT JOIN race_data r ON j.race_id = r.race_id), " + (reportType == 2 ? "user_cash" : "cassa") + " c " +
+							"WHERE c.doc_id = j.id and j.tp in (1, 4) and j.created between @startDate and @endDate " + ((raceTypeId > -1) ? "and r.id_race_mode = " + raceTypeId : ""), db2);
+			cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = Date;
+			cmd.Parameters.Add("@endDate", SqlDbType.DateTime).Value = Date2;
+			using (SqlDataReader res = cmd.ExecuteReader())
+			{
+				while (res.Read())
+				{
+					result += (double)res["sum"] * ((int)res["sign"] == 1 ? -1 : 1);
+				}
+			}
+
+			cmd.Dispose();
+			return result;
+		}
+
+		// Получает весь список трасс
+		public List<Hashtable> GetAllTracks()
         {
             DateTime startTime = DateTime.Now;
 
@@ -4112,6 +4152,7 @@ namespace Rentix
             return ret;
         }
 
+
         // Получает всю сумму в кассе
         /// <summary>
         /// 
@@ -4210,6 +4251,8 @@ namespace Rentix
 
             return ret;
         }
+
+		
 
         // Получает сумму на счетах пилотов
         public string GetCashFromUsers(DateTime date)
@@ -4463,9 +4506,13 @@ namespace Rentix
             return ret;
         }
 
-        // Получает имя трека по ID
-        public string GetTrackName(string TrackID)
-        {
+		// Получает имя трека по ID
+		public string GetTrackName(int TrackID)
+		{
+			if (TrackID == -1)
+			{
+				return "Не задан";
+			}
             string ret = String.Empty;
 
             if (connected)
@@ -4785,8 +4832,7 @@ namespace Rentix
         // Проверка входа пользователя или получение пользователя
         public Hashtable GetProgramUser(string ID, bool Connect = false, string Login = "", string Password = "")
         {
-
-            Hashtable ret = new Hashtable();
+			Hashtable ret = new Hashtable();
 
             if (connected)
             {

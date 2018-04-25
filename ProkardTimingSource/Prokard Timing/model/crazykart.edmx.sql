@@ -289,7 +289,7 @@ CREATE TABLE [dbo].[races] (
     [stat] int  NULL,
     [track_id] int  NOT NULL,
     [light_mode] bit  NOT NULL,
-    [is_race] bit  NULL
+    --[is_race] bit  NULL
 );
 GO
 

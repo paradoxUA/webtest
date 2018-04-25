@@ -291,7 +291,7 @@ namespace Rentix
                 if (editCard_checkBox1.Checked && cards_comboBox2.Items.Count > 0 && cards_comboBox2.SelectedIndex > -1)
                 {
                     // если указана карта, сохраним её. иначе освободим ранее выданную
-                   int pilotCardId = ci.getSelectedValue(cards_comboBox2);
+                   int pilotCardId = comboBoxItem.getSelectedValue(cards_comboBox2);
 
                     //найдём текущую карту пилота
                     model.DiscountCard someCard =
