@@ -534,8 +534,12 @@ namespace Rentix
             {
                 e.Graphics.DrawString("--------------------------------------------------------------", f1, Brushes.Black, new Rectangle(0, 90 + 3, W, 20), drawFormat);
                 e.Graphics.DrawString(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), f1, Brushes.Black, new Rectangle(0, 105 + 3, W, 20), drawFormat);
-            }
-        }
+				for (int i = 0; i < 3; i++)
+				{
+					e.Graphics.DrawString("", f1, Brushes.Black, new Rectangle());
+				}
+			}
+		}
 
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
