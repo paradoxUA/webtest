@@ -487,7 +487,7 @@ namespace Rentix
                         Race.RaceID = Convert.ToInt32(reader["id"]);
                         Race.Created = reader["racedate"].ToString();
                         Race.TrackID = Convert.ToInt32(reader["track_id"]);
-                        Race.TrackName = GetTrackName(reader["track_id"].ToString());
+                        Race.TrackName = GetTrackName(Race.TrackID);
                         Race.Light_mode = Convert.ToInt32(reader["light_mode"]);
                     }
                     else

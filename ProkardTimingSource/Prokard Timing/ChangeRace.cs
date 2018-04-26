@@ -54,10 +54,10 @@ namespace Rentix
             if (comboBox1.Items.Count > 0)
                 comboBox1.SelectedIndex = 0;
             comboBox1.EndUpdate();
-            LoadSubRace();
+            LoadSubRace(Convert.ToInt32(comboBox1.Items[0]));
         }
 
-        private void LoadSubRace()
+        private void LoadSubRace(int hour)
         {
             comboBox2.Items.Clear();
             comboBox2.BeginUpdate();
@@ -65,18 +65,22 @@ namespace Rentix
             string Hour = Race.Hour.ToString(); //comboBox1.Items[comboBox1.SelectedIndex].ToString();
             int RMin = Convert.ToInt32(Race.Minute.ToString());
 
-            /*
+			var minDateTime = DateTime.Now;
+			var minutes = new int[] { 0, 15, 30, 45 };
+
+			var dateTimes = minutes.Select(m => new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hour, m, 0))
+				.Where(dt => minDateTime < dt).ToArray();
+			foreach (var item in dateTimes)
+			{
+				comboBox2.Items.Add(item.ToString("HH:mm"));
+			}
+
+			/*
             if (Hour == DateTime.Now.Hour.ToString() && RMin < 15 && RMin != 0) comboBox2.Items.Add(Hour + ":00"); else if (Hour != DateTime.Now.Hour.ToString()) comboBox2.Items.Add(comboBox1.Text + ":00");
             if (Hour == DateTime.Now.Hour.ToString() && RMin < 30 && RMin != 15) comboBox2.Items.Add(Hour + ":15"); else if (Hour != DateTime.Now.Hour.ToString()) comboBox2.Items.Add(comboBox1.Text + ":15");
             if (Hour == DateTime.Now.Hour.ToString() && RMin < 45 && RMin != 30) comboBox2.Items.Add(Hour + ":30"); else if (Hour != DateTime.Now.Hour.ToString()) comboBox2.Items.Add(comboBox1.Text + ":30");
             if (Hour == DateTime.Now.Hour.ToString() && RMin < 60 && RMin != 45) comboBox2.Items.Add(Hour + ":45"); else if (Hour != DateTime.Now.Hour.ToString()) comboBox2.Items.Add(comboBox1.Text + ":45");
-            
-             */
-
-            comboBox2.Items.Add(comboBox1.Text + ":00");
-            comboBox2.Items.Add(comboBox1.Text + ":15");
-            comboBox2.Items.Add(comboBox1.Text + ":30");
-            comboBox2.Items.Add(comboBox1.Text + ":45");
+            */
             comboBox2.EndUpdate();
 
             if (comboBox2.Items.Count > 0)
@@ -87,7 +91,7 @@ namespace Rentix
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadSubRace();
+            LoadSubRace(Convert.ToInt32(comboBox1.Items[comboBox1.SelectedIndex]));
         }
 
         private void button2_Click(object sender, EventArgs e)

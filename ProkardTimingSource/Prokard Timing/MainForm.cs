@@ -935,7 +935,7 @@ namespace Rentix
             if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 admin.Settings = admin.model.LoadSettings();
-                labelSmooth1.Text = "Трек - " + admin.model.GetTrackName(admin.Settings.ContainsKey("default_track") ? (int)admin.Settings["default_track"] : -1);
+                labelSmooth1.Text = "Трек - " + admin.model.GetTrackName(admin.Settings.ContainsKey("default_track") ? Convert.ToInt32(admin.Settings["default_track"]) : -1);
                 ShowEvents();
             }
             form.Dispose();
