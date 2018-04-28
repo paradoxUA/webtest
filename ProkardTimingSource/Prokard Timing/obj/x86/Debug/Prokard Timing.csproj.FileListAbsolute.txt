@@ -856,10 +856,7 @@ D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\EntityFra
 D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\EntityFramework.SqlServer.xml
 D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\Newtonsoft.Json.xml
 D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\ResultPrinter.pdb
-D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Data.SQLite.pdb
 D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Data.SQLite.xml
-D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Data.SQLite.EF6.pdb
-D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Data.SQLite.Linq.pdb
 D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\Dal.pdb
 D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\LiteDB.xml
 D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\obj\x86\Debug\Prokard Timing.csprojResolveAssemblyReference.cache
@@ -920,3 +917,8 @@ D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\obj\x86\Debug\Proka
 D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\obj\x86\Debug\Prokard Timing.csproj.CoreCompileInputs.cache
 D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\obj\x86\Debug\Rentix.exe
 D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\obj\x86\Debug\Rentix.pdb
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Data.SQLite.dll
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Data.SQLite.EF6.dll
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Data.SQLite.Linq.dll
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\ResultPrinter.dll.config
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Data.SQLite.dll.config

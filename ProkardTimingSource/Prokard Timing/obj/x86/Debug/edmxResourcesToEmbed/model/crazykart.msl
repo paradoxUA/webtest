@@ -125,7 +125,7 @@
           <ScalarProperty Name="stat" ColumnName="stat" />
           <ScalarProperty Name="track_id" ColumnName="track_id" />
           <ScalarProperty Name="light_mode" ColumnName="light_mode" />
-          <!--<ScalarProperty Name="is_race" ColumnName="is_race" />-->
+          <ScalarProperty Name="is_race" ColumnName="is_race" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -3,7 +3,6 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Diagnostics;
 using System.IO;
-using DocumentPrinter.Services;
 
 namespace Rentix
 {

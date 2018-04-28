@@ -104,3 +104,13 @@ D:\FreelanceHunt\ParadoxUA.ProcardTiming\ProcardTiming_MyRepo\webtest\ProkardTim
 D:\FreelanceHunt\ParadoxUA.ProcardTiming\ProcardTiming_MyRepo\webtest\ProkardTimingSource\CrazyKartActivation\bin\Debug\EntityFramework.SqlServer.dll
 D:\FreelanceHunt\ParadoxUA.ProcardTiming\ProcardTiming_MyRepo\webtest\ProkardTimingSource\CrazyKartActivation\bin\Debug\EntityFramework.xml
 D:\FreelanceHunt\ParadoxUA.ProcardTiming\ProcardTiming_MyRepo\webtest\ProkardTimingSource\CrazyKartActivation\bin\Debug\EntityFramework.SqlServer.xml
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\CrazyKartActivation\bin\Debug\CrazyKartActivation.exe.config
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\CrazyKartActivation\bin\Debug\CrazyKartActivation.exe
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\CrazyKartActivation\bin\Debug\CrazyKartActivation.pdb
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Form1.resources
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.Properties.Resources.resources
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.csproj.GenerateResource.Cache
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.csproj.CoreCompileInputs.cache
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.exe
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.pdb
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\CrazyKartActivation\obj\x86\Debug\CrazyKartActivation.csprojResolveAssemblyReference.cache

@@ -9,9 +9,8 @@ using DGVPrinterHelper;
 using System.Drawing.Text;
 using System.Collections;
 using System.Linq;
-using DocumentPrinter.Services;
-using DocumentPrinter;
 using Rentix;
+using DocumentPrinter.Services;
 using DocumentPrinter.Models;
 
 namespace Rentix
