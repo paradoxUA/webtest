@@ -36,7 +36,7 @@ namespace Rentix
             fillRaceModes();
 
             comboBoxItem ci = new comboBoxItem("", -1);
-            ci.selectComboBoxValueById(RaceMode_comboBox, Convert.ToInt32(parent.admin.Settings["default_race_mode_id"]));
+			comboBoxItem.selectComboBoxValueById(RaceMode_comboBox, Convert.ToInt32(parent.admin.Settings["default_race_mode_id"]));
             
         }
 

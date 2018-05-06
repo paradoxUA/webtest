@@ -16,6 +16,10 @@ using Rentix.model;
 using System.IO;
 using System.Data.SQLite;
 using DocumentPrinter.Models;
+using ECM7.Migrator;
+using ECM7.Migrator.Providers.SqlServer;
+using Rentix.Migrations;
+using Rentix.Extensions;
 
 namespace Rentix
 {
@@ -74,8 +78,10 @@ namespace Rentix
             }
         }
 
-        // Соединяемся с базой 
-        public bool Connect()
+		
+
+		// Соединяемся с базой 
+		public bool Connect()
         {
 
             //  string connection = "Server=" + Server + ";Port=" + Port + ";Uid=" + Uid + ";Password=" + Password + ";Database=" + Database + ";pooling=true;CharSet=cp1251";
@@ -101,13 +107,17 @@ namespace Rentix
 
             if (connected)
             {
-                /*
+				var provider = new SqlServerTransformationProvider(db, 9999);
+				var migrator = new Migrator(provider, typeof(MigrationForAssembly).Assembly);
+				migrator.Migrate();
+
+				/*
                 using (SqlCommand cmd = new SqlCommand("set names cp1251", db)) cmd.ExecuteNonQuery();
                 using (SqlCommand cmd = new SqlCommand("set names cp1251", db2)) cmd.ExecuteNonQuery();
                 using (SqlCommand cmd = new SqlCommand("set names cp1251", db3)) cmd.ExecuteNonQuery();
             
                  */
-            }
+			}
 
 
             return ret;
@@ -141,11 +151,15 @@ namespace Rentix
             return ret;
         }
 
-        // узнать, разрешён ли запуск заезда
-        /* разрешён, если есть пилоты в заезде и гонка не окончена (на паузе или не запускалась)
+		
+
+
+
+		// узнать, разрешён ли запуск заезда
+		/* разрешён, если есть пилоты в заезде и гонка не окончена (на паузе или не запускалась)
          * 
          */
-        public bool isRaceCanBeStarted(int idRace)
+		public bool isRaceCanBeStarted(int idRace)
         {
             bool result = true;
 
@@ -855,8 +869,21 @@ namespace Rentix
             return null;
         }
 
-        // Изменяет данные пилота
-        public void ChangePilot(Hashtable Data, int PilotID)
+		internal void DeleteCassa(DateTime from, DateTime to)
+		{
+			if (!connected)
+			{
+				return;
+			}
+			var query = $"DELETE FROM cassa WHERE created BETEWEEN '{from}' and '{to}'";
+			using (var cmd = new SqlCommand(query, db))
+			{
+				cmd.ExecuteNonQuery();
+			}
+		}
+
+		// Изменяет данные пилота
+		public void ChangePilot(Hashtable Data, int PilotID)
         {
             DateTime startTime = DateTime.Now;
 
@@ -1886,13 +1913,14 @@ namespace Rentix
         }
 
         // Получает статистику по карту
-        public Hashtable GetKartStatistic(string KartID, double Deflen)
+        public Hashtable GetKartStatistic(string KartID, double Deflen, DateTime fromDateTime, DateTime toDateTime)
         {
             Hashtable ret = new Hashtable();
 
             if (connected)
             {
-                using (SqlCommand cmd = new SqlCommand("select d.id, r.track_id from race_data d, races r where d.car_id='" + KartID + "' and r.id=d.race_id", db2))
+				var query = $"select d.id, r.track_id from race_data d, races r where d.car_id='{KartID}' and r.id=d.race_id and r.racedate	BETWEEN '{fromDateTime}' and '{toDateTime}'";
+				using (SqlCommand cmd = new SqlCommand(query, db2))
                 {
                     using (SqlDataReader res = cmd.ExecuteReader())
                     {
@@ -2006,8 +2034,37 @@ namespace Rentix
 
         }
 
-        // Получает последний ID сообщения
-        private int GetLastInsertID(string Table)
+		internal void UpdatePartner(int? id, string name, float commision)
+		{
+			if (!connected)
+			{
+				return;
+			}
+			var commissionText = commision.ToString().Replace(",", ".");
+			var query = id.HasValue ?
+				$"UPDATE partners SET name = '{name}', commission = {commissionText} WHERE id = {id.Value}" :
+				$"INSERT INTO partners(name, commission) VALUES ('{name}', {commissionText})";
+			using (var command = new SqlCommand(query, db))
+			{
+				command.ExecuteNonQuery();
+			}
+		}
+
+		internal void RemovePartner(int id)
+		{
+			if (!connected)
+			{
+				return;
+			}
+			var query = $"UPDATE partners SET deleted = 1 WHERE id = {id}";
+			using (var command = new SqlCommand(query, db))
+			{
+				command.ExecuteNonQuery();
+			}
+		}
+
+		// Получает последний ID сообщения
+		private int GetLastInsertID(string Table)
         {
             DateTime startTime = DateTime.Now;
 
@@ -2242,14 +2299,15 @@ namespace Rentix
         }
 
         // Получает все сообщения по картам 
-        public string GetAllKartsMessages(int ID)
+        public string GetAllKartsMessages(int ID, DateTime? from = null, DateTime? to = null)
         {
             DateTime startTime = DateTime.Now;
             string ret = String.Empty;
 
             if (connected)
             {
-                using (SqlCommand cmd = new SqlCommand("select created, message from messages where id_kart='" + ID + "' order by created desc", db2))
+				var query = $"select created, message from messages where id_kart='{ID}' {(from.HasValue && to.HasValue ? $"and created BETWEEN '{from}' and '{to}'" : "")} order by created desc";
+				using (SqlCommand cmd = new SqlCommand(query, db2))
                 {
                     using (SqlDataReader res = cmd.ExecuteReader())
                     {
@@ -2796,8 +2854,30 @@ namespace Rentix
             return ret;
         }
 
-        // Получает логины пользователей
-        public List<Hashtable> GetUserLogins(DateTime Date)
+		public IEnumerable<string[]> GetPartners(bool notDeleted = false)
+		{
+			if (!connected)
+			{
+				yield break;
+			}
+			var query = $"SELECT * FROM partners {(notDeleted ? "WHERE deleted = 0" : "")}";
+			using (var command = new SqlCommand(query, db))
+			using (var reader = command.ExecuteReader())
+			{
+				while (reader.Read())
+				{
+					var arr = new string[4];
+					arr[0] = reader["id"].ToString();
+					arr[1] = reader["name"].ToString();
+					arr[2] = Convert.ToDecimal(reader["commission"]).ToString("F2");
+					arr[3] = Convert.ToBoolean(Convert.ToInt32(reader["deleted"])) ? "да" : "нет"; 
+					yield return arr;
+				}
+			}
+		}
+
+		// Получает логины пользователей
+		public List<Hashtable> GetUserLogins(DateTime Date)
         {
             DateTime startTime = DateTime.Now;
 
@@ -3605,13 +3685,13 @@ namespace Rentix
         }
 
         // Добавляет запись в кассу
-        private void AddToCassa(string DocID, string Sum, string Sign, bool pastdate = false)
+        private void AddToCassa(string DocID, string Sum, string Sign, int partnerId, string partnerCode, bool pastdate = false)
         {
             DateTime startTime = DateTime.Now;
 
             if (connected)
             {
-                using (SqlCommand cmd = new SqlCommand("insert into cassa (doc_id,sum,sign,date) values ('" + DocID + "','" + Sum.Replace(",", ".") + "','" + Sign + "', GETDATE())", db))
+                using (SqlCommand cmd = new SqlCommand($"insert into cassa (doc_id,sum,sign,date, partner_id, ref_code) values ('{DocID}','{Sum.Replace(",", ".")}','{Sign}', GETDATE(), {(partnerId == -1 ? "null" : partnerId.ToString())}, '{(partnerId == -1 ? "null" : partnerCode.ToString())}')", db))
                 {
                     try
                     {
@@ -3631,13 +3711,13 @@ namespace Rentix
         }
 
         // Добавляет запись в UserCash
-        private void AddToUserCash(string DocID, int UserID, string Sum, string Sign)
+        private void AddToUserCash(string DocID, int UserID, string Sum, string Sign, int partnerId, string partnerCode)
         {
             DateTime startTime = DateTime.Now;
 
             if (connected)
             {
-                using (SqlCommand cmd = new SqlCommand("insert into user_cash (doc_id,user_id,sum,sign, created) values ('" + DocID + "'," + UserID + ",'" + Sum.Replace(",", ".") + "','" + Sign + "', GETDATE())", db))
+                using (SqlCommand cmd = new SqlCommand("insert into user_cash (doc_id,user_id,sum,sign, created, partner_id, ref_code) values ('" + DocID + "'," + UserID + ",'" + Sum.Replace(",", ".") + "','" + Sign + $"', GETDATE(), {(partnerId == -1 ? "null" : partnerId.ToString())}, '{(partnerId == -1 ? "null" : partnerCode.ToString())}')", db))
                 {
                     cmd.ExecuteNonQuery();
                 }
@@ -3649,29 +3729,29 @@ namespace Rentix
         }
 
         // Журналирование кассовых событий
-        public void Jurnal_Cassa(string DocNum, int UserID, int RaceID, string Sum, string Sign, string Comments, bool pastdate = false)
+        public void Jurnal_Cassa(string DocNum, int UserID, int RaceID, string Sum, string Sign, string Comments, int partnerId = -1, string partnerCode = "", bool pastdate = false)
         {
             int Doc_id = AddToJurnal(DocNum, UserID, RaceID, Comments);
-            AddToCassa(Doc_id.ToString(), Sum, Sign, pastdate);
+            AddToCassa(Doc_id.ToString(), Sum, Sign, partnerId, partnerCode, pastdate);
         }
 
         // Операция коррекции баланса пользователя
-        public void Jurnal_UserCash(string DocNum, int idRaceData, string Sum, string Sign, string Comments, int RaceID)
+        public void Jurnal_UserCash(string DocNum, int idRaceData, string Sum, string Sign, string Comments, int RaceID, int partnerId = -1, string partnerCode = "")
         {
 
             int Doc_id = AddToJurnal(DocNum,
                 getUserByIdRaceData(idRaceData).id, RaceID, Comments);
-            AddToUserCash(Doc_id.ToString(), getUserByIdRaceData(idRaceData).id, Sum, Sign);
+            AddToUserCash(Doc_id.ToString(), getUserByIdRaceData(idRaceData).id, Sum, Sign, partnerId, partnerCode);
         }
 
         // Операция коррекции баланса пользователя
-        public void Jurnal_UserCashByUserId(string DocNum, int idUser, string Sum, string Sign, string Comments, int RaceID)
+        public void Jurnal_UserCashByUserId(string DocNum, int idUser, string Sum, string Sign, string Comments, int RaceID, int partnerId, string partnerCode)
         {
 
             int Doc_id = AddToJurnal(DocNum,
                 idUser, RaceID, Comments);
             AddToUserCash(Doc_id.ToString(),
-                idUser, Sum, Sign);
+                idUser, Sum, Sign, partnerId, partnerCode);
         }
 
         // returns user by his record in race_data table
@@ -3689,11 +3769,11 @@ namespace Rentix
 
 
         // Операция добавление денег на счет пользователя
-        public void Jurnal_AddToUserCash(string DocNum, int UserID, string Sum, string Sign, string Comments)
+        public void Jurnal_AddToUserCash(string DocNum, int UserID, string Sum, string Sign, string Comments, int partnerId = -1, string partnerCode = "")
         {
             int Doc_id = AddToJurnal(DocNum, UserID, -1, Comments);
-            AddToCassa(Doc_id.ToString(), Sum, Sign);
-            AddToUserCash(Doc_id.ToString(), UserID, Sum, Sign);
+            AddToCassa(Doc_id.ToString(), Sum, Sign, partnerId, partnerCode);
+            AddToUserCash(Doc_id.ToString(), UserID, Sum, Sign, partnerId, partnerCode);
         }
 
         // Получает сумму в кассе
@@ -3751,7 +3831,7 @@ namespace Rentix
 
         // Получает список операций по кассе за период
         // 1 reportType = реальные, 2 = виртуальные
-        public List<Hashtable> GetCassaReport(DateTime Date, int reportType, DateTime Date2, PageLister page, int race_id, int raceTypeId)
+        public List<Hashtable> GetCassaReport(DateTime Date, int reportType, DateTime Date2, PageLister page, int race_id, int raceTypeId, int userGroupId, int partnerId)
         {
             DateTime startTime = DateTime.Now;
 
@@ -3831,11 +3911,13 @@ namespace Rentix
 
 					cmd = new SqlCommand(
 						"SELECT * FROM " +
+
 							"(SELECT ROW_NUMBER() OVER(ORDER BY j.id) AS RowNum, " +
-							"j.id, j.created as 'date', j.comment, " +
-							"j.user_id, j.tp, j.race_id, c.sum, c.sign " +
-							"FROM (jurnal j LEFT JOIN race_data r ON j.race_id = r.race_id), " + (reportType == 2 ? "user_cash" : "cassa") + " c " +
-							"WHERE c.doc_id = j.id and j.created between @startDate and @endDate " + ((raceTypeId > -1) ? "and r.id_race_mode = " + raceTypeId : "") + ") as some_table " +
+								"j.id, j.created as 'date', j.comment, " +
+								"j.user_id, j.tp, j.race_id, c.sum, c.sign " +
+								$"FROM (jurnal j LEFT JOIN race_data r ON j.race_id = r.race_id), {(reportType == 2 ? "user_cash" : "cassa")} c, users u, groups g " +
+								$"WHERE u.id = j.user_id AND c.doc_id = j.id and j.created between @startDate and @endDate {((raceTypeId > -1) ? "and r.id_race_mode = " + raceTypeId : "")} {((userGroupId > -1) ? "and u.gr = " + userGroupId : "")} {(partnerId > -1 ? $"and c.partner_id = {partnerId}" : "")}) as some_table " +
+
 						"WHERE RowNum BETWEEN(@PageIndex -1) * @PageSize + 1 and @PageIndex * @PageSize" +
 						" ORDER BY id", db2);
 					cmd.Parameters.Add("@PageIndex", SqlDbType.Int).Value = page.CurrentPageNumber;
@@ -3982,7 +4064,7 @@ namespace Rentix
             return ret;
         }
 
-		public double GetCassaReportSum(DateTime Date, int reportType, DateTime Date2, PageLister page, int race_id, int raceTypeId)
+		public double GetCassaReportSum(DateTime Date, int reportType, DateTime Date2, int race_id, int raceTypeId, int userGroupId, int partnerId)
 		{
 			var result = 0d;
 			if (!connected)
@@ -3991,8 +4073,8 @@ namespace Rentix
 			}
 			var cmd = new SqlCommand(
 							"SELECT c.sum, c.sign " +
-							"FROM (jurnal j LEFT JOIN race_data r ON j.race_id = r.race_id), " + (reportType == 2 ? "user_cash" : "cassa") + " c " +
-							"WHERE c.doc_id = j.id and j.tp in (1, 4) and j.created between @startDate and @endDate " + ((raceTypeId > -1) ? "and r.id_race_mode = " + raceTypeId : ""), db2);
+							"FROM (jurnal j LEFT JOIN race_data r ON j.race_id = r.race_id), " + (reportType == 2 ? "user_cash" : "cassa") + " c, users u " +
+							"WHERE u.id = j.user_id and c.doc_id = j.id and j.tp in (1, 4) and j.created between @startDate and @endDate " + ((raceTypeId > -1) ? "and r.id_race_mode = " + raceTypeId : "") + ((raceTypeId > -1) ? "and u.gr = " + userGroupId : "") + ((partnerId > -1) ? "and c.partner_id = " + partnerId : ""), db2);
 			cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = Date;
 			cmd.Parameters.Add("@endDate", SqlDbType.DateTime).Value = Date2;
 			using (SqlDataReader res = cmd.ExecuteReader())
@@ -4081,7 +4163,7 @@ namespace Rentix
                         while (res.Read())
                         {
                             temp = ConvertResult(res);
-                            temp["repairs"] = GetKartRepairs(temp["id"].ToString());
+                            temp["repairs"] = GetKartRepairs(temp["id"].ToString(), D1, D2);
 
 
                             using (SqlCommand cmd2 = new SqlCommand("select d.id, r.track_id from race_data d, races r where d.car_id='" + temp["id"].ToString() + "' and r.id=d.race_id and r.stat=2 and r.racedate>='" + datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(D1)) + "' and r.racedate<='" + datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(D2)) + "' ", db))
@@ -4750,15 +4832,15 @@ namespace Rentix
         }
         */
         // Получает количество ремонтов карта
-        public int GetKartRepairs(string KartID)
+        public int GetKartRepairs(string KartID, DateTime from, DateTime to)
         {
 
             int ret = 0;
 
             if (connected)
             {
-
-                using (SqlCommand cmd = new SqlCommand("select count(*) as c from messages where id_kart=" + KartID + " and m_type = 1", db))
+				var query = $"select count(*) as c from messages where id_kart={KartID} and m_type = 1 and date BETWEEN '{from}' and '{to}'";
+				using (SqlCommand cmd = new SqlCommand(query, db))
                 {
                     using (SqlDataReader res = cmd.ExecuteReader())
                     {
@@ -4771,8 +4853,21 @@ namespace Rentix
 
         }
 
-        // Добавляет пользователя программы
-        public void AddProgramUser(string Login, string Password, string Stat, string Name, string Surname, string Barcode)
+		internal void DropKartKmStats(int? kartId = null, DateTime? from = null, DateTime? to = null)
+		{
+			if (!connected)
+			{
+				return;
+			}
+			var query = $"UPDATE race_data SET car_id = null {(kartId.HasValue || (from.HasValue && to.HasValue)).ToStringIf("WHERE")} {kartId.HasValue.ToStringIf($"car_id = {kartId}")} {(kartId.HasValue && from.HasValue && to.HasValue).ToStringIf("AND")} {(from.HasValue && to.HasValue).ToStringIf($"created BETWEEN '{from}' and '{to}'")}";
+			using (var cmd = new SqlCommand(query, db))
+			{
+				cmd.ExecuteNonQuery();
+			}
+		}
+
+		// Добавляет пользователя программы
+		public void AddProgramUser(string Login, string Password, string Stat, string Name, string Surname, string Barcode)
         {
 
             if (connected)
@@ -4968,15 +5063,16 @@ namespace Rentix
         }
 
         // Получает общее количество топлива в карте
-        public string GetKartFuel(string KartID)
+        public string GetKartFuel(string KartID, DateTime? from = null, DateTime? to = null)
         {
             string ret = String.Empty;
 
 
             if (connected)
             {
+				var query = $"select (sum(CASE WHEN(sign=0)THEN fuel_value else 0 end)-sum(case when (sign=1) then fuel_value else 0 end)) as fuel_value from fuel where car_id='{KartID}' {(from.HasValue && to.HasValue ? $"and created BETWEEN '{from}' and '{to}'" : "")}";
 
-                using (SqlCommand cmd = new SqlCommand("select (sum(CASE WHEN(sign=0)THEN fuel_value else 0 end)-sum(case when (sign=1) then fuel_value else 0 end)) as fuel_value from fuel where car_id='" + KartID + "'", db))
+				using (SqlCommand cmd = new SqlCommand(query, db))
                 {
                     using (SqlDataReader res = cmd.ExecuteReader())
                     {
@@ -4996,9 +5092,23 @@ namespace Rentix
             return ret;
         }
 
+		internal void DropFuel(int? cartId = null, DateTime? from = null, DateTime? to = null)
+		{
+			if (!connected)
+			{
+				return;
+			}
 
-        // Получает имя пилота
-        public string GetPilotName(string ID)
+			var query = $"DELETE FROM fuel {(cartId.HasValue || (from.HasValue && to.HasValue)).ToStringIf("WHERE")} {cartId.HasValue.ToStringIf($"car_id = {cartId}")} {(cartId.HasValue && from.HasValue && to.HasValue).ToStringIf("AND")} {(from.HasValue && to.HasValue).ToStringIf($"created BETWEEN '{from}' and '{to}'")}";
+			using (var cmd = new SqlCommand(query, db))
+			{
+				cmd.ExecuteNonQuery();
+			}
+		}
+
+
+		// Получает имя пилота
+		public string GetPilotName(string ID)
         {
             string ret = String.Empty;
 
@@ -5056,17 +5166,16 @@ namespace Rentix
         }
 
         // Получает историю по заправкам за последний месяц
-        public string GetKartFuelHistory(string KartID)
+        public string GetKartFuelHistory(string KartID, DateTime? from = null, DateTime? to = null)
         {
 
             string ret = String.Empty;
 
             if (connected)
             {
-                DateTime DS = DateTime.Now.AddMonths(-1);
+				var query = $"select * from fuel where car_id='{KartID}' {(from.HasValue && to.HasValue ? $"and created BETWEEN '{from}' and '{to}'" : "")} order by created desc";
 
-                using (SqlCommand cmd = new SqlCommand("select * from fuel where car_id='" + KartID + "' and created >= '" +
-                    datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(DS)) + "' order by created desc", db3))
+				using (SqlCommand cmd = new SqlCommand(query, db3))
                 {
                     using (SqlDataReader res = cmd.ExecuteReader())
                     {

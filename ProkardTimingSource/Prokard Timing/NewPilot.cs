@@ -92,7 +92,7 @@ namespace Rentix
 
                 if (userCard != null)
                 {
-                    ci.selectComboBoxValueById(cards_comboBox2, userCard.Id);
+					comboBoxItem.selectComboBoxValueById(cards_comboBox2, userCard.Id);
                 }
             }
  

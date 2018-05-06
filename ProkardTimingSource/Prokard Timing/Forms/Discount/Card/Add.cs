@@ -56,13 +56,13 @@ namespace Rentix.Forms.Discount.Card
              
              if (someCard.idOwner != null)
             {
-                 ci.selectComboBoxValueById(owner_comboBox1, 
+				comboBoxItem.selectComboBoxValueById(owner_comboBox1, 
                      Convert.ToInt32(someCard.idOwner));
             }
 
             if (someCard.IdDiscountCardGroup != null)
             {
-                 ci.selectComboBoxValueById(cardGroup_comboBox1, 
+				comboBoxItem.selectComboBoxValueById(cardGroup_comboBox1, 
                      Convert.ToInt32(someCard.IdDiscountCardGroup));
             }
         }

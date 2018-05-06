@@ -1856,7 +1856,7 @@
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram Name="crazykart" DisplayType="true" ZoomLevel="85" xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+      <Diagram Name="crazykart" DisplayType="true" ZoomLevel="45" xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
         <EntityTypeShape EntityType="crazykart.cassa" Width="1.5" PointX="17.625" PointY="9.125" Height="1.9210009765625031" />
         <EntityTypeShape EntityType="crazykart.certificate" Width="2.25" PointX="5.25" PointY="3.25" Height="2.7427376302083335" />
         <EntityTypeShape EntityType="crazykart.users" Width="2.5" PointX="4.875" PointY="8" Height="5.0436002604166656" />

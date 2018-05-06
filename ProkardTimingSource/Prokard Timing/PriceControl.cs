@@ -79,7 +79,7 @@ namespace Rentix
            }
 
            comboBoxItem ci = new comboBoxItem("", -1);
-           ci.selectComboBoxValueById(raceMode_comboBox1, Convert.ToInt32(parent.admin.Settings["default_race_mode_id"]));
+			comboBoxItem.selectComboBoxValueById(raceMode_comboBox1, Convert.ToInt32(parent.admin.Settings["default_race_mode_id"]));
 
         }
 

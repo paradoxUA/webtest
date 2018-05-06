@@ -231,7 +231,7 @@ namespace Rentix
                 admin.model.Jurnal_Cassa("4", Convert.ToInt32(1), 1, randomNum.Next(20).ToString(), "1", "Отказ от участия в рейсе. Выдача денег наличными");
 
                 admin.model.Jurnal_Cassa("7", -1, -1, "35", "0", "Добавление кассового остатка за прошлые дни");
-                admin.model.Jurnal_Cassa("7", -1, -1, "35", "1", "Перенос кассы на следующий день", true);
+                admin.model.Jurnal_Cassa("7", -1, -1, "35", "1", "Перенос кассы на следующий день", pastdate: true);
          
 
             }

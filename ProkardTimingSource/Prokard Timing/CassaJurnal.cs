@@ -38,6 +38,8 @@ namespace Rentix
             button2.Enabled = cassa_dataGridView1.Rows.Count > 0;
 
 			FillRaceTypes();
+			FillUserGroups();
+			FillPartners();
 
 
 			if (!admin.IS_ADMIN)
@@ -47,6 +49,34 @@ namespace Rentix
 
 			
         }
+
+		private void FillPartners()
+		{
+			partnerComboBox.Items.Clear();
+			var partners = admin.model.GetPartners(true);
+			partnerComboBox.Items.Add(new comboBoxItem("", -1));
+			foreach (var item in partners)
+			{
+				var comboBoxItem = new comboBoxItem(
+					Convert.ToString(item[1]),
+					Convert.ToInt32(item[0]));
+				partnerComboBox.Items.Add(comboBoxItem);
+			}
+		}
+
+		private void FillUserGroups()
+		{
+			userGroupsComboBox.Items.Clear();
+			var raceModes = admin.model.GetAllGroups();
+			userGroupsComboBox.Items.Add(new comboBoxItem("", -1));
+			foreach (var item in raceModes)
+			{
+				var comboBoxItem = new comboBoxItem(
+					Convert.ToString(item["name"]),
+					Convert.ToInt32(item["id"]));
+				userGroupsComboBox.Items.Add(comboBoxItem);
+			}
+		}
 
 		private void FillRaceTypes()
 		{
@@ -300,12 +330,22 @@ namespace Rentix
 
 		private void UpdateCassaReport()
 		{
-			admin.GetCassaReport(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, Pages, _race_id, comboBoxItem.getSelectedValue(raceTypeComboBox));
-			var sum = admin.GetCassaSum(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, Pages, _race_id, comboBoxItem.getSelectedValue(raceTypeComboBox));
+			admin.GetCassaReport(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, Pages, _race_id, comboBoxItem.getSelectedValue(raceTypeComboBox), comboBoxItem.getSelectedValue(userGroupsComboBox), comboBoxItem.getSelectedValue(partnerComboBox));
+			var sum = admin.GetCassaSum(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, _race_id, comboBoxItem.getSelectedValue(raceTypeComboBox), comboBoxItem.getSelectedValue(userGroupsComboBox), comboBoxItem.getSelectedValue(partnerComboBox));
 			label8.Text = "Сумма операций: " + sum + "грн.";
 		}
 
 		private void raceTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			UpdateCassaReport();
+		}
+
+		private void userGroupsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			UpdateCassaReport();
+		}
+
+		private void partnerComboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			UpdateCassaReport();
 		}

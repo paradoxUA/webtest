@@ -922,3 +922,11 @@ D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Da
 D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Data.SQLite.Linq.dll
 D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\ResultPrinter.dll.config
 D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Data.SQLite.dll.config
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\ECM7.Migrator.dll
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\ECM7.Migrator.Framework.dll
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\ECM7.Migrator.Providers.SqlServer.dll
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\NLog.dll
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\System.Data.SqlServerCe.dll
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\bin\Debug\NLog.xml
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\obj\x86\Debug\Rentix.PartnerControl.resources
+D:\Job\CrazyCarts\webtest\ProkardTimingSource\Prokard Timing\obj\x86\Debug\Rentix.AddPartner.resources

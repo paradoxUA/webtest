@@ -55,7 +55,7 @@ namespace Rentix
                // tracks_comboBox1.Items.Add(Tracks[i]["name"]);
             }
 
-            ci.selectComboBoxValueById(tracks_comboBox1, 
+			comboBoxItem.selectComboBoxValueById(tracks_comboBox1, 
                 Convert.ToInt32(ad.Settings["default_track"]));
 
           //  tracks_comboBox1.SelectedIndex = 0;

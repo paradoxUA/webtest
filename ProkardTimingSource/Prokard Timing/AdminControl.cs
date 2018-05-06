@@ -27,7 +27,10 @@ namespace Rentix
         private DateTime CurrDate = new DateTime();
         public int MaxKarts = 0;
         public int DopRace = 900;
-        public RaceClass[,] Races = new RaceClass[24, 6]; // Массив рейсов 24 часа и 5 этапов
+
+		
+
+		public RaceClass[,] Races = new RaceClass[24, 6]; // Массив рейсов 24 часа и 5 этапов
 
         public List<races> SportRaces = new List<races>(); // набор заездов на сегодня для режима Спорт, расширяется по мере добавления новых заездов. 
 
@@ -1243,7 +1246,7 @@ namespace Rentix
         }
 
         // Показывает данные кассы за выбранную дату
-        public void GetCassaReport(DataGridView dv, DateTime Date, int reportType, DateTime Date2, PageLister Pages, int race_id = 0, int raceTypeId = -1)
+        public void GetCassaReport(DataGridView dv, DateTime Date, int reportType, DateTime Date2, PageLister Pages, int race_id, int raceTypeId, int userGroupId, int partnerId)
         {
             // если наоборот даты, то поменяем местами
             if (Date2 < Date)
@@ -1256,7 +1259,7 @@ namespace Rentix
             Date = datetimeConverter.toStartDateTime(Date);
             Date2 = datetimeConverter.toEndDateTime(Date2);
 
-            List<Hashtable> Cassa = model.GetCassaReport(Date, reportType, Date2, Pages, race_id, raceTypeId);
+            List<Hashtable> Cassa = model.GetCassaReport(Date, reportType, Date2, Pages, race_id, raceTypeId, userGroupId, partnerId);
             dv.Rows.Clear();
 
             int lastRaceId = -1; // между рейсами вставим чёрную строку, чтобы их разделять в списке
@@ -1311,9 +1314,9 @@ namespace Rentix
             }
         }
 
-		public double GetCassaSum(DataGridView dv, DateTime Date, int reportType, DateTime Date2, PageLister Pages, int race_id = 0, int raceTypeId = -1)
+		public double GetCassaSum(DataGridView dv, DateTime Date, int reportType, DateTime Date2, int race_id, int raceTypeId, int userGroupId, int partnerId)
 		{
-			return model.GetCassaReportSum(Date, reportType, Date2, Pages, race_id, raceTypeId);
+			return model.GetCassaReportSum(Date, reportType, Date2, race_id, raceTypeId, userGroupId, partnerId);
 		}
 
         // Показывает имя документа
@@ -2016,5 +2019,28 @@ namespace Rentix
                 dv[3, i].Value = row[i]["message"].ToString();
             }
         }
-    }
+
+		internal void ShowPartners(DataGridView gridView)
+		{
+			gridView.Rows.Clear();
+			var data = model.GetPartners().ToArray();
+			if(data.Length == 0)
+			{
+				return;
+			}
+			for (int i = 0; i < data.Length; i++)
+			{
+				gridView.Rows.Add();
+				gridView[0, i].Value = data[i][0];
+				gridView[1, i].Value = data[i][1];
+				gridView[2, i].Value = data[i][2];
+				gridView[3, i].Value = data[i][3];
+			}
+		}
+
+		internal void UpdatePartner(int? id, string name, float commision)
+		{
+			model.UpdatePartner(id, name, commision);
+		}
+	}
 }

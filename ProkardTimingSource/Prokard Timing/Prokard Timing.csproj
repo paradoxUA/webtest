@@ -77,6 +77,15 @@
     <Reference Include="DGV Printer">
       <HintPath>..\dlls\DGV Printer.dll</HintPath>
     </Reference>
+    <Reference Include="ECM7.Migrator">
+      <HintPath>..\packages\ECM7Migrator.2.8.0.0\tools\ECM7.Migrator.dll</HintPath>
+    </Reference>
+    <Reference Include="ECM7.Migrator.Framework, Version=2.8.0.0, Culture=neutral, PublicKeyToken=46e9efbd947bd0df, processorArchitecture=MSIL">
+      <HintPath>..\packages\ECM7Migrator.2.8.0.0\lib\net40\ECM7.Migrator.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="ECM7.Migrator.Providers.SqlServer">
+      <HintPath>..\packages\ECM7Migrator.2.8.0.0\tools\ECM7.Migrator.Providers.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
@@ -93,6 +102,9 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=2.0.1.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.2.0.1.2\lib\net40\NLog.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore">
       <Private>True</Private>
@@ -210,6 +222,12 @@
     <Compile Include="AddFuel.Designer.cs">
       <DependentUpon>AddFuel.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddPartner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPartner.Designer.cs">
+      <DependentUpon>AddPartner.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -325,6 +343,7 @@
     <Compile Include="ExportPilots.Designer.cs">
       <DependentUpon>ExportPilots.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\DbExtentions.cs" />
     <Compile Include="Forms\Discount\Card\AddCartsRange.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -337,7 +356,20 @@
     <Compile Include="Forms\Petroleum\PetroleumSpend.Designer.cs">
       <DependentUpon>PetroleumSpend.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\AddPartnersToUserCash.cs" />
+    <Compile Include="Migrations\AddPartnersToCassa.cs" />
+    <Compile Include="Migrations\AddTerminalToCassa.cs" />
+    <Compile Include="Migrations\AddTerminalToUserCash.cs" />
+    <Compile Include="Migrations\CreatePartnersTable.cs" />
+    <Compile Include="PartnerControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PartnerControl.Designer.cs">
+      <DependentUpon>PartnerControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Logger.cs" />
+    <Compile Include="Migrations\CreateSuperAdmin.cs" />
+    <Compile Include="Migrations\MigrationForAssembly.cs" />
     <Compile Include="model\cassa.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -620,6 +652,9 @@
     <EmbeddedResource Include="AddFuel.resx">
       <DependentUpon>AddFuel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddPartner.resx">
+      <DependentUpon>AddPartner.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddGroup.resx">
       <DependentUpon>AddGroup.cs</DependentUpon>
     </EmbeddedResource>
@@ -695,6 +730,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GiftCertificate.resx">
       <DependentUpon>GiftCertificate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PartnerControl.resx">
+      <DependentUpon>PartnerControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GroupControl.resx">
       <DependentUpon>GroupControl.cs</DependentUpon>

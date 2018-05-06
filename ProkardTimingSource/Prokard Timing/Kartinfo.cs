@@ -23,10 +23,12 @@ namespace Rentix
             KartID = admin.model.GetKartID(Num).ToString();
             // Текстовые сообщения
             richTextBox1.Text = String.Empty;
-            richTextBox1.Text += admin.model.GetAllKartsMessages(Convert.ToInt32(KartID)); //sgavrilenko похоже, что тут муть. в таблице перемешаны сообщения про карты и про пилотов
+            richTextBox1.Text += admin.model.GetAllKartsMessages(Convert.ToInt32(KartID), fromDateTimePicker.Value, toDateTimePicker.Value); //sgavrilenko похоже, что тут муть. в таблице перемешаны сообщения про карты и про пилотов
 
-            
-            ShowStatistic();
+			fromDateTimePicker.Value = new DateTime(2000, 1, 1, 0, 0, 0);
+			toDateTimePicker.Value = DateTime.Now;
+
+			ShowStatistic();
         }
 
         private void ShowStatistic()
@@ -37,16 +39,16 @@ namespace Rentix
             labelSmooth17.Text = Kart["transponder"].ToString();
 
             // Статистика
-            labelSmooth10.Text = admin.model.GetKartRepairs(KartID).ToString();
+            labelSmooth10.Text = admin.model.GetKartRepairs(KartID, fromDateTimePicker.Value, toDateTimePicker.Value).ToString();
 
-            Hashtable Stat = admin.model.GetKartStatistic(KartID,Convert.ToDouble(admin.Settings["track_length"]));
+            Hashtable Stat = admin.model.GetKartStatistic(KartID,Convert.ToDouble(admin.Settings["track_length"]), fromDateTimePicker.Value, toDateTimePicker.Value);
 
             labelSmooth4.Text = Stat["races"].ToString();
             labelSmooth5.Text = (Convert.ToDouble(Stat["length"])/1000).ToString() + " км";
-            labelSmooth6.Text = admin.model.GetKartFuel(KartID) + " л";
+            labelSmooth6.Text = admin.model.GetKartFuel(KartID, fromDateTimePicker.Value, toDateTimePicker.Value) + " л";
 
             richTextBox2.Text = String.Empty;
-            richTextBox2.Text += admin.model.GetKartFuelHistory(KartID);
+            richTextBox2.Text += admin.model.GetKartFuelHistory(KartID, fromDateTimePicker.Value, toDateTimePicker.Value);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -69,7 +71,7 @@ namespace Rentix
 
             // Текстовые сообщения
             richTextBox1.Text = String.Empty;
-            richTextBox1.Text += admin.model.GetAllKartsMessages(Convert.ToInt32(KartID));
+            richTextBox1.Text += admin.model.GetAllKartsMessages(Convert.ToInt32(KartID), fromDateTimePicker.Value, toDateTimePicker.Value);
             ShowStatistic();
         }
 
@@ -84,5 +86,27 @@ namespace Rentix
 
                 form.Dispose();
          }
-    }
+
+		private void fromDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			ShowStatistic();
+		}
+
+		private void toDateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			ShowStatistic();
+		}
+
+		private void toolStripButton3_Click(object sender, EventArgs e)
+		{
+			var result = MessageBox.Show(this, "Вы уверены, что хотите выполнить сброс статистики пробега и топлива. Данные не подлежат восстановлению", "Сброс статистики", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+			if(result != DialogResult.Yes)
+			{
+				return;
+			}
+			admin.model.DropFuel(Convert.ToInt32(KartID));
+			admin.model.DropKartKmStats(Convert.ToInt32(KartID));
+			ShowStatistic();
+		}
+	}
 }

@@ -519,7 +519,7 @@ namespace Rentix
 
                 drawFormat.Alignment = StringAlignment.Near;
                 e.Graphics.DrawString(Data.SurName + " " + Data.Name, f1, Brushes.Black, new Rectangle(0, 30 + 3, W, 20), drawFormat);
-                e.Graphics.DrawString(halfModes_comboBox.SelectedItem?.ToString(), f1, Brushes.Black, new Rectangle(0, 45 + 3, W, 20), drawFormat);
+                e.Graphics.DrawString("Участвует как:  " + Data.NickName, f1, Brushes.Black, new Rectangle(0, 45 + 3, W, 20), drawFormat);
 
                 e.Graphics.DrawString("Дата старта:", f1, Brushes.Black, new Rectangle(0, 60 + 3, W, 20), drawFormat);
 

@@ -54,6 +54,7 @@ namespace Rentix
 			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
 			this.label1 = new System.Windows.Forms.Label();
 			this.borderPanel3 = new Microsoft.TeamFoundation.Client.BorderPanel();
+			this.label8 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -66,7 +67,10 @@ namespace Rentix
 			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.label8 = new System.Windows.Forms.Label();
+			this.userGroupsComboBox = new System.Windows.Forms.ComboBox();
+			this.label9 = new System.Windows.Forms.Label();
+			this.partnerComboBox = new System.Windows.Forms.ComboBox();
+			this.label10 = new System.Windows.Forms.Label();
 			this.borderPanel1.SuspendLayout();
 			this.borderPanel2.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
@@ -125,6 +129,10 @@ namespace Rentix
 			this.borderPanel2.BorderPadding = new System.Windows.Forms.Padding(0);
 			this.borderPanel2.BorderSides = Microsoft.TeamFoundation.Client.BorderPanel.Sides.Bottom;
 			this.borderPanel2.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+			this.borderPanel2.Controls.Add(this.partnerComboBox);
+			this.borderPanel2.Controls.Add(this.label10);
+			this.borderPanel2.Controls.Add(this.userGroupsComboBox);
+			this.borderPanel2.Controls.Add(this.label9);
 			this.borderPanel2.Controls.Add(this.raceTypeComboBox);
 			this.borderPanel2.Controls.Add(this.label2);
 			this.borderPanel2.Controls.Add(this.toolStrip1);
@@ -386,6 +394,19 @@ namespace Rentix
 			this.borderPanel3.TabIndex = 3;
 			this.borderPanel3.UseInnerColor = false;
 			// 
+			// label8
+			// 
+			this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.label8.AutoSize = true;
+			this.label8.BackColor = System.Drawing.Color.Transparent;
+			this.label8.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label8.ForeColor = System.Drawing.Color.DarkGoldenrod;
+			this.label8.Location = new System.Drawing.Point(171, 9);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(141, 13);
+			this.label8.TabIndex = 5;
+			this.label8.Text = "Сумма операций:  0 грн";
+			// 
 			// label5
 			// 
 			this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -515,18 +536,47 @@ namespace Rentix
 			this.Column6.ReadOnly = true;
 			this.Column6.Width = 58;
 			// 
-			// label8
+			// userGroupsComboBox
 			// 
-			this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.label8.AutoSize = true;
-			this.label8.BackColor = System.Drawing.Color.Transparent;
-			this.label8.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label8.ForeColor = System.Drawing.Color.DarkGoldenrod;
-			this.label8.Location = new System.Drawing.Point(171, 9);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(141, 13);
-			this.label8.TabIndex = 5;
-			this.label8.Text = "Сумма операций:  0 грн";
+			this.userGroupsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.userGroupsComboBox.FormattingEnabled = true;
+			this.userGroupsComboBox.Location = new System.Drawing.Point(305, 28);
+			this.userGroupsComboBox.Name = "userGroupsComboBox";
+			this.userGroupsComboBox.Size = new System.Drawing.Size(136, 21);
+			this.userGroupsComboBox.TabIndex = 11;
+			this.userGroupsComboBox.SelectedIndexChanged += new System.EventHandler(this.userGroupsComboBox_SelectedIndexChanged);
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.BackColor = System.Drawing.Color.Transparent;
+			this.label9.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label9.Location = new System.Drawing.Point(248, 32);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(51, 13);
+			this.label9.TabIndex = 10;
+			this.label9.Text = "Группа:";
+			// 
+			// partnerComboBox
+			// 
+			this.partnerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.partnerComboBox.FormattingEnabled = true;
+			this.partnerComboBox.Location = new System.Drawing.Point(521, 28);
+			this.partnerComboBox.Name = "partnerComboBox";
+			this.partnerComboBox.Size = new System.Drawing.Size(136, 21);
+			this.partnerComboBox.TabIndex = 13;
+			this.partnerComboBox.SelectedIndexChanged += new System.EventHandler(this.partnerComboBox_SelectedIndexChanged);
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.BackColor = System.Drawing.Color.Transparent;
+			this.label10.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label10.Location = new System.Drawing.Point(455, 32);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(60, 13);
+			this.label10.TabIndex = 12;
+			this.label10.Text = "Партнёр:";
 			// 
 			// CassaJurnal
 			// 
@@ -595,5 +645,9 @@ namespace Rentix
 		private Label label2;
 		private ComboBox raceTypeComboBox;
 		private Label label8;
+		private ComboBox userGroupsComboBox;
+		private Label label9;
+		private ComboBox partnerComboBox;
+		private Label label10;
 	}
 }

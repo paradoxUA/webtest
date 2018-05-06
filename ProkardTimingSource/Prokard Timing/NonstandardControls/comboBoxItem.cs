@@ -44,7 +44,7 @@ namespace Rentix.Controls
 
 
         // так как comboboxы содержат нестандартные items, то и выделять их надо нестандартно ;-)
-        public void selectComboBoxValueById(ComboBox someComboBox, int valueId)
+        public static void selectComboBoxValueById(ComboBox someComboBox, int valueId)
         {
             for (int i = 0; i < someComboBox.Items.Count; i++)
             {

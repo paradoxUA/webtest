@@ -104,8 +104,8 @@ namespace Rentix
 
 
                // MessageBox.Show(YesterdaySumm);
-                admin.model.Jurnal_Cassa("7", -1, -1, YesterdaySumm, "0", "Добавление кассового остатка за прошлые дни");
-                admin.model.Jurnal_Cassa("7", -1, -1, YesterdaySumm, "1", "Перенос кассы на следующий день", true);
+                admin.model.Jurnal_Cassa("7", -1, -1, YesterdaySumm, "0", "Добавление кассового остатка за прошлые дни", -1, "");
+                admin.model.Jurnal_Cassa("7", -1, -1, YesterdaySumm, "1", "Перенос кассы на следующий день", -1, "", true);
             }
 
 
@@ -1596,7 +1596,13 @@ namespace Rentix
             admin.isSportMode = competitionMode_menuItem.Checked;
         }
 
-        private void кассаПоЭтомуЗаездуToolStripMenuItem_Click(object sender, EventArgs e)
+		private void партнерыToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			var partnersView = new PartnerControl(admin);
+			partnersView.ShowDialog();
+		}
+
+		private void кассаПоЭтомуЗаездуToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RaceClass race = admin.Races[LastSelect.Row, LastSelect.Col];
             CassaJurnal form = new CassaJurnal(admin, Convert.ToInt32(race.RaceID));

@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Rentix.Extensions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -14,7 +17,10 @@ namespace Rentix
         public About()
         {
             InitializeComponent();
-        }
+			var assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+			var dateOfBuild = Assembly.GetExecutingAssembly().GetLinkerTime();
+			label2.Text = $"{assemblyVersion}    {dateOfBuild}";
+		}
 
         private void button1_Click(object sender, EventArgs e)
         {

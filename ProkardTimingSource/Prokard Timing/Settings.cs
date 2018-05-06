@@ -137,7 +137,7 @@ namespace Rentix
 				if (sett["default_race_mode_id"] != null)
 				{
 					comboBoxItem ci = new comboBoxItem("", -1);
-					ci.selectComboBoxValueById(defaultRaceMode_comboBox6, Convert.ToInt32(sett["default_race_mode_id"]));
+					comboBoxItem.selectComboBoxValueById(defaultRaceMode_comboBox6, Convert.ToInt32(sett["default_race_mode_id"]));
 				}
 				// defaultRaceMode_comboBox6.SelectedValue = sett["default_race_mode_id"]; 
 
@@ -754,5 +754,36 @@ namespace Rentix
             PrinterService test = new PrinterService();
             test.ShowAdminPanel();
         }
-    }
+
+		private void dropFuelButton_Click(object sender, EventArgs e)
+		{
+			var result = MessageBox.Show(this, "Вы уверены, что хотите выполнить сброс статистики топлива. Данные не подлежат восстановлению", "Сброс данных", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+			if (result != DialogResult.Yes)
+			{
+				return;
+			}
+			parent.admin.model.DropFuel(from: dateTimePicker1.Value, to: dateTimePicker2.Value);
+		}
+
+		private void dropCassaButton_Click(object sender, EventArgs e)
+		{
+			var result = MessageBox.Show(this, "Вы уверены, что хотите выполнить сброс статистики кассы. Данные не подлежат восстановлению", "Сброс данных", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+			if (result != DialogResult.Yes)
+			{
+				return;
+			}
+			parent.admin.model.DeleteCassa(from: dateTimePicker1.Value, to: dateTimePicker2.Value);
+		}
+
+		private void dropKartsStatsButton_Click(object sender, EventArgs e)
+		{
+			var result = MessageBox.Show(this, "Вы уверены, что хотите выполнить сброс статистики моточасов. Данные не подлежат восстановлению", "Сброс данных", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+			if (result != DialogResult.Yes)
+			{
+				return;
+			}
+			parent.admin.model.DropKartKmStats(from: dateTimePicker1.Value, to: dateTimePicker2.Value);
+
+		}
+	}
 }
