@@ -111,7 +111,7 @@ namespace Rentix
 				checkBox9.Checked = Convert.ToBoolean(sett["card_user"]);
 				checkBox10.Checked = Convert.ToBoolean(sett["beep_system"] ?? false);
 				checkBox11.Checked = Convert.ToBoolean(sett["beep_windows"] ?? false);
-				showUniqueBestResults_checkBox.Checked = Convert.ToBoolean(sett["uniquebestres"] ?? false);
+				//showUniqueBestResults_checkBox.Checked = Convert.ToBoolean(sett["uniquebestres"] ?? false);
 
 
 				// Закладка оборудование
@@ -260,7 +260,7 @@ namespace Rentix
             sett["card_user"] = checkBox9.Checked;
             sett["beep_system"] = checkBox11.Checked;
             sett["beep_windows"] = checkBox10.Checked;
-            sett["uniquebestres"] = showUniqueBestResults_checkBox.Checked;
+            //sett["uniquebestres"] = showUniqueBestResults_checkBox.Checked;
 
             // Закладка оборудование
             if (comboBox1.SelectedIndex == -1)

@@ -197,198 +197,7 @@ namespace Rentix
         }
 
         // получить лучшие результаты по треку 
-        public List<race_times> getTop40LapsTimes(int idTrack,
-            DateTime startDate, DateTime endDate, bool onlyUnique, int amountOfRecords)
-        {
-            DateTime startTime = DateTime.Now;
-
-            List<race_times> result = new List<race_times>();
-
-            TimeSpan executionTime;
-
-            if (onlyUnique)
-            {
-                SqlConnection conn = new SqlConnection(connectionString);
-                SqlDataAdapter da = new SqlDataAdapter();
-                SqlCommand SqlCommand = conn.CreateCommand();
-
-                SqlCommand.CommandText = "" +
-                                         " select race_data.*, users.id as user_id, users.name as username " +
-                                         " from race_data " +
-                                         " join races on races.id = race_data.race_id " +
-                                         " join users on race_data.pilot_id = users.id " +
-                                         " where races.track_id = @TRACK_ID";
-                SqlCommand.Parameters.AddWithValue("@TRACK_ID", idTrack);
-                da.SelectCommand = SqlCommand;
-                DataSet ds = new DataSet();
-
-                conn.Open();
-                da.Fill(ds);
-                conn.Close();
-
-
-                List<int> listUsersInts = new List<int>();
-
-                foreach (DataRow row in ds.Tables[0].Rows)
-                {
-
-
-                    race_data rdData = new race_data();
-                    rdData.user = new users();
-                    rdData.race = new races();
-                    rdData.race.track = new tracks();
-
-                    rdData.user.id = Convert.ToInt32(row[2]);
-                    rdData.pilot_id = Convert.ToInt32(row[2]);
-                    rdData.id = Convert.ToInt32(row[0]);
-                    rdData.race_id = Convert.ToInt32(row[1]);
-                    rdData.created = Convert.ToDateTime(row[4]);
-
-                    using (SqlCommand newmCommand
-                        = new SqlCommand(
-                            "select race_times.*, " +
-                            "race_data.race_id as raceid, " +
-                            "users.name , " +
-                            "users.surname, " +
-                            "users.nickname, " +
-                            "users.tel, " +
-                            "users.email, " +
-                            "races.racedate, " +
-                            "tracks.name as track_name " +
-                            "from race_times  " +
-                            "join race_data on race_times.member_id = race_data.id  " +
-                            "left join users on users.id = race_data.pilot_id " +
-                            "left join races on races.id = race_data.race_id " +
-                            "left join tracks on tracks.id = races.track_id " +
-                            "where race_times.seconds in(  " +
-                            "select min(race_times.seconds)  " +
-                            "from race_times  join race_data on race_times.member_id = race_data.id  " +
-                            "where race_data.pilot_id = @USER_ID)  " +
-                            "and race_data.pilot_id = @USER_ID  GROUP BY users.id", db))
-                    {
-                        newmCommand.Parameters.AddWithValue("@USER_ID", row[2]);
-                        if (listUsersInts.Contains(Convert.ToInt32(row[2])))
-                        {
-                            continue;
-                        }
-                        else
-                        {
-                            listUsersInts.Add(Convert.ToInt32(row[2]));
-                        }
-
-                        //Console.WriteLine(@"@USER_ID===" + row[2]);
-                        using (SqlDataReader res1 = newmCommand.ExecuteReader())
-                        {
-                            while (res1.Read())
-                            {
-                                if (result.Count > 65)
-                                {
-                                    continue;
-                                }
-                                race_times rsTimes = new race_times();
-                                rdData.user.name = res1[6].ToString();
-                                rdData.user.surname = res1[7].ToString();
-                                rdData.user.nickname = res1[8].ToString();
-                                rdData.user.tel = res1[9].ToString();
-                                rdData.user.email = res1[10].ToString();
-
-                                rdData.race.racedate = Convert.ToDateTime(res1[11].ToString());
-                                rdData.race.track.name = res1[12].ToString();
-                                rdData.race.track_id = idTrack;
-                                rdData.race.raceid = res1[5].ToString();
-
-                                rsTimes.id = Convert.ToInt32(res1[0]);
-                                rsTimes.lap = Convert.ToInt32(res1[1]);
-                                rsTimes.seconds = Convert.ToDecimal(res1[2]);
-                                rsTimes.created = Convert.ToDateTime(res1[3]);
-                                rsTimes.race_data = (race_data)(rdData);
-                                result.Add(rsTimes);
-                            }
-                        }
-                    }
-
-                }
-
-            }
-            else
-            {
-				try
-				{
-					result = edb.race_times
-						.Where(m => m.race_data.light_mode != true)
-						.Where(m => m.race_data.race.track_id == idTrack)
-						.Where(m => m.race_data.user.deleted != true)
-						.Where(m => m.race_data.modified >= startDate)
-						.Where(m => m.race_data.modified <= endDate)
-						.OrderBy(m => m.seconds)
-						.Take(40)
-						.ToList();
-				}
-				catch
-				{
-
-				}
-                //    Select(g => new 
-                //{
-                //    //id = g.Select(s => s).Select(x=>x.id),
-                //    user_id = g.Key,
-                //    seconds = g.Min(x => x.seconds)
-                //}).
-                //  OrderBy(y => y.seconds).
-                //Take(40).
-                // ToList();
-
-                //foreach (var groupingByRace_times in times)
-                //{
-                //    //int user_id = groupingByRace_times.user_id;
-                //    //var tm = edb.race_times.Select(t => t.seconds == groupingByRace_times.seconds);
-                //    //  List<race_times> newList = smths.ToList();
-                //    //iterating through values
-                //    //foreach (race_times race_time in groupingByRace_times)
-                //    //{
-                //    //    //var minTime = groupingByRace_times.SelectMin(s => s.seconds);
-                //    //    Console.WriteLine(race_time.seconds);
-                //    //    //int key = race_time.seconds;
-                //    //}
-                //}
-
-
-                //List<race_times> list = new List<race_times>();
-                //IEnumerable<race_times> smths = times.SelectMany(group => group);
-                //List<race_times> newList = smths.ToList();
-
-                //foreach (IGrouping<int, race_times> group in times)
-                //{
-
-                //    //Console.WriteLine(string.Format("Key (Color): {0}tCount: {1}", group.Key, group.Value.seconds));
-                //}
-                //foreach (var time in times)
-                //{
-
-                //    Console.WriteLine("<----------->");
-                //    Console.WriteLine(time.Key);
-                //    //Console.WriteLine(time..race_data.user.email);
-                //    //Console.WriteLine(time.seconds);
-                //    //Console.WriteLine(time.race_data.created);
-                //}
-                //var results = edb.race_times.GroupBy(m => m, m => m.race_data.user.id).Take(40).ToList();
-                //.GroupBy(m=>m.race_data.user.id)
-                //result = times.AsQueryable().Where(m => m.race_data.light_mode != true).
-                //    Where(m => m.race_data.race.track_id == idTrack).
-                //    Where(m => m.race_data.user.deleted != true).
-                //    Where(m => m.race_data.modified >= startDate).
-                //    Where(m => m.race_data.modified <= endDate).
-                //    OrderBy(m => m.seconds).
-                //    Take(40).
-                //    ToList();
-            }
-
-            executionTime = DateTime.Now - startTime;
-            Logger.AddRecord("foreach (users item in pilots)", Logger.LogType.info, executionTime);
-
-            return result;
-        }
-
+       
         /*
         // вернуть список режимов гонки
         public IEnumerable<race_modes> GetRaceModes()
@@ -532,7 +341,7 @@ namespace Rentix
 
             string ret = String.Empty;
             List<Hashtable> br = GetBestResults(TrackID,
-                true, DateTime.Now.AddYears(-100),
+                 DateTime.Now.AddYears(-100),
                 DateTime.Now.AddYears(100), 1);
 
 
@@ -577,7 +386,7 @@ namespace Rentix
 
             string ret = String.Empty;
             List<Hashtable> br = GetBestResults(TrackID,
-                true, DateTime.Now.AddYears(-100),
+                DateTime.Now.AddYears(-100),
                 DateTime.Now.AddYears(100), 1);
 
 
@@ -3281,7 +3090,7 @@ namespace Rentix
         {
 
             DateTime startTime = DateTime.Now;
-            List<Hashtable> result = GetBestResults(TrackID, uniq, d1, d2, 20);
+            List<Hashtable> result = GetBestResults(TrackID, d1, d2, 20);
 
             TimeSpan executionTime = DateTime.Now - startTime;
             Logger.AddRecord("GetAnonserBestResultsFromDateRange", Logger.LogType.info, executionTime);
@@ -3352,132 +3161,53 @@ namespace Rentix
         }
 
         // Получает лучшие результаты
-        public List<Hashtable> GetBestResults(int TrackID, bool uniq, DateTime startDate, DateTime endDate, int amountOfRecords)
+        public List<Hashtable> GetBestResults(int TrackID, DateTime startDate, DateTime endDate, int amountOfRecords)
         {
             DateTime startTime = DateTime.Now;
 
-            List<Hashtable> ret = new List<Hashtable>();
+            List<Hashtable> result = new List<Hashtable>();
             TimeSpan executionTime;
+			if (!connected)
+			{
+				return result;
+			}
 
-            if (connected)
-            {
-                List<race_times> raceTimes =
-                    getTop40LapsTimes(TrackID, startDate, endDate, uniq, amountOfRecords);
+			var query =
+				"SELECT u.name, u.nickname, rd.created, u.tel, u.surname, seconds, u.email, rd.pilot_id, rd.modified as racedate, lap as id, race_id " +
+				"FROM " +
+					"(SELECT race_data_times.member_id, pilot_top.seconds, race_data_times.lap " +
+					"FROM " +
+						$"(SELECT TOP {amountOfRecords} rd.pilot_id, MIN(seconds) as seconds " +
+						"FROM((SELECT member_id, MIN(seconds) as seconds FROM crazykart.dbo.race_times GROUP BY member_id) rt LEFT JOIN crazykart.dbo.race_data rd ON rt.member_id = rd.id) LEFT JOIN crazykart.dbo.races r ON r.id = rd.race_id " +
+						$"WHERE r.racedate BETWEEN '{startDate.AsDayStart().ToSqlString()}' and '{endDate.AsDayEnd().ToSqlString()}' {(TrackID != -1).ToStringIf("and r.track_id = " + TrackID)} " +
+						"GROUP BY rd.pilot_id " +
+						"ORDER BY seconds) pilot_top, " +
+						"(SELECT member_id, seconds, pilot_id, lap FROM crazykart.dbo.race_times rt INNER JOIN crazykart.dbo.race_data rd ON rt.member_id = rd.id) race_data_times " +
+					"WHERE pilot_top.pilot_id = race_data_times.pilot_id and pilot_top.seconds = race_data_times.seconds) top_res LEFT JOIN crazykart.dbo.race_data rd ON top_res.member_id = rd.id LEFT JOIN crazykart.dbo.users u ON u.id = rd.pilot_id " +
+				"ORDER BY seconds";
 
-                executionTime = DateTime.Now - startTime;
-                Logger.AddRecord("GetBestResults1", Logger.LogType.info, executionTime);
-
-                /*
-                    DateTime.Now.AddYears(-100),
-                    DateTime.Now.AddYears(100), uniq);
-                */
-
-                for (int i = 0; i < raceTimes.Count; i++)
-                {
-                    Hashtable row = new Hashtable();
-                    try
-                    {
-                        race_times someRaceTime = raceTimes.ElementAt(i);
-                        //row["track_name"] = someRaceTime.race_data.race.track.name;
-                        row["name"] = someRaceTime.race_data.user.name;
-                        row["nickname"] = someRaceTime.race_data.user.nickname;
-                        row["created"] = someRaceTime.race_data.created;
-                        row["tel"] = someRaceTime.race_data.user.tel;
-                        row["surname"] = someRaceTime.race_data.user.surname;
-                        row["seconds"] = someRaceTime.seconds;
-                        row["email"] = someRaceTime.race_data.user.email;
-                        row["pilot_id"] = someRaceTime.race_data.pilot_id;
-                        row["racedate"] = someRaceTime.race_data.race.racedate;
-                        row["id"] = someRaceTime.id;
-                        row["track_id"] = someRaceTime.race_data.race.track_id;
-                        row["race_id"] = someRaceTime.race_data.race.raceid;
-
-                    }
-                    catch (Exception)
-                    {
-
-                        race_times someRaceTime = raceTimes.ElementAt(i);
-                        row["track_name"] = "track_name";
-                        row["name"] = someRaceTime.race_data.user.name;
-                        row["nickname"] = someRaceTime.race_data.user.nickname;
-                        row["created"] = someRaceTime.race_data.created;
-                        row["tel"] = someRaceTime.race_data.user.tel;
-                        row["surname"] = someRaceTime.race_data.user.surname;
-                        row["seconds"] = someRaceTime.seconds;
-                        row["email"] = someRaceTime.race_data.user.email;
-                        row["pilot_id"] = someRaceTime.race_data.pilot_id;
-                        row["racedate"] = DateTime.Now;
-                        row["id"] = someRaceTime.id;
-                        row["track_id"] = 0;
-                        row["race_id"] = 0;
-                    }
-
-
-                    ret.Add(row);
-                }
-
-                executionTime = DateTime.Now - startTime;
-                Logger.AddRecord("GetBestResults2", Logger.LogType.info, executionTime);
-
-
-
-            }
-
-            executionTime = DateTime.Now - startTime;
-            Logger.AddRecord("GetBestResults", Logger.LogType.info, executionTime);
-
-            return ret;
-
-
-
-
-            /*
-
-
-
-            if (connected)
-            {
-                string query = String.Empty;
-                string where = String.Empty;
-                if (Date != "")
-                {
-                    if (OnDay)
-                        where = "and r.racedate='" + Date + "'  group by u.id  order by seconds ";
-
-                    else where = "and r.racedate>='" + DateTime.Now.AddMonths(-1).ToString("yyyy-MM-dd") + "'  group by u.id  order by seconds ";
-
-                }
-                else where = " group by u.id order by seconds ";
-
-                if (TrackID < 0)
-                {
-                  //  query = "select TOP 40	rd.id, rd.pilot_id,	rt.seconds, rd.race_id,r.racedate, 	u.name,u.nickname, u.surname,u.email, u.tel, r.track_id,r.created,t.name as track_name	from users u, race_times rt, race_data rd, races r, tracks t where 	rt.seconds = replace((select min(replace(rt.seconds,',','.')*1.0) from 	race_times rt, 			race_data rd 	where	rd.pilot_id=u.id and rd.light_mode = 0	and not isnull(rt.seconds)  and rt.seconds > 0	and rt.member_id=rd.id),'.',',')	and rd.id = rt.member_id	and u.id  = rd.pilot_id	and r.id  = rd.race_id	and t.id  = r.track_id " + where;
-                
-
-                    query = "select TOP 40	rd.id, rd.pilot_id,	rt.seconds, rd.race_id,r.racedate, 	u.name,u.nickname, u.surname,u.email, u.tel, r.track_id,r.created,t.name as track_name	from users u, race_times rt, race_data rd, races r, tracks t where 	rt.seconds = replace((select min(replace(rt.seconds,',','.')*1.0) from 	race_times rt, 			race_data rd 	where	rd.pilot_id=u.id and rd.light_mode = 0	and not isnull(rt.seconds, '')  and rt.seconds > 0	and rt.member_id=rd.id),'.',',')	and rd.id = rt.member_id	and u.id  = rd.pilot_id	and r.id  = rd.race_id	and t.id  = r.track_id " + where;
-                }
-                else
-                {
-                    query = "select TOP 40	rd.id, rd.pilot_id,	rt.seconds, rd.race_id,r.racedate, 	u.name,u.nickname, u.surname,u.email, u.tel, r.track_id,r.created,t.name as track_name	from users u, race_times rt, race_data rd, races r, tracks t where 	rt.seconds = replace((select min(replace(rt.seconds,',','.')*1.0) from 	race_times rt, 			race_data rd 	where	rd.pilot_id=u.id and rd.light_mode = 0	and not isnull(rt.seconds, '')  and rt.seconds > 0	and rt.member_id=rd.id),'.',',')	and rd.id = rt.member_id	and u.id  = rd.pilot_id	and r.id  = rd.race_id	and t.id  = r.track_id and r.track_id='" + TrackID.ToString() + "' " + where;
-               
-
-                 //   query = "select TOP 40	rd.id, rd.pilot_id,	rt.seconds, rd.race_id,r.racedate, 	u.name,u.nickname, u.surname,u.email, u.tel, r.track_id,r.created,t.name as track_name	from users u, race_times rt, race_data rd, races r, tracks t where 	rt.seconds = replace((select min(replace(rt.seconds,',','.')*1.0) from 	race_times rt, 			race_data rd 	where	rd.pilot_id=u.id and rd.light_mode = 0	and not isnull(rt.seconds)  and rt.seconds > 0	and rt.member_id=rd.id),'.',',')	and rd.id = rt.member_id	and u.id  = rd.pilot_id	and r.id  = rd.race_id	and t.id  = r.track_id and r.track_id='" + TrackID.ToString() + "' " + where;
-                }
-
-                using (SqlCommand cmd = new SqlCommand(query, db2))
-                {
-                    using (SqlDataReader res = cmd.ExecuteReader())
-                    {
-                        while (res.Read())
-                        {
-                            ret.Add(ConvertResult(res));
-                        }
-                    }
-                }
-            }
-
-            return ret;
-             * */
+			using (var command = new SqlCommand(query, db))
+			using (var reader = command.ExecuteReader())
+			{
+				while (reader.Read())
+				{
+					var set = new Hashtable();
+					set["name"] = reader["name"];
+					set["nickname"] = reader["nickname"];
+					set["created"] = reader["created"];
+					set["tel"] = reader["tel"];
+					set["surname"] = reader["surname"];
+					set["seconds"] = reader["seconds"];
+					set["email"] = reader["email"];
+					set["pilot_id"] = reader["pilot_id"];
+					set["racedate"] = reader["racedate"];
+					set["id"] = reader["id"];
+					set["track_id"] = TrackID;
+					set["race_id"] = reader["race_id"];
+					result.Add(set);
+				}
+			}
+			return result;
         }
 
         // Возвращает лучший результат дня
@@ -3487,8 +3217,8 @@ namespace Rentix
 
             if (connected)
             {
-                List<race_times> raceTimes =
-                    getTop40LapsTimes(TrackID, startDate, endDate, uniq, amountOfRecords);
+				List<race_times> raceTimes = new List<race_times>();
+                    //getTop40LapsTimes(TrackID, startDate, endDate, uniq, amountOfRecords);
 
                 for (int i = 0; i < raceTimes.Count; i++)
                 {
@@ -3920,7 +3650,7 @@ namespace Rentix
 					cmd = new SqlCommand(
 						"SELECT * FROM " +
 							"(SELECT ROW_NUMBER() OVER(ORDER BY j.id) AS RowNum, j.id, j.created as 'date', j.comment, j.user_id, j.tp, j.race_id, c.sum, c.sign " +
-							$"FROM(crazykart.dbo.jurnal j LEFT JOIN(SELECT race_id, pilot_id, car_id, id_race_mode FROM[crazykart].[dbo].[race_data] WHERE car_id IS NOT NULL GROUP BY race_id, pilot_id, car_id, id_race_mode) rd ON j.race_id = rd.race_id and j.user_id = rd.pilot_id) LEFT JOIN {(reportType == 1 ? "cassa" : "user_cash")} c ON j.id = c.doc_id " +
+							$"FROM(jurnal j LEFT JOIN(SELECT race_id, pilot_id, car_id, id_race_mode FROM race_data WHERE car_id IS NOT NULL GROUP BY race_id, pilot_id, car_id, id_race_mode) rd ON j.race_id = rd.race_id and j.user_id = rd.pilot_id) LEFT JOIN {(reportType == 1 ? "cassa" : "user_cash")} c ON j.id = c.doc_id " +
 							$"WHERE j.tp in ({GetJurnalTp(cashTerminalType)}) and c.sign in (0,1) and j.created BETWEEN @startDate and @endDate {(raceTypeId > -1).ToStringIf("and rd.id_race_mode = " + raceTypeId)} {(userGroupId > -1).ToStringIf("and u.gr = " + userGroupId)} {(partnerId > -1).ToStringIf("and c.partner_id = " + partnerId)}) as some_table " +
 						"WHERE RowNum BETWEEN(@PageIndex -1) * @PageSize + 1 and @PageIndex * @PageSize " +
 						"ORDER BY id", db2);
@@ -3996,7 +3726,7 @@ namespace Rentix
 			}
 			var query =
 				"SELECT c.sum, CASE c.sign WHEN 0 THEN 1 ELSE -1 END as my_sign " +
-				"FROM crazykart.dbo.jurnal j LEFT JOIN crazykart.dbo.cassa c ON j.id = c.doc_id " +
+				"FROM jurnal j LEFT JOIN crazykart.dbo.cassa c ON j.id = c.doc_id " +
 				$"WHERE j.tp in ({GetJurnalTp(cashTerminalType)}) and c.sign in (0, 1) and j.created BETWEEN @startDate and @endDate {(raceTypeId > -1).ToStringIf("and rd.id_race_mode = " + raceTypeId)} {(userGroupId > -1).ToStringIf("and u.gr = " + userGroupId)} {(partnerId > -1).ToStringIf("and c.partner_id = " + partnerId)}";
 			var cmd = new SqlCommand(query, db2);
 			cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = Date;

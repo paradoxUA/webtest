@@ -642,13 +642,13 @@ namespace Rentix
 
             if (OnDay == false)
             {
-                Data = model.GetBestResults(TrackID, UniqueBestResult, datetimeConverter.toStartDateTime(DateTime.Now.AddMonths(-1)),
+                Data = model.GetBestResults(TrackID, datetimeConverter.toStartDateTime(DateTime.Now.AddMonths(-1)),
                     datetimeConverter.toEndDateTime(DateTime.Now), 10);
 
             }
             else
             {
-                Data = model.GetBestResults(TrackID, UniqueBestResult,
+                Data = model.GetBestResults(TrackID,
                     datetimeConverter.toStartDateTime(DateTime.Now),
                     datetimeConverter.toEndDateTime(DateTime.Now), 10);
 
@@ -1150,7 +1150,7 @@ namespace Rentix
 		// Показывает список лучших результатов
 		public void ShowBestResults(DataGridView dv, int idTrack, LabelSmooth Records, bool ShowRaceID = false, DateTime? dateTimeBegin = null, DateTime? dateTimeEnd = null)
         {
-            List<Hashtable> Best = model.GetBestResults(idTrack, UniqueBestResult, dateTimeBegin ?? DateTime.Now.AddYears(-1000), dateTimeEnd ?? DateTime.Now.AddYears(1000), 40); // вдруг машину времени изобретут...
+            List<Hashtable> Best = model.GetBestResults(idTrack, dateTimeBegin ?? DateTime.Now.AddYears(-1000), dateTimeEnd ?? DateTime.Now.AddYears(1000), 40); // вдруг машину времени изобретут...
 
             dv.Rows.Clear();
             string pilotname = "";

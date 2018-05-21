@@ -70,7 +70,7 @@ namespace Rentix
             {
                 case 0: GetDaySatistic(); break;
                 case 1: /*admin.ShowRaceJurnal(Pages, dataGridView1, dateTimePicker2.Value, dateTimePicker5.Value, eventsInRacesJournal_comboBox.SelectedIndex); RaceJurnalCalculate();*/ break;
-                case 2: admin.ShowBestResults(top40_dataGridView, comboBoxItem.getSelectedValue(tracks_comboBox1), top40Record_labelSmooth12,true);  break;
+                case 2: FillBestResults(); break;
                 case 3: GetAllUsersStatistic(); break;
                 case 4: GetAllKartStatistic(); break;
             }
@@ -136,11 +136,7 @@ namespace Rentix
                     dateTimePicker5.Value, 
                     eventsInRacesJournal_comboBox.SelectedIndex);
                     RaceJurnalCalculate(); } */ break;
-                case 2: if (top40_dataGridView.Rows.Count == 0)
-                    {
-						FillBestResults();
-                    }
-                    break;
+                case 2: FillBestResults(); break;
                 case 3: GetAllUsersStatistic(); break;
                 case 4: if (dataGridView3.Rows.Count == 0) GetAllKartStatistic(); break;
                 case 5: if (unregisteredDetection_dataGridView4.Rows.Count == 0)
