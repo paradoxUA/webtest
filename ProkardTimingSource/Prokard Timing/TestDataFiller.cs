@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Collections;
 using Rentix;
 using Rentix.Controls;
+using Rentix.Extensions;
 
 namespace Rentix
 {
@@ -105,7 +106,7 @@ namespace Rentix
                     string idRace = startDate.Hour.ToString() + "," + (cell+1).ToString();
                     
                     int newRaceId = admin.model.CreateRace(startDate, idRace, 
-                        comboBoxItem.getSelectedValue(tracks_comboBox).ToString(), cell + 1);
+                        tracks_comboBox.SelectedIdx().ToString(), cell + 1);
 
                     racesIds.Add(newRaceId);
                     label3.Text = racesIds.Count.ToString();

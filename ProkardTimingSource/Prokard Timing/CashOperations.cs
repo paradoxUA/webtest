@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Drawing.Printing;
 using System.Drawing.Text;
 using Rentix.Controls;
+using Rentix.Extensions;
 
 namespace Rentix
 {
@@ -200,7 +201,7 @@ namespace Rentix
             textBox2.Text = UserCash.ToString() + " грн";
 
             CalculateSumForPayment();
-            radioButton2.Checked = true;
+            cassaRadioButton.Checked = true;
             labelSmooth3.Text = "Скидка группы - " + groupDiscount.ToString() + "%";
             if (certificateDiscount == 0)
             {
@@ -236,7 +237,7 @@ namespace Rentix
             // узнали полную цену для этого времени, с учётом указанного количества кругов
             Sum = Convert.ToDouble(admin.GetPrice(admin.GetWeekDayNumber(Race.Date),
                 Convert.ToInt16(Race.Hour),
-                comboBoxItem.getSelectedValue(halfModes_comboBox), idGroup));
+                halfModes_comboBox.SelectedIdx(), idGroup));
 
             
             /* есть такие скидки - certificateSale - скидка по сертификату
@@ -308,7 +309,7 @@ namespace Rentix
 
             priceForCurrentRace_textBox5.Text = cashFromPilot_textBox3.Text = finalSum.ToString();
             
-            radioButton1.Enabled = UserCash >= finalSum;
+            userCashRadioButton.Enabled = UserCash >= finalSum;
 
              refreshRestMoney();
         }
@@ -337,21 +338,21 @@ namespace Rentix
             }
 
             // Добавление денег в кассу, если оплата не идет через счет пользователя
-            if (!radioButton1.Checked)
+            if (!userCashRadioButton.Checked)
             {
-                admin.model.Jurnal_Cassa("1", Convert.ToInt32(PilotID), Race.RaceID, priceForCurrentRace_textBox5.Text, "0", "Оплата участия в рейсе." + SaleComment, comboBoxItem.getSelectedValue(partnerComboBox), refCodeTextBox.Text, false);
+                admin.model.Jurnal_Cassa(terminalCashCheckBox.Checked && terminalCashCheckBox.Enabled ? "33" : "1", Convert.ToInt32(PilotID), Race.RaceID, priceForCurrentRace_textBox5.Text, "0", "Оплата участия в рейсе." + SaleComment, partnerComboBox.SelectedIdx(), refCodeTextBox.Text, false);
             }
             else
             {
                 admin.model.Jurnal_UserCashByUserId("6", Convert.ToInt32(PilotID),
                     priceForCurrentRace_textBox5.Text, "1", "Оплата участия в рейсе." + SaleComment
-                    + " Cъём со счета пользователя.", Race.RaceID, comboBoxItem.getSelectedValue(partnerComboBox), refCodeTextBox.Text);
+                    + " Cъём со счета пользователя.", Race.RaceID, partnerComboBox.SelectedIdx(), refCodeTextBox.Text);
                 InUserCash = true;
             }
 
             if (moveRestToUserAccount_checkBox1.Checked && moveRestToUserAccount_checkBox1.Enabled)
             {
-                admin.model.Jurnal_AddToUserCash("3", Convert.ToInt32(PilotID), textBox4.Text, "0", "Коррекция баланса пользователя.", comboBoxItem.getSelectedValue(partnerComboBox), refCodeTextBox.Text);
+                admin.model.Jurnal_AddToUserCash("3", Convert.ToInt32(PilotID), textBox4.Text, "0", "Коррекция баланса пользователя.", partnerComboBox.SelectedIdx(), refCodeTextBox.Text);
             }
 
             if (Convert.ToBoolean(admin.Settings["print_check"]))
@@ -440,8 +441,9 @@ namespace Rentix
         // взять с личного счёта
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            cashFromPilot_textBox3.Enabled = !radioButton1.Checked;
-            moveRestToUserAccount_checkBox1.Enabled = !radioButton1.Checked;
+            cashFromPilot_textBox3.Enabled = !userCashRadioButton.Checked;
+            moveRestToUserAccount_checkBox1.Enabled = !userCashRadioButton.Checked;
+			terminalCashCheckBox.Enabled = !userCashRadioButton.Checked;
         }
 
 
@@ -601,7 +603,7 @@ namespace Rentix
 
 		private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
 		{
-			refCodeTextBox.Enabled = comboBoxItem.getSelectedValue(partnerComboBox) != -1;
+			refCodeTextBox.Enabled = partnerComboBox.SelectedIdx() != -1;
 		}
 	}
 

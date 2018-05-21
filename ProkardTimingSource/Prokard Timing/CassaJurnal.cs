@@ -1,4 +1,5 @@
 ﻿using Rentix.Controls;
+using Rentix.Extensions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,6 +41,7 @@ namespace Rentix
 			FillRaceTypes();
 			FillUserGroups();
 			FillPartners();
+			FillMoneyType();
 
 
 			if (!admin.IS_ADMIN)
@@ -47,8 +49,20 @@ namespace Rentix
                 this.Close();
             }
 
-			
+			UpdateCassaReport();
         }
+
+		private void FillMoneyType()
+		{
+			var items = new[]
+			{
+				new KeyValuePair<int, string>(-1, "Общая"),
+				new KeyValuePair<int, string>(1, "Наличные"),
+				new KeyValuePair<int, string>(31, "Терминал"),
+			};
+			moneyTypeComboBox.Fill(items, false);
+			moneyTypeComboBox.SelectedIndex = 0;
+		}
 
 		private void FillPartners()
 		{
@@ -330,9 +344,16 @@ namespace Rentix
 
 		private void UpdateCassaReport()
 		{
-			admin.GetCassaReport(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, Pages, _race_id, comboBoxItem.getSelectedValue(raceTypeComboBox), comboBoxItem.getSelectedValue(userGroupsComboBox), comboBoxItem.getSelectedValue(partnerComboBox));
-			var sum = admin.GetCassaSum(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, _race_id, comboBoxItem.getSelectedValue(raceTypeComboBox), comboBoxItem.getSelectedValue(userGroupsComboBox), comboBoxItem.getSelectedValue(partnerComboBox));
-			label8.Text = "Сумма операций: " + sum + "грн.";
+			try
+			{
+				admin.GetCassaReport(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, Pages, _race_id, raceTypeComboBox.SelectedIdx(), userGroupsComboBox.SelectedIdx(), partnerComboBox.SelectedIdx(), moneyTypeComboBox.SelectedIdx());
+				var sum = admin.GetCassaSum(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, _race_id, raceTypeComboBox.SelectedIdx(), userGroupsComboBox.SelectedIdx(), partnerComboBox.SelectedIdx(), moneyTypeComboBox.SelectedIdx());
+				label8.Text = "Сумма операций: " + sum + "грн.";
+			}
+			catch
+			{
+
+			}
 		}
 
 		private void raceTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -346,6 +367,11 @@ namespace Rentix
 		}
 
 		private void partnerComboBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			UpdateCassaReport();
+		}
+
+		private void moneyTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			UpdateCassaReport();
 		}

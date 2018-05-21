@@ -7,7 +7,7 @@ using System.Drawing.Printing;
 using System.Drawing.Text;
 using System.Collections.Generic;
 using Rentix.Controls;
-
+using Rentix.Extensions;
 
 namespace Rentix
 {
@@ -124,7 +124,7 @@ namespace Rentix
                         }
                         ret = true;
                         paidAmount = Convert.ToDouble(form.priceForCurrentRace_textBox5.Text);
-                        idRaceMode = comboBoxItem.getSelectedValue(form.halfModes_comboBox);
+                        idRaceMode = form.halfModes_comboBox.SelectedIdx();
                     }
                 }
                 else

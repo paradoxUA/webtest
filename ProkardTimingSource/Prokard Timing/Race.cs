@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Collections;
 using System.Collections.Generic;
 using Rentix.Controls;
+using Rentix.Extensions;
 
 namespace Rentix
 {
@@ -1067,7 +1068,7 @@ namespace Rentix
                 return;
             }
 
-            timeMode_label.Text = (comboBoxItem.getSelectedValue(RaceMode_comboBox)).ToString() + ":00";
+            timeMode_label.Text = (RaceMode_comboBox.SelectedIdx()).ToString() + ":00";
             
         }
          

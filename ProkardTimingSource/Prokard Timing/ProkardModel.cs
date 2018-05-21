@@ -112,9 +112,9 @@ namespace Rentix
 				migrator.Migrate();
 
 				/*
-                using (SqlCommand cmd = new SqlCommand("set names cp1251", db)) cmd.ExecuteNonQuery();
-                using (SqlCommand cmd = new SqlCommand("set names cp1251", db2)) cmd.ExecuteNonQuery();
-                using (SqlCommand cmd = new SqlCommand("set names cp1251", db3)) cmd.ExecuteNonQuery();
+                using (SqlCommand cmd = new SqlCommand("set names cp1251", db)) cmd.ExecuteNonQueryHandled();
+                using (SqlCommand cmd = new SqlCommand("set names cp1251", db2)) cmd.ExecuteNonQueryHandled();
+                using (SqlCommand cmd = new SqlCommand("set names cp1251", db3)) cmd.ExecuteNonQueryHandled();
             
                  */
 			}
@@ -203,6 +203,7 @@ namespace Rentix
             DateTime startTime = DateTime.Now;
 
             List<race_times> result = new List<race_times>();
+
             TimeSpan executionTime;
 
             if (onlyUnique)
@@ -619,7 +620,7 @@ namespace Rentix
             if (connected)
             {
                 using (SqlCommand cmd = new SqlCommand("update races set light_mode='" + LM + "' where id='" + RaceID + "'", db))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
             }
         }
 
@@ -659,7 +660,7 @@ namespace Rentix
             if (connected)
             {
                 using (SqlCommand cmd = new SqlCommand("insert into noracekart (transponder, race_id, created) values ('" + Transponder + "','" + RaceID + "', GETDATE())", db))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
             }
 
             TimeSpan executionTime = DateTime.Now - startTime;
@@ -675,7 +676,7 @@ namespace Rentix
             if (connected)
             {
                 using (SqlCommand cmd = new SqlCommand("update race_data set light_mode='" + LM + "' where id='" + MID + "'", db))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
             }
 
             TimeSpan executionTime = DateTime.Now - startTime;
@@ -817,7 +818,7 @@ namespace Rentix
 
                     using (SqlCommand cmd = new SqlCommand(query, db))
                     {
-                        cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQueryHandled();
                     }
 
                 }
@@ -849,7 +850,7 @@ namespace Rentix
                     data["gender"] + "','" + datetimeConverter.toDateTimeString(Convert.ToDateTime(data["birthday"])) + "',GETDATE(), GETDATE(),'" +
                     data["email"] + "','" + data["tel"] + "','" + data["group"] + "','" +
                     data["barcode"] + "', " + Convert.ToInt16(data["banned"]) + ", 0)", db))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
 
                 string name = data["name"].ToString();
                 string surname = data["surname"].ToString();
@@ -875,10 +876,12 @@ namespace Rentix
 			{
 				return;
 			}
-			var query = $"DELETE FROM cassa WHERE created BETEWEEN '{from}' and '{to}'";
+			var query = $"DELETE FROM cassa WHERE cassa.date BETWEEN @start and @end";
 			using (var cmd = new SqlCommand(query, db))
 			{
-				cmd.ExecuteNonQuery();
+				cmd.Parameters.Add(new SqlParameter("@start", SqlDbType.DateTime) { Value = from.AsDayStart()});
+				cmd.Parameters.Add(new SqlParameter("@end", SqlDbType.DateTime) { Value = to.AsDayEnd() });
+				cmd.ExecuteNonQueryHandled();
 			}
 		}
 
@@ -890,7 +893,7 @@ namespace Rentix
             if (connected)
             {
                 using (SqlCommand cmd = new SqlCommand("update users set name='" + Data["name"] + "', surname='" + Data["surname"] + "',gender='" + Data["gender"] + "',birthday='" + datetimeConverter.toDateTimeString(Convert.ToDateTime(Data["birthday"])) + "',modified='" + getDate() + "',nickname='" + Data["nickname"] + "',email='" + Data["email"] + "',tel='" + Data["tel"] + "',gr='" + Data["group"] + "',barcode='" + Data["barcode"] + "', banned = " + Convert.ToInt16(Data["banned"]) + " where id='" + PilotID + "'", db))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
             }
 
             TimeSpan executionTime = DateTime.Now - startTime;
@@ -1515,7 +1518,7 @@ namespace Rentix
             {
                 using (SqlCommand cmd = new SqlCommand("update race_data set car_id=null where id='" + BaseID + "' ", db))
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
                 }
 
 
@@ -1542,7 +1545,7 @@ namespace Rentix
             if (connected)
             {
                 using (SqlCommand cmd = new SqlCommand("update race_data set car_id='" + GetKartID(Name) + (Light ? "', light_mode=1" : "',light_mode=0") + " where id='" + BaseID + "'", db))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
 
             }
              */
@@ -1708,7 +1711,7 @@ namespace Rentix
             {
                 using (SqlCommand cmd = new SqlCommand("update users set message_id='" + InsertID.ToString() + "', banned='" + Stat + "', date_banned = '" + datetimeConverter.toDateTimeString(Date) + "' where id='" + PilotID + "'", db))
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
                 }
 
             }
@@ -1747,7 +1750,7 @@ namespace Rentix
             {
                 using (SqlCommand cmd = new SqlCommand("insert into race_times (member_id,lap,seconds, created) values ('" + RaceMember.ToString() + "','" + Lap.ToString() + "'," + Seconds.ToString().Replace(',', '.') + ", GETDATE())", db))
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
                 }
 
             }
@@ -1764,7 +1767,7 @@ namespace Rentix
             if (connected)
             {
                 using (SqlCommand cmd = new SqlCommand("update race_data set reserv='" + Status.ToString() + "' where id='" + RaceDataId + "'", db))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
 
             }
         }
@@ -1780,7 +1783,7 @@ namespace Rentix
                 {
                     try
                     {
-                        cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQueryHandled();
                         result = true;
                     }
                     catch (Exception ex)
@@ -1812,7 +1815,7 @@ namespace Rentix
             if (connected)
             {                
                 using (SqlCommand cmd = new SqlCommand("Delete from users where id='" + UserID + "'", db))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
             }
             */
         }
@@ -1823,7 +1826,7 @@ namespace Rentix
             if (connected)
             {
                 using (SqlCommand cmd = new SqlCommand("Delete from groups where id='" + GroupID + "'", db))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
 
             }
         }
@@ -1836,7 +1839,7 @@ namespace Rentix
             if (connected)
             {
                 using (SqlCommand cmd = new SqlCommand("insert into karts (name,number,transponder,created, repair, wait) values ('" + Name + "','" + Number + "','" + Transponder + "','" + getDate() + "', 0, 0)", db))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
 
             }
 
@@ -1850,7 +1853,7 @@ namespace Rentix
             if (connected)
             {
                 using (SqlCommand cmd = new SqlCommand("update karts set name='" + Name + "', number = '" + Number + "', transponder = '" + Transponder + "' where id='" + ID + "'", db))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
 
             }
         }
@@ -1861,7 +1864,7 @@ namespace Rentix
             if (connected)
             {
                 using (SqlCommand cmd = new SqlCommand("update groups set name='" + Name + "', sale = '" + Sale + "', price = '" + Price + "' where id='" + GroupID + "'", db))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
 
             }
         }
@@ -1875,7 +1878,7 @@ namespace Rentix
                 {
                     try
                     {
-                        cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQueryHandled();
                     }
                     catch (Exception ex)
                     {
@@ -1907,7 +1910,7 @@ namespace Rentix
             if (connected)
             {
                 using (SqlCommand cmd = new SqlCommand("update karts set message_id='" + InsertID.ToString() + "', repair='" + Repair + "' where id='" + CarID.ToString() + "'", db))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
 
             }
         }
@@ -1919,7 +1922,7 @@ namespace Rentix
 
             if (connected)
             {
-				var query = $"select d.id, r.track_id from race_data d, races r where d.car_id='{KartID}' and r.id=d.race_id and r.racedate	BETWEEN '{fromDateTime}' and '{toDateTime}'";
+				var query = $"select d.id, r.track_id from race_data d, races r where d.car_id='{KartID}' and r.id=d.race_id and r.racedate	BETWEEN '{fromDateTime.AsDayStart().ToSqlString()}' and '{toDateTime.AsDayEnd().ToSqlString()}'";
 				using (SqlCommand cmd = new SqlCommand(query, db2))
                 {
                     using (SqlDataReader res = cmd.ExecuteReader())
@@ -2019,7 +2022,7 @@ namespace Rentix
                 {
                     try
                     {
-                        cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQueryHandled();
                     }
                     catch (Exception ex)
                     {
@@ -2046,7 +2049,7 @@ namespace Rentix
 				$"INSERT INTO partners(name, commission) VALUES ('{name}', {commissionText})";
 			using (var command = new SqlCommand(query, db))
 			{
-				command.ExecuteNonQuery();
+				command.ExecuteNonQueryHandled();
 			}
 		}
 
@@ -2059,7 +2062,7 @@ namespace Rentix
 			var query = $"UPDATE partners SET deleted = 1 WHERE id = {id}";
 			using (var command = new SqlCommand(query, db))
 			{
-				command.ExecuteNonQuery();
+				command.ExecuteNonQueryHandled();
 			}
 		}
 
@@ -2303,13 +2306,19 @@ namespace Rentix
         {
             DateTime startTime = DateTime.Now;
             string ret = String.Empty;
+			var dateTimeRestriction = from.HasValue && to.HasValue;
 
-            if (connected)
+			if (connected)
             {
-				var query = $"select created, message from messages where id_kart='{ID}' {(from.HasValue && to.HasValue ? $"and created BETWEEN '{from}' and '{to}'" : "")} order by created desc";
+				var query = $"select created, message from messages where id_kart='{ID}' {dateTimeRestriction.ToStringIf("and created BETWEEN @from and @to")} order by created desc";
 				using (SqlCommand cmd = new SqlCommand(query, db2))
                 {
-                    using (SqlDataReader res = cmd.ExecuteReader())
+					if (dateTimeRestriction)
+					{
+						cmd.Parameters.Add(new SqlParameter("@from", SqlDbType.DateTime) { Value = from.Value.AsDayStart() });
+						cmd.Parameters.Add(new SqlParameter("@to", SqlDbType.DateTime) { Value = to.Value.AsDayEnd() });
+					}
+					using (SqlDataReader res = cmd.ExecuteReader())
                     {
                         while (res.Read())
                         {
@@ -2342,7 +2351,7 @@ namespace Rentix
                     using (SQLiteCommand cmd =
                         new SQLiteCommand("delete from settings", m_dbConnection))
                     {
-                        cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQueryHandled();
                     }
 
                 foreach (DictionaryEntry d in sett)
@@ -2353,7 +2362,7 @@ namespace Rentix
                             "insert into settings (name,val) values ('" + d.Key.ToString() + "','" +
                             d.Value.ToString() + "')", m_dbConnection))
                     {
-                        cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQueryHandled();
                     }
 
                 }
@@ -2364,7 +2373,7 @@ namespace Rentix
             //    if (sett.Count > 0)
             //        using (SqlCommand cmd = new SqlCommand("delete from settings", db))
             //        {
-            //            cmd.ExecuteNonQuery();
+            //            cmd.ExecuteNonQueryHandled();
             //        }
 
             //    foreach (DictionaryEntry d in sett)
@@ -2372,7 +2381,7 @@ namespace Rentix
 
             //        using (SqlCommand cmd = new SqlCommand("insert into settings (name,val) values ('" + d.Key.ToString() + "','" + d.Value.ToString() + "')", db))
             //        {
-            //            cmd.ExecuteNonQuery();
+            //            cmd.ExecuteNonQueryHandled();
             //        }
 
             //    }
@@ -2505,7 +2514,7 @@ namespace Rentix
 
                 using (SqlCommand cmd = new SqlCommand("delete from race_times where member_id='" + MemberID + "'", db2))
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
                 }
             }
 
@@ -2567,7 +2576,7 @@ namespace Rentix
                     SQLiteCommand cmd =
                         new SQLiteCommand("create table settings (name varchar(40), val varchar(40))",
                             m_dbConnection);
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
                     ret = DefaultSettings();
                     SaveSettings(ret);
                 }
@@ -2672,7 +2681,7 @@ namespace Rentix
                     Prices[2] + "','" + Prices[3] + "','" + Prices[4] + "','" + Prices[5] + "','" +
                     Prices[6] + "','" + Prices[7] + "', " + raceModeId + ", " + idGroup + ")", db))
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
                 }
 
 
@@ -2772,7 +2781,7 @@ namespace Rentix
 
                 using (SqlCommand cmd = new SqlCommand("update karts set message_id='" + InsertID.ToString() + "', wait='" + Stat + "' where id='" + KartID + "'", db))
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
                 }
             }
         }
@@ -3571,7 +3580,7 @@ namespace Rentix
                     "', message = '" + Message + "', [date] = '" +
                    datetimeConverter.toDateTimeString(Date) + "', modified=GETDATE() where id='" + ID + "'", db))
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
                 }
             }
 
@@ -3589,7 +3598,7 @@ namespace Rentix
 
                 using (SqlCommand cmd = new SqlCommand(Query, db))
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
                 }
             }
 
@@ -3606,7 +3615,7 @@ namespace Rentix
 
             if (connected)
                 using (SqlCommand cmd = new SqlCommand("delete from messages where id='" + ID + "'", db))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
 
             TimeSpan executionTime = DateTime.Now - startTime;
             Logger.AddRecord("DelMessage", Logger.LogType.info, executionTime);
@@ -3664,7 +3673,7 @@ namespace Rentix
                 {
                     try
                     {
-                        cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQueryHandled();
                     }
                     catch (Exception ex)
                     {
@@ -3695,7 +3704,7 @@ namespace Rentix
                 {
                     try
                     {
-                        cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQueryHandled();
                     }
                     catch (Exception ex)
                     {
@@ -3719,7 +3728,7 @@ namespace Rentix
             {
                 using (SqlCommand cmd = new SqlCommand("insert into user_cash (doc_id,user_id,sum,sign, created, partner_id, ref_code) values ('" + DocID + "'," + UserID + ",'" + Sum.Replace(",", ".") + "','" + Sign + $"', GETDATE(), {(partnerId == -1 ? "null" : partnerId.ToString())}, '{(partnerId == -1 ? "null" : partnerCode.ToString())}')", db))
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
                 }
             }
 
@@ -3831,7 +3840,7 @@ namespace Rentix
 
         // Получает список операций по кассе за период
         // 1 reportType = реальные, 2 = виртуальные
-        public List<Hashtable> GetCassaReport(DateTime Date, int reportType, DateTime Date2, PageLister page, int race_id, int raceTypeId, int userGroupId, int partnerId)
+        public List<Hashtable> GetCassaReport(DateTime Date, int reportType, DateTime Date2, PageLister page, int race_id, int raceTypeId, int userGroupId, int partnerId, int cashTerminalType)
         {
             DateTime startTime = DateTime.Now;
 
@@ -3850,12 +3859,12 @@ namespace Rentix
                         + datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(Date)) +
                         "' and '" +
                         datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(Date2))
-                        + "' ";
+                        + $"' and j.tp in ({GetJurnalTp(cashTerminalType)}) and c.sign in (0,1)";
                     string q22 = "select count(*)as c from jurnal j, user_cash u where u.doc_id = j.id and j.created between '" +
                         datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(Date)) +
                         "' and '" +
                          datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(Date2)) +
-                        "' ";
+						$"' and j.tp in ({GetJurnalTp(cashTerminalType)}) and c.sign in (0,1)";
 
                     switch (reportType)
                     {
@@ -3908,18 +3917,13 @@ namespace Rentix
                 }
                 else
                 {
-
 					cmd = new SqlCommand(
 						"SELECT * FROM " +
-
-							"(SELECT ROW_NUMBER() OVER(ORDER BY j.id) AS RowNum, " +
-								"j.id, j.created as 'date', j.comment, " +
-								"j.user_id, j.tp, j.race_id, c.sum, c.sign " +
-								$"FROM (jurnal j LEFT JOIN race_data r ON j.race_id = r.race_id), {(reportType == 2 ? "user_cash" : "cassa")} c, users u, groups g " +
-								$"WHERE u.id = j.user_id AND c.doc_id = j.id and j.created between @startDate and @endDate {((raceTypeId > -1) ? "and r.id_race_mode = " + raceTypeId : "")} {((userGroupId > -1) ? "and u.gr = " + userGroupId : "")} {(partnerId > -1 ? $"and c.partner_id = {partnerId}" : "")}) as some_table " +
-
-						"WHERE RowNum BETWEEN(@PageIndex -1) * @PageSize + 1 and @PageIndex * @PageSize" +
-						" ORDER BY id", db2);
+							"(SELECT ROW_NUMBER() OVER(ORDER BY j.id) AS RowNum, j.id, j.created as 'date', j.comment, j.user_id, j.tp, j.race_id, c.sum, c.sign " +
+							$"FROM(crazykart.dbo.jurnal j LEFT JOIN(SELECT race_id, pilot_id, car_id, id_race_mode FROM[crazykart].[dbo].[race_data] WHERE car_id IS NOT NULL GROUP BY race_id, pilot_id, car_id, id_race_mode) rd ON j.race_id = rd.race_id and j.user_id = rd.pilot_id) LEFT JOIN {(reportType == 1 ? "cassa" : "user_cash")} c ON j.id = c.doc_id " +
+							$"WHERE j.tp in ({GetJurnalTp(cashTerminalType)}) and c.sign in (0,1) and j.created BETWEEN @startDate and @endDate {(raceTypeId > -1).ToStringIf("and rd.id_race_mode = " + raceTypeId)} {(userGroupId > -1).ToStringIf("and u.gr = " + userGroupId)} {(partnerId > -1).ToStringIf("and c.partner_id = " + partnerId)}) as some_table " +
+						"WHERE RowNum BETWEEN(@PageIndex -1) * @PageSize + 1 and @PageIndex * @PageSize " +
+						"ORDER BY id", db2);
 					cmd.Parameters.Add("@PageIndex", SqlDbType.Int).Value = page.CurrentPageNumber;
 					cmd.Parameters.Add("@PageSize", SqlDbType.Int).Value = page.PageSize;
 					cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = Date;
@@ -3954,105 +3958,7 @@ namespace Rentix
                 cmd.Dispose();
 
             }
-
-
-
-            #region old
-
-
-
-            /*
-            if (connected)
-            {
-
-                string filter = String.Empty;
-                if (page != null)
-                {
-
-                    string query1 = String.Empty;
-                    string q11 = "select count(*)as c from jurnal j, cassa c where c.doc_id=j.id and j.created between '" 
-                        + datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(Date)) + 
-                        "' and '" +
-                        datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(Date2)) 
-                        + "' ";
-                    string q22 = "select count(*)as c from jurnal j, user_cash u where u.doc_id = j.id and j.created between '" +
-                        datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(Date)) + 
-                        "' and '" +
-                         datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(Date2)) +  
-                        "' ";
-
-                    switch (reportType)
-                    {
-                        case 1: query1 = q11; break;
-                        case 2: query1 = q22; break;
-                        case 3: query1 = "(" + q11 + ")" + " union " + "(" + q22 + ")"; break;
-                    }
-
-
-
-
-                    using (SqlCommand cmd = new SqlCommand(query1, db3))
-                    using (SqlDataReader res = cmd.ExecuteReader())
-                    {
-                        if (res.Read())
-                        {
-                            int Rows = Convert.ToInt32(res["c"].ToString());
-
-                            if (page.RowsMax != Rows || page.OnChange)
-                            {
-                                page.RowsMax = Rows;
-                                page.PagesCount = Convert.ToInt32(Math.Ceiling((double)page.RowsMax / (double)page.PageSize));
-                                page.FillPageNumbers();
-                                page.OnChange = false;
-                            }
-                            page.F();
-
-
-                        }
-                    }
-
-
-                    filter += page.Filter;
-                }
-
-
-
-                string query = String.Empty;
-                string q1 = "select j.id,j.created as date,j.comment,j.user_id,j.tp,j.race_id, c.sum, c.sign from jurnal j, cassa c where c.doc_id=j.id and j.created between '" +
-                    datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(Date)) +
-                    "' and '" + datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(Date2)) +
-                    "'  order by j.id ";
-                string q2 = "select j.id,j.created as date,j.comment,j.user_id,j.tp,j.race_id, u.sum, u.sign from jurnal j, user_cash u where u.doc_id = j.id and j.created between '" + 
-                    datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(Date)) +
-                    "' and '" + 
-                    datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(Date2)) +
-                    "'  order by j.id ";
-
-                switch (reportType)
-                {
-                    case 1: query = q1; break;
-                    case 2: query = q2; break;
-                    case 3: query = "(" + q1 + ")" + " union " + "(" + q2 + ") ORDER BY j.id"; break;
-
-                   // case 3: query = q1 + " union " + q2 + " order by j.id"; break;
-                }
-
-                using (SqlCommand cmd = new SqlCommand(query, db2)) // + filter
-                {
-                    using (SqlDataReader res = cmd.ExecuteReader())
-                    {
-                        while (res.Read())
-                        {
-                            ret.Add(ConvertResult(res));
-                        }
-                    }
-                }
-            }
-             */
-
-            #endregion
-
-
+			
             if (page != null)
             {
                 page.OnUpdate = false;
@@ -4064,24 +3970,42 @@ namespace Rentix
             return ret;
         }
 
-		public double GetCassaReportSum(DateTime Date, int reportType, DateTime Date2, int race_id, int raceTypeId, int userGroupId, int partnerId)
+		private string GetJurnalTp(int moneyType)
 		{
+			var tps = new List<int>() { 4, 3, 15 };
+			if(moneyType == -1)
+			{
+				tps.Add(1);
+				tps.Add(33);
+			}
+			else
+			{
+				tps.Add(moneyType);
+			}
+			return string.Join(", ", tps);
+		}
+
+		public double GetCassaReportSum(DateTime Date, int reportType, DateTime Date2, int race_id, int raceTypeId, int userGroupId, int partnerId, int cashTerminalType)
+		{
+			Date = new DateTime(Date.Year, Date.Month, Date.Day, 0, 0, 0);
+			Date2 = new DateTime(Date2.Year, Date2.Month, Date2.Day, 23, 59, 59);
 			var result = 0d;
 			if (!connected)
 			{
 				return result;
 			}
-			var cmd = new SqlCommand(
-							"SELECT c.sum, c.sign " +
-							"FROM (jurnal j LEFT JOIN race_data r ON j.race_id = r.race_id), " + (reportType == 2 ? "user_cash" : "cassa") + " c, users u " +
-							"WHERE u.id = j.user_id and c.doc_id = j.id and j.tp in (1, 4) and j.created between @startDate and @endDate " + ((raceTypeId > -1) ? "and r.id_race_mode = " + raceTypeId : "") + ((raceTypeId > -1) ? "and u.gr = " + userGroupId : "") + ((partnerId > -1) ? "and c.partner_id = " + partnerId : ""), db2);
+			var query =
+				"SELECT c.sum, CASE c.sign WHEN 0 THEN 1 ELSE -1 END as my_sign " +
+				"FROM crazykart.dbo.jurnal j LEFT JOIN crazykart.dbo.cassa c ON j.id = c.doc_id " +
+				$"WHERE j.tp in ({GetJurnalTp(cashTerminalType)}) and c.sign in (0, 1) and j.created BETWEEN @startDate and @endDate {(raceTypeId > -1).ToStringIf("and rd.id_race_mode = " + raceTypeId)} {(userGroupId > -1).ToStringIf("and u.gr = " + userGroupId)} {(partnerId > -1).ToStringIf("and c.partner_id = " + partnerId)}";
+			var cmd = new SqlCommand(query, db2);
 			cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = Date;
 			cmd.Parameters.Add("@endDate", SqlDbType.DateTime).Value = Date2;
 			using (SqlDataReader res = cmd.ExecuteReader())
 			{
 				while (res.Read())
 				{
-					result += (double)res["sum"] * ((int)res["sign"] == 1 ? -1 : 1);
+					result += (double)res["sum"] * (int)res["my_sign"];
 				}
 			}
 
@@ -4381,7 +4305,7 @@ namespace Rentix
             {
                 using (SqlCommand cmd = new SqlCommand("insert into tracks ([name],length,[file], created) values ('" + Name + "'," + Length + ",'" + FileName + "', GETDATE())", db))
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
                 }
             }
         }
@@ -4393,7 +4317,7 @@ namespace Rentix
             {
                 using (SqlCommand cmd = new SqlCommand("insert into groups (name, sale, price, created, modified) values ('" + Name + "','" + Sale + "','" + Price + "','" + getDate() + "', GETDATE())", db))
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
                 }
             }
         }
@@ -4421,7 +4345,7 @@ namespace Rentix
             {
                 using (SqlCommand cmd = new SqlCommand("delete from tracks where id='" + TrackID + "'", db))
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
                 }
             }
              */
@@ -4434,7 +4358,7 @@ namespace Rentix
             {
                 using (SqlCommand cmd = new SqlCommand("update tracks set [name]='" + Name + "', length = " + Length + ", [file]='" + FileName + "' where id=" + TrackID + "", db))
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
                 }
             }
         }
@@ -4448,7 +4372,7 @@ namespace Rentix
             {
                 using (SqlCommand cmd = new SqlCommand("update races set stat = '2' where id='" + RaceID + "'", db))
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
                 }
             }
 
@@ -4839,7 +4763,7 @@ namespace Rentix
 
             if (connected)
             {
-				var query = $"select count(*) as c from messages where id_kart={KartID} and m_type = 1 and date BETWEEN '{from}' and '{to}'";
+				var query = $"select count(*) as c from messages where id_kart={KartID} and m_type = 1 and date BETWEEN '{from.ToSqlString()}' and '{to.ToSqlString()}'";
 				using (SqlCommand cmd = new SqlCommand(query, db))
                 {
                     using (SqlDataReader res = cmd.ExecuteReader())
@@ -4862,7 +4786,7 @@ namespace Rentix
 			var query = $"UPDATE race_data SET car_id = null {(kartId.HasValue || (from.HasValue && to.HasValue)).ToStringIf("WHERE")} {kartId.HasValue.ToStringIf($"car_id = {kartId}")} {(kartId.HasValue && from.HasValue && to.HasValue).ToStringIf("AND")} {(from.HasValue && to.HasValue).ToStringIf($"created BETWEEN '{from}' and '{to}'")}";
 			using (var cmd = new SqlCommand(query, db))
 			{
-				cmd.ExecuteNonQuery();
+				cmd.ExecuteNonQueryHandled();
 			}
 		}
 
@@ -4874,7 +4798,7 @@ namespace Rentix
             {
                 using (SqlCommand cmd = new SqlCommand("insert into program_users (login,password,created,stat,name,surname,barcode, modified, deleted) values ('" + Login + "','" + Password + "','" + getDate() + "','" + Stat + "','" + Name + "','" + Surname + "','" + Barcode + "', GETDATE(), 0)", db))
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
                 }
             }
         }
@@ -4887,7 +4811,7 @@ namespace Rentix
             {
                 using (SqlCommand cmd = new SqlCommand("update program_users set name='" + Name + "', surname='" + Surname + "', login='" + Login + "', password= '" + Password + "', stat='" + Stat + "', barcode='" + Barcode + "' where id='" + ID + "'", db))
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
                 }
             }
         }
@@ -4897,7 +4821,7 @@ namespace Rentix
         {
             using (SqlCommand cmd = new SqlCommand("update program_users set deleted=1, stat=9 where id='" + ID + "'", db))
             {
-                cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQueryHandled();
             }
         }
 
@@ -5000,7 +4924,7 @@ namespace Rentix
             if (connected)
             {
                 using (SqlCommand cmd = new SqlCommand("update race_data set race_id='" + RaceID + "' where id = '" + MemberId + "'", db2))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
             }
 
             TimeSpan executionTime = DateTime.Now - startTime;
@@ -5014,7 +4938,7 @@ namespace Rentix
             {
                 using (SqlCommand cmd = new SqlCommand("insert into logins (user_id,stat, created) values ('"
                     + UserID + "',1, GETDATE())", db3))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
             }
         }
 
@@ -5029,7 +4953,7 @@ namespace Rentix
             if (connected)
             {
                 using (SqlCommand cmd = new SqlCommand("insert into logins (user_id,stat, created) values ('" + UserID + "',0, GETDATE())", db3))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
             }
         }
 
@@ -5039,7 +4963,7 @@ namespace Rentix
             if (connected)
             {
                 using (SqlCommand cmd = new SqlCommand("insert into fuel (car_id, fuel_value, sign, comment, created) values ('" + KartID + "','" + Fuel + "',0,'" + Comment + "', GETDATE())", db3))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
             }
         }
 
@@ -5057,7 +4981,7 @@ namespace Rentix
 
                 using (SqlCommand cmd = new SqlCommand("insert into fuel (car_id, fuel_value, sign, comment, created) values ('" + KartID + "','" + Fuel + "',1,'" + Comment + "', GETDATE())", db3))
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
                 }
             }
         }
@@ -5070,7 +4994,7 @@ namespace Rentix
 
             if (connected)
             {
-				var query = $"select (sum(CASE WHEN(sign=0)THEN fuel_value else 0 end)-sum(case when (sign=1) then fuel_value else 0 end)) as fuel_value from fuel where car_id='{KartID}' {(from.HasValue && to.HasValue ? $"and created BETWEEN '{from}' and '{to}'" : "")}";
+				var query = $"select (sum(CASE WHEN(sign=0)THEN fuel_value else 0 end)-sum(case when (sign=1) then fuel_value else 0 end)) as fuel_value from fuel where car_id='{KartID}' {(from.HasValue && to.HasValue ? $"and created BETWEEN '{from.Value.AsDayStart().ToSqlString()}' and '{to.Value.AsDayEnd().ToSqlString()}'" : "")}";
 
 				using (SqlCommand cmd = new SqlCommand(query, db))
                 {
@@ -5102,7 +5026,7 @@ namespace Rentix
 			var query = $"DELETE FROM fuel {(cartId.HasValue || (from.HasValue && to.HasValue)).ToStringIf("WHERE")} {cartId.HasValue.ToStringIf($"car_id = {cartId}")} {(cartId.HasValue && from.HasValue && to.HasValue).ToStringIf("AND")} {(from.HasValue && to.HasValue).ToStringIf($"created BETWEEN '{from}' and '{to}'")}";
 			using (var cmd = new SqlCommand(query, db))
 			{
-				cmd.ExecuteNonQuery();
+				cmd.ExecuteNonQueryHandled();
 			}
 		}
 
@@ -5173,7 +5097,7 @@ namespace Rentix
 
             if (connected)
             {
-				var query = $"select * from fuel where car_id='{KartID}' {(from.HasValue && to.HasValue ? $"and created BETWEEN '{from}' and '{to}'" : "")} order by created desc";
+				var query = $"select * from fuel where car_id='{KartID}' {(from.HasValue && to.HasValue ? $"and created BETWEEN '{from.Value.AsDayStart().ToSqlString()}' and '{to.Value.AsDayEnd().ToSqlString()}'" : "")} order by created desc";
 
 				using (SqlCommand cmd = new SqlCommand(query, db3))
                 {
@@ -5204,7 +5128,7 @@ namespace Rentix
                     Name + "','" + Nominal + "','" + Cost + "','" + TP
                     + "', GETDATE(), 0)", db3))
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
                 }
             }
         }
@@ -5216,7 +5140,7 @@ namespace Rentix
             {
                 using (SqlCommand cmd = new SqlCommand("update certificate_type set [name]='" + Name + "', nominal = '" + Nominal + "', cost ='" + Cost + "',c_type='" + type + "' where id='" + ID + "'", db3))
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
                 }
             }
         }
@@ -5285,7 +5209,7 @@ namespace Rentix
             if (connected)
             {
                 using (SqlCommand cmd = new SqlCommand("update certificate_type set deleted=1 where id='" + ID + "'", db3))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
             }
         }
 
@@ -5360,7 +5284,7 @@ namespace Rentix
             if (connected)
             {
                 using (SqlCommand cmd = new SqlCommand("update certificates set active='" + Stat + "' where bar_number='" + BarCode + "'", db3))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
             }
         }
 
@@ -5371,7 +5295,7 @@ namespace Rentix
             if (connected)
             {
                 using (SqlCommand cmd = new SqlCommand("update certificates set count='" + Count.ToString() + "' where bar_number='" + BarCode + "'", db3))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
             }
         }
 
@@ -5448,7 +5372,7 @@ namespace Rentix
                     + ",'" + (Convert.ToBoolean(CT["c_type"].ToString())
                     ? "1" : CT["nominal"].ToString()) + "','" + getDate() +
                     "','" + datetimeConverter.toDateTimeString(Dend) + "', 1, GETDATE())", db3))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
             }
         }
 
@@ -5500,7 +5424,7 @@ namespace Rentix
             if (connected)
             {
                 using (SqlCommand cmd = new SqlCommand("insert into race_modes ([name], length, is_deleted) values('" + name + "','" + length.ToString() + "', 0)", db3))
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQueryHandled();
             }
         }
 
@@ -5516,7 +5440,7 @@ namespace Rentix
                 {
                     try
                     {
-                        cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQueryHandled();
                         result = true;
                     }
                     catch (Exception ex)
@@ -5551,7 +5475,7 @@ namespace Rentix
                 {
                     try
                     {
-                        cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQueryHandled();
                         result = true;
                     }
                     catch (Exception ex)

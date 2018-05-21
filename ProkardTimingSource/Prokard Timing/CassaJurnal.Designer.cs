@@ -35,6 +35,10 @@ namespace Rentix
 			this.button2 = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
 			this.borderPanel2 = new Microsoft.TeamFoundation.Client.BorderPanel();
+			this.partnerComboBox = new System.Windows.Forms.ComboBox();
+			this.label10 = new System.Windows.Forms.Label();
+			this.userGroupsComboBox = new System.Windows.Forms.ComboBox();
+			this.label9 = new System.Windows.Forms.Label();
 			this.raceTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -67,10 +71,8 @@ namespace Rentix
 			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.userGroupsComboBox = new System.Windows.Forms.ComboBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.partnerComboBox = new System.Windows.Forms.ComboBox();
-			this.label10 = new System.Windows.Forms.Label();
+			this.moneyTypeComboBox = new System.Windows.Forms.ComboBox();
+			this.label11 = new System.Windows.Forms.Label();
 			this.borderPanel1.SuspendLayout();
 			this.borderPanel2.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
@@ -129,6 +131,8 @@ namespace Rentix
 			this.borderPanel2.BorderPadding = new System.Windows.Forms.Padding(0);
 			this.borderPanel2.BorderSides = Microsoft.TeamFoundation.Client.BorderPanel.Sides.Bottom;
 			this.borderPanel2.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+			this.borderPanel2.Controls.Add(this.moneyTypeComboBox);
+			this.borderPanel2.Controls.Add(this.label11);
 			this.borderPanel2.Controls.Add(this.partnerComboBox);
 			this.borderPanel2.Controls.Add(this.label10);
 			this.borderPanel2.Controls.Add(this.userGroupsComboBox);
@@ -152,6 +156,48 @@ namespace Rentix
 			this.borderPanel2.Size = new System.Drawing.Size(1138, 53);
 			this.borderPanel2.TabIndex = 0;
 			this.borderPanel2.UseInnerColor = false;
+			// 
+			// partnerComboBox
+			// 
+			this.partnerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.partnerComboBox.FormattingEnabled = true;
+			this.partnerComboBox.Location = new System.Drawing.Point(521, 28);
+			this.partnerComboBox.Name = "partnerComboBox";
+			this.partnerComboBox.Size = new System.Drawing.Size(136, 21);
+			this.partnerComboBox.TabIndex = 13;
+			this.partnerComboBox.SelectedIndexChanged += new System.EventHandler(this.partnerComboBox_SelectedIndexChanged);
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.BackColor = System.Drawing.Color.Transparent;
+			this.label10.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label10.Location = new System.Drawing.Point(455, 32);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(60, 13);
+			this.label10.TabIndex = 12;
+			this.label10.Text = "Партнёр:";
+			// 
+			// userGroupsComboBox
+			// 
+			this.userGroupsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.userGroupsComboBox.FormattingEnabled = true;
+			this.userGroupsComboBox.Location = new System.Drawing.Point(305, 28);
+			this.userGroupsComboBox.Name = "userGroupsComboBox";
+			this.userGroupsComboBox.Size = new System.Drawing.Size(136, 21);
+			this.userGroupsComboBox.TabIndex = 11;
+			this.userGroupsComboBox.SelectedIndexChanged += new System.EventHandler(this.userGroupsComboBox_SelectedIndexChanged);
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.BackColor = System.Drawing.Color.Transparent;
+			this.label9.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label9.Location = new System.Drawing.Point(248, 32);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(51, 13);
+			this.label9.TabIndex = 10;
+			this.label9.Text = "Группа:";
 			// 
 			// raceTypeComboBox
 			// 
@@ -536,47 +582,26 @@ namespace Rentix
 			this.Column6.ReadOnly = true;
 			this.Column6.Width = 58;
 			// 
-			// userGroupsComboBox
+			// moneyTypeComboBox
 			// 
-			this.userGroupsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.userGroupsComboBox.FormattingEnabled = true;
-			this.userGroupsComboBox.Location = new System.Drawing.Point(305, 28);
-			this.userGroupsComboBox.Name = "userGroupsComboBox";
-			this.userGroupsComboBox.Size = new System.Drawing.Size(136, 21);
-			this.userGroupsComboBox.TabIndex = 11;
-			this.userGroupsComboBox.SelectedIndexChanged += new System.EventHandler(this.userGroupsComboBox_SelectedIndexChanged);
+			this.moneyTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.moneyTypeComboBox.FormattingEnabled = true;
+			this.moneyTypeComboBox.Location = new System.Drawing.Point(750, 29);
+			this.moneyTypeComboBox.Name = "moneyTypeComboBox";
+			this.moneyTypeComboBox.Size = new System.Drawing.Size(136, 21);
+			this.moneyTypeComboBox.TabIndex = 15;
+			this.moneyTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.moneyTypeComboBox_SelectedIndexChanged);
 			// 
-			// label9
+			// label11
 			// 
-			this.label9.AutoSize = true;
-			this.label9.BackColor = System.Drawing.Color.Transparent;
-			this.label9.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label9.Location = new System.Drawing.Point(248, 32);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(51, 13);
-			this.label9.TabIndex = 10;
-			this.label9.Text = "Группа:";
-			// 
-			// partnerComboBox
-			// 
-			this.partnerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.partnerComboBox.FormattingEnabled = true;
-			this.partnerComboBox.Location = new System.Drawing.Point(521, 28);
-			this.partnerComboBox.Name = "partnerComboBox";
-			this.partnerComboBox.Size = new System.Drawing.Size(136, 21);
-			this.partnerComboBox.TabIndex = 13;
-			this.partnerComboBox.SelectedIndexChanged += new System.EventHandler(this.partnerComboBox_SelectedIndexChanged);
-			// 
-			// label10
-			// 
-			this.label10.AutoSize = true;
-			this.label10.BackColor = System.Drawing.Color.Transparent;
-			this.label10.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label10.Location = new System.Drawing.Point(455, 32);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(60, 13);
-			this.label10.TabIndex = 12;
-			this.label10.Text = "Партнёр:";
+			this.label11.AutoSize = true;
+			this.label11.BackColor = System.Drawing.Color.Transparent;
+			this.label11.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label11.Location = new System.Drawing.Point(669, 32);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(78, 13);
+			this.label11.TabIndex = 14;
+			this.label11.Text = "Тип оплаты:";
 			// 
 			// CassaJurnal
 			// 
@@ -649,5 +674,7 @@ namespace Rentix
 		private Label label9;
 		private ComboBox partnerComboBox;
 		private Label label10;
+		private ComboBox moneyTypeComboBox;
+		private Label label11;
 	}
 }

@@ -1246,7 +1246,7 @@ namespace Rentix
         }
 
         // Показывает данные кассы за выбранную дату
-        public void GetCassaReport(DataGridView dv, DateTime Date, int reportType, DateTime Date2, PageLister Pages, int race_id, int raceTypeId, int userGroupId, int partnerId)
+        public void GetCassaReport(DataGridView dv, DateTime Date, int reportType, DateTime Date2, PageLister Pages, int race_id, int raceTypeId, int userGroupId, int partnerId, int moneyType)
         {
             // если наоборот даты, то поменяем местами
             if (Date2 < Date)
@@ -1259,7 +1259,7 @@ namespace Rentix
             Date = datetimeConverter.toStartDateTime(Date);
             Date2 = datetimeConverter.toEndDateTime(Date2);
 
-            List<Hashtable> Cassa = model.GetCassaReport(Date, reportType, Date2, Pages, race_id, raceTypeId, userGroupId, partnerId);
+            List<Hashtable> Cassa = model.GetCassaReport(Date, reportType, Date2, Pages, race_id, raceTypeId, userGroupId, partnerId, moneyType);
             dv.Rows.Clear();
 
             int lastRaceId = -1; // между рейсами вставим чёрную строку, чтобы их разделять в списке
@@ -1314,9 +1314,9 @@ namespace Rentix
             }
         }
 
-		public double GetCassaSum(DataGridView dv, DateTime Date, int reportType, DateTime Date2, int race_id, int raceTypeId, int userGroupId, int partnerId)
+		public double GetCassaSum(DataGridView dv, DateTime Date, int reportType, DateTime Date2, int race_id, int raceTypeId, int userGroupId, int partnerId, int moneyType)
 		{
-			return model.GetCassaReportSum(Date, reportType, Date2, race_id, raceTypeId, userGroupId, partnerId);
+			return model.GetCassaReportSum(Date, reportType, Date2, race_id, raceTypeId, userGroupId, partnerId, moneyType);
 		}
 
         // Показывает имя документа
@@ -1342,7 +1342,8 @@ namespace Rentix
                 case 30: ret = "add_certificate"; break;
                 case 31: ret = "activate_certificate"; break;
                 case 32: ret = "deactivate_certificate"; break;
-            }
+				case 33: ret = "add_cassa_terminal"; break;
+			}
 
             return ret;
         }
