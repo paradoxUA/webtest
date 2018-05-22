@@ -538,11 +538,11 @@ namespace Rentix
             using (Font f1 = new Font("Calibri", 9))
             {
                 e.Graphics.DrawString("--------------------------------------------------------------", f1, Brushes.Black, new Rectangle(0, 90 + 3, W, 20), drawFormat);
-                e.Graphics.DrawString(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), f1, Brushes.Black, new Rectangle(0, 105 + 3, W, 20), drawFormat);
-				for (int i = 0; i < 3; i++)
-				{
-					e.Graphics.DrawString("", f1, Brushes.Black, new Rectangle());
-				}
+			    e.Graphics.DrawString(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), f1, Brushes.Black, new Rectangle(0, 105 + 3, W, 20), drawFormat);
+				e.Graphics.DrawString("www.crazykarting.com.ua", f1, Brushes.Black, new Rectangle(0, 160 + 3, W, 20), drawFormat);
+
+				//e.Graphics.DrawString("www.crazykarting.com.ua", f1, Brushes.Black, new Rectangle(0, 105 + 3, W, 20), drawFormat);
+
 			}
 		}
 
