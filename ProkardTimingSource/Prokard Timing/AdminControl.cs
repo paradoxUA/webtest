@@ -157,7 +157,7 @@ namespace Rentix
         }
 
         //Распечатывает Datagrid
-        public void PrintDataGridView(DataGridView dv, string Title)
+        public void PrintDataGridView(DataGridView dv, string Title, params int[] skip)
         {
             PrintDialog MyPrintDialog = new PrintDialog();
             MyPrintDialog.AllowCurrentPage = false;
@@ -186,7 +186,7 @@ namespace Rentix
             {
                 MyDataGridViewPrinter = new DataGridViewPrinter(dv,
         printDocument1, false, true, Title, new Font("Tahoma", 12,
-        FontStyle.Bold, GraphicsUnit.Point), Color.Black, true, new Point(0, 0));
+        FontStyle.Bold, GraphicsUnit.Point), Color.Black, true, new Point(0, 0), skip);
 
                 PrintPreviewDialog pvd = new PrintPreviewDialog();
                 pvd.Document = printDocument1;
@@ -1276,8 +1276,12 @@ namespace Rentix
                 dr.Cells[4].Value = Cassa[i]["comment"];
                 dr.Cells[5].Value = Cassa[i]["race_id"];
                 dr.Cells[6].Value = Cassa[i]["date"];
+				dr.Cells[7].Value = Cassa[i]["race_mode_name"];
+				dr.Cells[8].Value = Cassa[i]["partner_name"];
+				dr.Cells[9].Value = Convert.ToInt32(Cassa[i]["terminal"]) == 33;
+				dr.Cells[10].Value = Cassa[i]["group_name"];
 
-                if (Cassa[i]["race_id"] != "")
+				if (Cassa[i]["race_id"] != "")
                 {
                     try
                     {

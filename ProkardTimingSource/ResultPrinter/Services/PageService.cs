@@ -4,16 +4,17 @@ using Dal.Providers;
 using DocumentPrinter.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Windows.Media.Imaging;
 
 namespace DocumentPrinter.Services
 {
-    public class PageService
+    public class PageService : INotifyPropertyChanged
     {
         private ILiteDbProvider _db;
         public RaceInfo Info { get; set; }
-        public PageSettings PageSettings { get; set; }
+		public PageSettings PageSettings { get; set; } = PageSettings.Default();
 
         public BitmapImage Logo { get; set; }
         public BitmapImage LeftSponsor { get; set; }
@@ -24,6 +25,7 @@ namespace DocumentPrinter.Services
         public PageService()
         {
             _db = LiteDbProvider.Create();
+			PageSettings = _db.GetPageSettings();
 
             DirectoryGuard();
 
@@ -39,6 +41,7 @@ namespace DocumentPrinter.Services
 
         private void TestDataLoad()
         {
+			return;
             Info = GetRaceInfo();
             Info.RecordOfMounth = GetTestData(5);
             Info.RecordOfDay = GetTestData(10);
@@ -72,7 +75,14 @@ namespace DocumentPrinter.Services
         Random rand = new Random();
         private string _testPilotName = "Сухинен Каролев";
 
-        private List<BestPilots> GetTestData(int count)
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		public void RaisePropertyChanged()
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(""));
+		}
+
+		private List<BestPilots> GetTestData(int count)
         {
 
             List<BestPilots> bp = new List<BestPilots>();

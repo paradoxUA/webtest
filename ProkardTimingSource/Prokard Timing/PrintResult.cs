@@ -12,6 +12,7 @@ using System.Linq;
 using Rentix;
 using DocumentPrinter.Services;
 using DocumentPrinter.Models;
+using System.Printing;
 
 namespace Rentix
 {
@@ -49,7 +50,7 @@ namespace Rentix
         }
 
         
-        public static bool Printing(RaceClass race, int trakId)
+        public static bool Printing(RaceClass race, int trakId, string printerName, int pagesCount)
         {
             PrinterService ps = new PrinterService();
             PageService PageData = new PageService();
@@ -93,6 +94,8 @@ namespace Rentix
                 RaceTimes = RaceTimeConvert(x.Times)
             }).ToList();
 
+			ps.Print(PageData, printerName, pagesCount);
+
             return true;
         }
 
@@ -110,55 +113,50 @@ namespace Rentix
         private void button3_Click(object sender, EventArgs e)
         {
 
-            if (Printing(CurrentRace, CurrentRace.TrackID)) return;//CurrentRace.TrackID)) return;
+
+            var printDialog = new System.Windows.Controls.PrintDialog();
+			//printDialog.PrintQueue = new PrintQueue()
+            //printDialog..PrinterSettings.PrinterName = admin.Settings["printer_result"].ToString();
+
+			Printing(CurrentRace, CurrentRace.TrackID, admin.Settings["printer_result"].ToString(), (int)numericUpDown1.Value);
 
 
-            PrintDialog MyPrintDialog = new PrintDialog();
-            MyPrintDialog.AllowCurrentPage = false;
-            MyPrintDialog.AllowPrintToFile = false;
-            MyPrintDialog.AllowSelection = false;
-            MyPrintDialog.AllowSomePages = false;
-            MyPrintDialog.PrintToFile = false;
-            MyPrintDialog.ShowNetwork = false;
-            MyPrintDialog.ShowHelp = false;
-            MyPrintDialog.PrinterSettings.PrinterName = admin.Settings["printer_result"].ToString();
+			//printDocument1.PrinterSettings = printDialog.PrinterSettings;
+   //         printDocument1.DefaultPageSettings = printDialog.PrinterSettings.DefaultPageSettings;
+   //         printDocument1.DefaultPageSettings.Landscape = true;
+   //         printDocument1.DefaultPageSettings.Color = false;
+   //         printDocument1.PrinterSettings.Copies = Convert.ToInt16(numericUpDown1.Value);
+   //         printDocument1.PrinterSettings.Collate = true;
+   //         printDocument1.DefaultPageSettings.Margins = new Margins(10, 10, 10, 10);
 
-            printDocument1.PrinterSettings = MyPrintDialog.PrinterSettings;
-            printDocument1.DefaultPageSettings = MyPrintDialog.PrinterSettings.DefaultPageSettings;
-            printDocument1.DefaultPageSettings.Landscape = true;
-            printDocument1.DefaultPageSettings.Color = false;
-            printDocument1.PrinterSettings.Copies = Convert.ToInt16(numericUpDown1.Value);
-            printDocument1.PrinterSettings.Collate = true;
-            printDocument1.DefaultPageSettings.Margins = new Margins(10, 10, 10, 10);
+   //         if (printDocument1.PrinterSettings.IsValid)
+   //         {
+   //             DateTime startTime = DateTime.Now;
 
-            if (printDocument1.PrinterSettings.IsValid)
-            {
-                DateTime startTime = DateTime.Now;
+   //             PrintRaceResult(CurrentRace.RaceID.ToString());
 
-                PrintRaceResult(CurrentRace.RaceID.ToString());
+   //             TimeSpan executionTime = DateTime.Now - startTime;
+   //             Logger.AddRecord("PrintRaceResult", Logger.LogType.info, executionTime);
 
-                TimeSpan executionTime = DateTime.Now - startTime;
-                Logger.AddRecord("PrintRaceResult", Logger.LogType.info, executionTime);
+   //             //MessageBox.Show(printDocument1.DefaultPageSettings.PaperSize.Width.ToString() + " " + printDocument1.DefaultPageSettings.PaperSize.Height.ToString());
 
-                //MessageBox.Show(printDocument1.DefaultPageSettings.PaperSize.Width.ToString() + " " + printDocument1.DefaultPageSettings.PaperSize.Height.ToString());
+   //             try
+   //             {
+   //                 printDocument1.Print();
+   //             }
+   //             catch (Exception ex)
+   //             {
+   //                 MessageBox.Show("Не удалось распечатать документ. Ошибка: " + ex.Message);
+   //             }
+   //             //  printPreviewDialog1.ShowDialog();
 
-                try
-                {
-                    printDocument1.Print();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Не удалось распечатать документ. Ошибка: " + ex.Message);
-                }
-                //  printPreviewDialog1.ShowDialog();
-
-                MyPrintDialog.Dispose();
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Не указан принтер для печати отчётов. Перейдите в раздел Управление - Настройки - Оборудование и выберите принтер в списке 'Печать результатов'");
-            }
+   //             printDialog.Dispose();
+   //             this.Close();
+   //         }
+   //         else
+   //         {
+   //             MessageBox.Show("Не указан принтер для печати отчётов. Перейдите в раздел Управление - Настройки - Оборудование и выберите принтер в списке 'Печать результатов'");
+   //         }
         }
 
         private void PrintResult_Activated(object sender, EventArgs e)

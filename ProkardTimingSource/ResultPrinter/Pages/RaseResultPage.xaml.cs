@@ -13,6 +13,7 @@ namespace DocumentPrinter
             InitializeComponent();
 
             this.DataContext = pageService;
+			pageService.RaisePropertyChanged();
         }
 
         public void Print(PrintDialog dlg)
@@ -26,7 +27,11 @@ namespace DocumentPrinter
 
         public void Print(string printerName, int pageCount)
         {
-            PrintDialog dlg = new PrintDialog();
+			(DataContext as PageService).RaisePropertyChanged();
+
+			fDocument.DataContext = DataContext;
+
+			PrintDialog dlg = new PrintDialog();
             PrintServer myPrintServer = new PrintServer();
             PrintQueue queue = null;
 
@@ -45,7 +50,7 @@ namespace DocumentPrinter
 
             fDocument.PageHeight = dlg.PrintableAreaHeight;
             fDocument.PageWidth = dlg.PrintableAreaWidth;
-
+						
             dlg.PrintDocument(((IDocumentPaginatorSource)fDocument).DocumentPaginator, "Результаты заезда");
         }
     }

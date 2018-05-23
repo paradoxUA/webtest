@@ -7,7 +7,7 @@ namespace DocumentPrinter.Services
 {
     public class PrinterService
     {
-        public static PageService PageSettings { get; set; } = new PageService();
+        public static PageService PageSettings { get; set; }
         public PrinterService()
         {
         }
@@ -17,7 +17,14 @@ namespace DocumentPrinter.Services
             RaseResultPage page = new RaseResultPage(PageSettings);
             page.Print(printDialog);
         }
-        public void ShowAdminPanel()
+
+		public void Print(PageService pageData, string printerName, int pagesCount)
+		{
+			var page = new RaseResultPage(pageData);
+			page.Print(printerName, pagesCount);
+
+		}
+		public void ShowAdminPanel()
         {
             PageSettingsView window = new PageSettingsView();
             window.ShowDialog();

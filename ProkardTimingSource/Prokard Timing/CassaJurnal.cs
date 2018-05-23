@@ -235,7 +235,8 @@ namespace Rentix
 
         private void button2_Click(object sender, EventArgs e)
         {
-            admin.PrintDataGridView(cassa_dataGridView1, "Кассовая книга - " + dateTimePicker1.Value.ToString("yyyy-MM-dd") + " - " + dateTimePicker2.Value.ToString("yyyy-MM-dd"));
+			var sum = admin.GetCassaSum(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, _race_id, raceTypeComboBox.SelectedIdx(), userGroupsComboBox.SelectedIdx(), partnerComboBox.SelectedIdx(), moneyTypeComboBox.SelectedIdx());
+			admin.PrintDataGridView(cassa_dataGridView1, "Кассовая книга - " + dateTimePicker1.Value.ToString("yyyy-MM-dd") + " - " + dateTimePicker2.Value.ToString("yyyy-MM-dd") + " " + label8.Text, 1,4);
         }
 
 

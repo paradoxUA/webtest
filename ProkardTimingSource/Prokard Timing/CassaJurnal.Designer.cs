@@ -30,11 +30,13 @@ namespace Rentix
         private void InitializeComponent()
         {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CassaJurnal));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
 			this.button2 = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
 			this.borderPanel2 = new Microsoft.TeamFoundation.Client.BorderPanel();
+			this.moneyTypeComboBox = new System.Windows.Forms.ComboBox();
+			this.label11 = new System.Windows.Forms.Label();
 			this.partnerComboBox = new System.Windows.Forms.ComboBox();
 			this.label10 = new System.Windows.Forms.Label();
 			this.userGroupsComboBox = new System.Windows.Forms.ComboBox();
@@ -71,8 +73,10 @@ namespace Rentix
 			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.moneyTypeComboBox = new System.Windows.Forms.ComboBox();
-			this.label11 = new System.Windows.Forms.Label();
+			this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column10 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+			this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.borderPanel1.SuspendLayout();
 			this.borderPanel2.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
@@ -156,6 +160,27 @@ namespace Rentix
 			this.borderPanel2.Size = new System.Drawing.Size(1138, 53);
 			this.borderPanel2.TabIndex = 0;
 			this.borderPanel2.UseInnerColor = false;
+			// 
+			// moneyTypeComboBox
+			// 
+			this.moneyTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.moneyTypeComboBox.FormattingEnabled = true;
+			this.moneyTypeComboBox.Location = new System.Drawing.Point(750, 29);
+			this.moneyTypeComboBox.Name = "moneyTypeComboBox";
+			this.moneyTypeComboBox.Size = new System.Drawing.Size(136, 21);
+			this.moneyTypeComboBox.TabIndex = 15;
+			this.moneyTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.moneyTypeComboBox_SelectedIndexChanged);
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.BackColor = System.Drawing.Color.Transparent;
+			this.label11.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label11.Location = new System.Drawing.Point(669, 32);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(78, 13);
+			this.label11.TabIndex = 14;
+			this.label11.Text = "Тип оплаты:";
 			// 
 			// partnerComboBox
 			// 
@@ -509,8 +534,8 @@ namespace Rentix
 			this.cassa_dataGridView1.AllowUserToDeleteRows = false;
 			this.cassa_dataGridView1.AllowUserToResizeColumns = false;
 			this.cassa_dataGridView1.AllowUserToResizeRows = false;
-			dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-			this.cassa_dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+			this.cassa_dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.cassa_dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
 			this.cassa_dataGridView1.BackgroundColor = System.Drawing.Color.White;
 			this.cassa_dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -523,7 +548,11 @@ namespace Rentix
             this.Column4,
             this.Column5,
             this.Column7,
-            this.Column6});
+            this.Column6,
+            this.Column8,
+            this.Column9,
+            this.Column10,
+            this.Column11});
 			this.cassa_dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.cassa_dataGridView1.Location = new System.Drawing.Point(0, 53);
 			this.cassa_dataGridView1.Name = "cassa_dataGridView1";
@@ -582,26 +611,35 @@ namespace Rentix
 			this.Column6.ReadOnly = true;
 			this.Column6.Width = 58;
 			// 
-			// moneyTypeComboBox
+			// Column8
 			// 
-			this.moneyTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.moneyTypeComboBox.FormattingEnabled = true;
-			this.moneyTypeComboBox.Location = new System.Drawing.Point(750, 29);
-			this.moneyTypeComboBox.Name = "moneyTypeComboBox";
-			this.moneyTypeComboBox.Size = new System.Drawing.Size(136, 21);
-			this.moneyTypeComboBox.TabIndex = 15;
-			this.moneyTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.moneyTypeComboBox_SelectedIndexChanged);
+			this.Column8.HeaderText = "Режим заезда";
+			this.Column8.Name = "Column8";
+			this.Column8.ReadOnly = true;
+			this.Column8.Width = 106;
 			// 
-			// label11
+			// Column9
 			// 
-			this.label11.AutoSize = true;
-			this.label11.BackColor = System.Drawing.Color.Transparent;
-			this.label11.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label11.Location = new System.Drawing.Point(669, 32);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(78, 13);
-			this.label11.TabIndex = 14;
-			this.label11.Text = "Тип оплаты:";
+			this.Column9.HeaderText = "Партнер";
+			this.Column9.Name = "Column9";
+			this.Column9.ReadOnly = true;
+			this.Column9.Width = 75;
+			// 
+			// Column10
+			// 
+			this.Column10.HeaderText = "Терминал";
+			this.Column10.Name = "Column10";
+			this.Column10.ReadOnly = true;
+			this.Column10.Width = 64;
+			// 
+			// Column11
+			// 
+			this.Column11.HeaderText = "Группа";
+			this.Column11.Name = "Column11";
+			this.Column11.ReadOnly = true;
+			this.Column11.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			this.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+			this.Column11.Width = 48;
 			// 
 			// CassaJurnal
 			// 
@@ -644,13 +682,6 @@ namespace Rentix
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label inCash_label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.RadioButton radioButton3;
@@ -676,5 +707,16 @@ namespace Rentix
 		private Label label10;
 		private ComboBox moneyTypeComboBox;
 		private Label label11;
+		private DataGridViewTextBoxColumn Column1;
+		private DataGridViewTextBoxColumn Column2;
+		private DataGridViewTextBoxColumn Column3;
+		private DataGridViewTextBoxColumn Column4;
+		private DataGridViewTextBoxColumn Column5;
+		private DataGridViewTextBoxColumn Column7;
+		private DataGridViewTextBoxColumn Column6;
+		private DataGridViewTextBoxColumn Column8;
+		private DataGridViewTextBoxColumn Column9;
+		private DataGridViewCheckBoxColumn Column10;
+		private DataGridViewTextBoxColumn Column11;
 	}
 }

@@ -42,10 +42,12 @@ class DataGridViewPrinter
     private List<float> mColumnPointsWidth;
     private int mColumnPoint;
 
+	private int[] skippedColumns;
+
     bool RES = false;
 
     // The class constructor
-    public DataGridViewPrinter(DataGridView aDataGridView, PrintDocument aPrintDocument, bool CenterOnPage, bool WithTitle, string aTitleText, Font aTitleFont, Color aTitleColor, bool WithPaging, Point Spos, bool res = false)
+    public DataGridViewPrinter(DataGridView aDataGridView, PrintDocument aPrintDocument, bool CenterOnPage, bool WithTitle, string aTitleText, Font aTitleFont, Color aTitleColor, bool WithPaging, Point Spos, int[] skipped, bool res = false)
     {
         RES = res;
         TheDataGridView = aDataGridView;
@@ -90,6 +92,8 @@ class DataGridViewPrinter
 
         LeftMargin += Spos.X;
         TopMargin += Spos.Y;
+
+		skippedColumns = skipped;
     }
 
     // The function that calculate the height of each row (including the header row), the width of each column (according to the longest text in all its cells including the header cell), and the whole DataGridView width
@@ -419,10 +423,27 @@ class DataGridViewPrinter
     {
         try
         {
-            Calculate(g);
+			var skip = new List<int>(skippedColumns) ?? new List<int>();
+
+			for (int i = 0; i < TheDataGridView.ColumnCount; i++)
+			{
+				if (skip.Contains(i)) {
+					TheDataGridView.Columns[i].Visible = false;
+				}
+			}
+
+			Calculate(g);
             DrawHeader(g);
             bool bContinue = DrawRows(g);
-            return bContinue;
+
+			for (int i = 0; i < TheDataGridView.ColumnCount; i++)
+			{
+				if (skip.Contains(i))
+				{
+					TheDataGridView.Columns[i].Visible = true;
+				}
+			}
+			return bContinue;
         }
         catch (Exception ex)
         {

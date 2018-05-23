@@ -3568,128 +3568,114 @@ namespace Rentix
             return ret;
         }
 
-        // Получает список операций по кассе за период
-        // 1 reportType = реальные, 2 = виртуальные
-        public List<Hashtable> GetCassaReport(DateTime Date, int reportType, DateTime Date2, PageLister page, int race_id, int raceTypeId, int userGroupId, int partnerId, int cashTerminalType)
-        {
-            DateTime startTime = DateTime.Now;
+		// Получает список операций по кассе за период
+		// 1 reportType = реальные, 2 = виртуальные
+		public List<Hashtable> GetCassaReport(DateTime Date, int reportType, DateTime Date2, PageLister page, int race_id, int raceTypeId, int userGroupId, int partnerId, int cashTerminalType)
+		{
+			DateTime startTime = DateTime.Now;
 
-            List<Hashtable> ret = new List<Hashtable>();
+			List<Hashtable> ret = new List<Hashtable>();
 
 
-            if (connected)
-            {
+			if (connected)
+			{
 
-                #region for pagelister
-                string filter = String.Empty;
-                if (page != null)
-                {
-                    string query1 = String.Empty;
-                    string q11 = "select count(*)as c from jurnal j, cassa c where c.doc_id=j.id and j.created between '"
-                        + datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(Date)) +
-                        "' and '" +
-                        datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(Date2))
-                        + $"' and j.tp in ({GetJurnalTp(cashTerminalType)}) and c.sign in (0,1)";
-                    string q22 = "select count(*)as c from jurnal j, user_cash u where u.doc_id = j.id and j.created between '" +
-                        datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(Date)) +
-                        "' and '" +
-                         datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(Date2)) +
+				#region for pagelister
+				string filter = String.Empty;
+				if (page != null)
+				{
+					string query1 = String.Empty;
+					string q11 = "select count(*)as c from jurnal j, cassa c where c.doc_id=j.id and j.created between '"
+						+ datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(Date)) +
+						"' and '" +
+						datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(Date2))
+						+ $"' and j.tp in ({GetJurnalTp(cashTerminalType)}) and c.sign in (0,1)";
+					string q22 = "select count(*)as c from jurnal j, user_cash u where u.doc_id = j.id and j.created between '" +
+						datetimeConverter.toDateTimeString(datetimeConverter.toStartDateTime(Date)) +
+						"' and '" +
+						 datetimeConverter.toDateTimeString(datetimeConverter.toEndDateTime(Date2)) +
 						$"' and j.tp in ({GetJurnalTp(cashTerminalType)}) and c.sign in (0,1)";
 
-                    switch (reportType)
-                    {
-                        case 1: query1 = q11; break;
-                        case 2: query1 = q22; break;
-                        case 3: query1 = "(" + q11 + ")" + " union " + "(" + q22 + ")"; break;
-                    }
+					switch (reportType)
+					{
+						case 1: query1 = q11; break;
+						case 2: query1 = q22; break;
+						case 3: query1 = "(" + q11 + ")" + " union " + "(" + q22 + ")"; break;
+					}
 
 
 
 
-                    using (SqlCommand cmd2 = new SqlCommand(query1, db3))
-                    {
-                        using (SqlDataReader res = cmd2.ExecuteReader())
-                        {
-                            if (res.Read())
-                            {
-                                int Rows = Convert.ToInt32(res["c"].ToString());
+					using (SqlCommand cmd2 = new SqlCommand(query1, db3))
+					{
+						using (SqlDataReader res = cmd2.ExecuteReader())
+						{
+							if (res.Read())
+							{
+								int Rows = Convert.ToInt32(res["c"].ToString());
 
-                                if (page.RowsMax != Rows || page.OnChange)
-                                {
-                                    page.RowsMax = Rows;
-                                    page.PagesCount = Convert.ToInt32(Math.Ceiling((double)page.RowsMax / (double)page.PageSize));
-                                    page.FillPageNumbers();
-                                    page.OnChange = false;
-                                }
-                                //  page.setPageListerButtonsEnability();
-
-
-                            }
-                        }
-                    }
+								if (page.RowsMax != Rows || page.OnChange)
+								{
+									page.RowsMax = Rows;
+									page.PagesCount = Convert.ToInt32(Math.Ceiling((double)page.RowsMax / (double)page.PageSize));
+									page.FillPageNumbers();
+									page.OnChange = false;
+								}
+								//  page.setPageListerButtonsEnability();
 
 
-                    // filter += page.Filter;
-                }
+							}
+						}
+					}
+
+
+					// filter += page.Filter;
+				}
 
 				#endregion
 
-                string StoredProcName = "GetCassaReport";
-                SqlCommand cmd = null;
-                if (race_id > 0)
-                {
-                    cmd = new SqlCommand("SELECT j.id, j.created as 'date', j.comment, j.user_id, j.tp, j.race_id, c.sum, c.sign" +
-                                         " from jurnal as j" +
-                                         " left join  cassa c on c.doc_id = j.id" +
-                                         " where race_id = @race_id", db2);
-                    // cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@race_id", SqlDbType.Int).Value = race_id;
-                }
-                else
-                {
-					cmd = new SqlCommand(
+				var cmd = new SqlCommand(
 						"SELECT * FROM " +
-							"(SELECT ROW_NUMBER() OVER(ORDER BY j.id) AS RowNum, j.id, j.created as 'date', j.comment, j.user_id, j.tp, j.race_id, c.sum, c.sign " +
-							$"FROM(jurnal j LEFT JOIN(SELECT race_id, pilot_id, car_id, id_race_mode FROM race_data WHERE car_id IS NOT NULL GROUP BY race_id, pilot_id, car_id, id_race_mode) rd ON j.race_id = rd.race_id and j.user_id = rd.pilot_id) LEFT JOIN {(reportType == 1 ? "cassa" : "user_cash")} c ON j.id = c.doc_id " +
+							"(SELECT ROW_NUMBER() OVER(ORDER BY j.id) AS RowNum, j.id, j.created as 'date', j.comment, j.user_id, j.tp, j.race_id, c.sum, c.sign, rm.name as race_mode_name, p.name as partner_name, g.name as group_name, j.tp as terminal  " +
+							$"FROM jurnal j LEFT JOIN(SELECT race_id, pilot_id, car_id, id_race_mode FROM race_data GROUP BY race_id, pilot_id, car_id, id_race_mode) rd ON j.race_id = rd.race_id and j.user_id = rd.pilot_id LEFT JOIN {(reportType == 1 ? "cassa" : "user_cash")} c ON j.id = c.doc_id LEFT JOIN partners p ON c.partner_id = p.id LEFT JOIN users u ON j.user_id = u.id LEFT JOIN race_modes rm ON rm.id = rd.id_race_mode LEFT JOIN groups g ON u.gr = g.id " +
 							$"WHERE j.tp in ({GetJurnalTp(cashTerminalType)}) and c.sign in (0,1) and j.created BETWEEN @startDate and @endDate {(raceTypeId > -1).ToStringIf("and rd.id_race_mode = " + raceTypeId)} {(userGroupId > -1).ToStringIf("and u.gr = " + userGroupId)} {(partnerId > -1).ToStringIf("and c.partner_id = " + partnerId)}) as some_table " +
 						"WHERE RowNum BETWEEN(@PageIndex -1) * @PageSize + 1 and @PageIndex * @PageSize " +
 						"ORDER BY id", db2);
-					cmd.Parameters.Add("@PageIndex", SqlDbType.Int).Value = page.CurrentPageNumber;
-					cmd.Parameters.Add("@PageSize", SqlDbType.Int).Value = page.PageSize;
-					cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = Date;
-					cmd.Parameters.Add("@endDate", SqlDbType.DateTime).Value = Date2;
+				cmd.Parameters.Add("@PageIndex", SqlDbType.Int).Value = page.CurrentPageNumber;
+				cmd.Parameters.Add("@PageSize", SqlDbType.Int).Value = page.PageSize;
+				cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = Date;
+				cmd.Parameters.Add("@endDate", SqlDbType.DateTime).Value = Date2;
 
-					//if (reportType == 2)
-					//               {
-					//                   StoredProcName = "GetVirtualCassaReport";
-					//               }
-					//               cmd = new SqlCommand(StoredProcName, db2);
-					//               cmd.CommandType = CommandType.StoredProcedure;
-					//               cmd.Parameters.Add("@PageIndex", SqlDbType.Int).Value = page.CurrentPageNumber;
-					//               cmd.Parameters.Add("@PageSize", SqlDbType.Int).Value = page.PageSize;
-					//               cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = Date;
-					//               cmd.Parameters.Add("@endDate", SqlDbType.DateTime).Value = Date2;
+				//if (reportType == 2)
+				//               {
+				//                   StoredProcName = "GetVirtualCassaReport";
+				//               }
+				//               cmd = new SqlCommand(StoredProcName, db2);
+				//               cmd.CommandType = CommandType.StoredProcedure;
+				//               cmd.Parameters.Add("@PageIndex", SqlDbType.Int).Value = page.CurrentPageNumber;
+				//               cmd.Parameters.Add("@PageSize", SqlDbType.Int).Value = page.PageSize;
+				//               cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = Date;
+				//               cmd.Parameters.Add("@endDate", SqlDbType.DateTime).Value = Date2;
 
 
-				}
 
 				using (SqlDataReader res = cmd.ExecuteReader())
-                {
-                    Hashtable row = new Hashtable();
-                    int rows = 0;
-                    while (res.Read())
-                    {
-                        row = ConvertResult(res);
-                        ret.Add(row);
-                        rows++;
-                    }
-                }
+				{
+					Hashtable row = new Hashtable();
+					int rows = 0;
+					while (res.Read())
+					{
+						row = ConvertResult(res);
+						ret.Add(row);
+						rows++;
+					}
+				}
 
-                cmd.Dispose();
+				cmd.Dispose();
 
-            }
-			
-            if (page != null)
+			}
+
+			if (page != null)
             {
                 page.OnUpdate = false;
             }
@@ -3726,8 +3712,8 @@ namespace Rentix
 			}
 			var query =
 				"SELECT c.sum, CASE c.sign WHEN 0 THEN 1 ELSE -1 END as my_sign " +
-				"FROM jurnal j LEFT JOIN crazykart.dbo.cassa c ON j.id = c.doc_id " +
-				$"WHERE j.tp in ({GetJurnalTp(cashTerminalType)}) and c.sign in (0, 1) and j.created BETWEEN @startDate and @endDate {(raceTypeId > -1).ToStringIf("and rd.id_race_mode = " + raceTypeId)} {(userGroupId > -1).ToStringIf("and u.gr = " + userGroupId)} {(partnerId > -1).ToStringIf("and c.partner_id = " + partnerId)}";
+				$"FROM jurnal j LEFT JOIN(SELECT race_id, pilot_id, car_id, id_race_mode FROM race_data WHERE car_id IS NOT NULL GROUP BY race_id, pilot_id, car_id, id_race_mode) rd ON j.race_id = rd.race_id and j.user_id = rd.pilot_id LEFT JOIN {(reportType == 1 ? "cassa" : "user_cash")} c ON j.id = c.doc_id LEFT JOIN partners p ON c.partner_id = p.id LEFT JOIN users u ON j.user_id = u.id " +
+							$"WHERE j.tp in ({GetJurnalTp(cashTerminalType)}) and c.sign in (0,1) and j.created BETWEEN @startDate and @endDate {(raceTypeId > -1).ToStringIf("and rd.id_race_mode = " + raceTypeId)} {(userGroupId > -1).ToStringIf("and u.gr = " + userGroupId)} {(partnerId > -1).ToStringIf("and c.partner_id = " + partnerId)}";
 			var cmd = new SqlCommand(query, db2);
 			cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = Date;
 			cmd.Parameters.Add("@endDate", SqlDbType.DateTime).Value = Date2;
