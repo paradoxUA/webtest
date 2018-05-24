@@ -58,7 +58,7 @@ namespace Rentix
 			{
 				new KeyValuePair<int, string>(-1, "Общая"),
 				new KeyValuePair<int, string>(1, "Наличные"),
-				new KeyValuePair<int, string>(31, "Терминал"),
+				new KeyValuePair<int, string>(33, "Терминал"),
 			};
 			moneyTypeComboBox.Fill(items, false);
 			moneyTypeComboBox.SelectedIndex = 0;

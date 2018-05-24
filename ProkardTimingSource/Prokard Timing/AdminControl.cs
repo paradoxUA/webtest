@@ -1280,6 +1280,7 @@ namespace Rentix
 				dr.Cells[8].Value = Cassa[i]["partner_name"];
 				dr.Cells[9].Value = Convert.ToInt32(Cassa[i]["terminal"]) == 33;
 				dr.Cells[10].Value = Cassa[i]["group_name"];
+				dr.Cells[11].Value = Cassa[i]["ref_code"].ToString() == "null" ? "" : Cassa[i]["ref_code"];
 
 				if (Cassa[i]["race_id"] != "")
                 {

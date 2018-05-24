@@ -77,6 +77,7 @@ namespace Rentix
 			this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column10 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
 			this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.borderPanel1.SuspendLayout();
 			this.borderPanel2.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
@@ -552,7 +553,9 @@ namespace Rentix
             this.Column8,
             this.Column9,
             this.Column10,
-            this.Column11});
+            this.Column11,
+            this.Column12});
+			this.cassa_dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
 			this.cassa_dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.cassa_dataGridView1.Location = new System.Drawing.Point(0, 53);
 			this.cassa_dataGridView1.Name = "cassa_dataGridView1";
@@ -641,6 +644,13 @@ namespace Rentix
 			this.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
 			this.Column11.Width = 48;
 			// 
+			// Column12
+			// 
+			this.Column12.HeaderText = "Сертификат";
+			this.Column12.Name = "Column12";
+			this.Column12.ReadOnly = true;
+			this.Column12.Width = 93;
+			// 
 			// CassaJurnal
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -718,5 +728,6 @@ namespace Rentix
 		private DataGridViewTextBoxColumn Column9;
 		private DataGridViewCheckBoxColumn Column10;
 		private DataGridViewTextBoxColumn Column11;
+		private DataGridViewTextBoxColumn Column12;
 	}
 }
