@@ -3712,7 +3712,7 @@ namespace Rentix
 			}
 			var query =
 				"SELECT c.sum, CASE c.sign WHEN 0 THEN 1 ELSE -1 END as my_sign " +
-				$"FROM jurnal j LEFT JOIN(SELECT race_id, pilot_id, car_id, id_race_mode FROM race_data WHERE car_id IS NOT NULL GROUP BY race_id, pilot_id, car_id, id_race_mode) rd ON j.race_id = rd.race_id and j.user_id = rd.pilot_id LEFT JOIN {(reportType == 1 ? "cassa" : "user_cash")} c ON j.id = c.doc_id LEFT JOIN partners p ON c.partner_id = p.id LEFT JOIN users u ON j.user_id = u.id " +
+				$"FROM jurnal j LEFT JOIN(SELECT race_id, pilot_id, car_id, id_race_mode FROM race_data GROUP BY race_id, pilot_id, car_id, id_race_mode) rd ON j.race_id = rd.race_id and j.user_id = rd.pilot_id LEFT JOIN {(reportType == 1 ? "cassa" : "user_cash")} c ON j.id = c.doc_id LEFT JOIN partners p ON c.partner_id = p.id LEFT JOIN users u ON j.user_id = u.id " +
 							$"WHERE j.tp in ({GetJurnalTp(cashTerminalType)}) and c.sign in (0,1) and j.created BETWEEN @startDate and @endDate {(raceTypeId > -1).ToStringIf("and rd.id_race_mode = " + raceTypeId)} {(userGroupId > -1).ToStringIf("and u.gr = " + userGroupId)} {(partnerId > -1).ToStringIf("and c.partner_id = " + partnerId)}";
 			var cmd = new SqlCommand(query, db2);
 			cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = Date;
