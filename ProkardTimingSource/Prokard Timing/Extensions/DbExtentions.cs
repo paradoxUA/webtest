@@ -1,5 +1,6 @@
 ﻿using Rentix.Controls;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
@@ -96,6 +97,32 @@ namespace Rentix.Extensions
 				return item.value;
 			}
 			throw new Exception();
+		}
+
+		public static void SelectById(this ComboBox comboBox, int id)
+		{
+			comboBoxItem finded = null;
+			foreach (var item in comboBox.Items)
+			{
+				var customItem = item as comboBoxItem;
+				if(customItem != null && customItem.value == id)
+				{
+					finded = customItem;
+					break;
+				}
+			}
+			if(finded == null)
+			{
+				return;
+			}
+			comboBox.SelectedIndex = comboBox.Items.IndexOf(finded);
+		}
+
+		public static object[] ToArray(this ICollection collection)
+		{
+			var array = new object[collection.Count];
+			collection.CopyTo(array, 0);
+			return array;
 		}
 	}
 }

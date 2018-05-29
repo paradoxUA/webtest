@@ -266,8 +266,10 @@ namespace Rentix
 
                 racesList_dataGridView1.Refresh();
                 racesList_dataGridView1.ResumeLayout(false);
-				if(admin.Settings["default_track"] == null)
-                labelSmooth1.Text = "Трек - " + admin.model.GetTrackName(admin.Settings.ContainsKey("default_track") ? (int)admin.Settings["default_track"] : -1);
+				if (admin.Settings["default_track"] != null)
+				{
+					labelSmooth1.Text = "Трек - " + admin.model.GetTrackName(admin.Settings.ContainsKey("default_track") ? Convert.ToInt32(admin.Settings["default_track"]) : -1);
+				}
                 SetControlButton();
 
                 TimeSpan executionTime = DateTime.Now - startTime;

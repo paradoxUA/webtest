@@ -15,6 +15,7 @@ using System.Drawing.Printing;
 using Rentix.Controls;
 using System.Configuration;
 using DocumentPrinter.Services;
+using Rentix.Extensions;
 
 namespace Rentix
 {
@@ -46,10 +47,7 @@ namespace Rentix
 
             if (!parent.admin.InError)
             {
-
-                List<Hashtable> Tracks = parent.admin.model.GetAllTracks();
-                for (int i = 0; i < Tracks.Count; i++)
-                    comboBox2.Items.Add(Tracks[i]["name"]);
+				comboBox2.Fill(parent.admin.model.GetAllTracks().Select(table => new KeyValuePair<int, string>(Convert.ToInt32(table["id"]), table["name"].ToString())));
             }
             try
             {
@@ -151,7 +149,7 @@ namespace Rentix
 
 				}
 
-				comboBox2.SelectedIndex = comboBox2.Items.IndexOf(parent.admin.model.GetTrackName((int)sett["default_track"]));
+				comboBox2.SelectById(Convert.ToInt32(sett["default_track"]));
 
 
 				if (Convert.ToBoolean(sett["warm_subtract"]) == true)
@@ -282,7 +280,7 @@ namespace Rentix
             sett["noise_time"] = minimumLapTime_numericUpDown2.Value;
             sett["track_length"] = numericUpDown3.Value;
             sett["fuel_on_lap"] = textBox1.Text;
-            sett["default_track"] = comboBox2.SelectedIndex >= 0 ? parent.admin.model.GetTrackID(comboBox2.Items[comboBox2.SelectedIndex].ToString()) : 0;
+            sett["default_track"] = comboBox2.SelectedIdx();
           //  sett["race_time"] = numericUpDown6.Value;
 
             // время гонки по умолчанию

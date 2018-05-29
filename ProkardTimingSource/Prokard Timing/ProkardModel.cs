@@ -2149,53 +2149,41 @@ namespace Rentix
         // Cохраняет настройки
         public void SaveSettings(Hashtable sett)
         {
-            m_dbConnection =
-                new SQLiteConnection("Data Source=setts.sqlite;Version=3;");
-            m_dbConnection.Open();
 
-            if (m_dbConnection.State == ConnectionState.Open)
-            {
-
-                if (sett.Count > 0)
-                    using (SQLiteCommand cmd =
-                        new SQLiteCommand("delete from settings", m_dbConnection))
-                    {
-                        cmd.ExecuteNonQueryHandled();
-                    }
-
-                foreach (DictionaryEntry d in sett)
-                {
-
-                    using (SQLiteCommand cmd =
-                        new SQLiteCommand(
-                            "insert into settings (name,val) values ('" + d.Key.ToString() + "','" +
-                            d.Value.ToString() + "')", m_dbConnection))
-                    {
-                        cmd.ExecuteNonQueryHandled();
-                    }
-
-                }
-            }
-
-            //if (connected)
-            //{
-            //    if (sett.Count > 0)
-            //        using (SqlCommand cmd = new SqlCommand("delete from settings", db))
-            //        {
-            //            cmd.ExecuteNonQueryHandled();
-            //        }
-
-            //    foreach (DictionaryEntry d in sett)
-            //    {
-
-            //        using (SqlCommand cmd = new SqlCommand("insert into settings (name,val) values ('" + d.Key.ToString() + "','" + d.Value.ToString() + "')", db))
-            //        {
-            //            cmd.ExecuteNonQueryHandled();
-            //        }
-
-            //    }
-            //}
+			foreach (var key in sett.Keys.ToArray())
+			{
+				SaveSetting(key.ToString(), sett[key].ToString());
+			}
         }
+
+		private void SaveSetting(string key, string value)
+		{
+			var sqliteConnectionString = "Data Source=setts.sqlite;Version=3;";
+			var sqliteConnection = new SQLiteConnection(sqliteConnectionString);
+			try
+			{
+				sqliteConnection.Open();
+			}
+			catch
+			{
+				SQLiteConnection.CreateFile("setts.sqlite");
+				sqliteConnection = new SQLiteConnection(sqliteConnectionString);
+				sqliteConnection.Open();
+				var cmd = new SQLiteCommand("create table settings (name varchar(40), val varchar(40))", sqliteConnection);
+				cmd.ExecuteNonQueryHandled();
+			}
+			var sqliteQuery = $"INSERT OR REPLACE INTO settings (name, val) VALUES ('{key}','{value}')";
+			using(var cmd = new SQLiteCommand(sqliteQuery, sqliteConnection))
+			{
+				cmd.ExecuteNonQueryHandled();
+			}
+			sqliteConnection.Dispose();
+			var sqlServerQuery = $"BEGIN IF (SELECT COUNT(*) FROM settings WHERE name = '{key}') = 0 BEGIN INSERT INTO settings (name, val) VALUES ('{key}','{value}') END ELSE BEGIN UPDATE settings SET val = '{value}' WHERE name = '{key}' END END";
+			using (var cmd = new SqlCommand(sqlServerQuery, db2))
+			{
+				cmd.ExecuteNonQueryHandled();
+			}
+		}
 
 
         public Hashtable DefaultAnonserSettings(Hashtable sett)
@@ -2334,93 +2322,77 @@ namespace Rentix
 
         }
 
-        SQLiteConnection m_dbConnection;
 
         // Загружает настройки
         public Hashtable LoadSettings()
         {
-            Hashtable ret = new Hashtable();
-            m_dbConnection =
-                new SQLiteConnection("Data Source=setts.sqlite;Version=3;");
-            try
-            {
-                m_dbConnection.Open();
-            }
-            catch (Exception exp)
-            {
-                //   m_dbConnection.
-                SQLiteConnection.CreateFile("setts.sqlite");
-                SQLiteCommand cmd =
-                    new SQLiteCommand("create table settings (name varchar(40), val varchar(40))",
-                        m_dbConnection);
-                ret = DefaultSettings();
-                SaveSettings(ret);
-            }
-
-            if (m_dbConnection.State == ConnectionState.Open)
-            {
-                try
-                {
-
-                    // MessageBox.Show("load Settings");
-                    using (SQLiteCommand cmd =
-                        new SQLiteCommand("select name,val from settings", m_dbConnection))
-                    {
-                        using (SQLiteDataReader res = cmd.ExecuteReader())
-                        {
-                            while (res.Read())
-                            {
-                                // один раз как-то получилось, что в БД было по несколько значений с одним ключом. 
-
-                                if (ret[res["name"]] == null)
-                                {
-                                    ret.Add(res["name"], res["val"]);
-                                }
-                            }
-                        }
-                    }
-                }
-                catch (Exception exp)
-                {
-                    SQLiteCommand cmd =
-                        new SQLiteCommand("create table settings (name varchar(40), val varchar(40))",
-                            m_dbConnection);
-                    cmd.ExecuteNonQueryHandled();
-                    ret = DefaultSettings();
-                    SaveSettings(ret);
-                }
-                //using (SqlCommand cmd = new SqlCommand("select name,val from settings", db2))
-                //{
-                //    using (SqlDataReader res = cmd.ExecuteReader())
-                //    {
-                //        while (res.Read())
-                //        {
-                //            // один раз как-то получилось, что в БД было по несколько значений с одним ключом. 
-
-                //            if (ret[res["name"]] == null)
-                //            {
-                //                ret.Add(res["name"], res["val"]);
-                //            }
-                //        }
-                //    }
-                //}
-            }
-
-            if (ret.Count == 0)
-            {
-                //  MessageBox.Show("DefaultSettings");
-
-                ret = DefaultSettings();
-                SaveSettings(ret);
-            }
-
-            ret = DefaultAnonserSettings(ret);
-
-            //SaveSQLiteSettings(ret);
-            // SaveSettings(ret);
-
-            return ret;
+			var settingValues = DefaultSettings();
+			var needSave = false;
+			foreach (var key in settingValues.Keys.ToArray())
+			{
+				settingValues[key] = LoadSetting(key.ToString(), out var notExist);
+				if (notExist)
+				{
+					needSave = true;
+				}
+			}
+			if (needSave)
+			{
+				SaveSettings(settingValues);
+			}
+            return settingValues;
         }
+
+		private object LoadSetting(string key, out bool notExistsSomewhere)
+		{
+			object result = null;
+			notExistsSomewhere = false;
+			var query = $"SELECT name, val FROM settings WHERE name = '{key}'";
+			try
+			{
+				using (var sqliteConnection = new SQLiteConnection("Data Source=setts.sqlite;Version=3;"))
+				{
+					sqliteConnection.Open();
+					using (var cmd = new SQLiteCommand(query, sqliteConnection))
+					using (var res = cmd.ExecuteReader())
+					{
+						if (res.Read())
+						{
+							return res["val"];
+						}
+						else
+						{
+							notExistsSomewhere = true;
+						}
+					}
+				}
+			}
+			catch
+			{
+				notExistsSomewhere = true;
+			}
+			try
+			{
+				using (var cmd = new SqlCommand(query, db2))
+				using (var reader = cmd.ExecuteReader())
+				{
+					if (reader.Read())
+					{
+						return reader["val"];
+					}
+					else
+					{
+						notExistsSomewhere = true;
+					}
+				}
+
+			}
+			catch
+			{
+				notExistsSomewhere = true;
+			}
+			return DefaultSettings()[key];
+		}
 
 
         // Получает максимальное количество картов
