@@ -3634,15 +3634,26 @@ namespace Rentix
 
 				#endregion
 
-				var cmd = new SqlCommand(
-						"SELECT * FROM " +
-							"(SELECT ROW_NUMBER() OVER(ORDER BY j.id) AS RowNum, j.id, j.created as 'date', j.comment, j.user_id, j.tp, j.race_id, c.sum, c.sign, rm.name as race_mode_name, p.name as partner_name, g.name as group_name, j.tp as terminal, c.ref_code  " +
+				var query = new List<string>();
+				if (page != null)
+				{
+					query.Add("SELECT * FROM (");
+				}
+				query.Add("SELECT ROW_NUMBER() OVER(ORDER BY j.id) AS RowNum, j.id, j.created as 'date', j.comment, j.user_id, j.tp, j.race_id, c.sum, c.sign, rm.name as race_mode_name, p.name as partner_name, g.name as group_name, j.tp as terminal, c.ref_code, u.nickname, u.name as user_name, u.surname " +
 							$"FROM jurnal j LEFT JOIN(SELECT race_id, pilot_id, car_id, id_race_mode FROM race_data GROUP BY race_id, pilot_id, car_id, id_race_mode) rd ON j.race_id = rd.race_id and j.user_id = rd.pilot_id LEFT JOIN {(reportType == 1 ? "cassa" : "user_cash")} c ON j.id = c.doc_id LEFT JOIN partners p ON c.partner_id = p.id LEFT JOIN users u ON j.user_id = u.id LEFT JOIN race_modes rm ON rm.id = rd.id_race_mode LEFT JOIN groups g ON u.gr = g.id " +
-							$"WHERE j.tp in ({GetJurnalTp(cashTerminalType)}) and c.sign in (0,1) and j.created BETWEEN @startDate and @endDate {(raceTypeId > -1).ToStringIf("and rd.id_race_mode = " + raceTypeId)} {(userGroupId > -1).ToStringIf("and u.gr = " + userGroupId)} {(partnerId > -1).ToStringIf("and c.partner_id = " + partnerId)}) as some_table " +
-						"WHERE RowNum BETWEEN(@PageIndex -1) * @PageSize + 1 and @PageIndex * @PageSize " +
-						"ORDER BY id", db2);
-				cmd.Parameters.Add("@PageIndex", SqlDbType.Int).Value = page.CurrentPageNumber;
-				cmd.Parameters.Add("@PageSize", SqlDbType.Int).Value = page.PageSize;
+							$"WHERE j.tp in ({GetJurnalTp(cashTerminalType)}) and c.sign in (0,1) and j.created BETWEEN @startDate and @endDate {(raceTypeId > -1).ToStringIf("and rd.id_race_mode = " + raceTypeId)} {(userGroupId > -1).ToStringIf("and u.gr = " + userGroupId)} {(partnerId > -1).ToStringIf("and c.partner_id = " + partnerId)}");
+				if (page != null)
+				{
+					query.Add(") as some_table WHERE RowNum BETWEEN(@PageIndex - 1) * @PageSize + 1 and @PageIndex * @PageSize ");
+				}
+				query.Add("ORDER BY id");
+
+				var cmd = new SqlCommand(string.Join("", query), db2);
+				if (page != null)
+				{ 
+					cmd.Parameters.Add("@PageIndex", SqlDbType.Int).Value = page.CurrentPageNumber;
+					cmd.Parameters.Add("@PageSize", SqlDbType.Int).Value = page.PageSize;
+				}
 				cmd.Parameters.Add("@startDate", SqlDbType.DateTime).Value = Date;
 				cmd.Parameters.Add("@endDate", SqlDbType.DateTime).Value = Date2;
 

@@ -235,8 +235,14 @@ namespace Rentix
 
         private void button2_Click(object sender, EventArgs e)
         {
-			var sum = admin.GetCassaSum(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, _race_id, raceTypeComboBox.SelectedIdx(), userGroupsComboBox.SelectedIdx(), partnerComboBox.SelectedIdx(), moneyTypeComboBox.SelectedIdx());
-			admin.PrintDataGridView(cassa_dataGridView1, "Кассовая книга - " + dateTimePicker1.Value.ToString("yyyy-MM-dd") + " - " + dateTimePicker2.Value.ToString("yyyy-MM-dd") + " " + label8.Text, 1,4);
+			var dataGridView = new DataGridView();
+			for (int i = 0; i < cassa_dataGridView1.Columns.Count; i++)
+			{
+				dataGridView.Columns.Add((DataGridViewColumn)cassa_dataGridView1.Columns[i].Clone());
+			}
+			admin.GetCassaReport(dataGridView, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, null, _race_id, raceTypeComboBox.SelectedIdx(), userGroupsComboBox.SelectedIdx(), partnerComboBox.SelectedIdx(), moneyTypeComboBox.SelectedIdx(), true);
+			var sum = admin.GetCassaSum(dataGridView, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, _race_id, raceTypeComboBox.SelectedIdx(), userGroupsComboBox.SelectedIdx(), partnerComboBox.SelectedIdx(), moneyTypeComboBox.SelectedIdx());
+			admin.PrintDataGridView(dataGridView, "Кассовая книга - " + dateTimePicker1.Value.ToString("yyyy-MM-dd") + " - " + dateTimePicker2.Value.ToString("yyyy-MM-dd") + " " + label8.Text, new[] { 1, 4, 5 });
         }
 
 
@@ -347,7 +353,7 @@ namespace Rentix
 		{
 			try
 			{
-				admin.GetCassaReport(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, Pages, _race_id, raceTypeComboBox.SelectedIdx(), userGroupsComboBox.SelectedIdx(), partnerComboBox.SelectedIdx(), moneyTypeComboBox.SelectedIdx());
+				admin.GetCassaReport(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, Pages, _race_id, raceTypeComboBox.SelectedIdx(), userGroupsComboBox.SelectedIdx(), partnerComboBox.SelectedIdx(), moneyTypeComboBox.SelectedIdx(), false);
 				var sum = admin.GetCassaSum(cassa_dataGridView1, dateTimePicker1.Value, GlobalRadio, dateTimePicker2.Value, _race_id, raceTypeComboBox.SelectedIdx(), userGroupsComboBox.SelectedIdx(), partnerComboBox.SelectedIdx(), moneyTypeComboBox.SelectedIdx());
 				label8.Text = "Сумма операций: " + sum + "грн.";
 			}
@@ -375,6 +381,11 @@ namespace Rentix
 		private void moneyTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			UpdateCassaReport();
+		}
+
+		private void cassa_dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+
 		}
 	}
 }

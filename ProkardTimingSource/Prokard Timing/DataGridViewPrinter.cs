@@ -43,13 +43,13 @@ class DataGridViewPrinter
     private int mColumnPoint;
 
 	private int[] skippedColumns;
+	private Tuple<int, int>[] switchedColumns;
 
     bool RES = false;
 
     // The class constructor
-    public DataGridViewPrinter(DataGridView aDataGridView, PrintDocument aPrintDocument, bool CenterOnPage, bool WithTitle, string aTitleText, Font aTitleFont, Color aTitleColor, bool WithPaging, Point Spos, int[] skipped, bool res = false)
+    public DataGridViewPrinter(DataGridView aDataGridView, PrintDocument aPrintDocument, bool CenterOnPage, bool WithTitle, string aTitleText, Font aTitleFont, Color aTitleColor, bool WithPaging, Point Spos, int[] skippedColumns, Tuple<int, int>[] switchedColumns)
     {
-        RES = res;
         TheDataGridView = aDataGridView;
         ThePrintDocument = aPrintDocument;
         IsCenterOnPage = CenterOnPage;
@@ -59,9 +59,8 @@ class DataGridViewPrinter
         TheTitleColor = aTitleColor;
         IsWithPaging = WithPaging;
 
-        
-
         PageNumber = 0;
+
 
         RowsHeight = new List<float>();
         ColumnsWidth = new List<float>();
@@ -93,8 +92,9 @@ class DataGridViewPrinter
         LeftMargin += Spos.X;
         TopMargin += Spos.Y;
 
-		skippedColumns = skipped;
-    }
+		this.skippedColumns = skippedColumns ?? new int[0];
+		this.switchedColumns = switchedColumns ?? new Tuple<int, int>[0];
+	}
 
     // The function that calculate the height of each row (including the header row), the width of each column (according to the longest text in all its cells including the header cell), and the whole DataGridView width
     private void Calculate(Graphics g)

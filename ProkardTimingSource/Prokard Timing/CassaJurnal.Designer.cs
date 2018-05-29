@@ -74,9 +74,9 @@ namespace Rentix
 			this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column10 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+			this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.borderPanel1.SuspendLayout();
 			this.borderPanel2.SuspendLayout();
@@ -551,9 +551,9 @@ namespace Rentix
             this.Column7,
             this.Column6,
             this.Column8,
-            this.Column9,
             this.Column10,
             this.Column11,
+            this.Column9,
             this.Column12});
 			this.cassa_dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
 			this.cassa_dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -563,6 +563,7 @@ namespace Rentix
 			this.cassa_dataGridView1.RowHeadersVisible = false;
 			this.cassa_dataGridView1.Size = new System.Drawing.Size(1138, 356);
 			this.cassa_dataGridView1.TabIndex = 4;
+			this.cassa_dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cassa_dataGridView1_CellContentClick);
 			this.cassa_dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
 			// 
 			// Column1
@@ -621,19 +622,14 @@ namespace Rentix
 			this.Column8.ReadOnly = true;
 			this.Column8.Width = 106;
 			// 
-			// Column9
-			// 
-			this.Column9.HeaderText = "Партнер";
-			this.Column9.Name = "Column9";
-			this.Column9.ReadOnly = true;
-			this.Column9.Width = 75;
-			// 
 			// Column10
 			// 
-			this.Column10.HeaderText = "Терминал";
+			this.Column10.HeaderText = "Тер.";
 			this.Column10.Name = "Column10";
 			this.Column10.ReadOnly = true;
-			this.Column10.Width = 64;
+			this.Column10.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+			this.Column10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+			this.Column10.Width = 35;
 			// 
 			// Column11
 			// 
@@ -643,6 +639,13 @@ namespace Rentix
 			this.Column11.Resizable = System.Windows.Forms.DataGridViewTriState.True;
 			this.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
 			this.Column11.Width = 48;
+			// 
+			// Column9
+			// 
+			this.Column9.HeaderText = "Партнер";
+			this.Column9.Name = "Column9";
+			this.Column9.ReadOnly = true;
+			this.Column9.Width = 75;
 			// 
 			// Column12
 			// 
@@ -725,9 +728,9 @@ namespace Rentix
 		private DataGridViewTextBoxColumn Column7;
 		private DataGridViewTextBoxColumn Column6;
 		private DataGridViewTextBoxColumn Column8;
-		private DataGridViewTextBoxColumn Column9;
-		private DataGridViewCheckBoxColumn Column10;
+		private DataGridViewTextBoxColumn Column10;
 		private DataGridViewTextBoxColumn Column11;
+		private DataGridViewTextBoxColumn Column9;
 		private DataGridViewTextBoxColumn Column12;
 	}
 }

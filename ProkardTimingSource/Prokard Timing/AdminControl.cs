@@ -157,7 +157,7 @@ namespace Rentix
         }
 
         //Распечатывает Datagrid
-        public void PrintDataGridView(DataGridView dv, string Title, params int[] skip)
+        public void PrintDataGridView(DataGridView dv, string Title, int[] skipColumns = null, Tuple<int, int>[] switchColumns = null)
         {
             PrintDialog MyPrintDialog = new PrintDialog();
             MyPrintDialog.AllowCurrentPage = false;
@@ -184,16 +184,13 @@ namespace Rentix
 
             if (printDocument1.PrinterSettings.IsValid)
             {
-                MyDataGridViewPrinter = new DataGridViewPrinter(dv,
-        printDocument1, false, true, Title, new Font("Tahoma", 12,
-        FontStyle.Bold, GraphicsUnit.Point), Color.Black, true, new Point(0, 0), skip);
-
-                PrintPreviewDialog pvd = new PrintPreviewDialog();
-                pvd.Document = printDocument1;
-                pvd.ShowDialog();
-                //printDocument1.Print();
-                pvd.Dispose();
-            }
+				MyDataGridViewPrinter = new DataGridViewPrinter(dv, printDocument1, false, true, Title, new Font("Tahoma", 12, FontStyle.Bold, GraphicsUnit.Point), Color.Black, true, new Point(0, 0), skipColumns, switchColumns);
+				PrintPreviewDialog pvd = new PrintPreviewDialog();
+				pvd.Document = printDocument1;
+				pvd.ShowDialog();
+				//printDocument1.Print();
+				pvd.Dispose();
+			}
             MyDataGridViewPrinter = null;
             MyPrintDialog.Dispose();
 
@@ -1246,7 +1243,7 @@ namespace Rentix
         }
 
         // Показывает данные кассы за выбранную дату
-        public void GetCassaReport(DataGridView dv, DateTime Date, int reportType, DateTime Date2, PageLister Pages, int race_id, int raceTypeId, int userGroupId, int partnerId, int moneyType)
+        public double GetCassaReport(DataGridView dv, DateTime Date, int reportType, DateTime Date2, PageLister Pages, int race_id, int raceTypeId, int userGroupId, int partnerId, int moneyType, bool shortName)
         {
             // если наоборот даты, то поменяем местами
             if (Date2 < Date)
@@ -1271,15 +1268,31 @@ namespace Rentix
                 dr.CreateCells(dv);
                 dr.Cells[0].Value = Cassa[i]["id"];
                 dr.Cells[1].Value = GetDocName(Convert.ToInt32(Cassa[i]["tp"]));
-                dr.Cells[2].Value = GetCassaUser(Convert.ToString(Cassa[i]["user_id"]));
-                dr.Cells[3].Value = Double.Parse((Cassa[i]["sign"].ToString().Equals("1") ? "-" : "") + Cassa[i]["sum"].ToString().Replace(".", ",")).ToString();
+
+				var nickname = Cassa[i]["nickname"].ToString();
+				var name = Cassa[i]["user_name"].ToString();
+				if(name.Length != 0 && shortName)
+				{
+					name = name[0] + ".";
+				}
+				var fullName = string.Join(" ",
+					nickname.Length > 0 ? "[" + nickname.ToString() + "]" : string.Empty,
+					Cassa[i]["surname"].ToString(),
+					name);
+				var maxChar = 28;
+				if (fullName.Length > maxChar && shortName)
+				{
+					fullName = fullName.Substring(0, maxChar);
+				}
+				dr.Cells[2].Value = fullName;
+				dr.Cells[3].Value = Double.Parse((Cassa[i]["sign"].ToString().Equals("1") ? "-" : "") + Cassa[i]["sum"].ToString().Replace(".", ",")).ToString();
                 dr.Cells[4].Value = Cassa[i]["comment"];
                 dr.Cells[5].Value = Cassa[i]["race_id"];
-                dr.Cells[6].Value = Cassa[i]["date"];
+                dr.Cells[6].Value = DateTime.Parse(Cassa[i]["date"].ToString()).ToString("dd.MM.yy HH:mm");
 				dr.Cells[7].Value = Cassa[i]["race_mode_name"];
-				dr.Cells[8].Value = Cassa[i]["partner_name"];
-				dr.Cells[9].Value = Convert.ToInt32(Cassa[i]["terminal"]) == 33;
-				dr.Cells[10].Value = Cassa[i]["group_name"];
+				dr.Cells[8].Value = Convert.ToInt32(Cassa[i]["terminal"]) == 33 ? "+" : string.Empty;
+				dr.Cells[9].Value = Cassa[i]["group_name"]; 
+				dr.Cells[10].Value = Cassa[i]["partner_name"]; 
 				dr.Cells[11].Value = Cassa[i]["ref_code"].ToString() == "null" ? "" : Cassa[i]["ref_code"];
 
 				if (Cassa[i]["race_id"] != "")
@@ -1317,7 +1330,15 @@ namespace Rentix
 
                 dv.Rows.Add(dr);
             }
-        }
+			if (Cassa.Count == 0)
+			{
+				return 0;
+			}
+			else
+			{
+				return Convert.ToDouble(Cassa[0]["full_summ"]);
+			}
+		}
 
 		public double GetCassaSum(DataGridView dv, DateTime Date, int reportType, DateTime Date2, int race_id, int raceTypeId, int userGroupId, int partnerId, int moneyType)
 		{
