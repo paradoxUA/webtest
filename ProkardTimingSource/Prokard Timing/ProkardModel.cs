@@ -2694,6 +2694,24 @@ namespace Rentix
 			}
 		}
 
+		public double GetPartnerCash(int partnerId)
+		{
+			if (!connected)
+			{
+				return -1;
+			}
+			var query = $"SELECT * FROM partners WHERE id = {partnerId}";
+			using (var command = new SqlCommand(query, db))
+			using (var reader = command.ExecuteReader())
+			{
+				while (reader.Read())
+				{
+					return Convert.ToDouble(reader["commission"]);
+				}
+			}
+			return -1;
+		}
+
 		// Получает логины пользователей
 		public List<Hashtable> GetUserLogins(DateTime Date)
         {

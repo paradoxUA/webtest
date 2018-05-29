@@ -32,10 +32,10 @@
 			this.button2 = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.labelSmooth3 = new Rentix.LabelSmooth();
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.labelSmooth1 = new Rentix.LabelSmooth();
-			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.borderPanel1.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
@@ -97,6 +97,13 @@
 			this.panel1.Size = new System.Drawing.Size(324, 80);
 			this.panel1.TabIndex = 2;
 			// 
+			// textBox2
+			// 
+			this.textBox2.Location = new System.Drawing.Point(92, 45);
+			this.textBox2.Name = "textBox2";
+			this.textBox2.Size = new System.Drawing.Size(219, 20);
+			this.textBox2.TabIndex = 3;
+			// 
 			// labelSmooth3
 			// 
 			this.labelSmooth3.AutoSize = true;
@@ -104,14 +111,14 @@
 			this.labelSmooth3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.labelSmooth3.Location = new System.Drawing.Point(12, 47);
 			this.labelSmooth3.Name = "labelSmooth3";
-			this.labelSmooth3.Size = new System.Drawing.Size(65, 14);
+			this.labelSmooth3.Size = new System.Drawing.Size(74, 14);
 			this.labelSmooth3.TabIndex = 2;
-			this.labelSmooth3.Text = "Комиссия";
+			this.labelSmooth3.Text = "Стоимость";
 			this.labelSmooth3.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
 			// 
 			// textBox1
 			// 
-			this.textBox1.Location = new System.Drawing.Point(83, 20);
+			this.textBox1.Location = new System.Drawing.Point(93, 20);
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(219, 20);
 			this.textBox1.TabIndex = 1;
@@ -127,13 +134,6 @@
 			this.labelSmooth1.TabIndex = 0;
 			this.labelSmooth1.Text = "Название";
 			this.labelSmooth1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-			// 
-			// textBox2
-			// 
-			this.textBox2.Location = new System.Drawing.Point(83, 45);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(219, 20);
-			this.textBox2.TabIndex = 3;
 			// 
 			// AddPartner
 			// 

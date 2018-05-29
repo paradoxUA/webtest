@@ -340,7 +340,7 @@ namespace Rentix
             // Добавление денег в кассу, если оплата не идет через счет пользователя
             if (!userCashRadioButton.Checked)
             {
-                admin.model.Jurnal_Cassa(terminalCashCheckBox.Checked && terminalCashCheckBox.Enabled ? "33" : "1", Convert.ToInt32(PilotID), Race.RaceID, priceForCurrentRace_textBox5.Text, "0", "Оплата участия в рейсе." + SaleComment, partnerComboBox.SelectedIdx(), refCodeTextBox.Text, false);
+                admin.model.Jurnal_Cassa(terminalRadioButton.Checked  ? "33" : "1", Convert.ToInt32(PilotID), Race.RaceID, priceForCurrentRace_textBox5.Text, "0", "Оплата участия в рейсе." + SaleComment, partnerComboBox.SelectedIdx(), refCodeTextBox.Text, false);
             }
             else
             {
@@ -443,7 +443,6 @@ namespace Rentix
         {
             cashFromPilot_textBox3.Enabled = !userCashRadioButton.Checked;
             moveRestToUserAccount_checkBox1.Enabled = !userCashRadioButton.Checked;
-			terminalCashCheckBox.Enabled = !userCashRadioButton.Checked;
         }
 
 
@@ -604,6 +603,27 @@ namespace Rentix
 		private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
 		{
 			refCodeTextBox.Enabled = partnerComboBox.SelectedIdx() != -1;
+			UpdateCostByPartner();
+		}
+
+		private void radioButton1_CheckedChanged_1(object sender, EventArgs e)
+		{
+		}
+
+		private void UpdateCostByPartner()
+		{
+			var partnerId = partnerComboBox.SelectedIdx();
+			if (partnerId == -1)
+			{
+				CalculateSumForPayment();
+				return;
+			}
+			var partnerCash = admin.model.GetPartnerCash(partnerId);
+			if (partnerCash == -1)
+			{
+				return;
+			}
+			cashFromPilot_textBox3.Text = priceForCurrentRace_textBox5.Text = partnerCash.ToString("F0");
 		}
 	}
 

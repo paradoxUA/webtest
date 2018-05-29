@@ -44,36 +44,36 @@
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.cassaRadioButton = new System.Windows.Forms.RadioButton();
 			this.userCashRadioButton = new System.Windows.Forms.RadioButton();
-			this.priceForHalfMode_label = new Rentix.LabelSmooth();
 			this.halfModes_comboBox = new System.Windows.Forms.ComboBox();
-			this.labelSmooth5 = new Rentix.LabelSmooth();
 			this.userSelectedMode_comboBox1 = new System.Windows.Forms.ComboBox();
-			this.labelSmooth4 = new Rentix.LabelSmooth();
 			this.checkBox2 = new System.Windows.Forms.CheckBox();
+			this.priceForCurrentRace_textBox5 = new System.Windows.Forms.TextBox();
+			this.moveRestToUserAccount_checkBox1 = new System.Windows.Forms.CheckBox();
+			this.textBox4 = new System.Windows.Forms.TextBox();
+			this.cashFromPilot_textBox3 = new System.Windows.Forms.TextBox();
+			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.pilotNameForCashOperations_textBox1 = new System.Windows.Forms.TextBox();
+			this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
+			this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+			this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+			this.priceForHalfMode_label = new Rentix.LabelSmooth();
+			this.labelSmooth5 = new Rentix.LabelSmooth();
+			this.labelSmooth4 = new Rentix.LabelSmooth();
 			this.labelSmooth3 = new Rentix.LabelSmooth();
 			this.labelSmooth2 = new Rentix.LabelSmooth();
 			this.labelSmooth1 = new Rentix.LabelSmooth();
 			this.label12 = new Rentix.LabelSmooth();
 			this.label13 = new Rentix.LabelSmooth();
-			this.priceForCurrentRace_textBox5 = new System.Windows.Forms.TextBox();
-			this.moveRestToUserAccount_checkBox1 = new System.Windows.Forms.CheckBox();
 			this.label11 = new Rentix.LabelSmooth();
 			this.label10 = new Rentix.LabelSmooth();
-			this.textBox4 = new System.Windows.Forms.TextBox();
 			this.label9 = new Rentix.LabelSmooth();
 			this.label8 = new Rentix.LabelSmooth();
-			this.cashFromPilot_textBox3 = new System.Windows.Forms.TextBox();
 			this.label6 = new Rentix.LabelSmooth();
 			this.label5 = new Rentix.LabelSmooth();
-			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.pilotNameForCashOperations_textBox1 = new System.Windows.Forms.TextBox();
 			this.startTimeLabel_label3 = new Rentix.LabelSmooth();
 			this.label2 = new Rentix.LabelSmooth();
 			this.label1 = new Rentix.LabelSmooth();
-			this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
-			this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-			this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-			this.terminalCashCheckBox = new System.Windows.Forms.CheckBox();
+			this.terminalRadioButton = new System.Windows.Forms.RadioButton();
 			this.panel1.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -106,7 +106,6 @@
 			// 
 			this.panel1.BackColor = System.Drawing.Color.White;
 			this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.panel1.Controls.Add(this.terminalCashCheckBox);
 			this.panel1.Controls.Add(this.groupBox3);
 			this.panel1.Controls.Add(this.groupBox2);
 			this.panel1.Controls.Add(this.groupBox1);
@@ -140,7 +139,7 @@
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Margin = new System.Windows.Forms.Padding(0);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(396, 424);
+			this.panel1.Size = new System.Drawing.Size(396, 435);
 			this.panel1.TabIndex = 1;
 			// 
 			// groupBox3
@@ -148,7 +147,7 @@
 			this.groupBox3.Controls.Add(this.refCodeTextBox);
 			this.groupBox3.Controls.Add(this.label4);
 			this.groupBox3.Controls.Add(this.partnerComboBox);
-			this.groupBox3.Location = new System.Drawing.Point(7, 270);
+			this.groupBox3.Location = new System.Drawing.Point(11, 296);
 			this.groupBox3.Name = "groupBox3";
 			this.groupBox3.Size = new System.Drawing.Size(381, 53);
 			this.groupBox3.TabIndex = 36;
@@ -191,7 +190,7 @@
 			this.groupBox2.Controls.Add(this.discountPercent_label);
 			this.groupBox2.Controls.Add(this.label3);
 			this.groupBox2.Controls.Add(this.discountCard_textBox1);
-			this.groupBox2.Location = new System.Drawing.Point(7, 192);
+			this.groupBox2.Location = new System.Drawing.Point(11, 218);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(382, 72);
 			this.groupBox2.TabIndex = 32;
@@ -234,11 +233,12 @@
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.terminalRadioButton);
 			this.groupBox1.Controls.Add(this.cassaRadioButton);
 			this.groupBox1.Controls.Add(this.userCashRadioButton);
 			this.groupBox1.Location = new System.Drawing.Point(7, 115);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(216, 68);
+			this.groupBox1.Size = new System.Drawing.Size(216, 97);
 			this.groupBox1.TabIndex = 30;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Тип оплаты";
@@ -269,18 +269,6 @@
 			this.userCashRadioButton.UseVisualStyleBackColor = false;
 			this.userCashRadioButton.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
 			// 
-			// priceForHalfMode_label
-			// 
-			this.priceForHalfMode_label.AutoSize = true;
-			this.priceForHalfMode_label.BackColor = System.Drawing.Color.Transparent;
-			this.priceForHalfMode_label.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.priceForHalfMode_label.Location = new System.Drawing.Point(258, 113);
-			this.priceForHalfMode_label.Name = "priceForHalfMode_label";
-			this.priceForHalfMode_label.Size = new System.Drawing.Size(75, 13);
-			this.priceForHalfMode_label.TabIndex = 29;
-			this.priceForHalfMode_label.Text = "Стоимость за";
-			this.priceForHalfMode_label.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-			// 
 			// halfModes_comboBox
 			// 
 			this.halfModes_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -290,18 +278,6 @@
 			this.halfModes_comboBox.Size = new System.Drawing.Size(127, 21);
 			this.halfModes_comboBox.TabIndex = 28;
 			this.halfModes_comboBox.SelectedIndexChanged += new System.EventHandler(this.halfModes_comboBox_SelectedIndexChanged);
-			// 
-			// labelSmooth5
-			// 
-			this.labelSmooth5.AutoSize = true;
-			this.labelSmooth5.BackColor = System.Drawing.Color.Transparent;
-			this.labelSmooth5.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.labelSmooth5.Location = new System.Drawing.Point(258, 137);
-			this.labelSmooth5.Name = "labelSmooth5";
-			this.labelSmooth5.Size = new System.Drawing.Size(61, 13);
-			this.labelSmooth5.TabIndex = 27;
-			this.labelSmooth5.Text = "Стоимость";
-			this.labelSmooth5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
 			// 
 			// userSelectedMode_comboBox1
 			// 
@@ -317,6 +293,145 @@
 			this.userSelectedMode_comboBox1.TabIndex = 26;
 			this.userSelectedMode_comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
 			// 
+			// checkBox2
+			// 
+			this.checkBox2.AutoSize = true;
+			this.checkBox2.BackColor = System.Drawing.Color.Transparent;
+			this.checkBox2.Checked = true;
+			this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.checkBox2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.checkBox2.Location = new System.Drawing.Point(10, 403);
+			this.checkBox2.Name = "checkBox2";
+			this.checkBox2.Size = new System.Drawing.Size(97, 17);
+			this.checkBox2.TabIndex = 24;
+			this.checkBox2.Text = "Выдать чек";
+			this.checkBox2.UseVisualStyleBackColor = false;
+			// 
+			// priceForCurrentRace_textBox5
+			// 
+			this.priceForCurrentRace_textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+			this.priceForCurrentRace_textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.priceForCurrentRace_textBox5.Location = new System.Drawing.Point(10, 368);
+			this.priceForCurrentRace_textBox5.Name = "priceForCurrentRace_textBox5";
+			this.priceForCurrentRace_textBox5.ReadOnly = true;
+			this.priceForCurrentRace_textBox5.Size = new System.Drawing.Size(110, 29);
+			this.priceForCurrentRace_textBox5.TabIndex = 18;
+			this.priceForCurrentRace_textBox5.Text = "100";
+			// 
+			// moveRestToUserAccount_checkBox1
+			// 
+			this.moveRestToUserAccount_checkBox1.AutoSize = true;
+			this.moveRestToUserAccount_checkBox1.BackColor = System.Drawing.Color.Transparent;
+			this.moveRestToUserAccount_checkBox1.Enabled = false;
+			this.moveRestToUserAccount_checkBox1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.moveRestToUserAccount_checkBox1.Location = new System.Drawing.Point(126, 403);
+			this.moveRestToUserAccount_checkBox1.Name = "moveRestToUserAccount_checkBox1";
+			this.moveRestToUserAccount_checkBox1.Size = new System.Drawing.Size(258, 17);
+			this.moveRestToUserAccount_checkBox1.TabIndex = 17;
+			this.moveRestToUserAccount_checkBox1.Text = "Сдачу положить на счет пользователя";
+			this.moveRestToUserAccount_checkBox1.UseVisualStyleBackColor = false;
+			// 
+			// textBox4
+			// 
+			this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+			this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.textBox4.Location = new System.Drawing.Point(294, 368);
+			this.textBox4.Name = "textBox4";
+			this.textBox4.ReadOnly = true;
+			this.textBox4.Size = new System.Drawing.Size(99, 29);
+			this.textBox4.TabIndex = 14;
+			this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// cashFromPilot_textBox3
+			// 
+			this.cashFromPilot_textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.cashFromPilot_textBox3.Location = new System.Drawing.Point(126, 368);
+			this.cashFromPilot_textBox3.Name = "cashFromPilot_textBox3";
+			this.cashFromPilot_textBox3.Size = new System.Drawing.Size(161, 29);
+			this.cashFromPilot_textBox3.TabIndex = 11;
+			this.cashFromPilot_textBox3.Text = "100";
+			this.cashFromPilot_textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.cashFromPilot_textBox3.WordWrap = false;
+			this.cashFromPilot_textBox3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyDown);
+			this.cashFromPilot_textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
+			this.cashFromPilot_textBox3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyUp);
+			// 
+			// textBox2
+			// 
+			this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+			this.textBox2.Location = new System.Drawing.Point(289, 53);
+			this.textBox2.Name = "textBox2";
+			this.textBox2.ReadOnly = true;
+			this.textBox2.Size = new System.Drawing.Size(100, 20);
+			this.textBox2.TabIndex = 5;
+			this.textBox2.Text = "100 грн";
+			// 
+			// pilotNameForCashOperations_textBox1
+			// 
+			this.pilotNameForCashOperations_textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+			this.pilotNameForCashOperations_textBox1.Location = new System.Drawing.Point(6, 53);
+			this.pilotNameForCashOperations_textBox1.Name = "pilotNameForCashOperations_textBox1";
+			this.pilotNameForCashOperations_textBox1.ReadOnly = true;
+			this.pilotNameForCashOperations_textBox1.Size = new System.Drawing.Size(280, 20);
+			this.pilotNameForCashOperations_textBox1.TabIndex = 4;
+			// 
+			// borderPanel1
+			// 
+			this.borderPanel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
+			this.borderPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.borderPanel1.BorderColor = System.Drawing.SystemColors.ControlLight;
+			this.borderPanel1.BorderPadding = new System.Windows.Forms.Padding(0);
+			this.borderPanel1.BorderSides = Microsoft.TeamFoundation.Client.BorderPanel.Sides.Top;
+			this.borderPanel1.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+			this.borderPanel1.Controls.Add(this.button2);
+			this.borderPanel1.Controls.Add(this.button1);
+			this.borderPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.borderPanel1.InnerColor = System.Drawing.SystemColors.Control;
+			this.borderPanel1.Location = new System.Drawing.Point(0, 435);
+			this.borderPanel1.Margin = new System.Windows.Forms.Padding(0);
+			this.borderPanel1.Name = "borderPanel1";
+			this.borderPanel1.Size = new System.Drawing.Size(396, 40);
+			this.borderPanel1.TabIndex = 0;
+			this.borderPanel1.UseInnerColor = false;
+			// 
+			// printDocument1
+			// 
+			this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+			// 
+			// printPreviewDialog1
+			// 
+			this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+			this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+			this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+			this.printPreviewDialog1.Enabled = true;
+			this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+			this.printPreviewDialog1.Name = "printPreviewDialog1";
+			this.printPreviewDialog1.Visible = false;
+			// 
+			// priceForHalfMode_label
+			// 
+			this.priceForHalfMode_label.AutoSize = true;
+			this.priceForHalfMode_label.BackColor = System.Drawing.Color.Transparent;
+			this.priceForHalfMode_label.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.priceForHalfMode_label.Location = new System.Drawing.Point(258, 113);
+			this.priceForHalfMode_label.Name = "priceForHalfMode_label";
+			this.priceForHalfMode_label.Size = new System.Drawing.Size(75, 13);
+			this.priceForHalfMode_label.TabIndex = 29;
+			this.priceForHalfMode_label.Text = "Стоимость за";
+			this.priceForHalfMode_label.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+			// 
+			// labelSmooth5
+			// 
+			this.labelSmooth5.AutoSize = true;
+			this.labelSmooth5.BackColor = System.Drawing.Color.Transparent;
+			this.labelSmooth5.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.labelSmooth5.Location = new System.Drawing.Point(258, 137);
+			this.labelSmooth5.Name = "labelSmooth5";
+			this.labelSmooth5.Size = new System.Drawing.Size(61, 13);
+			this.labelSmooth5.TabIndex = 27;
+			this.labelSmooth5.Text = "Стоимость";
+			this.labelSmooth5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+			// 
 			// labelSmooth4
 			// 
 			this.labelSmooth4.BackColor = System.Drawing.Color.Transparent;
@@ -328,20 +443,6 @@
 			this.labelSmooth4.TabIndex = 25;
 			this.labelSmooth4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.labelSmooth4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-			// 
-			// checkBox2
-			// 
-			this.checkBox2.AutoSize = true;
-			this.checkBox2.BackColor = System.Drawing.Color.Transparent;
-			this.checkBox2.Checked = true;
-			this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBox2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.checkBox2.Location = new System.Drawing.Point(6, 377);
-			this.checkBox2.Name = "checkBox2";
-			this.checkBox2.Size = new System.Drawing.Size(97, 17);
-			this.checkBox2.TabIndex = 24;
-			this.checkBox2.Text = "Выдать чек";
-			this.checkBox2.UseVisualStyleBackColor = false;
 			// 
 			// labelSmooth3
 			// 
@@ -389,7 +490,7 @@
 			this.label12.BackColor = System.Drawing.Color.Transparent;
 			this.label12.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.label12.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.label12.Location = new System.Drawing.Point(89, 326);
+			this.label12.Location = new System.Drawing.Point(93, 352);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(24, 13);
 			this.label12.TabIndex = 20;
@@ -402,36 +503,12 @@
 			this.label13.BackColor = System.Drawing.Color.Transparent;
 			this.label13.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.label13.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.label13.Location = new System.Drawing.Point(4, 326);
+			this.label13.Location = new System.Drawing.Point(8, 352);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(37, 13);
 			this.label13.TabIndex = 19;
 			this.label13.Text = "Цена";
 			this.label13.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-			// 
-			// priceForCurrentRace_textBox5
-			// 
-			this.priceForCurrentRace_textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.priceForCurrentRace_textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.priceForCurrentRace_textBox5.Location = new System.Drawing.Point(6, 342);
-			this.priceForCurrentRace_textBox5.Name = "priceForCurrentRace_textBox5";
-			this.priceForCurrentRace_textBox5.ReadOnly = true;
-			this.priceForCurrentRace_textBox5.Size = new System.Drawing.Size(110, 29);
-			this.priceForCurrentRace_textBox5.TabIndex = 18;
-			this.priceForCurrentRace_textBox5.Text = "100";
-			// 
-			// moveRestToUserAccount_checkBox1
-			// 
-			this.moveRestToUserAccount_checkBox1.AutoSize = true;
-			this.moveRestToUserAccount_checkBox1.BackColor = System.Drawing.Color.Transparent;
-			this.moveRestToUserAccount_checkBox1.Enabled = false;
-			this.moveRestToUserAccount_checkBox1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.moveRestToUserAccount_checkBox1.Location = new System.Drawing.Point(122, 377);
-			this.moveRestToUserAccount_checkBox1.Name = "moveRestToUserAccount_checkBox1";
-			this.moveRestToUserAccount_checkBox1.Size = new System.Drawing.Size(258, 17);
-			this.moveRestToUserAccount_checkBox1.TabIndex = 17;
-			this.moveRestToUserAccount_checkBox1.Text = "Сдачу положить на счет пользователя";
-			this.moveRestToUserAccount_checkBox1.UseVisualStyleBackColor = false;
 			// 
 			// label11
 			// 
@@ -439,7 +516,7 @@
 			this.label11.BackColor = System.Drawing.Color.Transparent;
 			this.label11.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.label11.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.label11.Location = new System.Drawing.Point(259, 326);
+			this.label11.Location = new System.Drawing.Point(263, 352);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(24, 13);
 			this.label11.TabIndex = 16;
@@ -452,23 +529,12 @@
 			this.label10.BackColor = System.Drawing.Color.Transparent;
 			this.label10.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.label10.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.label10.Location = new System.Drawing.Point(365, 326);
+			this.label10.Location = new System.Drawing.Point(369, 352);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(24, 13);
 			this.label10.TabIndex = 15;
 			this.label10.Text = "грн";
 			this.label10.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-			// 
-			// textBox4
-			// 
-			this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.textBox4.Location = new System.Drawing.Point(290, 342);
-			this.textBox4.Name = "textBox4";
-			this.textBox4.ReadOnly = true;
-			this.textBox4.Size = new System.Drawing.Size(99, 29);
-			this.textBox4.TabIndex = 14;
-			this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
 			// label9
 			// 
@@ -476,7 +542,7 @@
 			this.label9.BackColor = System.Drawing.Color.Transparent;
 			this.label9.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.label9.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.label9.Location = new System.Drawing.Point(290, 326);
+			this.label9.Location = new System.Drawing.Point(294, 352);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(44, 13);
 			this.label9.TabIndex = 13;
@@ -489,26 +555,12 @@
 			this.label8.BackColor = System.Drawing.Color.Transparent;
 			this.label8.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.label8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.label8.Location = new System.Drawing.Point(119, 326);
+			this.label8.Location = new System.Drawing.Point(123, 352);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(124, 13);
 			this.label8.TabIndex = 12;
 			this.label8.Text = "Принято от клиента";
 			this.label8.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-			// 
-			// cashFromPilot_textBox3
-			// 
-			this.cashFromPilot_textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.cashFromPilot_textBox3.Location = new System.Drawing.Point(122, 342);
-			this.cashFromPilot_textBox3.Name = "cashFromPilot_textBox3";
-			this.cashFromPilot_textBox3.Size = new System.Drawing.Size(161, 29);
-			this.cashFromPilot_textBox3.TabIndex = 11;
-			this.cashFromPilot_textBox3.Text = "100";
-			this.cashFromPilot_textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			this.cashFromPilot_textBox3.WordWrap = false;
-			this.cashFromPilot_textBox3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyDown);
-			this.cashFromPilot_textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
-			this.cashFromPilot_textBox3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyUp);
 			// 
 			// label6
 			// 
@@ -535,25 +587,6 @@
 			this.label5.TabIndex = 6;
 			this.label5.Text = "Пилот";
 			this.label5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-			// 
-			// textBox2
-			// 
-			this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.textBox2.Location = new System.Drawing.Point(289, 53);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.ReadOnly = true;
-			this.textBox2.Size = new System.Drawing.Size(100, 20);
-			this.textBox2.TabIndex = 5;
-			this.textBox2.Text = "100 грн";
-			// 
-			// pilotNameForCashOperations_textBox1
-			// 
-			this.pilotNameForCashOperations_textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.pilotNameForCashOperations_textBox1.Location = new System.Drawing.Point(6, 53);
-			this.pilotNameForCashOperations_textBox1.Name = "pilotNameForCashOperations_textBox1";
-			this.pilotNameForCashOperations_textBox1.ReadOnly = true;
-			this.pilotNameForCashOperations_textBox1.Size = new System.Drawing.Size(280, 20);
-			this.pilotNameForCashOperations_textBox1.TabIndex = 4;
 			// 
 			// startTimeLabel_label3
 			// 
@@ -591,50 +624,17 @@
 			this.label1.Text = "Заезд 54";
 			this.label1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
 			// 
-			// borderPanel1
+			// terminalRadioButton
 			// 
-			this.borderPanel1.BackgroundImage = global::Rentix.Properties.Resources.bg;
-			this.borderPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.borderPanel1.BorderColor = System.Drawing.SystemColors.ControlLight;
-			this.borderPanel1.BorderPadding = new System.Windows.Forms.Padding(0);
-			this.borderPanel1.BorderSides = Microsoft.TeamFoundation.Client.BorderPanel.Sides.Top;
-			this.borderPanel1.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
-			this.borderPanel1.Controls.Add(this.button2);
-			this.borderPanel1.Controls.Add(this.button1);
-			this.borderPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.borderPanel1.InnerColor = System.Drawing.SystemColors.Control;
-			this.borderPanel1.Location = new System.Drawing.Point(0, 424);
-			this.borderPanel1.Margin = new System.Windows.Forms.Padding(0);
-			this.borderPanel1.Name = "borderPanel1";
-			this.borderPanel1.Size = new System.Drawing.Size(396, 40);
-			this.borderPanel1.TabIndex = 0;
-			this.borderPanel1.UseInnerColor = false;
-			// 
-			// printDocument1
-			// 
-			this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-			// 
-			// printPreviewDialog1
-			// 
-			this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
-			this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-			this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
-			this.printPreviewDialog1.Enabled = true;
-			this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
-			this.printPreviewDialog1.Name = "printPreviewDialog1";
-			this.printPreviewDialog1.Visible = false;
-			// 
-			// terminalCashCheckBox
-			// 
-			this.terminalCashCheckBox.AutoSize = true;
-			this.terminalCashCheckBox.BackColor = System.Drawing.Color.Transparent;
-			this.terminalCashCheckBox.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.terminalCashCheckBox.Location = new System.Drawing.Point(122, 400);
-			this.terminalCashCheckBox.Name = "terminalCashCheckBox";
-			this.terminalCashCheckBox.Size = new System.Drawing.Size(165, 17);
-			this.terminalCashCheckBox.TabIndex = 37;
-			this.terminalCashCheckBox.Text = "Оплата через терминал";
-			this.terminalCashCheckBox.UseVisualStyleBackColor = false;
+			this.terminalRadioButton.AutoSize = true;
+			this.terminalRadioButton.BackColor = System.Drawing.Color.Transparent;
+			this.terminalRadioButton.Location = new System.Drawing.Point(7, 67);
+			this.terminalRadioButton.Name = "terminalRadioButton";
+			this.terminalRadioButton.Size = new System.Drawing.Size(146, 17);
+			this.terminalRadioButton.TabIndex = 11;
+			this.terminalRadioButton.Text = "Оплата через терминал";
+			this.terminalRadioButton.UseVisualStyleBackColor = false;
+			this.terminalRadioButton.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged_1);
 			// 
 			// CashOperations
 			// 
@@ -642,7 +642,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.button1;
-			this.ClientSize = new System.Drawing.Size(396, 464);
+			this.ClientSize = new System.Drawing.Size(396, 475);
 			this.ControlBox = false;
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.borderPanel1);
@@ -715,6 +715,6 @@
 		private System.Windows.Forms.TextBox refCodeTextBox;
 		private System.Windows.Forms.Label label4;
 		public System.Windows.Forms.ComboBox partnerComboBox;
-		private System.Windows.Forms.CheckBox terminalCashCheckBox;
+		private System.Windows.Forms.RadioButton terminalRadioButton;
 	}
 }
