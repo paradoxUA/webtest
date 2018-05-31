@@ -25,7 +25,7 @@ namespace Rentix
             richTextBox1.Text = String.Empty;
             richTextBox1.Text += admin.model.GetAllKartsMessages(Convert.ToInt32(KartID), fromDateTimePicker.Value, toDateTimePicker.Value); //sgavrilenko похоже, что тут муть. в таблице перемешаны сообщения про карты и про пилотов
 
-			fromDateTimePicker.Value = new DateTime(2000, 1, 1, 0, 0, 0);
+			fromDateTimePicker.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
 			toDateTimePicker.Value = DateTime.Now;
 
 			ShowStatistic();
