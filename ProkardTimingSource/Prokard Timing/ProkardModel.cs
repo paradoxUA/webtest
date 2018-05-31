@@ -2158,26 +2158,26 @@ namespace Rentix
 
 		private void SaveSetting(string key, string value)
 		{
-			var sqliteConnectionString = "Data Source=setts.sqlite;Version=3;";
-			var sqliteConnection = new SQLiteConnection(sqliteConnectionString);
 			try
 			{
-				sqliteConnection.Open();
+				var sqliteConnectionString = "Data Source=setts.sqlite;Version=3;";
+				using (var sqliteConnection = new SQLiteConnection(sqliteConnectionString)) {
+					sqliteConnection.Open();
+					using (var cmd = new SQLiteCommand("create table IF NOT EXISTS settings (name varchar(40) PRIMARY KEY, val varchar(40))", sqliteConnection))
+					{
+						cmd.ExecuteNonQueryHandled();
+					}
+					var sqliteQuery = $"INSERT OR REPLACE INTO settings (name, val) VALUES ('{key}','{value}')";
+					using (var cmd = new SQLiteCommand(sqliteQuery, sqliteConnection))
+					{
+						cmd.ExecuteNonQueryHandled();
+					}
+				}
 			}
 			catch
 			{
-				SQLiteConnection.CreateFile("setts.sqlite");
-				sqliteConnection = new SQLiteConnection(sqliteConnectionString);
-				sqliteConnection.Open();
-				var cmd = new SQLiteCommand("create table settings (name varchar(40), val varchar(40))", sqliteConnection);
-				cmd.ExecuteNonQueryHandled();
+
 			}
-			var sqliteQuery = $"INSERT OR REPLACE INTO settings (name, val) VALUES ('{key}','{value}')";
-			using(var cmd = new SQLiteCommand(sqliteQuery, sqliteConnection))
-			{
-				cmd.ExecuteNonQueryHandled();
-			}
-			sqliteConnection.Dispose();
 			var sqlServerQuery = $"BEGIN IF (SELECT COUNT(*) FROM settings WHERE name = '{key}') = 0 BEGIN INSERT INTO settings (name, val) VALUES ('{key}','{value}') END ELSE BEGIN UPDATE settings SET val = '{value}' WHERE name = '{key}' END END";
 			using (var cmd = new SqlCommand(sqlServerQuery, db2))
 			{
