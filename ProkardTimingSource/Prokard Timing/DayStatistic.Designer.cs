@@ -121,6 +121,9 @@ namespace Rentix
 			this.RaceID22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.IdLap = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.borderPanel4 = new Microsoft.TeamFoundation.Client.BorderPanel();
+			this.label1 = new System.Windows.Forms.Label();
+			this.dateTimePicker7 = new System.Windows.Forms.DateTimePicker();
+			this.dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
 			this.printTop40_button3 = new System.Windows.Forms.Button();
 			this.top40Record_labelSmooth12 = new Rentix.LabelSmooth();
 			this.tracks_comboBox1 = new System.Windows.Forms.ComboBox();
@@ -198,9 +201,8 @@ namespace Rentix
 			this.borderPanel10 = new Microsoft.TeamFoundation.Client.BorderPanel();
 			this.labelSmooth23 = new Rentix.LabelSmooth();
 			this.dailyStatistic_dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
-			this.dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
-			this.dateTimePicker7 = new System.Windows.Forms.DateTimePicker();
-			this.label1 = new System.Windows.Forms.Label();
+			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+			this.label2 = new System.Windows.Forms.Label();
 			this.borderPanel1.SuspendLayout();
 			this.tabControl2_del.SuspendLayout();
 			this.tabControl1.SuspendLayout();
@@ -232,6 +234,7 @@ namespace Rentix
 			this.borderPanel9.SuspendLayout();
 			this.tabPage10.SuspendLayout();
 			this.borderPanel10.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// borderPanel1
@@ -250,7 +253,7 @@ namespace Rentix
 			this.borderPanel1.Location = new System.Drawing.Point(0, 444);
 			this.borderPanel1.Margin = new System.Windows.Forms.Padding(0);
 			this.borderPanel1.Name = "borderPanel1";
-			this.borderPanel1.Size = new System.Drawing.Size(817, 40);
+			this.borderPanel1.Size = new System.Drawing.Size(846, 40);
 			this.borderPanel1.TabIndex = 0;
 			this.borderPanel1.UseInnerColor = false;
 			// 
@@ -258,7 +261,7 @@ namespace Rentix
 			// 
 			this.deletePilotStatForThisTrack_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.deletePilotStatForThisTrack_button.BackColor = System.Drawing.SystemColors.Control;
-			this.deletePilotStatForThisTrack_button.Location = new System.Drawing.Point(399, 5);
+			this.deletePilotStatForThisTrack_button.Location = new System.Drawing.Point(428, 5);
 			this.deletePilotStatForThisTrack_button.Name = "deletePilotStatForThisTrack_button";
 			this.deletePilotStatForThisTrack_button.Size = new System.Drawing.Size(259, 30);
 			this.deletePilotStatForThisTrack_button.TabIndex = 4;
@@ -291,7 +294,7 @@ namespace Rentix
 			// 
 			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.button1.BackColor = System.Drawing.SystemColors.Control;
-			this.button1.Location = new System.Drawing.Point(664, 5);
+			this.button1.Location = new System.Drawing.Point(693, 5);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(150, 30);
 			this.button1.TabIndex = 0;
@@ -340,7 +343,7 @@ namespace Rentix
 			this.tabControl1.Margin = new System.Windows.Forms.Padding(0);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(817, 444);
+			this.tabControl1.Size = new System.Drawing.Size(846, 444);
 			this.tabControl1.TabIndex = 1;
 			this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
 			// 
@@ -1076,7 +1079,7 @@ namespace Rentix
 			this.tabPage3.Controls.Add(this.borderPanel4);
 			this.tabPage3.Location = new System.Drawing.Point(4, 22);
 			this.tabPage3.Name = "tabPage3";
-			this.tabPage3.Size = new System.Drawing.Size(809, 418);
+			this.tabPage3.Size = new System.Drawing.Size(838, 418);
 			this.tabPage3.TabIndex = 2;
 			this.tabPage3.Text = "Лучшее время";
 			this.tabPage3.UseVisualStyleBackColor = true;
@@ -1107,7 +1110,7 @@ namespace Rentix
 			this.top40_dataGridView.ReadOnly = true;
 			this.top40_dataGridView.RowHeadersVisible = false;
 			this.top40_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.top40_dataGridView.Size = new System.Drawing.Size(809, 349);
+			this.top40_dataGridView.Size = new System.Drawing.Size(838, 349);
 			this.top40_dataGridView.TabIndex = 7;
 			this.top40_dataGridView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView2_KeyDown);
 			// 
@@ -1188,6 +1191,8 @@ namespace Rentix
 			this.borderPanel4.BorderPadding = new System.Windows.Forms.Padding(0);
 			this.borderPanel4.BorderSides = Microsoft.TeamFoundation.Client.BorderPanel.Sides.Bottom;
 			this.borderPanel4.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+			this.borderPanel4.Controls.Add(this.label2);
+			this.borderPanel4.Controls.Add(this.numericUpDown1);
 			this.borderPanel4.Controls.Add(this.label1);
 			this.borderPanel4.Controls.Add(this.dateTimePicker7);
 			this.borderPanel4.Controls.Add(this.dateTimePicker6);
@@ -1201,9 +1206,34 @@ namespace Rentix
 			this.borderPanel4.InnerColor = System.Drawing.SystemColors.Control;
 			this.borderPanel4.Location = new System.Drawing.Point(0, 0);
 			this.borderPanel4.Name = "borderPanel4";
-			this.borderPanel4.Size = new System.Drawing.Size(809, 69);
+			this.borderPanel4.Size = new System.Drawing.Size(838, 69);
 			this.borderPanel4.TabIndex = 6;
 			this.borderPanel4.UseInnerColor = false;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(536, 46);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(12, 13);
+			this.label1.TabIndex = 12;
+			this.label1.Text = "–";
+			// 
+			// dateTimePicker7
+			// 
+			this.dateTimePicker7.Location = new System.Drawing.Point(554, 46);
+			this.dateTimePicker7.Name = "dateTimePicker7";
+			this.dateTimePicker7.Size = new System.Drawing.Size(133, 20);
+			this.dateTimePicker7.TabIndex = 11;
+			this.dateTimePicker7.ValueChanged += new System.EventHandler(this.dateTimePicker7_ValueChanged);
+			// 
+			// dateTimePicker6
+			// 
+			this.dateTimePicker6.Location = new System.Drawing.Point(397, 43);
+			this.dateTimePicker6.Name = "dateTimePicker6";
+			this.dateTimePicker6.Size = new System.Drawing.Size(133, 20);
+			this.dateTimePicker6.TabIndex = 10;
+			this.dateTimePicker6.ValueChanged += new System.EventHandler(this.dateTimePicker6_ValueChanged_1);
 			// 
 			// printTop40_button3
 			// 
@@ -1215,7 +1245,7 @@ namespace Rentix
 			this.printTop40_button3.DialogResult = System.Windows.Forms.DialogResult.No;
 			this.printTop40_button3.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlLight;
 			this.printTop40_button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.printTop40_button3.Location = new System.Drawing.Point(769, 33);
+			this.printTop40_button3.Location = new System.Drawing.Point(798, 33);
 			this.printTop40_button3.Name = "printTop40_button3";
 			this.printTop40_button3.Padding = new System.Windows.Forms.Padding(5);
 			this.printTop40_button3.Size = new System.Drawing.Size(37, 33);
@@ -1459,6 +1489,7 @@ namespace Rentix
 			this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dataGridView3.Size = new System.Drawing.Size(809, 378);
 			this.dataGridView3.TabIndex = 9;
+			this.dataGridView3.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView3_CellMouseDoubleClick);
 			// 
 			// dataGridViewTextBoxColumn1
 			// 
@@ -2199,37 +2230,40 @@ namespace Rentix
 			this.dailyStatistic_dateTimePicker6.Size = new System.Drawing.Size(141, 20);
 			this.dailyStatistic_dateTimePicker6.TabIndex = 0;
 			// 
-			// dateTimePicker6
+			// numericUpDown1
 			// 
-			this.dateTimePicker6.Location = new System.Drawing.Point(421, 43);
-			this.dateTimePicker6.Name = "dateTimePicker6";
-			this.dateTimePicker6.Size = new System.Drawing.Size(133, 20);
-			this.dateTimePicker6.TabIndex = 10;
-			this.dateTimePicker6.ValueChanged += new System.EventHandler(this.dateTimePicker6_ValueChanged_1);
+			this.numericUpDown1.Location = new System.Drawing.Point(744, 46);
+			this.numericUpDown1.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+			this.numericUpDown1.Name = "numericUpDown1";
+			this.numericUpDown1.Size = new System.Drawing.Size(48, 20);
+			this.numericUpDown1.TabIndex = 13;
+			this.numericUpDown1.Value = new decimal(new int[] {
+            40,
+            0,
+            0,
+            0});
+			this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
 			// 
-			// dateTimePicker7
+			// label2
 			// 
-			this.dateTimePicker7.Location = new System.Drawing.Point(570, 43);
-			this.dateTimePicker7.Name = "dateTimePicker7";
-			this.dateTimePicker7.Size = new System.Drawing.Size(133, 20);
-			this.dateTimePicker7.TabIndex = 11;
-			this.dateTimePicker7.ValueChanged += new System.EventHandler(this.dateTimePicker7_ValueChanged);
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(555, 46);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(12, 13);
-			this.label1.TabIndex = 12;
-			this.label1.Text = "–";
+			this.label2.AutoSize = true;
+			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label2.Location = new System.Drawing.Point(699, 44);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(39, 20);
+			this.label2.TabIndex = 14;
+			this.label2.Text = "Топ";
 			// 
 			// DayStatistic
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(817, 484);
+			this.ClientSize = new System.Drawing.Size(846, 484);
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.borderPanel1);
 			this.DoubleBuffered = true;
@@ -2284,6 +2318,7 @@ namespace Rentix
 			this.tabPage10.ResumeLayout(false);
 			this.borderPanel10.ResumeLayout(false);
 			this.borderPanel10.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
 			this.ResumeLayout(false);
 
         }
@@ -2448,5 +2483,7 @@ namespace Rentix
 		private Label label1;
 		private DateTimePicker dateTimePicker7;
 		private DateTimePicker dateTimePicker6;
+		private Label label2;
+		private NumericUpDown numericUpDown1;
 	}
 }

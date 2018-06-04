@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Collections;
 using Rentix;
 using Rentix.Controls;
+using System.Diagnostics;
 
 namespace Rentix
 {
@@ -153,7 +154,7 @@ namespace Rentix
 
 		private void FillBestResults()
 		{
-			admin.ShowBestResults(top40_dataGridView, comboBoxItem.getSelectedValue(tracks_comboBox1), top40Record_labelSmooth12, true, dateTimePicker6.Value, dateTimePicker7.Value);
+			admin.ShowBestResults(top40_dataGridView, comboBoxItem.getSelectedValue(tracks_comboBox1), top40Record_labelSmooth12, true, dateTimePicker6.Value, dateTimePicker7.Value, Convert.ToInt32(numericUpDown1.Value));
 		}
 
 
@@ -635,6 +636,28 @@ namespace Rentix
 		}
 
 		private void dateTimePicker7_ValueChanged(object sender, EventArgs e)
+		{
+			FillBestResults();
+		}
+
+		private void dataGridView3_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+		{
+			var selectedKartId = "";
+			if(dataGridView3.SelectedRows.Count > 0)
+			{
+				var selectedRow = dataGridView3.SelectedRows[0].Index;
+				selectedKartId = dataGridView3[1, selectedRow].Value.ToString();
+			}
+			if(selectedKartId == string.Empty || selectedKartId == null)
+			{
+				return;
+			}
+			Kartinfo form = new Kartinfo(selectedKartId, admin);
+			form.Owner = this;
+			form.ShowDialog();
+		}
+
+		private void numericUpDown1_ValueChanged(object sender, EventArgs e)
 		{
 			FillBestResults();
 		}
