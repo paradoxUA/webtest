@@ -30,10 +30,6 @@ namespace Rentix
         private void InitializeComponent()
         {
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
 			this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
@@ -42,6 +38,10 @@ namespace Rentix
 			this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
 			this.button2 = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
+			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.toolStrip1.SuspendLayout();
 			this.borderPanel1.SuspendLayout();
@@ -71,29 +71,6 @@ namespace Rentix
 			this.dataGridView1.Size = new System.Drawing.Size(459, 322);
 			this.dataGridView1.TabIndex = 2;
 			this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-			// 
-			// Column1
-			// 
-			this.Column1.HeaderText = "ID";
-			this.Column1.Name = "Column1";
-			this.Column1.Width = 50;
-			// 
-			// Column2
-			// 
-			this.Column2.HeaderText = "Название";
-			this.Column2.Name = "Column2";
-			this.Column2.Width = 200;
-			// 
-			// Column3
-			// 
-			this.Column3.HeaderText = "Комиссия";
-			this.Column3.Name = "Column3";
-			// 
-			// Column4
-			// 
-			this.Column4.HeaderText = "Удалён";
-			this.Column4.Name = "Column4";
-			this.Column4.ReadOnly = true;
 			// 
 			// toolStrip1
 			// 
@@ -192,6 +169,29 @@ namespace Rentix
 			this.button1.Text = "Закрыть";
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
+			// Column1
+			// 
+			this.Column1.HeaderText = "ID";
+			this.Column1.Name = "Column1";
+			this.Column1.Width = 50;
+			// 
+			// Column2
+			// 
+			this.Column2.HeaderText = "Название";
+			this.Column2.Name = "Column2";
+			this.Column2.Width = 200;
+			// 
+			// Column3
+			// 
+			this.Column3.HeaderText = "Цена";
+			this.Column3.Name = "Column3";
+			// 
+			// Column4
+			// 
+			this.Column4.HeaderText = "Удалён";
+			this.Column4.Name = "Column4";
+			this.Column4.ReadOnly = true;
 			// 
 			// PartnerControl
 			// 

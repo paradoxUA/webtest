@@ -1145,9 +1145,9 @@ namespace Rentix
         }
 
 		// Показывает список лучших результатов
-		public void ShowBestResults(DataGridView dv, int idTrack, LabelSmooth Records, bool ShowRaceID = false, DateTime? dateTimeBegin = null, DateTime? dateTimeEnd = null)
+		public void ShowBestResults(DataGridView dv, int idTrack, LabelSmooth Records, bool ShowRaceID = false, DateTime? dateTimeBegin = null, DateTime? dateTimeEnd = null, int amount = 40)
         {
-            List<Hashtable> Best = model.GetBestResults(idTrack, dateTimeBegin ?? DateTime.Now.AddYears(-1000), dateTimeEnd ?? DateTime.Now.AddYears(1000), 40); // вдруг машину времени изобретут...
+            List<Hashtable> Best = model.GetBestResults(idTrack, dateTimeBegin ?? DateTime.Now.AddYears(-1000), dateTimeEnd ?? DateTime.Now.AddYears(1000), amount); // вдруг машину времени изобретут...
 
             dv.Rows.Clear();
             string pilotname = "";
@@ -1290,7 +1290,7 @@ namespace Rentix
                 dr.Cells[5].Value = Cassa[i]["race_id"];
                 dr.Cells[6].Value = DateTime.Parse(Cassa[i]["date"].ToString()).ToString("dd.MM.yy HH:mm");
 				dr.Cells[7].Value = Cassa[i]["race_mode_name"];
-				dr.Cells[8].Value = Convert.ToInt32(Cassa[i]["terminal"]) == 33 ? "+" : string.Empty;
+				dr.Cells[8].Value = Convert.ToInt32(Cassa[i]["terminal"]) == 33 ? "T" : string.Empty;
 				dr.Cells[9].Value = Cassa[i]["group_name"]; 
 				dr.Cells[10].Value = Cassa[i]["partner_name"]; 
 				dr.Cells[11].Value = Cassa[i]["ref_code"].ToString() == "null" ? "" : Cassa[i]["ref_code"];

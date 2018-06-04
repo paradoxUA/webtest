@@ -2172,6 +2172,7 @@ namespace Rentix
 					{
 						cmd.ExecuteNonQueryHandled();
 					}
+					//sqliteConnection.Close();
 				}
 			}
 			catch
@@ -2271,7 +2272,10 @@ namespace Rentix
             // Анонсер
             sett["images_for_anonser"] = "";
 
-            sett = DefaultAnonserSettings(sett);
+			sett["halfModesEnabled"] = false;
+			sett["sponsors_images_for_anonser"] = "";
+
+			sett = DefaultAnonserSettings(sett);
 
             return sett;
         }
@@ -3689,17 +3693,24 @@ namespace Rentix
 
 		private string GetJurnalTp(int moneyType)
 		{
-			var tps = new List<int>() { 4, 3, 15 };
-			if(moneyType == -1)
+			if (moneyType == 33)
 			{
-				tps.Add(1);
-				tps.Add(33);
+				return 33.ToString();
 			}
 			else
 			{
-				tps.Add(moneyType);
+				var tps = new List<int>() { 4, 3, 15 };
+				if (moneyType == -1)
+				{
+					tps.Add(1);
+					tps.Add(33);
+				}
+				else
+				{
+					tps.Add(moneyType);
+				}
+				return string.Join(", ", tps);
 			}
-			return string.Join(", ", tps);
 		}
 
 		public double GetCassaReportSum(DateTime Date, int reportType, DateTime Date2, int race_id, int raceTypeId, int userGroupId, int partnerId, int cashTerminalType)

@@ -37,6 +37,7 @@ namespace Rentix
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.перейтиКЗаездуToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
 			this.перейтиКЗаездуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,6 +45,9 @@ namespace Rentix
 			this.GlobalTimer = new System.Windows.Forms.Timer(this.components);
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+			this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
+			this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.MainPanel = new System.Windows.Forms.Panel();
 			this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
@@ -142,10 +146,6 @@ namespace Rentix
 			this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-			this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
-			this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
-			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.labelSmooth1 = new Rentix.LabelSmooth();
 			this.label3 = new Rentix.LabelSmooth();
 			this.label4 = new Rentix.LabelSmooth();
@@ -182,6 +182,15 @@ namespace Rentix
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
 			this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
 			this.contextMenuStrip1.Size = new System.Drawing.Size(196, 98);
+			// 
+			// toolStripMenuItem1
+			// 
+			this.toolStripMenuItem1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.toolStripMenuItem1.Image = global::Rentix.Properties.Resources.users;
+			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(195, 22);
+			this.toolStripMenuItem1.Text = "Добавить пилота";
+			this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
 			// 
 			// перейтиКЗаездуToolStripMenuItem1
 			// 
@@ -243,6 +252,35 @@ namespace Rentix
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
 			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
+			// 
+			// toolStripButton4
+			// 
+			this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripButton4.Image = global::Rentix.Properties.Resources.edit_user;
+			this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton4.Name = "toolStripButton4";
+			this.toolStripButton4.Size = new System.Drawing.Size(29, 29);
+			this.toolStripButton4.Text = "toolStripButton4";
+			// 
+			// toolStripButton8
+			// 
+			this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripButton8.Image = global::Rentix.Properties.Resources.edit_group;
+			this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton8.Name = "toolStripButton8";
+			this.toolStripButton8.Size = new System.Drawing.Size(29, 29);
+			this.toolStripButton8.Text = "toolStripButton8";
+			this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
+			// 
+			// toolStripButton9
+			// 
+			this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripButton9.Image = global::Rentix.Properties.Resources.award_star_gold_2;
+			this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton9.Name = "toolStripButton9";
+			this.toolStripButton9.Size = new System.Drawing.Size(29, 29);
+			this.toolStripButton9.Text = "toolStripButton9";
+			this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click);
 			// 
 			// toolStripSeparator2
 			// 
@@ -1181,7 +1219,7 @@ namespace Rentix
 			this.petroleumSpend_ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("petroleumSpend_ToolStripMenuItem.Image")));
 			this.petroleumSpend_ToolStripMenuItem.Name = "petroleumSpend_ToolStripMenuItem";
 			this.petroleumSpend_ToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-			this.petroleumSpend_ToolStripMenuItem.Text = "Списать бензин";
+			this.petroleumSpend_ToolStripMenuItem.Text = "Приход бензина";
 			this.petroleumSpend_ToolStripMenuItem.Click += new System.EventHandler(this.petroleumSpend_ToolStripMenuItem_Click);
 			// 
 			// competitionMode_menuItem
@@ -1376,44 +1414,6 @@ namespace Rentix
 			this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
 			this.оПрограммеToolStripMenuItem.Text = "О программе";
 			this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
-			// 
-			// toolStripButton4
-			// 
-			this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.toolStripButton4.Image = global::Rentix.Properties.Resources.edit_user;
-			this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton4.Name = "toolStripButton4";
-			this.toolStripButton4.Size = new System.Drawing.Size(29, 29);
-			this.toolStripButton4.Text = "toolStripButton4";
-			// 
-			// toolStripButton8
-			// 
-			this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.toolStripButton8.Image = global::Rentix.Properties.Resources.edit_group;
-			this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton8.Name = "toolStripButton8";
-			this.toolStripButton8.Size = new System.Drawing.Size(29, 29);
-			this.toolStripButton8.Text = "toolStripButton8";
-			this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
-			// 
-			// toolStripButton9
-			// 
-			this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.toolStripButton9.Image = global::Rentix.Properties.Resources.award_star_gold_2;
-			this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton9.Name = "toolStripButton9";
-			this.toolStripButton9.Size = new System.Drawing.Size(29, 29);
-			this.toolStripButton9.Text = "toolStripButton9";
-			this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click);
-			// 
-			// toolStripMenuItem1
-			// 
-			this.toolStripMenuItem1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.toolStripMenuItem1.Image = global::Rentix.Properties.Resources.users;
-			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(195, 22);
-			this.toolStripMenuItem1.Text = "Добавить пилота";
-			this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
 			// 
 			// labelSmooth1
 			// 

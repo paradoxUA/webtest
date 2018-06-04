@@ -111,9 +111,9 @@
 			this.labelSmooth3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.labelSmooth3.Location = new System.Drawing.Point(12, 47);
 			this.labelSmooth3.Name = "labelSmooth3";
-			this.labelSmooth3.Size = new System.Drawing.Size(74, 14);
+			this.labelSmooth3.Size = new System.Drawing.Size(39, 14);
 			this.labelSmooth3.TabIndex = 2;
-			this.labelSmooth3.Text = "Стоимость";
+			this.labelSmooth3.Text = "Цена";
 			this.labelSmooth3.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
 			// 
 			// textBox1

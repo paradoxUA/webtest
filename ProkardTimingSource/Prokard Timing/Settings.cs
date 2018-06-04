@@ -16,6 +16,7 @@ using Rentix.Controls;
 using System.Configuration;
 using DocumentPrinter.Services;
 using Rentix.Extensions;
+using System.Diagnostics;
 
 namespace Rentix
 {
@@ -329,9 +330,19 @@ namespace Rentix
             sett["sponsors_images_for_anonser"] = sponsorsImagesFolder_textBox9.Text;
             sett["sponsors_images_rotate_timer"] = sponsorsImagesRotator_numericUpDown2.Text;
 
+			var testDefault =  parent.admin.model.LoadSettings();
 
+			var keys = testDefault.Keys.ToArray().Select(i => i as string).ToList();
+			foreach (var item in sett.Keys)
+			{
+				var key = item as string;
+				if (!keys.Contains(key))
+				{
+					Debug.WriteLine(key);
+				}
+			}
 
-            parent.admin.model.SaveSettings(sett);
+			parent.admin.model.SaveSettings(sett);
 
         }
 

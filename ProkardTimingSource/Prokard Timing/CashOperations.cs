@@ -71,7 +71,8 @@ namespace Rentix
             sale_onelap = Convert.ToInt32(admin.Settings["sale_onelap"] ?? 0);
             sale_half = Convert.ToInt32(admin.Settings["sale_half"] ?? 0);
 
-            IsHalfModesEnabled = priceForHalfMode_label.Visible = halfModes_comboBox.Visible = Convert.ToBoolean(admin.Settings["halfModesEnabled"] ?? false);
+			priceForHalfMode_label.Visible = halfModes_comboBox.Visible = true;
+			//IsHalfModesEnabled = priceForHalfMode_label.Visible = halfModes_comboBox.Visible = Convert.ToBoolean(admin.Settings["halfModesEnabled"] ?? false);
 
 
             List<Hashtable> data = admin.model.GetAllRaceModes(" and is_deleted <> 1 ");
