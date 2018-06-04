@@ -29,20 +29,20 @@ namespace Rentix
         /// </summary>
         private void InitializeComponent()
         {
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DayStatistic));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.borderPanel1 = new Microsoft.TeamFoundation.Client.BorderPanel();
 			this.deletePilotStatForThisTrack_button = new System.Windows.Forms.Button();
 			this.tabControl2_del = new System.Windows.Forms.TabControl();
@@ -744,8 +744,8 @@ namespace Rentix
 			this.racesJournal_dataGridView1.AllowUserToDeleteRows = false;
 			this.racesJournal_dataGridView1.AllowUserToResizeColumns = false;
 			this.racesJournal_dataGridView1.AllowUserToResizeRows = false;
-			dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.racesJournal_dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle27;
+			dataGridViewCellStyle40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+			this.racesJournal_dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle40;
 			this.racesJournal_dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
 			this.racesJournal_dataGridView1.BackgroundColor = System.Drawing.Color.White;
 			this.racesJournal_dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -1446,21 +1446,21 @@ namespace Rentix
 			this.dataGridView3.AllowUserToAddRows = false;
 			this.dataGridView3.AllowUserToDeleteRows = false;
 			this.dataGridView3.AllowUserToResizeRows = false;
-			dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-			this.dataGridView3.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle28;
+			dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+			this.dataGridView3.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle41;
 			this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
 			this.dataGridView3.BackgroundColor = System.Drawing.Color.White;
 			this.dataGridView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.dataGridView3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-			dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
+			dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle42.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle42;
 			this.dataGridView3.ColumnHeadersHeight = 30;
 			this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1472,14 +1472,14 @@ namespace Rentix
             this.Column12,
             this.Column15,
             this.Column11});
-			dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dataGridView3.DefaultCellStyle = dataGridViewCellStyle30;
+			dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle43.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle43.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle43.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle43.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dataGridView3.DefaultCellStyle = dataGridViewCellStyle43;
 			this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dataGridView3.Location = new System.Drawing.Point(0, 40);
 			this.dataGridView3.MultiSelect = false;
@@ -1670,21 +1670,21 @@ namespace Rentix
 			this.unregisteredDetection_dataGridView4.AllowUserToAddRows = false;
 			this.unregisteredDetection_dataGridView4.AllowUserToDeleteRows = false;
 			this.unregisteredDetection_dataGridView4.AllowUserToResizeRows = false;
-			dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-			this.unregisteredDetection_dataGridView4.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle31;
+			dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+			this.unregisteredDetection_dataGridView4.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle44;
 			this.unregisteredDetection_dataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
 			this.unregisteredDetection_dataGridView4.BackgroundColor = System.Drawing.Color.White;
 			this.unregisteredDetection_dataGridView4.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.unregisteredDetection_dataGridView4.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-			dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.unregisteredDetection_dataGridView4.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
+			dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle45.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle45.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle45.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle45.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.unregisteredDetection_dataGridView4.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle45;
 			this.unregisteredDetection_dataGridView4.ColumnHeadersHeight = 30;
 			this.unregisteredDetection_dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.unregisteredDetection_dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1694,14 +1694,14 @@ namespace Rentix
             this.Column18,
             this.dataGridViewTextBoxColumn4,
             this.Column17});
-			dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.unregisteredDetection_dataGridView4.DefaultCellStyle = dataGridViewCellStyle33;
+			dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle46.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle46.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle46.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle46.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle46.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.unregisteredDetection_dataGridView4.DefaultCellStyle = dataGridViewCellStyle46;
 			this.unregisteredDetection_dataGridView4.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.unregisteredDetection_dataGridView4.Location = new System.Drawing.Point(0, 40);
 			this.unregisteredDetection_dataGridView4.MultiSelect = false;
@@ -1863,21 +1863,21 @@ namespace Rentix
 			this.dataGridView5.AllowUserToAddRows = false;
 			this.dataGridView5.AllowUserToDeleteRows = false;
 			this.dataGridView5.AllowUserToResizeRows = false;
-			dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-			this.dataGridView5.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle34;
+			dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+			this.dataGridView5.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle47;
 			this.dataGridView5.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
 			this.dataGridView5.BackgroundColor = System.Drawing.Color.White;
 			this.dataGridView5.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.dataGridView5.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-			dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView5.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle35;
+			dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle48.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle48.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle48.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridView5.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle48;
 			this.dataGridView5.ColumnHeadersHeight = 30;
 			this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.dataGridView5.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1885,14 +1885,14 @@ namespace Rentix
             this.dataGridViewTextBoxColumn17,
             this.Column13,
             this.Column16});
-			dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dataGridView5.DefaultCellStyle = dataGridViewCellStyle36;
+			dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle49.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle49.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle49.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dataGridView5.DefaultCellStyle = dataGridViewCellStyle49;
 			this.dataGridView5.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dataGridView5.Location = new System.Drawing.Point(0, 40);
 			this.dataGridView5.MultiSelect = false;
@@ -2005,21 +2005,21 @@ namespace Rentix
 			this.petroleum_dataGridView1.AllowUserToAddRows = false;
 			this.petroleum_dataGridView1.AllowUserToDeleteRows = false;
 			this.petroleum_dataGridView1.AllowUserToResizeRows = false;
-			dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-			this.petroleum_dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle37;
+			dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+			this.petroleum_dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle50;
 			this.petroleum_dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
 			this.petroleum_dataGridView1.BackgroundColor = System.Drawing.Color.White;
 			this.petroleum_dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.petroleum_dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-			dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle38.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.petroleum_dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle38;
+			dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle51.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle51.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle51.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle51.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle51.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.petroleum_dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle51;
 			this.petroleum_dataGridView1.ColumnHeadersHeight = 30;
 			this.petroleum_dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.petroleum_dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -2028,14 +2028,14 @@ namespace Rentix
             this.Column19,
             this.Column20,
             this.Column21});
-			dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.petroleum_dataGridView1.DefaultCellStyle = dataGridViewCellStyle39;
+			dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle52.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle52.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle52.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle52.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle52.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle52.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.petroleum_dataGridView1.DefaultCellStyle = dataGridViewCellStyle52;
 			this.petroleum_dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.petroleum_dataGridView1.Location = new System.Drawing.Point(0, 40);
 			this.petroleum_dataGridView1.MultiSelect = false;
@@ -2242,7 +2242,7 @@ namespace Rentix
 			this.numericUpDown1.Size = new System.Drawing.Size(48, 20);
 			this.numericUpDown1.TabIndex = 13;
 			this.numericUpDown1.Value = new decimal(new int[] {
-            40,
+            10,
             0,
             0,
             0});

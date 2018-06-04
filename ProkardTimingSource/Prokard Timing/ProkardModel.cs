@@ -1634,7 +1634,7 @@ namespace Rentix
         {
             if (connected)
             {
-                using (SqlCommand cmd = new SqlCommand("Delete from groups where id='" + GroupID + "'", db))
+                using (SqlCommand cmd = new SqlCommand("Delete from groups where id=" + GroupID, db))
                     cmd.ExecuteNonQueryHandled();
 
             }
