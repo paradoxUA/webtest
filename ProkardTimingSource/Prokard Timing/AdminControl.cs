@@ -1483,12 +1483,12 @@ namespace Rentix
             //   MainForm.log("after prokard model init");
 
 
-            List<string> SettFromFile = LoadSettings();
+            //List<string> SettFromFile = LoadSettings();
 
             //   MainForm.log("mysql settings are loaded");
 
-            if (SettFromFile.Count > 0)
-            {
+            //if (SettFromFile.Count > 0)
+            //{
                 //  string[] MySQLData = ParseMySQLConfig(SettFromFile[0]);
                 /*
                 model.Server = MySQLData[0];
@@ -1505,7 +1505,7 @@ namespace Rentix
                 //     MainForm.log("after raceThread init");
 
 
-            }
+            //}
 
 
 
